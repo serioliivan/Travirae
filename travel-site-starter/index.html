@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Fly&Stay — International Travel Deals</title>
+  <meta name="description" content="Search cheap flights and hotels worldwide. Multi-language, multi-currency." />
+  <meta http-equiv="refresh" content="0; url=en/" />
+  <script>
+    (function () {
+      try {
+        var lang = (navigator.language || navigator.userLanguage || 'en').toLowerCase();
+        if (lang.startsWith('es')) location.replace('es/');
+        else location.replace('en/');
+      } catch(e) {}
+    })();
+  </script>
+  <style>body{font-family:system-ui,Segoe UI,Roboto,Arial,sans-serif;padding:24px;max-width:700px;margin:0 auto}</style>
+</head>
+<body>
+  <h1>Fly&Stay</h1>
+  <p>Choose your language:</p>
+  <p><a href="en/">English</a> · <a href="es/">Español</a></p>
+  <p style="font-size:14px;color:#666">If you are not redirected automatically, use the links above.</p>
+</body>
+</html>
