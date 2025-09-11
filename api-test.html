@@ -1,0 +1,40 @@
+<!doctype html><html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="assets/css/styles.css">
+<title>API Test</title>
+<script>
+function variants(base){const b=(base||'').replace(/\/+$/,'');const out=[b,b.replace(/\/api\/proxy$/,''),b.replace(/\/\.netlify\/functions\/proxy$/,''),b.replace(/\/api$/,'')];return out.filter((v,i,a)=>v&&a.indexOf(v)===i)}
+function join(base, path, style){ base=(base||'').replace(/\/+$/,''); if(style==='direct'){ if(/\/api$/.test(base)) return base + path.replace(/^\/api/,''); return base + path.replace(/^\/api/,''); } if(/\/api$/.test(base)) return base + path.replace(/^\/api/,''); return base + path; }
+async function negotiate(base){
+  const out=[]; let effective=null, style='api';
+  for(const b of variants(base)){ for(const st of ['api','direct']){ const u1=join(b,'/api/ping',st); try{ const r=await fetch(u1); const t=await r.text(); let js; try{js=JSON.parse(t)}catch{js={'raw':t}}; out.push({url:u1, status:r.status, body:js}); if(r.ok && js && js.ok){effective=b; style=st; return {effective,style,attempts:out};} }catch(e){ out.push({url:u1,error:String(e)}) }
+      const u2=join(b,'/ping',st); try{ const r=await fetch(u2); const t=await r.text(); let js; try{js=JSON.parse(t)}catch{js={'raw':t}}; out.push({url:u2, status:r.status, body:js}); if(r.ok && js && js.ok){effective=b; style=st; return {effective,style,attempts:out};} }catch(e){ out.push({url:u2,error:String(e)}) }
+  }}
+  return {effective:null, style:'api', attempts:out};
+}
+async function run(kind){
+  const cfg=await (await fetch('config/app.json')).json();
+  const nego=await negotiate(cfg.API_BASE);
+  const base=nego.effective||cfg.API_BASE, style=nego.style||'api';
+  let url;
+  function j(p){ if(style==='direct'){ if(/\/api$/.test(base)) return base+p.replace(/^\/api/,''); return base+p.replace(/^\/api/,''); } if(/\/api$/.test(base)) return base+p.replace(/^\/api/,''); return base+p; }
+  if(kind==='ping'){ url = j('/api/ping'); }
+  if(kind==='auto'){ url = j('/api/airports/suggest')+'?q=mil&locale=it'; }
+  if(kind==='price'){ const u=new URL(j('/api/flights/search')); u.searchParams.set('origin','MXP'); u.searchParams.set('destination','LHR'); u.searchParams.set('depart', new Date(Date.now()+21*86400000).toISOString().slice(0,10)); u.searchParams.set('currency','EUR'); u.searchParams.set('limit','5'); url=u.toString(); }
+  const r=await fetch(url); const text=await r.text(); let js; try{js=JSON.parse(text)}catch{js={'raw':text}};
+  const pre=document.getElementById('out');
+  pre.textContent=JSON.stringify({API_BASE:cfg.API_BASE,effective_base:base,style,attempts:nego.attempts,request:url,status:r.status,body:js},null,2);
+}
+</script></head><body>
+<main class="container">
+  <h1>API Test</h1>
+  <div class="card">
+    <div class="controls">
+      <button class="btn btn-primary" onclick="run('ping')">Ping</button>
+      <button class="btn btn-primary" onclick="run('auto')">Autocomplete “mil”</button>
+      <button class="btn btn-primary" onclick="run('price')">Ricerca MXP→LHR</button>
+    </div>
+    <pre id="out" style="white-space:pre-wrap;background:#0a1126;border:1px solid #1b2e59;border-radius:12px;padding:12px;margin-top:12px;color:#cfe6ff;min-height:220px"></pre>
+  </div>
+</main>
+</body></html>

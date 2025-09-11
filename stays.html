@@ -1,0 +1,40 @@
+<!doctype html><html lang="it"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://travirae-proxy.vercel.app" crossorigin>
+<link rel="stylesheet" href="assets/css/styles.css">
+<script defer src="assets/js/main.js"></script>
+<title>Hotels — Travirae</title></head><body>
+<header class="header"><div class="bar">
+  <a class="brand" href="index.html"><img src="assets/img/logo.svg" alt="Travirae"></a>
+  <nav class="nav"><ul>
+    <li><a href="index.html" >Home</a></li>
+    <li><a href="flights.html" >Flights</a></li>
+    <li><a href="stays.html" aria-current="page">Hotels</a></li>
+    <li><a href="transport.html" >Transport</a></li>
+    <li><a href="deals.html" >Deals</a></li>
+    <li><a href="api-test.html">API Test</a></li>
+  </ul></nav>
+</div></header>
+<main class="container">
+  <h1>Hotels</h1>
+  <div class="card">
+    <form id="stays-form" class="grid cols-4" autocomplete="off">
+      <div><label>Città</label><input id="stay-city" placeholder="Roma"/></div>
+      <div><label>Check-in</label><input id="stay-in" type="date"/></div>
+      <div><label>Check-out</label><input id="stay-out" type="date"/></div>
+      <div style="align-self:end"><button class="btn btn-primary" type="submit">Mostra mappa</button></div>
+    </form>
+  </div>
+  <div class="card" style="margin-top:12px">
+    <iframe id="stay22-widget" title="Stay22 map" width="100%" height="520" frameborder="0" loading="lazy"
+      src="https://www.stay22.com/embed/gm?aid=travirae&lat=41.9028&lng=12.4964&checkin=&checkout=&campaign=homepage"></iframe>
+    <p class="meta">Powered by Stay22.</p>
+  </div>
+</main>
+<footer class="footer">© <span id="y"></span> Travirae · <a href="privacy.html">Privacy</a> · <a href="terms.html">Terms</a></footer>
+<script>document.getElementById('y').textContent=new Date().getFullYear()</script>
+<script>
+const today=new Date(); const in2=new Date(today.getTime()+2*86400000); const out5=new Date(today.getTime()+5*86400000);
+document.getElementById('stay-in').value=today.toISOString().slice(0,10);
+document.getElementById('stay-out').value=out5.toISOString().slice(0,10);
+</script>
+</body></html>
