@@ -1,0 +1,21 @@
+<!doctype html><html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="assets/css/styles.css"><script>
+async function loadCfg(){ const r=await fetch('config/app.json'); return r.json(); }
+async function testPing(){ const cfg=await loadCfg(); const r=await fetch(cfg.API_BASE.replace(/\/$/,'')+'/api/ping'); show(r); }
+async function testAutocomplete(){ const cfg=await loadCfg(); const u=new URL(cfg.API_BASE.replace(/\/$/,'')+'/api/airports/suggest'); u.searchParams.set('q','mil'); u.searchParams.set('locale',cfg.LOCALE_DEFAULT||'it'); const r=await fetch(u.toString()); show(r); }
+async function testPrices(){ const cfg=await loadCfg(); const u=new URL(cfg.API_BASE.replace(/\/$/,'')+'/api/flights/search'); u.searchParams.set('origin','MXP'); u.searchParams.set('destination','LHR'); u.searchParams.set('depart', new Date(Date.now()+21*86400000).toISOString().slice(0,10)); u.searchParams.set('currency', cfg.CURRENCY_DEFAULT||'EUR'); u.searchParams.set('limit','5'); const r=await fetch(u.toString()); show(r); }
+async function show(r){ const text=await r.text(); let js; try{js=JSON.parse(text);}catch{js={'raw':text,'status':r.status}}; const pre=document.getElementById('out'); pre.textContent=JSON.stringify(js,null,2)+'\n(Status '+r.status+')'; }
+</script><title>API Test</title></head><body>
+<main class="container">
+  <h1>API Test</h1>
+  <div class="card">
+    <div class="controls">
+      <button class="btn btn-primary" onclick="testPing()">Ping</button>
+      <button class="btn btn-primary" onclick="testAutocomplete()">Autocomplete “mil”</button>
+      <button class="btn btn-primary" onclick="testPrices()">Ricerca MXP→LHR</button>
+    </div>
+    <pre id="out" style="white-space:pre-wrap;background:#0a1126;border:1px solid #1b2e59;border-radius:12px;padding:12px;margin-top:12px;color:#cfe6ff;min-height:180px"></pre>
+  </div>
+</main>
+</body></html>

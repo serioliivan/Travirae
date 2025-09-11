@@ -1,0 +1,5 @@
+{
+  "API_BASE": "https://earnest-rolypoly-09b3bc.netlify.app/.netlify/functions/proxy",
+  "CURRENCY_DEFAULT": "EUR",
+  "LOCALE_DEFAULT": "it"
+}
