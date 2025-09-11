@@ -1,5 +1,0 @@
-{
-  "API_BASE": "https://travirae-proxy.vercel.app/api/proxy",
-  "CURRENCY_DEFAULT": "EUR",
-  "LOCALE_DEFAULT": "it"
-}
