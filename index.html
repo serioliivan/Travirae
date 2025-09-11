@@ -1,0 +1,46 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://autocomplete.travelpayouts.com" crossorigin>
+<link rel="preconnect" href="https://api.travelpayouts.com" crossorigin>
+<link rel="preconnect" href="https://tpemd.com" crossorigin>
+<link rel="preconnect" href="https://www.stay22.com" crossorigin>
+<link rel="stylesheet" href="assets/css/styles.css">
+<script defer src="assets/js/site.js"></script>
+<title>Travirae — Home</title></head><body>
+<header class="header"><div class="bar">
+  <a class="brand" href="index.html"><img src="assets/img/logo.svg" alt="Travirae"></a>
+  <nav class="nav"><ul>
+    <li><a href="flights.html" >Flights</a></li>
+    <li><a href="stays.html" >Hotels</a></li>
+    <li><a href="transport.html" >Transport</a></li>
+    <li><a href="deals.html" >Deals</a></li>
+  </ul></nav>
+</div></header>
+<main class="container">
+  <section class="hero"><div id="hero-bg" class="hero-bg"></div><div class="overlay">
+    <h1>Find your next <strong>Vacation</strong> stay.</h1>
+    <div class="card">
+      <div class="tabs">
+        <button class="tab active" data-target="#pane-widget">Widget (partner)</button>
+        <button class="tab" data-target="#pane-onsite">On‑site (Travirae)</button>
+      </div>
+      <div id="pane-widget" class="tab-pane active">
+        <div id="tp-widget-home"></div>
+        <p class="muted">Il form e i risultati sono forniti dal partner (Aviasales/Travelpayouts).</p>
+      </div>
+      <div id="pane-onsite" class="tab-pane">
+        <form id="onsite-form" class="grid cols-3" autocomplete="off">
+          <div><label>Origin</label><input id="o-from" placeholder="MIL / MXP"></div>
+          <div><label>Destination</label><input id="o-to" placeholder="BKK / DMK"></div>
+          <div><label>Departure</label><input id="o-depart" type="date"></div>
+          <div><label>Return (optional)</label><input id="o-return" type="date"></div>
+          <div><button class="btn btn-primary" type="submit">Search</button></div>
+        </form>
+        <div id="onsite-msg" class="message" hidden></div>
+        <div id="onsite-results" class="results"></div>
+      </div>
+    </div>
+  </div></section>
+</main>
+<footer class="footer">© <span id="y"></span> Travirae · <a href="privacy.html">Privacy</a> · <a href="terms.html">Terms</a></footer>
+<script>document.getElementById('y').textContent=new Date().getFullYear()</script>
+</body></html>
