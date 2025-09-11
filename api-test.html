@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="it">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>API Test — Travirae</title>
+<link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body>
+<header class="header"><div class="container bar"><a class="brand" href="./">✈️ Travirae</a></div></header>
+<main class="container">
+  <div class="card">
+    <h1>Test connessione Travelpayouts</h1>
+    <p>Questa pagina verifica rapidamente il proxy Netlify e le API.</p>
+    <div style="display:flex; gap:10px; flex-wrap:wrap; margin:10px 0">
+      <button id="btnPing">Ping proxy</button>
+      <button id="btnAuto">Autocomplete “mil”</button>
+      <button id="btnSearch">Ricerca MXP → LHR</button>
+    </div>
+    <pre id="out" style="white-space:pre-wrap; background:#0b1020; color:#e6edf3; padding:12px; border-radius:10px; border:1px solid #1f2a44; max-height:520px; overflow:auto">Pronto…</pre>
+  </div>
+</main>
+<script>
+async function cfg(){ const r = await fetch('config/app.json',{cache:'no-store'}); return r.json(); }
+function show(x){ const j = (typeof x==='string')? x : JSON.stringify(x,null,2); document.getElementById('out').textContent = j; }
+document.getElementById('btnPing').onclick = async()=>{
+  const C = await cfg(); const r = await fetch(C.API_BASE+'/api/ping'); show({status:r.status, body: await r.json()});
+};
+document.getElementById('btnAuto').onclick = async()=>{
+  const C = await cfg(); const r = await fetch(C.API_BASE+'/api/airports/suggest?q=mil&locale='+encodeURIComponent(C.LOCALE_DEFAULT||'it')); show({status:r.status, body: await r.json()});
+};
+document.getElementById('btnSearch').onclick = async()=>{
+  const C = await cfg(); const url = C.API_BASE+'/api/flights/search?origin=MXP&destination=LHR&depart=' + new Date(Date.now()+14*864e5).toISOString().slice(0,10) + '&currency='+ (C.CURRENCY_DEFAULT||'EUR') + '&limit=3'; const r = await fetch(url); show({url, status:r.status, body: await r.json()});
+};
+</script>
+</body></html>
