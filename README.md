@@ -1,1 +1,0 @@
-# Travirae Front-end (configurato)\nUsa `https://travirae-proxy.vercel.app` come proxy. Carica tutto su `serioliivan/Travirae`.
