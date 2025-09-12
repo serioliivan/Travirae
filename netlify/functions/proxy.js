@@ -1,1 +1,0 @@
-// Placeholder. Con proxy Vercel non serve questo file.
