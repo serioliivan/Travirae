@@ -1,0 +1,54 @@
+<!doctype html><html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="assets/css/styles.css">
+<title>API Test V6</title>
+<script>
+function variants(base){const b=(base||'').replace(/\/+$/,'');const out=[b,b.replace(/\/api\/proxy$/,''),b.replace(/\/\.netlify\/functions\/proxy$/,''),b.replace(/\/api$/,'')];return out.filter((v,i,a)=>v&&a.indexOf(v)===i)}
+function join(base, path, style){ base=(base||'').replace(/\/+$/,''); if(style==='direct'){ if(/\/api$/.test(base)) return base + path.replace(/^\/api/,''); return base + path.replace(/^\/api/,''); } if(/\/api$/.test(base)) return base + path.replace(/^\/api/,''); return base + path; }
+async function tryPing(base, style, endpoint){
+  const url = join(base, endpoint, style);
+  try{ const r=await fetch(url,{cache:'no-store'}); const t=await r.text(); let ok=(r.status>=200 && r.status<300); try{const js=JSON.parse(t); if(js && (js.ok===true || js.ok==='true' || js.status==='ok')) ok=true;}catch{} return {ok,url,style,status:r.status,body:t}; }catch(e){ return {ok:false,url,style,error:String(e)}}
+}
+async function negotiate(base){
+  const attempts=[]; let effective=null, style='api';
+  for(const b of variants(base)){ for(const st of ['api','direct']){ const a1=await tryPing(b,st, st==='api'?'/api/ping':'/ping'); attempts.push(a1); if(a1.ok){effective=b;style=st;return {effective,style,attempts};}
+    const a2=await tryPing(b,st, st==='api'?'/ping':'/api/ping'); attempts.push(a2); if(a2.ok){effective=b;style=st;return {effective,style,attempts};} } }
+  return {effective:null,style:'api',attempts};
+}
+async function run(kind){
+  const cfg=await (await fetch('config/app.json')).json();
+  const nego=await negotiate(cfg.API_BASE); const base=nego.effective||cfg.API_BASE, style=nego.style||'api';
+  function j(p){ if(style==='direct'){ if(/\/api$/.test(base)) return base+p.replace(/^\/api/,''); return base+p.replace(/^\/api/,''); } if(/\/api$/.test(base)) return base+p.replace(/^\/api/,''); return base+p; }
+  let url;
+  if(kind==='ping') url=j('/api/ping');
+  if(kind==='auto'){ url=j('/api/airports/suggest')+'?q=mil&locale=it'; }
+  if(kind==='price'){ const u=new URL(j('/api/flights/search')); u.searchParams.set('origin','MXP'); u.searchParams.set('destination','LHR'); u.searchParams.set('depart', new Date(Date.now()+21*86400000).toISOString().slice(0,10)); u.searchParams.set('currency','EUR'); u.searchParams.set('limit','5'); url=u.toString(); }
+  const r=await fetch(url,{cache:'no-store'}); const text=await r.text(); let body; try{body=JSON.parse(text)}catch{body={'raw':text}};
+  document.getElementById('out').textContent = JSON.stringify({cfg_API_BASE:cfg.API_BASE, effective_base:base, style, attempts:nego.attempts, request:url, status:r.status, body}, null, 2);
+}
+async function setManual(){
+  const base=document.getElementById('m-base').value.trim().replace(/\/+$/,'');
+  const style=document.getElementById('m-style').value;
+  const url = (style==='api' ? base+'/api/ping' : base+'/ping');
+  const r = await fetch(url); const t=await r.text(); let ok=r.ok; try{const js=JSON.parse(t); if(js && (js.ok===true || js.ok==='true' || js.status==='ok')) ok=true;}catch{}
+  document.getElementById('out').textContent = JSON.stringify({manual_base:base, style, test_url:url, status:r.status, body: ok ? 'OK' : t}, null, 2);
+  if(window.__TRAVIRAE__){ window.__TRAVIRAE__.setBase(base, style); }
+}
+</script></head><body>
+<main class="container">
+  <h1>API Test (V6)</h1>
+  <div class="card">
+    <div class="controls">
+      <button class="btn btn-primary" onclick="run('ping')">Ping</button>
+      <button class="btn btn-primary" onclick="run('auto')">Autocomplete “mil”</button>
+      <button class="btn btn-primary" onclick="run('price')">Ricerca MXP→LHR</button>
+    </div>
+    <div class="controls">
+      <input id="m-base" placeholder="Imposta manualmente API_BASE (es. https://travirae-proxy.vercel.app/api/proxy)" style="flex:1;padding:10px;border-radius:10px;border:1px solid #2a3a68;background:#0a1126;color:#fff">
+      <select id="m-style"><option value="api">api (…/api/ping)</option><option value="direct">direct (…/ping)</option></select>
+      <button class="btn" onclick="setManual()">Forza base</button>
+    </div>
+    <pre id="out" style="white-space:pre-wrap;background:#0a1126;border:1px solid #1b2e59;border-radius:12px;padding:12px;margin-top:12px;color:#cfe6ff;min-height:220px"></pre>
+  </div>
+</main>
+</body></html>
