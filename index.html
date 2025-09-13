@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Travirae — Cerca Voli + Hotel</title>
+  <meta name="description" content="Motore di ricerca viaggi con voli + hotel (Travelpayouts). Autocomplete IATA incluso." />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>✈️</text></svg>">
+  <link rel="stylesheet" href="./assets/styles.css" />
+</head>
+<body>
+  <div class="container">
+    <header class="hero">
+      <div class="badge">Beta • Travelpayouts API</div>
+      <h1 class="brand">Travirae</h1>
+      <p class="tagline">Cerca <strong>Voli</strong> e <strong>Hotel</strong> insieme — con <strong>autocomplete</strong> città/aeroporti.</p>
+    </header>
+
+    <nav class="topnav" role="tablist" aria-label="Modalità ricerca">
+      <button class="tab active" data-mode="both" aria-selected="true">✈️ + 🏨 Voli + Hotel</button>
+      <button class="tab" data-mode="flights" aria-selected="false">✈️ Solo Voli</button>
+      <button class="tab" data-mode="hotels" aria-selected="false">🏨 Solo Hotel</button>
+    </nav>
+
+    <section class="card">
+      <form id="search-form" aria-label="Ricerca viaggi">
+        <div class="row">
+          <div class="span-3">
+            <label for="origin">Da</label>
+            <div class="ac">
+              <input id="origin" name="origin" placeholder="Milano, MXP o LIN" autocomplete="off" required />
+              <span class="code-pill" id="origin-code" aria-hidden="true"></span>
+            </div>
+            <div class="helper">Puoi scrivere la <b>città</b> o il <b>codice IATA</b>.</div>
+          </div>
+          <div class="span-3">
+            <label for="destination">A</label>
+            <div class="ac">
+              <input id="destination" name="destination" placeholder="Londra o LON" autocomplete="off" required />
+              <span class="code-pill" id="destination-code" aria-hidden="true"></span>
+            </div>
+            <div class="helper">Useremo la stessa destinazione per gli hotel.</div>
+          </div>
+
+          <div class="span-2">
+            <label for="depart">Partenza</label>
+            <input type="date" id="depart" name="depart" required />
+          </div>
+          <div class="span-2">
+            <label for="return">Ritorno (opzionale)</label>
+            <input type="date" id="return" name="return" />
+          </div>
+          <div class="span-2">
+            <label for="adults">Adulti</label>
+            <input type="number" id="adults" name="adults" min="1" value="1" />
+          </div>
+
+          <div class="span-2">
+            <label for="currency">Valuta</label>
+            <select id="currency" name="currency">
+              <option value="EUR" selected>EUR €</option>
+              <option value="USD">USD $</option>
+              <option value="GBP">GBP £</option>
+            </select>
+          </div>
+          <div class="span-6">
+            <button id="go" type="submit">Cerca</button>
+            <span class="spinner" id="spinner" aria-live="polite">⟳</span>
+          </div>
+        </div>
+      </form>
+    </section>
+
+    <section class="results flights-section">
+      <h2>✈️ Voli</h2>
+      <div id="flight-note" class="helper" style="margin:4px 0 10px; display:none"></div>
+      <div id="flight-results" class="grid grid-2"></div>
+      <div id="flights-more" class="more hidden"><button type="button">Carica altri</button></div>
+    </section>
+
+    <hr class="sep" />
+
+    <section class="results hotels-section">
+      <h2>🏨 Hotel</h2>
+      <div id="hotel-results" class="grid grid-2"></div>
+      <div id="hotels-more" class="more hidden"><button type="button">Carica altri</button></div>
+    </section>
+
+    <p class="footer helper">
+      Dati voli e hotel via Travelpayouts (cache). I prezzi e la disponibilità possono variare al momento della prenotazione.
+    </p>
+  </div>
+
+  <!-- Modal -->
+  <div id="modal-root" class="modal hidden" aria-hidden="true"></div>
+
+  <script type="module" src="./js/app.js"></script>
+</body>
+</html>
