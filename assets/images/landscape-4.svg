@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1000" role="img" aria-label="Fiordo artico con acqua e montagne innevate">
+  <defs>
+    <linearGradient id="sky4" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#dbeafe"/>
+      <stop offset="1" stop-color="#93c5fd"/>
+    </linearGradient>
+    <linearGradient id="water4" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#60a5fa"/>
+      <stop offset="1" stop-color="#2563eb"/>
+    </linearGradient>
+  </defs>
+  <rect width="1600" height="1000" fill="url(#sky4)"/>
+  <path d="M0 680 L300 480 L520 620 L790 360 L1000 600 L1250 420 L1600 700 L1600 1000 L0 1000 Z" fill="#bcd0e8"/>
+  <path d="M0 760 L220 600 L480 720 L680 520 L900 740 L1200 560 L1600 800 L1600 1000 L0 1000 Z" fill="#9fb4d0"/>
+  <rect y="820" width="1600" height="180" fill="url(#water4)"/>
+  <rect y="820" width="1600" height="20" fill="#e5f3ff" opacity=".8"/>
+</svg>

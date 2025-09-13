@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1000" role="img" aria-label="Colline verdi e foresta all'alba">
+  <defs>
+    <linearGradient id="sky3" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#e0ffe3"/>
+      <stop offset="1" stop-color="#8ddba5"/>
+    </linearGradient>
+    <linearGradient id="hillA" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#7cc084"/>
+      <stop offset="1" stop-color="#2e7d32"/>
+    </linearGradient>
+    <linearGradient id="hillB" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#a8e6a3"/>
+      <stop offset="1" stop-color="#52a86b"/>
+    </linearGradient>
+  </defs>
+  <rect width="1600" height="1000" fill="url(#sky3)"/>
+  <circle cx="1400" cy="150" r="70" fill="#fff9c4"/>
+  <path d="M0 740 C200 700 400 680 600 720 C800 760 1000 760 1600 720 L1600 1000 L0 1000 Z" fill="url(#hillB)"/>
+  <path d="M0 800 C250 760 500 770 800 820 C1100 870 1350 860 1600 820 L1600 1000 L0 1000 Z" fill="url(#hillA)"/>
+  <!-- simple trees -->
+  <g fill="#1e7d46" opacity=".9">
+    <path d="M200 760 l30 -60 l30 60 z"/>
+    <rect x="227" y="760" width="6" height="30" fill="#4e342e"/>
+    <path d="M400 750 l28 -56 l28 56 z"/>
+    <rect x="426" y="750" width="6" height="30" fill="#4e342e"/>
+    <path d="M1200 770 l26 -52 l26 52 z"/>
+    <rect x="1222" y="770" width="6" height="28" fill="#4e342e"/>
+  </g>
+</svg>
