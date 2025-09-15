@@ -1,6 +1,6 @@
 // === CONFIG ===
 // 1) URL del tuo hub su Vercel (aff-hub)
-window.AFF_HUB_BASE = 'https://<TUO-PROGETTO-HUB>.vercel.app'; // ← Sostituisci!
+window.AFF_HUB_BASE = 'https://aff-hub-ii1w.vercel.app'; // ← Sostituisci!
 
 // 2) Stay22 AID (pubblico)
 window.STAY22_AID = 'travirae';
