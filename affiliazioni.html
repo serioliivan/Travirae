@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Affiliazioni — Travirae</title>
+  <link rel="icon" href="./img/logo.svg" />
+  <link rel="stylesheet" href="./assets/styles.css" />
+  <script src="https://unpkg.com/@supabase/supabase-js@2"></script>
+  <script defer src="./js/config.js"></script>
+  <script defer src="./js/supabaseClient.js"></script>
+  <script defer src="./js/auth-header.js"></script>
+  <script defer src="./js/affiliations.js"></script>
+</head>
+<body>
+
+  <header class="header">
+    <div class="container nav">
+      <div class="brand">
+        <img src="./img/logo.svg" alt="Travirae" />
+        <span>Travirae</span>
+      </div>
+      <nav class="links" id="main-nav">
+        <a href="./index.html" >Cerca</a>
+        <a href="./affiliazioni.html" class="active">Affiliazioni</a>
+        <a href="./index.html#faq" >FAQ</a>
+        <span id="auth-slot"></span>
+      </nav>
+    </div>
+  </header>
+
+<main>
+  <section class="container card">
+    <h1>Affiliazioni</h1>
+    <p class="muted">Registrati come creator e ottieni il tuo <b>ref</b> personale per tracciare i guadagni.</p>
+    <div class="grid-2">
+      <div class="panel">
+        <h2>Registrati</h2>
+        <form id="signup-form" class="form vstack">
+          <label>Nome completo
+            <input id="su-name" type="text" placeholder="Mario Rossi" required />
+          </label>
+          <label>Email
+            <input id="su-email" type="email" placeholder="mario@example.com" required />
+          </label>
+          <label>Password
+            <input id="su-pass" type="password" placeholder="Min 6 caratteri" minlength="6" required />
+          </label>
+          <button type="submit">Crea account</button>
+          <div id="su-msg" class="msg"></div>
+        </form>
+      </div>
+      <div class="panel">
+        <h2>Accedi</h2>
+        <form id="login-form" class="form vstack">
+          <label>Email
+            <input id="li-email" type="email" placeholder="mario@example.com" required />
+          </label>
+          <label>Password
+            <input id="li-pass" type="password" required />
+          </label>
+          <button type="submit" class="ghost">Accedi</button>
+          <div id="li-msg" class="msg"></div>
+        </form>
+      </div>
+    </div>
+    <p class="muted small">Registrandoti, accetti che il tuo traffico sia tracciato tramite parametri affiliati per il calcolo dei guadagni.</p>
+  </section>
+</main>
+
+  <footer class="footer">
+    <div class="container">
+      <span>© 2025 Travirae • Link affiliati • Privacy e Cookie</span>
+    </div>
+  </footer>
+
+</body>
+</html>
