@@ -1,0 +1,199 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Home · Travirae</title>
+  <meta name="description" content="Travirae · Flights and stays with trusted partners.">
+  <link rel="preconnect" href="https://images.unsplash.com" crossorigin>
+  <link rel="preconnect" href="https://tpemd.com" crossorigin>
+  <link rel="preconnect" href="https://www.stay22.com" crossorigin>
+  <link rel="preload" as="image" href="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1600&h=900&q=70">
+  <link rel="stylesheet" href="assets/css/styles.css">
+  <script src="assets/js/config.js"></script>
+  <script src="assets/js/i18n.js"></script>
+  <script src="assets/js/main.js" defer></script>
+  <script>
+  (function (s, t, a, y, twenty, two) {
+    s.Stay22 = s.Stay22 || {};
+    s.Stay22.params = { lmaID: '68ca7bef0fb4afaaba49cb20' };
+    twenty = t.createElement(a);
+    two = t.getElementsByTagName(a)[0];
+    twenty.async = 1;
+    twenty.src = y;
+    two.parentNode.insertBefore(twenty, two);
+  })(window, document, 'script', 'https://scripts.stay22.com/letmeallez.js');
+</script>
+</head>
+<body>
+  <header class="nav">
+    <div class="container nav-inner">
+      <div class="brand">
+        <svg class="logo" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M2 12l6-2 4-8 2 6 8 4-8 2-2 8-4-6-6-2z"/></svg>
+        <a href="index.html">TRAVIRAE</a>
+      </div>
+      <nav class="menu">
+        <a class="active" href="index.html" data-i18n="nav.home">HOME</a>
+        <a class="" href="flights.html" data-i18n="nav.flights">FLIGHTS</a>
+        <a class="" href="hotels.html" data-i18n="nav.hotels">HOTELS</a>
+        <a class="" href="partner.html" data-i18n="nav.partner">PARTNER</a>
+      </nav>
+      <div class="auth">
+        <select id="lang-select" aria-label="Language">
+          <option value="en">EN</option>
+          <option value="es">ES</option>
+          <option value="fr">FR</option>
+          <option value="de">DE</option>
+          <option value="ru">RU</option>
+          <option value="zh">中文</option>
+          <option value="hi">हिंदी</option>
+          <option value="it">IT</option>
+        </select>
+        <a class="login" href="login.html" data-i18n="login">LOGIN</a>
+        <a class="signup" href="signup.html" data-i18n="signup">SIGN UP</a>
+      </div>
+    </div>
+  </header>
+  <main>
+
+  <!-- HERO -->
+  <section class="hero-bg">
+    <div class="layer"></div>
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <div class="hero-inner container">
+        <h1 class="hero-title" data-i18n="hero.title">Find your next trip</h1>
+        <p class="hero-sub" data-i18n="hero.sub">Compare flights and discover stays in top destinations worldwide.</p>
+        <div class="widget-card" id="tp-widget-container"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stay22 MAP (full-bleed topo) -->
+  <section id="stay22-section" class="section-full">
+    <div class="bg"></div>
+    <div class="inner">
+      <div class="container">
+        <h2 data-i18n="map.title">Type where you want to go to see more stays nearby</h2>
+        <div class="map-wrap">
+          <iframe id="stay22-dynamic" title="Stay22 map" width="100%" height="560" src="https://www.stay22.com/embed/68bed7d007d38cf140108e0d" frameborder="0" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Popular destinations -->
+  <section class="section">
+    <div class="container">
+      <h2 data-i18n="dest.title">Popular destinations</h2>
+      <div class="grid cols-3">
+        
+        <div class="dest-card">
+          <img loading="lazy" src="https://images.unsplash.com/photo-1534447677768-be436bb09401?auto=format&fit=crop&w=800&h=533&q=60" onerror="this.onerror=null;this.src='assets/img/ph_new_york.jpg'" alt="New York">
+          <div class="meta">
+            <div class="title">New York</div>
+            <div class="actions">
+              <a class="btn" href="#stay22-section" data-address="New York, USA" data-i18n="btn.stays">Stays</a>
+              <a class="btn secondary" href="flights.html" data-i18n="btn.flights">Flights</a>
+            </div>
+          </div>
+        </div>
+    
+        <div class="dest-card">
+          <img loading="lazy" src="https://images.unsplash.com/photo-1558981403-c5f9899a28bc?auto=format&fit=crop&w=800&h=533&q=60" onerror="this.onerror=null;this.src='assets/img/ph_tokyo.jpg'" alt="Tokyo">
+          <div class="meta">
+            <div class="title">Tokyo</div>
+            <div class="actions">
+              <a class="btn" href="#stay22-section" data-address="Tokyo, Japan" data-i18n="btn.stays">Stays</a>
+              <a class="btn secondary" href="flights.html" data-i18n="btn.flights">Flights</a>
+            </div>
+          </div>
+        </div>
+    
+        <div class="dest-card">
+          <img loading="lazy" src="https://images.unsplash.com/photo-1508051123996-69f8caf4891e?auto=format&fit=crop&w=800&h=533&q=60" onerror="this.onerror=null;this.src='assets/img/ph_paris.jpg'" alt="Paris">
+          <div class="meta">
+            <div class="title">Paris</div>
+            <div class="actions">
+              <a class="btn" href="#stay22-section" data-address="Paris, France" data-i18n="btn.stays">Stays</a>
+              <a class="btn secondary" href="flights.html" data-i18n="btn.flights">Flights</a>
+            </div>
+          </div>
+        </div>
+    
+        <div class="dest-card">
+          <img loading="lazy" src="https://images.unsplash.com/photo-1546410531-bb4caa6b424d?auto=format&fit=crop&w=800&h=533&q=60" onerror="this.onerror=null;this.src='assets/img/ph_dubai.jpg'" alt="Dubai">
+          <div class="meta">
+            <div class="title">Dubai</div>
+            <div class="actions">
+              <a class="btn" href="#stay22-section" data-address="Dubai, UAE" data-i18n="btn.stays">Stays</a>
+              <a class="btn secondary" href="flights.html" data-i18n="btn.flights">Flights</a>
+            </div>
+          </div>
+        </div>
+    
+        <div class="dest-card">
+          <img loading="lazy" src="https://images.unsplash.com/photo-1518544801976-3e188335fd6f?auto=format&fit=crop&w=800&h=533&q=60" onerror="this.onerror=null;this.src='assets/img/ph_bangkok.jpg'" alt="Bangkok">
+          <div class="meta">
+            <div class="title">Bangkok</div>
+            <div class="actions">
+              <a class="btn" href="#stay22-section" data-address="Bangkok, Thailand" data-i18n="btn.stays">Stays</a>
+              <a class="btn secondary" href="flights.html" data-i18n="btn.flights">Flights</a>
+            </div>
+          </div>
+        </div>
+    
+        <div class="dest-card">
+          <img loading="lazy" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=800&h=533&q=60" onerror="this.onerror=null;this.src='assets/img/ph_rio_de_janeiro.jpg'" alt="Rio de Janeiro">
+          <div class="meta">
+            <div class="title">Rio de Janeiro</div>
+            <div class="actions">
+              <a class="btn" href="#stay22-section" data-address="Rio de Janeiro, Brazil" data-i18n="btn.stays">Stays</a>
+              <a class="btn secondary" href="flights.html" data-i18n="btn.flights">Flights</a>
+            </div>
+          </div>
+        </div>
+    
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA bottom -->
+  <section class="cta-bottom">
+    <div class="container">
+      <div class="cta-bar">
+        <div data-i18n="cta.lead"><strong>Want to save?</strong> Open the price calendar to find the cheapest days.</div>
+        <a class="btn" href="flights.html" data-i18n="cta.prices">Open price calendar</a>
+      </div>
+    </div>
+  </section>
+
+  </main>
+  <footer class="footer">
+    <div class="container footer-grid">
+      <div>
+        <strong>Travirae</strong>
+        <small>© 2025 · All rights reserved.</small>
+        <small>Affiliate links in use (Stay22, Travelpayouts). We may earn a commission at no extra cost to you.</small>
+      </div>
+      <div>
+        <div class="label">Legal</div>
+        <div><a href="privacy.html">Privacy Policy</a></div>
+        <div><a href="cookies.html">Cookie Policy</a></div>
+        <div><a href="terms.html">Terms & Conditions</a></div>
+        <div><a href="affiliates.html">Affiliate Disclosure</a></div>
+      </div>
+      <div>
+        <div class="label">Contact</div>
+        <div><a href="mailto:info@esempio.com">info@esempio.com</a></div>
+        <div><a href="partner.html">Partner with us</a></div>
+      </div>
+      <div>
+        <div class="label">Resources</div>
+        <small><a href="https://stay22.com" target="_blank" rel="noopener">Stay22</a></small>
+        <small><a href="https://www.travelpayouts.com/" target="_blank" rel="noopener">Travelpayouts</a></small>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
