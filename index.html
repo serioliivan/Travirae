@@ -1,0 +1,514 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Travirae – Trova il tuo prossimo viaggio</title>
+  <meta name="description" content="Trova hotel e ispirazione per viaggi. Mappa Stay22 integrata, idee per categorie, destinazioni popolari e suggerimenti su misura.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="icon" type="image/svg+xml" href="assets/img/logo.svg">
+  <meta property="og:title" content="Travirae – Trova il tuo prossimo viaggio">
+  <meta property="og:description" content="Trova hotel e ispirazione per viaggi. Mappa Stay22 integrata, idee per categorie e destinazioni.">
+  <meta property="og:type" content="website">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="brand" aria-label="Travirae Home">
+        <img src="assets/img/logo.svg" alt="Logo Travirae">
+        <span>Travirae</span>
+      </a>
+      <nav class="main-nav" aria-label="Navigazione principale">
+        <a href="#categorie">Categorie</a>
+        <a href="#popolari">Popolari</a>
+        <a href="#ispirazione">Ispirazione</a>
+        <a href="#viaggiatori">Viaggiatori</a>
+        <a href="flights.html" class="btn small">Voli</a>
+      </nav>
+      <button class="nav-toggle" aria-label="Apri menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <main>
+    <!-- HERO -->
+    <section id="hero" class="hero">
+      <div class="hero-bg" role="img" aria-label="Spiaggia tropicale">
+        <!-- Background via CSS -->
+      </div>
+      <div class="container hero-inner">
+        <h1>Trova il tuo prossimo viaggio</h1>
+        <p class="subtitle">Trova l'alloggio che fa per te qui sotto.</p>
+
+        <div id="map-section" class="map-section" aria-label="Mappa hotel Stay22">
+          <div class="map-header">
+            <strong id="map-destination-label">Mappa hotel</strong>
+            <small class="muted">Powered by Stay22</small>
+          </div>
+          <!-- Stay22 widget (fornito) -->
+          <div class="map-frame">
+            <iframe id="stay22-widget" width="100%" height="428" src="https://www.stay22.com/embed/68cc4bd9ef524bed11392a2f" frameborder="0" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CATEGORIE PRINCIPALI -->
+    <section id="categorie" class="section">
+      <div class="container">
+        <h2 class="section-title">Categorie principali</h2>
+        <p class="section-lead">Scegli una categoria: si aprirà una <em>tendina</em> con 10 suggerimenti. Cliccando su un suggerimento verrai portato alla mappa.</p>
+
+        <div class="accordion" data-group="categorie">
+          <!-- Mare -->
+          <article class="accordion-item">
+            <button class="accordion-toggle" aria-expanded="false">
+              <span class="icon">🌊</span>
+              <span class="label">Mare</span>
+              <span class="chevron" aria-hidden="true">▾</span>
+            </button>
+            <div class="accordion-panel" hidden>
+              <div class="chips">
+                <button class="chip" data-destination="Sardegna">Sardegna</button>
+                <button class="chip" data-destination="Sicilia">Sicilia</button>
+                <button class="chip" data-destination="Salento">Puglia (Salento)</button>
+                <button class="chip" data-destination="Costiera Amalfitana">Costiera Amalfitana</button>
+                <button class="chip" data-destination="Tropea">Tropea</button>
+                <button class="chip" data-destination="Mykonos">Mykonos</button>
+                <button class="chip" data-destination="Santorini">Santorini</button>
+                <button class="chip" data-destination="Ibiza">Ibiza</button>
+                <button class="chip" data-destination="Formentera">Formentera</button>
+                <button class="chip" data-destination="Tenerife">Canarie (Tenerife)</button>
+              </div>
+            </div>
+          </article>
+
+          <!-- Montagna -->
+          <article class="accordion-item">
+            <button class="accordion-toggle" aria-expanded="false">
+              <span class="icon">🏔️</span>
+              <span class="label">Montagna</span>
+              <span class="chevron" aria-hidden="true">▾</span>
+            </button>
+            <div class="accordion-panel" hidden>
+              <div class="chips">
+                <button class="chip" data-destination="Dolomiti">Dolomiti (Cortina)</button>
+                <button class="chip" data-destination="Val Gardena">Val Gardena</button>
+                <button class="chip" data-destination="Livigno">Livigno</button>
+                <button class="chip" data-destination="Cervinia">Cervinia</button>
+                <button class="chip" data-destination="Courmayeur">Courmayeur</button>
+                <button class="chip" data-destination="Chamonix">Chamonix</button>
+                <button class="chip" data-destination="Zermatt">Zermatt</button>
+                <button class="chip" data-destination="Innsbruck">Innsbruck</button>
+                <button class="chip" data-destination="St. Moritz">St. Moritz</button>
+                <button class="chip" data-destination="Zell am See">Zell am See</button>
+              </div>
+            </div>
+          </article>
+
+          <!-- Città Popolari -->
+          <article class="accordion-item">
+            <button class="accordion-toggle" aria-expanded="false">
+              <span class="icon">🏙️</span>
+              <span class="label">Città Popolari</span>
+              <span class="chevron" aria-hidden="true">▾</span>
+            </button>
+            <div class="accordion-panel" hidden>
+              <div class="chips">
+                <button class="chip" data-destination="Roma">Roma</button>
+                <button class="chip" data-destination="Parigi">Parigi</button>
+                <button class="chip" data-destination="Londra">Londra</button>
+                <button class="chip" data-destination="Barcellona">Barcellona</button>
+                <button class="chip" data-destination="Amsterdam">Amsterdam</button>
+                <button class="chip" data-destination="Berlino">Berlino</button>
+                <button class="chip" data-destination="New York">New York</button>
+                <button class="chip" data-destination="Tokyo">Tokyo</button>
+                <button class="chip" data-destination="Dubai">Dubai</button>
+                <button class="chip" data-destination="Praga">Praga</button>
+              </div>
+            </div>
+          </article>
+
+          <!-- Relax & Benessere -->
+          <article class="accordion-item">
+            <button class="accordion-toggle" aria-expanded="false">
+              <span class="icon">🏖️</span>
+              <span class="label">Relax &amp; Benessere</span>
+              <span class="chevron" aria-hidden="true">▾</span>
+            </button>
+            <div class="accordion-panel" hidden>
+              <div class="chips">
+                <button class="chip" data-destination="Terme di Saturnia">Terme di Saturnia</button>
+                <button class="chip" data-destination="Abano Terme">Abano Terme</button>
+                <button class="chip" data-destination="Ischia">Ischia</button>
+                <button class="chip" data-destination="Sirmione">Sirmione</button>
+                <button class="chip" data-destination="Montecatini Terme">Montecatini</button>
+                <button class="chip" data-destination="Alto Adige Spa">Spa in Alto Adige</button>
+                <button class="chip" data-destination="Santorini resort">Resort a Santorini</button>
+                <button class="chip" data-destination="Maldive">Maldive</button>
+                <button class="chip" data-destination="Seychelles">Seychelles</button>
+                <button class="chip" data-destination="Bali Ubud">Bali (Ubud)</button>
+              </div>
+            </div>
+          </article>
+
+          <!-- Giovani & Movida -->
+          <article class="accordion-item">
+            <button class="accordion-toggle" aria-expanded="false">
+              <span class="icon">🎉</span>
+              <span class="label">Giovani &amp; Movida</span>
+              <span class="chevron" aria-hidden="true">▾</span>
+            </button>
+            <div class="accordion-panel" hidden>
+              <div class="chips">
+                <button class="chip" data-destination="Ibiza">Ibiza</button>
+                <button class="chip" data-destination="Mykonos">Mykonos</button>
+                <button class="chip" data-destination="Pag Zrce">Isola di Pag (Zrće)</button>
+                <button class="chip" data-destination="Rimini">Rimini &amp; Riccione</button>
+                <button class="chip" data-destination="Barcellona">Barcellona</button>
+                <button class="chip" data-destination="Budapest">Budapest</button>
+                <button class="chip" data-destination="Berlino">Berlino</button>
+                <button class="chip" data-destination="Praga">Praga</button>
+                <button class="chip" data-destination="Lloret de Mar">Lloret de Mar</button>
+                <button class="chip" data-destination="Sunny Beach">Sunny Beach</button>
+              </div>
+            </div>
+          </article>
+
+          <!-- Famiglie -->
+          <article class="accordion-item">
+            <button class="accordion-toggle" aria-expanded="false">
+              <span class="icon">👨‍👩‍👧</span>
+              <span class="label">Famiglie</span>
+              <span class="chevron" aria-hidden="true">▾</span>
+            </button>
+            <div class="accordion-panel" hidden>
+              <div class="chips">
+                <button class="chip" data-destination="Gardaland Peschiera">Zona Gardaland (Peschiera)</button>
+                <button class="chip" data-destination="Disneyland Paris">Disneyland Paris</button>
+                <button class="chip" data-destination="Costa Brava">Costa Brava</button>
+                <button class="chip" data-destination="Sicilia family">Villaggi in Sicilia</button>
+                <button class="chip" data-destination="Tenerife">Tenerife All Inclusive</button>
+                <button class="chip" data-destination="Algarve">Algarve</button>
+                <button class="chip" data-destination="Sardegna">Sardegna family</button>
+                <button class="chip" data-destination="Salou PortAventura">Costa Dorada (Salou)</button>
+                <button class="chip" data-destination="Lago di Garda">Lago di Garda</button>
+                <button class="chip" data-destination="Alto Adige">Alto Adige family hotel</button>
+              </div>
+            </div>
+          </article>
+
+          <!-- Coppie -->
+          <article class="accordion-item">
+            <button class="accordion-toggle" aria-expanded="false">
+              <span class="icon">💑</span>
+              <span class="label">Coppie</span>
+              <span class="chevron" aria-hidden="true">▾</span>
+            </button>
+            <div class="accordion-panel" hidden>
+              <div class="chips">
+                <button class="chip" data-destination="Parigi">Parigi</button>
+                <button class="chip" data-destination="Santorini">Santorini</button>
+                <button class="chip" data-destination="Venezia">Venezia</button>
+                <button class="chip" data-destination="Verona">Verona</button>
+                <button class="chip" data-destination="Costiera Amalfitana">Costiera Amalfitana</button>
+                <button class="chip" data-destination="Lago di Como">Lago di Como</button>
+                <button class="chip" data-destination="Maldive">Maldive</button>
+                <button class="chip" data-destination="Seychelles">Seychelles</button>
+                <button class="chip" data-destination="Bali">Bali (Uluwatu)</button>
+                <button class="chip" data-destination="Kyoto">Kyoto</button>
+              </div>
+            </div>
+          </article>
+
+          <!-- Cultura -->
+          <article class="accordion-item">
+            <button class="accordion-toggle" aria-expanded="false">
+              <span class="icon">🏛️</span>
+              <span class="label">Cultura</span>
+              <span class="chevron" aria-hidden="true">▾</span>
+            </button>
+            <div class="accordion-panel" hidden>
+              <div class="chips">
+                <button class="chip" data-destination="Roma">Roma</button>
+                <button class="chip" data-destination="Firenze">Firenze</button>
+                <button class="chip" data-destination="Napoli">Napoli &amp; Pompei</button>
+                <button class="chip" data-destination="Atene">Atene</button>
+                <button class="chip" data-destination="Istanbul">Istanbul</button>
+                <button class="chip" data-destination="Kyoto">Kyoto</button>
+                <button class="chip" data-destination="Petra">Petra</button>
+                <button class="chip" data-destination="Gerusalemme">Gerusalemme</button>
+                <button class="chip" data-destination="Vienna">Vienna</button>
+                <button class="chip" data-destination="Granada">Granada (Alhambra)</button>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- DESTINAZIONI POPOLARI -->
+    <section id="popolari" class="section alt">
+      <div class="container">
+        <h2 class="section-title">Destinazioni popolari</h2>
+
+        <div class="carousel" role="region" aria-label="Destinazioni popolari">
+          <!-- NYC -->
+          <article class="city-card">
+            <img src="https://images.unsplash.com/photo-1488747279002-c8523379faaa?q=80&w=1600&auto=format&fit=crop" alt="New York skyline" loading="lazy">
+            <div class="city-info">
+              <h3>New York</h3>
+              <button class="btn secondary" data-destination="New York">Scopri hotel</button>
+            </div>
+          </article>
+          <!-- Parigi -->
+          <article class="city-card">
+            <img src="https://images.unsplash.com/photo-1502602898657-3e91760cbb34?q=80&w=1600&auto=format&fit=crop" alt="Parigi Torre Eiffel" loading="lazy">
+            <div class="city-info">
+              <h3>Parigi</h3>
+              <button class="btn secondary" data-destination="Parigi">Scopri hotel</button>
+            </div>
+          </article>
+          <!-- Roma -->
+          <article class="city-card">
+            <img src="https://images.unsplash.com/photo-1543349689-9a4d426bee8e?q=80&w=1600&auto=format&fit=crop" alt="Roma Colosseo" loading="lazy">
+            <div class="city-info">
+              <h3>Roma</h3>
+              <button class="btn secondary" data-destination="Roma">Scopri hotel</button>
+            </div>
+          </article>
+          <!-- Londra -->
+          <article class="city-card">
+            <img src="https://images.unsplash.com/photo-1469474968028-56623f02e42e?q=80&w=1600&auto=format&fit=crop" alt="Londra Westminster" loading="lazy">
+            <div class="city-info">
+              <h3>Londra</h3>
+              <button class="btn secondary" data-destination="Londra">Scopri hotel</button>
+            </div>
+          </article>
+          <!-- Tokyo -->
+          <article class="city-card">
+            <img src="https://images.unsplash.com/photo-1549692520-acc6669e2f0c?q=80&w=1600&auto=format&fit=crop" alt="Tokyo skyline" loading="lazy">
+            <div class="city-info">
+              <h3>Tokyo</h3>
+              <button class="btn secondary" data-destination="Tokyo">Scopri hotel</button>
+            </div>
+          </article>
+          <!-- Dubai -->
+          <article class="city-card">
+            <img src="https://images.unsplash.com/photo-1504270997636-07ddfbd48945?q=80&w=1600&auto=format&fit=crop" alt="Dubai Marina" loading="lazy">
+            <div class="city-info">
+              <h3>Dubai</h3>
+              <button class="btn secondary" data-destination="Dubai">Scopri hotel</button>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ISPIRAZIONE DI VIAGGIO -->
+    <section id="ispirazione" class="section">
+      <div class="container">
+        <h2 class="section-title">Ispirazione di viaggio</h2>
+        <div class="grid-4">
+          <article class="card season">
+            <h3>🌸 Primavera</h3>
+            <p class="muted">City break e fioriture.</p>
+            <div class="chips">
+              <span class="chip passive">Lisbona</span>
+              <span class="chip passive">Amsterdam</span>
+              <span class="chip passive">Parigi</span>
+              <span class="chip passive">Kyoto</span>
+              <span class="chip passive">Siviglia</span>
+              <span class="chip passive">Lago di Como</span>
+            </div>
+          </article>
+          <article class="card season">
+            <h3>☀️ Estate</h3>
+            <p class="muted">Isole e spiagge.</p>
+            <div class="chips">
+              <span class="chip passive">Grecia</span>
+              <span class="chip passive">Croazia</span>
+              <span class="chip passive">Sardegna</span>
+              <span class="chip passive">Algarve</span>
+              <span class="chip passive">Bali</span>
+              <span class="chip passive">Canarie</span>
+            </div>
+          </article>
+          <article class="card season">
+            <h3>🍂 Autunno</h3>
+            <p class="muted">Cultura e foliage.</p>
+            <div class="chips">
+              <span class="chip passive">Toscana</span>
+              <span class="chip passive">New England</span>
+              <span class="chip passive">Giappone</span>
+              <span class="chip passive">Vienna</span>
+              <span class="chip passive">Praga</span>
+              <span class="chip passive">Budapest</span>
+            </div>
+          </article>
+          <article class="card season">
+            <h3>❄️ Inverno</h3>
+            <p class="muted">Neve e mercatini.</p>
+            <div class="chips">
+              <span class="chip passive">Dolomiti</span>
+              <span class="chip passive">Innsbruck</span>
+              <span class="chip passive">Salisburgo</span>
+              <span class="chip passive">Norvegia</span>
+              <span class="chip passive">New York</span>
+              <span class="chip passive">Laponia</span>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- PER TIPOLOGIA DI VIAGGIATORE -->
+    <section id="viaggiatori" class="section alt">
+      <div class="container">
+        <h2 class="section-title">Per tipologia di viaggiatore</h2>
+
+        <div class="accordion" data-group="travellers">
+          <!-- Famiglie -->
+          <article class="accordion-item">
+            <button class="accordion-toggle" aria-expanded="false">
+              <span class="icon">👨‍👩‍👧</span>
+              <span class="label">Famiglie</span>
+              <span class="chevron" aria-hidden="true">▾</span>
+            </button>
+            <div class="accordion-panel" hidden>
+              <div class="chips">
+                <button class="chip" data-destination="Gardaland">Gardaland &amp; Peschiera</button>
+                <button class="chip" data-destination="Disneyland Paris">Disneyland Paris</button>
+                <button class="chip" data-destination="Costa Dorada">PortAventura (Salou)</button>
+                <button class="chip" data-destination="Lago di Garda">Lago di Garda</button>
+                <button class="chip" data-destination="Alto Adige">Alto Adige family hotel</button>
+                <button class="chip" data-destination="Sardegna">Sardegna villaggi</button>
+                <button class="chip" data-destination="Sicilia">Sicilia villaggi</button>
+                <button class="chip" data-destination="Tenerife">Tenerife</button>
+                <button class="chip" data-destination="Algarve">Algarve</button>
+                <button class="chip" data-destination="Gran Canaria">Gran Canaria</button>
+              </div>
+            </div>
+          </article>
+
+          <!-- Giovani / Student Travel -->
+          <article class="accordion-item">
+            <button class="accordion-toggle" aria-expanded="false">
+              <span class="icon">🎓</span>
+              <span class="label">Giovani / Student Travel</span>
+              <span class="chevron" aria-hidden="true">▾</span>
+            </button>
+            <div class="accordion-panel" hidden>
+              <div class="chips">
+                <button class="chip" data-destination="Interrail">Interrail Europa</button>
+                <button class="chip" data-destination="Ibiza">Ibiza</button>
+                <button class="chip" data-destination="Mykonos">Mykonos</button>
+                <button class="chip" data-destination="Pag Zrce">Isola di Pag (Zrće)</button>
+                <button class="chip" data-destination="Barcellona">Barcellona</button>
+                <button class="chip" data-destination="Berlino">Berlino</button>
+                <button class="chip" data-destination="Budapest">Budapest</button>
+                <button class="chip" data-destination="Praga">Praga</button>
+                <button class="chip" data-destination="Amsterdam">Amsterdam</button>
+                <button class="chip" data-destination="Porto">Porto</button>
+              </div>
+            </div>
+          </article>
+
+          <!-- Coppie romantiche -->
+          <article class="accordion-item">
+            <button class="accordion-toggle" aria-expanded="false">
+              <span class="icon">💑</span>
+              <span class="label">Coppie romantiche</span>
+              <span class="chevron" aria-hidden="true">▾</span>
+            </button>
+            <div class="accordion-panel" hidden>
+              <div class="chips">
+                <button class="chip" data-destination="Parigi">Parigi</button>
+                <button class="chip" data-destination="Santorini">Santorini</button>
+                <button class="chip" data-destination="Venezia">Venezia</button>
+                <button class="chip" data-destination="Costiera Amalfitana">Costiera Amalfitana</button>
+                <button class="chip" data-destination="Verona">Verona</button>
+                <button class="chip" data-destination="Lago di Como">Lago di Como</button>
+                <button class="chip" data-destination="Seychelles">Seychelles</button>
+                <button class="chip" data-destination="Maldive">Maldive</button>
+                <button class="chip" data-destination="Bali">Bali</button>
+                <button class="chip" data-destination="Kyoto">Kyoto</button>
+              </div>
+            </div>
+          </article>
+
+          <!-- Luxury -->
+          <article class="accordion-item">
+            <button class="accordion-toggle" aria-expanded="false">
+              <span class="icon">🧳</span>
+              <span class="label">Luxury</span>
+              <span class="chevron" aria-hidden="true">▾</span>
+            </button>
+            <div class="accordion-panel" hidden>
+              <div class="chips">
+                <button class="chip" data-destination="Dubai Palm Jumeirah">Dubai (Palm Jumeirah)</button>
+                <button class="chip" data-destination="Maldive Overwater">Maldive Overwater</button>
+                <button class="chip" data-destination="Bora Bora">Bora Bora</button>
+                <button class="chip" data-destination="Courchevel 1850">Courchevel 1850</button>
+                <button class="chip" data-destination="St. Moritz">St. Moritz</button>
+                <button class="chip" data-destination="Capri">Capri</button>
+                <button class="chip" data-destination="Monaco">Monaco</button>
+                <button class="chip" data-destination="Seychelles Six Senses">Seychelles (Six Senses)</button>
+                <button class="chip" data-destination="Singapore Marina Bay">Singapore (Marina Bay)</button>
+                <button class="chip" data-destination="Soneva Jani">Soneva Jani</button>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div>
+        <a href="index.html" class="brand">
+          <img src="assets/img/logo.svg" alt="Logo Travirae">
+          <span>Travirae</span>
+        </a>
+        <p class="muted small">La tua piattaforma di ispirazione e prenotazione hotel con mappa interattiva.</p>
+      </div>
+
+      <nav aria-label="Link rapidi">
+        <h4>Link rapidi</h4>
+        <ul class="footer-links">
+          <li><a href="#categorie">Categorie</a></li>
+          <li><a href="#popolari">Destinazioni popolari</a></li>
+          <li><a href="#ispirazione">Ispirazione</a></li>
+          <li><a href="#viaggiatori">Per viaggiatori</a></li>
+          <li><a href="flights.html">Voli</a></li>
+        </ul>
+      </nav>
+
+      <div class="newsletter">
+        <h4>Newsletter</h4>
+        <p class="muted small">Ricevi le migliori offerte.</p>
+        <form name="newsletter" method="POST" data-netlify="true" class="newsletter-form">
+          <input type="email" name="email" placeholder="La tua email" required aria-label="Email per newsletter">
+          <button class="btn" type="submit">Iscrivimi</button>
+        </form>
+        <div class="socials">
+          <a href="#" aria-label="Instagram" class="social">Instagram</a>
+          <a href="#" aria-label="TikTok" class="social">TikTok</a>
+          <a href="#" aria-label="YouTube" class="social">YouTube</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="container copyright small muted">
+      © <span id="year-copy"></span> Travirae · Tutti i diritti riservati
+    </div>
+  </footer>
+
+  <script src="assets/js/main.js"></script>
+</body>
+</html>
