@@ -1,0 +1,914 @@
+{
+  "sardegna": {
+    "name": "Sardegna",
+    "query": "Sardegna"
+  },
+  "sicilia": {
+    "name": "Sicilia",
+    "query": "Sicilia"
+  },
+  "costiera-amalfitana": {
+    "name": "Costiera Amalfitana",
+    "query": "Costiera Amalfitana"
+  },
+  "salento": {
+    "name": "Salento",
+    "query": "Salento beach"
+  },
+  "algarve": {
+    "name": "Algarve",
+    "query": "Algarve cliffs"
+  },
+  "costa-brava": {
+    "name": "Costa Brava",
+    "query": "Costa Brava calas"
+  },
+  "santorini": {
+    "name": "Santorini",
+    "query": "Santorini Oia"
+  },
+  "mykonos": {
+    "name": "Mykonos",
+    "query": "Mykonos windmills"
+  },
+  "ibiza": {
+    "name": "Ibiza",
+    "query": "Ibiza"
+  },
+  "tenerife": {
+    "name": "Tenerife",
+    "query": "Tenerife Teide"
+  },
+  "dolomiti-cortina": {
+    "name": "Dolomiti (Cortina)",
+    "query": "Dolomiti (Cortina) Tre Cime"
+  },
+  "val-gardena": {
+    "name": "Val Gardena",
+    "query": "Val Gardena Seceda"
+  },
+  "livigno": {
+    "name": "Livigno",
+    "query": "Livigno alps"
+  },
+  "courmayeur": {
+    "name": "Courmayeur",
+    "query": "Courmayeur"
+  },
+  "cervinia": {
+    "name": "Cervinia",
+    "query": "Cervinia Matterhorn"
+  },
+  "chamonix": {
+    "name": "Chamonix",
+    "query": "Chamonix"
+  },
+  "zermatt": {
+    "name": "Zermatt",
+    "query": "Zermatt Matterhorn"
+  },
+  "innsbruck": {
+    "name": "Innsbruck",
+    "query": "Innsbruck"
+  },
+  "st-moritz": {
+    "name": "St. Moritz",
+    "query": "St. Moritz lake"
+  },
+  "zell-am-see": {
+    "name": "Zell am See",
+    "query": "Zell am See"
+  },
+  "lago-di-como": {
+    "name": "Lago di Como",
+    "query": "Lago di Como Varenna"
+  },
+  "lago-di-garda": {
+    "name": "Lago di Garda",
+    "query": "Lago di Garda"
+  },
+  "lago-maggiore": {
+    "name": "Lago Maggiore",
+    "query": "Lago Maggiore"
+  },
+  "lago-di-braies": {
+    "name": "Lago di Braies",
+    "query": "Lago di Braies"
+  },
+  "hallstatt": {
+    "name": "Hallstatt",
+    "query": "Hallstatt village lake"
+  },
+  "lago-di-bled": {
+    "name": "Lago di Bled",
+    "query": "Lago di Bled lake island"
+  },
+  "plitvice": {
+    "name": "Plitvice",
+    "query": "Plitvice waterfalls"
+  },
+  "lake-district": {
+    "name": "Lake District",
+    "query": "Lake District mountain lake"
+  },
+  "lago-di-lugano": {
+    "name": "Lago di Lugano",
+    "query": "Lago di Lugano"
+  },
+  "lago-di-annecy": {
+    "name": "Lago di Annecy",
+    "query": "Lago di Annecy"
+  },
+  "capri": {
+    "name": "Capri",
+    "query": "Capri Faraglioni"
+  },
+  "ischia": {
+    "name": "Ischia",
+    "query": "Ischia Castello Aragonese"
+  },
+  "creta": {
+    "name": "Creta",
+    "query": "Creta"
+  },
+  "gran-canaria": {
+    "name": "Gran Canaria",
+    "query": "Gran Canaria"
+  },
+  "madeira": {
+    "name": "Madeira",
+    "query": "Madeira levadas"
+  },
+  "roma": {
+    "name": "Roma",
+    "query": "Roma Colosseum"
+  },
+  "firenze": {
+    "name": "Firenze",
+    "query": "Firenze"
+  },
+  "napoli-pompei": {
+    "name": "Napoli & Pompei",
+    "query": "Napoli & Pompei Vesuvio"
+  },
+  "atene": {
+    "name": "Atene",
+    "query": "Atene Acropolis"
+  },
+  "istanbul": {
+    "name": "Istanbul",
+    "query": "Istanbul Hagia Sophia"
+  },
+  "kyoto": {
+    "name": "Kyoto",
+    "query": "Kyoto torii"
+  },
+  "petra": {
+    "name": "Petra",
+    "query": "Petra Treasury"
+  },
+  "gerusalemme": {
+    "name": "Gerusalemme",
+    "query": "Gerusalemme Old City"
+  },
+  "vienna": {
+    "name": "Vienna",
+    "query": "Vienna Schonbrunn"
+  },
+  "granada-alhambra": {
+    "name": "Granada (Alhambra)",
+    "query": "Granada (Alhambra) Alhambra"
+  },
+  "maldive": {
+    "name": "Maldive",
+    "query": "Maldive overwater"
+  },
+  "seychelles": {
+    "name": "Seychelles",
+    "query": "Seychelles"
+  },
+  "bali-ubud": {
+    "name": "Bali (Ubud)",
+    "query": "Bali (Ubud) temple"
+  },
+  "terme-di-saturnia": {
+    "name": "Terme di Saturnia",
+    "query": "Terme di Saturnia"
+  },
+  "abano-terme": {
+    "name": "Abano Terme",
+    "query": "Abano Terme"
+  },
+  "ischia-terme": {
+    "name": "Ischia Terme",
+    "query": "Ischia Terme Castello Aragonese"
+  },
+  "sirmione": {
+    "name": "Sirmione",
+    "query": "Sirmione"
+  },
+  "montecatini": {
+    "name": "Montecatini",
+    "query": "Montecatini"
+  },
+  "spa-alto-adige": {
+    "name": "Spa Alto Adige",
+    "query": "Spa Alto Adige"
+  },
+  "santorini-resort": {
+    "name": "Santorini resort",
+    "query": "Santorini resort Oia"
+  },
+  "parigi": {
+    "name": "Parigi",
+    "query": "Parigi Eiffel Tower"
+  },
+  "londra": {
+    "name": "Londra",
+    "query": "Londra Big Ben"
+  },
+  "new-york": {
+    "name": "New York",
+    "query": "New York Manhattan skyline"
+  },
+  "tokyo": {
+    "name": "Tokyo",
+    "query": "Tokyo Shibuya crossing"
+  },
+  "dubai": {
+    "name": "Dubai",
+    "query": "Dubai Burj Khalifa"
+  },
+  "barcellona": {
+    "name": "Barcellona",
+    "query": "Barcellona Sagrada Familia"
+  },
+  "amsterdam": {
+    "name": "Amsterdam",
+    "query": "Amsterdam canals"
+  },
+  "praga": {
+    "name": "Praga",
+    "query": "Praga Charles Bridge"
+  },
+  "masai-mara": {
+    "name": "Masai Mara",
+    "query": "Masai Mara"
+  },
+  "serengeti": {
+    "name": "Serengeti",
+    "query": "Serengeti"
+  },
+  "kruger": {
+    "name": "Kruger",
+    "query": "Kruger"
+  },
+  "okavango-delta": {
+    "name": "Okavango Delta",
+    "query": "Okavango Delta"
+  },
+  "etosha": {
+    "name": "Etosha",
+    "query": "Etosha"
+  },
+  "chobe": {
+    "name": "Chobe",
+    "query": "Chobe"
+  },
+  "ngorongoro": {
+    "name": "Ngorongoro",
+    "query": "Ngorongoro"
+  },
+  "south-luangwa": {
+    "name": "South Luangwa",
+    "query": "South Luangwa"
+  },
+  "hwange": {
+    "name": "Hwange",
+    "query": "Hwange"
+  },
+  "amboseli": {
+    "name": "Amboseli",
+    "query": "Amboseli"
+  },
+  "bali": {
+    "name": "Bali",
+    "query": "Bali temple"
+  },
+  "zanzibar": {
+    "name": "Zanzibar",
+    "query": "Zanzibar white beach"
+  },
+  "phuket": {
+    "name": "Phuket",
+    "query": "Phuket"
+  },
+  "koh-samui": {
+    "name": "Koh Samui",
+    "query": "Koh Samui"
+  },
+  "mauritius": {
+    "name": "Mauritius",
+    "query": "Mauritius"
+  },
+  "bora-bora": {
+    "name": "Bora Bora",
+    "query": "Bora Bora"
+  },
+  "cancun": {
+    "name": "Cancun",
+    "query": "Cancun turquoise beach"
+  },
+  "punta-cana": {
+    "name": "Punta Cana",
+    "query": "Punta Cana palm beach"
+  },
+  "islanda": {
+    "name": "Islanda",
+    "query": "Islanda waterfalls"
+  },
+  "fiordi-norvegesi": {
+    "name": "Fiordi Norvegesi",
+    "query": "Fiordi Norvegesi"
+  },
+  "dolomiti": {
+    "name": "Dolomiti",
+    "query": "Dolomiti Tre Cime"
+  },
+  "canadian-rockies-banff": {
+    "name": "Canadian Rockies (Banff)",
+    "query": "Canadian Rockies (Banff) Moraine Lake"
+  },
+  "patagonia-el-chalt-n": {
+    "name": "Patagonia (El Chaltén)",
+    "query": "Patagonia (El Chaltén)"
+  },
+  "nuova-zelanda-south-island": {
+    "name": "Nuova Zelanda (South Island)",
+    "query": "Nuova Zelanda (South Island)"
+  },
+  "azzorre": {
+    "name": "Azzorre",
+    "query": "Azzorre"
+  },
+  "highlands-scozzesi": {
+    "name": "Highlands Scozzesi",
+    "query": "Highlands Scozzesi"
+  },
+  "lofoten": {
+    "name": "Lofoten",
+    "query": "Lofoten reine"
+  },
+  "bangkok": {
+    "name": "Bangkok",
+    "query": "Bangkok"
+  },
+  "los-angeles": {
+    "name": "Los Angeles",
+    "query": "Los Angeles Hollywood"
+  },
+  "miami": {
+    "name": "Miami",
+    "query": "Miami South Beach"
+  },
+  "san-francisco": {
+    "name": "San Francisco",
+    "query": "San Francisco Golden Gate"
+  },
+  "cairo": {
+    "name": "Cairo",
+    "query": "Cairo Pyramids"
+  },
+  "sharm-el-sheikh": {
+    "name": "Sharm el-Sheikh",
+    "query": "Sharm el-Sheikh Red Sea"
+  },
+  "malta": {
+    "name": "Malta",
+    "query": "Malta Valletta"
+  },
+  "venezia": {
+    "name": "Venezia",
+    "query": "Venezia Grand Canal"
+  },
+  "verona": {
+    "name": "Verona",
+    "query": "Verona"
+  },
+  "bruges": {
+    "name": "Bruges",
+    "query": "Bruges"
+  },
+  "positano": {
+    "name": "Positano",
+    "query": "Positano"
+  },
+  "hawaii-maui": {
+    "name": "Hawaii (Maui)",
+    "query": "Hawaii (Maui)"
+  },
+  "kyoto-tokyo": {
+    "name": "Kyoto & Tokyo",
+    "query": "Kyoto & Tokyo Shibuya crossing"
+  },
+  "sudafrica-mauritius": {
+    "name": "Sudafrica + Mauritius",
+    "query": "Sudafrica + Mauritius"
+  },
+  "las-vegas": {
+    "name": "Las Vegas",
+    "query": "Las Vegas"
+  },
+  "berlino": {
+    "name": "Berlino",
+    "query": "Berlino"
+  },
+  "budapest": {
+    "name": "Budapest",
+    "query": "Budapest"
+  },
+  "cracovia": {
+    "name": "Cracovia",
+    "query": "Cracovia"
+  },
+  "belgrado": {
+    "name": "Belgrado",
+    "query": "Belgrado"
+  },
+  "marrakech": {
+    "name": "Marrakech",
+    "query": "Marrakech"
+  },
+  "cape-town": {
+    "name": "Cape Town",
+    "query": "Cape Town"
+  },
+  "cortina-d-ampezzo": {
+    "name": "Cortina d'Ampezzo",
+    "query": "Cortina d'Ampezzo Dolomites"
+  },
+  "courchevel": {
+    "name": "Courchevel",
+    "query": "Courchevel"
+  },
+  "val-thorens": {
+    "name": "Val Thorens",
+    "query": "Val Thorens"
+  },
+  "kitzb-hel": {
+    "name": "Kitzbühel",
+    "query": "Kitzbühel"
+  },
+  "lisbona": {
+    "name": "Lisbona",
+    "query": "Lisbona tram 28"
+  },
+  "melbourne": {
+    "name": "Melbourne",
+    "query": "Melbourne"
+  },
+  "vancouver": {
+    "name": "Vancouver",
+    "query": "Vancouver"
+  },
+  "taipei": {
+    "name": "Taipei",
+    "query": "Taipei"
+  },
+  "siviglia": {
+    "name": "Siviglia",
+    "query": "Siviglia Plaza de España"
+  },
+  "disneyland-paris": {
+    "name": "Disneyland Paris",
+    "query": "Disneyland Paris"
+  },
+  "gardaland-peschiera": {
+    "name": "Gardaland (Peschiera)",
+    "query": "Gardaland (Peschiera)"
+  },
+  "costa-dorada-salou": {
+    "name": "Costa Dorada (Salou)",
+    "query": "Costa Dorada (Salou)"
+  },
+  "orlando-disney-world": {
+    "name": "Orlando (Disney World)",
+    "query": "Orlando (Disney World)"
+  },
+  "maiorca": {
+    "name": "Maiorca",
+    "query": "Maiorca cycling Mallorca"
+  },
+  "puglia": {
+    "name": "Puglia",
+    "query": "Puglia"
+  },
+  "orlando": {
+    "name": "Orlando",
+    "query": "Orlando"
+  },
+  "pag-zr-e": {
+    "name": "Pag (Zrće)",
+    "query": "Pag (Zrće)"
+  },
+  "sunny-beach": {
+    "name": "Sunny Beach",
+    "query": "Sunny Beach"
+  },
+  "lloret-de-mar": {
+    "name": "Lloret de Mar",
+    "query": "Lloret de Mar"
+  },
+  "porto": {
+    "name": "Porto",
+    "query": "Porto"
+  },
+  "valencia": {
+    "name": "Valencia",
+    "query": "Valencia"
+  },
+  "spalato": {
+    "name": "Spalato",
+    "query": "Spalato"
+  },
+  "dublino": {
+    "name": "Dublino",
+    "query": "Dublino"
+  },
+  "sofia": {
+    "name": "Sofia",
+    "query": "Sofia"
+  },
+  "bucarest": {
+    "name": "Bucarest",
+    "query": "Bucarest"
+  },
+  "salonicco": {
+    "name": "Salonicco",
+    "query": "Salonicco"
+  },
+  "malaga": {
+    "name": "Malaga",
+    "query": "Malaga"
+  },
+  "palermo": {
+    "name": "Palermo",
+    "query": "Palermo"
+  },
+  "napoli": {
+    "name": "Napoli",
+    "query": "Napoli Vesuvio"
+  },
+  "varsavia": {
+    "name": "Varsavia",
+    "query": "Varsavia"
+  },
+  "copenaghen": {
+    "name": "Copenaghen",
+    "query": "Copenaghen"
+  },
+  "zurigo": {
+    "name": "Zurigo",
+    "query": "Zurigo"
+  },
+  "monaco-di-baviera": {
+    "name": "Monaco di Baviera",
+    "query": "Monaco di Baviera"
+  },
+  "dubai-palm": {
+    "name": "Dubai Palm",
+    "query": "Dubai Palm Burj Khalifa"
+  },
+  "monaco": {
+    "name": "Monaco",
+    "query": "Monaco"
+  },
+  "santorini-5": {
+    "name": "Santorini 5★",
+    "query": "Santorini 5★ Oia"
+  },
+  "lago-di-como-5": {
+    "name": "Lago di Como 5★",
+    "query": "Lago di Como 5★ Varenna"
+  },
+  "amalfi": {
+    "name": "Amalfi",
+    "query": "Amalfi"
+  },
+  "hvar": {
+    "name": "Hvar",
+    "query": "Hvar"
+  },
+  "toscana": {
+    "name": "Toscana",
+    "query": "Toscana"
+  },
+  "new-england": {
+    "name": "New England",
+    "query": "New England"
+  },
+  "monaco-oktoberfest": {
+    "name": "Monaco (Oktoberfest)",
+    "query": "Monaco (Oktoberfest)"
+  },
+  "quebec-city": {
+    "name": "Quebec City",
+    "query": "Quebec City"
+  },
+  "cortina": {
+    "name": "Cortina",
+    "query": "Cortina Dolomites"
+  },
+  "salisburgo": {
+    "name": "Salisburgo",
+    "query": "Salisburgo"
+  },
+  "laponia-rovaniemi": {
+    "name": "Laponia (Rovaniemi)",
+    "query": "Laponia (Rovaniemi)"
+  },
+  "islanda-aurora": {
+    "name": "Islanda (aurora)",
+    "query": "Islanda (aurora) waterfalls"
+  },
+  "troms": {
+    "name": "Tromsø",
+    "query": "Tromsø"
+  },
+  "vienna-mercatini": {
+    "name": "Vienna mercatini",
+    "query": "Vienna mercatini Schonbrunn"
+  },
+  "andorra": {
+    "name": "Andorra",
+    "query": "Andorra"
+  },
+  "laax": {
+    "name": "Laax",
+    "query": "Laax"
+  },
+  "avoriaz": {
+    "name": "Avoriaz",
+    "query": "Avoriaz"
+  },
+  "st-anton": {
+    "name": "St. Anton",
+    "query": "St. Anton"
+  },
+  "whistler": {
+    "name": "Whistler",
+    "query": "Whistler"
+  },
+  "niseko": {
+    "name": "Niseko",
+    "query": "Niseko"
+  },
+  "mammoth": {
+    "name": "Mammoth",
+    "query": "Mammoth"
+  },
+  "sierra-nevada": {
+    "name": "Sierra Nevada",
+    "query": "Sierra Nevada"
+  },
+  "val-d-is-re": {
+    "name": "Val d'Isère",
+    "query": "Val d'Isère"
+  },
+  "s-lden": {
+    "name": "Sölden",
+    "query": "Sölden"
+  },
+  "verbier": {
+    "name": "Verbier",
+    "query": "Verbier"
+  },
+  "dolomiti-alta-via": {
+    "name": "Dolomiti (Alta Via)",
+    "query": "Dolomiti (Alta Via) Tre Cime"
+  },
+  "cinque-terre": {
+    "name": "Cinque Terre",
+    "query": "Cinque Terre"
+  },
+  "patagonia-fitz-roy": {
+    "name": "Patagonia (Fitz Roy)",
+    "query": "Patagonia (Fitz Roy)"
+  },
+  "torres-del-paine": {
+    "name": "Torres del Paine",
+    "query": "Torres del Paine"
+  },
+  "annapurna": {
+    "name": "Annapurna",
+    "query": "Annapurna Himalaya"
+  },
+  "everest-base-camp": {
+    "name": "Everest Base Camp",
+    "query": "Everest Base Camp Himalaya"
+  },
+  "tour-du-mont-blanc": {
+    "name": "Tour du Mont Blanc",
+    "query": "Tour du Mont Blanc Alps trail"
+  },
+  "teide-tenerife": {
+    "name": "Teide (Tenerife)",
+    "query": "Teide (Tenerife) Teide"
+  },
+  "madeira-levadas": {
+    "name": "Madeira Levadas",
+    "query": "Madeira Levadas levadas"
+  },
+  "islanda-laugavegur": {
+    "name": "Islanda Laugavegur",
+    "query": "Islanda Laugavegur waterfalls"
+  },
+  "kalymnos": {
+    "name": "Kalymnos",
+    "query": "Kalymnos climbing sea"
+  },
+  "arco-garda": {
+    "name": "Arco (Garda)",
+    "query": "Arco (Garda) climbing Garda"
+  },
+  "siurana": {
+    "name": "Siurana",
+    "query": "Siurana climbing"
+  },
+  "fontainebleau": {
+    "name": "Fontainebleau",
+    "query": "Fontainebleau bouldering"
+  },
+  "el-chorro": {
+    "name": "El Chorro",
+    "query": "El Chorro climbing gorge"
+  },
+  "frankenjura": {
+    "name": "Frankenjura",
+    "query": "Frankenjura"
+  },
+  "red-river-gorge": {
+    "name": "Red River Gorge",
+    "query": "Red River Gorge"
+  },
+  "joshua-tree": {
+    "name": "Joshua Tree",
+    "query": "Joshua Tree"
+  },
+  "railay-thailandia": {
+    "name": "Railay (Thailandia)",
+    "query": "Railay (Thailandia)"
+  },
+  "girona": {
+    "name": "Girona",
+    "query": "Girona"
+  },
+  "passo-dello-stelvio": {
+    "name": "Passo dello Stelvio",
+    "query": "Passo dello Stelvio"
+  },
+  "toscana-chianti": {
+    "name": "Toscana (Chianti)",
+    "query": "Toscana (Chianti)"
+  },
+  "dolomiti-sella-ronda": {
+    "name": "Dolomiti (Sella Ronda)",
+    "query": "Dolomiti (Sella Ronda) Tre Cime"
+  },
+  "pirenei": {
+    "name": "Pirenei",
+    "query": "Pirenei"
+  },
+  "alpe-d-huez": {
+    "name": "Alpe d’Huez",
+    "query": "Alpe d’Huez"
+  },
+  "lanzarote": {
+    "name": "Lanzarote",
+    "query": "Lanzarote"
+  },
+  "fiandre": {
+    "name": "Fiandre",
+    "query": "Fiandre"
+  },
+  "peniche": {
+    "name": "Peniche",
+    "query": "Peniche"
+  },
+  "ericeira": {
+    "name": "Ericeira",
+    "query": "Ericeira"
+  },
+  "nazar": {
+    "name": "Nazaré",
+    "query": "Nazaré"
+  },
+  "fuerteventura": {
+    "name": "Fuerteventura",
+    "query": "Fuerteventura"
+  },
+  "hossegor": {
+    "name": "Hossegor",
+    "query": "Hossegor"
+  },
+  "biarritz": {
+    "name": "Biarritz",
+    "query": "Biarritz"
+  },
+  "taghazout": {
+    "name": "Taghazout",
+    "query": "Taghazout"
+  },
+  "bali-uluwatu": {
+    "name": "Bali (Uluwatu)",
+    "query": "Bali (Uluwatu) temple"
+  },
+  "arugam-bay": {
+    "name": "Arugam Bay",
+    "query": "Arugam Bay"
+  },
+  "marsa-alam": {
+    "name": "Marsa Alam",
+    "query": "Marsa Alam"
+  },
+  "bali-nusa-penida": {
+    "name": "Bali (Nusa Penida)",
+    "query": "Bali (Nusa Penida) temple"
+  },
+  "koh-tao": {
+    "name": "Koh Tao",
+    "query": "Koh Tao"
+  },
+  "grande-barriera-corallina": {
+    "name": "Grande Barriera Corallina",
+    "query": "Grande Barriera Corallina"
+  },
+  "hurghada": {
+    "name": "Hurghada",
+    "query": "Hurghada"
+  },
+  "sipadan": {
+    "name": "Sipadan",
+    "query": "Sipadan"
+  },
+  "raja-ampat": {
+    "name": "Raja Ampat",
+    "query": "Raja Ampat"
+  },
+  "galapagos": {
+    "name": "Galapagos",
+    "query": "Galapagos"
+  },
+  "bali-nusa-lembongan": {
+    "name": "Bali (Nusa Lembongan)",
+    "query": "Bali (Nusa Lembongan) temple"
+  },
+  "palawan": {
+    "name": "Palawan",
+    "query": "Palawan"
+  },
+  "isole-similan": {
+    "name": "Isole Similan",
+    "query": "Isole Similan"
+  },
+  "cozumel": {
+    "name": "Cozumel",
+    "query": "Cozumel"
+  },
+  "algarve-vilamoura": {
+    "name": "Algarve (Vilamoura)",
+    "query": "Algarve (Vilamoura) cliffs"
+  },
+  "costa-del-sol-marbella": {
+    "name": "Costa del Sol (Marbella)",
+    "query": "Costa del Sol (Marbella)"
+  },
+  "st-andrews": {
+    "name": "St Andrews",
+    "query": "St Andrews golf links"
+  },
+  "ballybunion": {
+    "name": "Ballybunion",
+    "query": "Ballybunion"
+  },
+  "dubai-emirates-gc": {
+    "name": "Dubai Emirates GC",
+    "query": "Dubai Emirates GC Burj Khalifa"
+  },
+  "abu-dhabi-yas-links": {
+    "name": "Abu Dhabi Yas Links",
+    "query": "Abu Dhabi Yas Links"
+  },
+  "belek": {
+    "name": "Belek",
+    "query": "Belek"
+  },
+  "quinta-do-lago": {
+    "name": "Quinta do Lago",
+    "query": "Quinta do Lago"
+  },
+  "casa-de-campo": {
+    "name": "Casa de Campo",
+    "query": "Casa de Campo"
+  }
+}
