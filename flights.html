@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Travirae – Ricerca Voli</title>
+  <meta name="description" content="Cerca voli in modo semplice: crea una query veloce e apri i risultati su Google Flights.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="icon" type="image/svg+xml" href="assets/img/logo.svg">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="brand">
+        <img onerror="this.onerror=null;this.src='assets/img/common/placeholder.jpg';" src="assets/img/logo.svg" alt="Logo Travirae">
+        <span>Travirae</span>
+      </a>
+      <nav class="main-nav">
+        <a href="index.html#categorie">Categorie</a>
+        <a href="index.html#occasioni">Occasioni</a>
+        <a href="index.html#viaggiatore">Viaggiatore</a>
+        <a href="index.html#budget">Budget</a>
+        <a href="index.html#stagioni">Stagioni</a>
+        <a href="index.html#sport">Sport</a>
+        <a href="flights.html" class="btn small active">Voli</a>
+      </nav>
+      <button class="nav-toggle" aria-label="Apri menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero hero--alt">
+      <div class="hero-bg hero-bg--plane" role="img" aria-label="Aereo in decollo"></div>
+      <div class="container hero-inner text-center">
+        <h1>Trova i voli migliori</h1>
+        <p class="subtitle">Compila i campi e apri la ricerca su Google Flights.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="card flight-card">
+          <form id="flights-form" class="flight-form text-center" autocomplete="off">
+            <div class="field">
+              <label for="from">Da</label>
+              <input id="from" name="from" type="text" placeholder="Roma (FCO) o città" required>
+            </div>
+            <div class="field">
+              <label for="to">A</label>
+              <input id="to" name="to" type="text" placeholder="Barcellona (BCN) o città" required>
+            </div>
+            <div class="field">
+              <label for="depart">Partenza</label>
+              <input id="depart" name="depart" type="date" required>
+            </div>
+            <div class="field">
+              <label for="return">Ritorno</label>
+              <input id="return" name="return" type="date">
+            </div>
+            <div class="field">
+              <label for="adults">Adulti</label>
+              <input id="adults" name="adults" type="number" min="1" value="1">
+            </div>
+            <div class="field">
+              <label for="cabin">Cabina</label>
+              <select id="cabin" name="cabin">
+                <option value="economy" selected>Economy</option>
+                <option value="premium economy">Premium Economy</option>
+                <option value="business">Business</option>
+                <option value="first">First</option>
+              </select>
+            </div>
+            <div class="actions">
+              <button class="btn" type="submit">Cerca su Google Flights</button>
+              <small class="muted">Suggerimento: puoi anche digitare città o aeroporti.</small>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div class="text-center">
+        <a href="index.html" class="brand">
+          <img onerror="this.onerror=null;this.src='assets/img/common/placeholder.jpg';" src="assets/img/logo.svg" alt="Logo Travirae">
+          <span>Travirae</span>
+        </a>
+        <p class="muted small">La tua piattaforma di ispirazione e prenotazione hotel con mappa interattiva.</p>
+      </div>
+      <nav class="text-center">
+        <h4>Link rapidi</h4>
+        <ul class="footer-links">
+          <li><a href="index.html#categorie">Categorie</a></li>
+          <li><a href="index.html#occasioni">Occasioni</a></li>
+          <li><a href="index.html#viaggiatore">Viaggiatore</a></li>
+          <li><a href="index.html#budget">Budget</a></li>
+          <li><a href="index.html#stagioni">Stagioni</a></li>
+          <li><a href="index.html#sport">Sport & avventura</a></li>
+        </ul>
+      </nav>
+      <div class="newsletter text-center">
+        <h4>Newsletter</h4>
+        <form name="newsletter" method="POST" data-netlify="true" class="newsletter-form">
+          <input type="email" name="email" placeholder="La tua email" required>
+          <button class="btn" type="submit">Iscrivimi</button>
+        </form>
+      </div>
+    </div>
+    <div class="container copyright small muted text-center">
+      © <span id="year-copy"></span> Travirae · Tutti i diritti riservati
+    </div>
+  </footer>
+
+  <script src="assets/js/main.js"></script>
+</body>
+</html>
