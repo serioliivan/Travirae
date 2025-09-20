@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Travirae – Hotel e ispirazione</title>
+  <meta name="description" content="Trova l'alloggio che fa per te">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="icon" type="image/svg+xml" href="assets/img/logo.svg">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="brand" aria-label="Travirae Home">
+        <img src="assets/img/logo.svg" alt="Logo Travirae">
+        <span>Travirae</span>
+      </a>
+      
+      <nav class="main-nav" aria-label="Navigazione principale">
+        <a href="index.html" class="nav-link active">Hotel</a>
+        <a href="flights.html" class="nav-link">Voli</a>
+        <a href="partner.html" class="nav-link">Partner</a>
+        <a href="login.html" class="nav-link">Login</a>
+        <a href="signup.html" class="nav-link">Sign up</a>
+      </nav>
+    
+      <button class="nav-toggle" aria-label="Apri menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <main>
+    <section id="hero" class="hero">
+      <div class="hero-bg" role="img" aria-label="Spiaggia tropicale"></div>
+      <div class="container hero-inner center">
+        <h1>Trova il tuo prossimo viaggio</h1>
+        <p class="subtitle">Trova l'alloggio che fa per te qui sotto.</p>
+        <div id="map-section" class="map-section" aria-label="Mappa hotel Stay22">
+          <div class="map-header">
+            <strong id="map-destination-label">Mappa hotel</strong>
+            <small class="muted">Powered by Stay22</small>
+          </div>
+          <div class="map-frame">
+            <iframe id="stay22-widget" width="100%" height="428" src="https://www.stay22.com/embed/68cd1c4dc39296915ec0c753" frameborder="0" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+          </div>
+        </div>
+        <div class="cta-row">
+          <a class="btn cta-flights" href="flights.html">Cerca voli ✈️</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="categorie" class="section">
+      <div class="container">
+        <h2 class="section-title">Categorie</h2>
+        <div class="accordion categories-list" data-group="categorie">
+          <article class="accordion-item">
+            <button class="accordion-toggle category" aria-expanded="false"><span class="label">Mare</span><span class="chevron" aria-hidden="true">▾</span></button>
+            <div class="accordion-panel" hidden>
+              <div class="carousel within">
+                <article class="city-card small"><img src="assets/img/common/placeholder.jpg" alt="Sardegna"><div class="city-info"><h3>Sardegna</h3><button class="btn secondary more" data-city="Sardegna">Scopri di più</button></div></article>
+                <article class="city-card small"><img src="assets/img/common/placeholder.jpg" alt="Sicilia"><div class="city-info"><h3>Sicilia</h3><button class="btn secondary more" data-city="Sicilia">Scopri di più</button></div></article>
+                <article class="city-card small"><img src="assets/img/common/placeholder.jpg" alt="Costiera Amalfitana"><div class="city-info"><h3>Costiera Amalfitana</h3><button class="btn secondary more" data-city="Costiera Amalfitana">Scopri di più</button></div></article>
+              </div>
+            </div>
+          </article>
+          <!-- altre categorie potrai duplicarle -->
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Modal destinazione -->
+  <div id="destination-modal" class="modal" aria-hidden="true" role="dialog" aria-labelledby="modal-title">
+    <div class="modal__overlay" data-close="true"></div>
+    <div class="modal__content" role="document">
+      <header class="modal__header">
+        <h3 id="modal-title">Titolo destinazione</h3>
+        <button class="modal__close" aria-label="Chiudi popup">×</button>
+      </header>
+      <div class="modal__body">
+        <div class="modal__grid">
+          <div class="modal__map">
+            <iframe id="modal-map" src="https://www.stay22.com/embed/68cd1c4dc39296915ec0c753" width="100%" height="300" frameborder="0" loading="lazy"></iframe>
+          </div>
+          <div class="modal__section">
+            <p id="modal-desc"></p>
+            <h4>✨ Punti forti</h4>
+            <ul id="modal-highlights"></ul>
+            <h4>📅 Periodo consigliato</h4>
+            <p id="modal-best"></p>
+            <h4>🎁 Bonus</h4>
+            <p id="modal-bonus"></p>
+            <p><a href="flights.html" class="btn cta-flights">Cerca voli ✈️</a></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div class="center">
+        <a href="index.html" class="brand">
+          <img src="assets/img/logo.svg" alt="Logo Travirae">
+          <span>Travirae</span>
+        </a>
+        <p class="muted small">La tua piattaforma di ispirazione e prenotazione hotel con mappa interattiva.</p>
+      </div>
+      <nav class="center">
+        <h4>Link rapidi</h4>
+        <ul class="footer-links">
+          <li><a href="index.html" class="nav-link">Hotel</a></li>
+          <li><a href="flights.html" class="nav-link">Voli</a></li>
+          <li><a href="partner.html" class="nav-link">Partner</a></li>
+          <li><a href="login.html" class="nav-link">Login</a></li>
+          <li><a href="signup.html" class="nav-link">Sign up</a></li>
+        </ul>
+      </nav>
+      <div class="newsletter center">
+        <h4>Newsletter</h4>
+        <p class="muted small">Ricevi le migliori offerte.</p>
+        <form name="newsletter" method="POST" data-netlify="true" class="newsletter-form">
+          <input type="email" name="email" placeholder="La tua email" required>
+          <button class="btn" type="submit">Iscrivimi</button>
+        </form>
+      </div>
+    </div>
+    <div class="container copyright small muted center">
+      © <span id="year-copy"></span> Travirae · Tutti i diritti riservati
+    </div>
+  </footer>
+  <script src="assets/js/main.js"></script>
+</body>
+</html>
