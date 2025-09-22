@@ -1,0 +1,12 @@
+
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 80">
+  <rect width="220" height="80" fill="none"/>
+  <text x="110" y="45" text-anchor="middle" font-size="36" font-family="Arial, Helvetica, sans-serif" font-weight="700" fill="#687280">agoda</text>
+  <g transform="translate(70,62)">
+    <circle cx="0" r="5" fill="#EA4335"/>
+    <circle cx="20" r="5" fill="#FBBC05"/>
+    <circle cx="40" r="5" fill="#34A853"/>
+    <circle cx="60" r="5" fill="#4285F4"/>
+    <circle cx="80" r="5" fill="#A142F4"/>
+  </g>
+</svg>
