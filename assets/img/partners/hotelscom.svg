@@ -1,8 +1,0 @@
-
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 260 80">
-  <rect width="260" height="80" fill="none"/>
-  <rect x="12" y="18" width="36" height="44" rx="8" fill="#D0021B"/>
-  <rect x="20" y="28" width="8" height="26" fill="#fff"/>
-  <rect x="32" y="28" width="8" height="26" fill="#fff"/>
-  <text x="120" y="50" text-anchor="middle" font-size="34" font-family="Arial, Helvetica, sans-serif" font-weight="700" fill="#D0021B">Hotels.com</text>
-</svg>
