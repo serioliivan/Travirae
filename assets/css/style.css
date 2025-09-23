@@ -1,0 +1,56 @@
+/* Travirae r11 (light) */
+:root{--bg:#fff;--text:#111827;--muted:#6b7280;--brand:#5566ff;--brand-2:#9d6bff;--border:#e5e7eb;--soft:#f8fafc;--radius:18px;--shadow:0 10px 30px rgba(0,0,0,.08)}
+*{box-sizing:border-box}html,body{height:100%}body{margin:0;font-family:Inter,system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-serif;background:var(--bg);color:var(--text);text-align:center}
+img{max-width:100%;display:block}.container{max-width:1200px;margin:0 auto;padding:0 16px}
+a{color:inherit;text-decoration:none}
+
+.site-header{position:sticky;top:0;z-index:999;background:rgba(255,255,255,.9);backdrop-filter:saturate(180%) blur(8px);border-bottom:1px solid var(--border)}
+.header-inner{display:flex;align-items:center;justify-content:space-between;min-height:64px}
+.brand{display:flex;align-items:center;gap:10px;font-weight:800}.brand img{width:28px;height:28px}
+.main-nav{display:none;gap:12px}@media(min-width:860px){.main-nav{display:flex}}.nav-link{display:inline-block;padding:.5rem .9rem;border:1px solid var(--border);border-radius:999px}.nav-link.active{background:linear-gradient(135deg,var(--brand),var(--brand-2));color:#fff;border-color:transparent;box-shadow:0 6px 16px rgba(85,102,255,.35)}
+.nav-toggle{display:inline-flex;flex-direction:column;gap:4px;background:none;border:0}.nav-toggle span{width:24px;height:2px;background:#1f2937;border-radius:2px}@media(min-width:860px){.nav-toggle{display:none}}
+
+.hero{position:relative;padding:80px 0 12px}.hero-bg{position:absolute;inset:0;background:url('../img/common/hero.jpg') center/cover no-repeat;opacity:.35}.hero--alt .hero-bg{background:url('../img/common/hero-plane.jpg') center/cover no-repeat}.hero--light:before{content:'';position:absolute;inset:0;background:linear-gradient(to bottom,rgba(255,255,255,.95),#fff 55%)}
+.hero .container{position:relative;z-index:1}.hero h1{font-size:clamp(28px,5vw,48px);margin:.2rem 0 .4rem}.subtitle{color:var(--muted)}
+
+.section{padding:40px 0}.section-title{font-size:clamp(22px,3.6vw,32px);margin:0 0 8px}
+
+.map-section{margin:18px auto 0;background:#fff;border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow)}
+.map-header{display:flex;gap:10px;align-items:center;justify-content:center;padding:10px;border-bottom:1px solid var(--border)}
+.map-frame{position:relative}.map-frame iframe{width:100%;height:clamp(320px,55vh,560px);border:0;border-radius:0 0 var(--radius) var(--radius)}
+/* White mask to hide ONLY placeholder text of Stay22 search field (keeps the input clickable) */
+.map-mask{position:absolute;top:18px;left:16px;width:260px;height:34px;border-radius:20px;background:#fff;opacity:1;pointer-events:none;box-shadow:none}
+@media(max-width:640px){.map-mask{top:16px;left:12px;width:230px;height:32px}}
+
+.trustbar{display:flex;gap:12px;justify-content:center;align-items:stretch;margin:12px auto 8px;padding:10px 12px;border:1px solid var(--border);border-radius:16px;background:var(--soft);max-width:860px}
+.trust-item{flex:1;padding:10px 8px;border-radius:12px;background:linear-gradient(135deg,rgba(85,102,255,.08),rgba(157,107,255,.06))}
+.trust-item .value{font-weight:800;font-size:clamp(18px,4.6vw,26px);margin:0 0 3px}.trust-item .label{color:var(--muted);font-size:clamp(11px,2.6vw,14px)}
+.cta-row{margin:14px 0 0}
+
+.accordion-item{margin:12px 0}.accordion-toggle.category{height:96px;border-radius:22px;overflow:hidden;border:1px solid var(--border);position:relative;padding:0 18px;color:#fff}
+.accordion-toggle.category:before{content:'';position:absolute;inset:0;background:linear-gradient(120deg,#5566ff,#9d6bff)}.accordion-toggle .label{position:relative;font-weight:800}
+.accordion-panel{padding:10px 6px 14px}
+.carousel{display:grid;grid-auto-flow:column;grid-auto-columns:85%;gap:16px;overflow-x:auto;padding:6px;scroll-snap-type:x mandatory}
+.carousel.within{grid-auto-columns:80%}.carousel .city-card{scroll-snap-align:center;border-radius:16px;overflow:hidden;border:1px solid var(--border);background:#fff;box-shadow:var(--shadow)}
+.carousel .city-card img{height:200px;width:100%;object-fit:cover}.city-info{padding:12px 14px;display:flex;flex-direction:column;gap:8px;align-items:center;justify-content:center}
+@media(min-width:760px){.carousel{grid-auto-columns:calc(33.33% - 11px)}.carousel.within{grid-auto-columns:calc(33.33% - 11px)}.carousel .city-card img{height:220px}}
+
+.partners-logos{display:grid;grid-template-columns:repeat(5,1fr);gap:16px;align-items:center;justify-items:center;margin-top:12px}
+.partner-logo{max-width:180px;width:100%;height:auto}
+@media(max-width:900px){.partners-logos{grid-template-columns:repeat(3,1fr)}}@media(max-width:560px){.partners-logos{grid-template-columns:repeat(2,1fr)}}
+
+.mega-footer{background:#0c1226;color:#e6e9f2;margin-top:10px;border-top:1px solid rgba(255,255,255,.06)}
+.mf-grid{display:grid;grid-template-columns:1.2fr 1fr 1fr 1.2fr;gap:26px;padding:26px 16px}.mf-links ul,.mf-services ul{list-style:none;margin:0;padding:0;text-align:left}
+.mf-links li,.mf-services li{margin:8px 0}.mf-links a,.mf-services a{color:#e6e9f2;opacity:.9}.mf-bottom{display:flex;justify-content:space-between;align-items:center;border-top:1px solid rgba(255,255,255,.12);padding:12px 6px}
+@media(max-width:960px){.mf-grid{grid-template-columns:1fr 1fr}}@media(max-width:560px){.mf-grid{grid-template-columns:1fr}.mf-bottom{flex-direction:column;gap:8px}}
+
+/* Modal */
+.modal{position:fixed;inset:0;display:none;align-items:center;justify-content:center;z-index:1200}
+.modal[aria-hidden="false"]{display:flex}
+.modal-backdrop{position:absolute;inset:0;background:rgba(15,23,42,.6)}
+.modal-dialog{position:relative;background:#0f172a;color:#e2e8f0;border-radius:16px;max-width:980px;width:95%;box-shadow:0 20px 60px rgba(0,0,0,.35)}
+.modal-close{position:absolute;right:10px;top:8px;border:0;background:transparent;color:#fff;font-size:28px;cursor:pointer}
+.modal-content{padding:14px 14px 18px}.modal-layout{display:grid;grid-template-columns:1.2fr 1fr;gap:14px}
+.modal-map{display:flex;flex-direction:column;gap:10px}.modal-iframe{width:100%;height:320px;border:0;border-radius:12px}
+.modal-text{max-height:420px;overflow:auto;padding-right:4px}.modal-text p{margin:0 0 8px}.modal-text ul{margin:0 0 10px 18px;text-align:left}
+@media(max-width:820px){.modal-layout{grid-template-columns:1fr}.modal-iframe{height:260px}}
