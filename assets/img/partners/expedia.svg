@@ -1,6 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 260 80">
-<rect width="260" height="80" fill="none"/>
-<circle cx="36" cy="40" r="20" fill="#FFCA1C"/>
-<path d="M26 40l22-8-10 12 14 6" stroke="#0A2540" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-<text x="70" y="50" font-family="Inter, Arial, sans-serif" font-size="34" font-weight="700" fill="#0A2540">Expedia</text>
-</svg>
