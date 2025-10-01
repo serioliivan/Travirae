@@ -1,0 +1,11 @@
+User-agent: *
+Allow: /
+Sitemap: /it/sitemap.xml
+Sitemap: /en/sitemap.xml
+Sitemap: /es/sitemap.xml
+Sitemap: /fr/sitemap.xml
+Sitemap: /de/sitemap.xml
+Sitemap: /ru/sitemap.xml
+Sitemap: /ar/sitemap.xml
+Sitemap: /hi/sitemap.xml
+Sitemap: /zh/sitemap.xml

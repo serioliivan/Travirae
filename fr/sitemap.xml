@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url>
+    <loc>/fr/index.html</loc>
+    <xhtml:link rel="alternate" hreflang="it" href="/it/index.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="/en/index.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="/es/index.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="/fr/index.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="/de/index.html"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="/ru/index.html"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="/ar/index.html"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="/hi/index.html"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="/zh/index.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="/en/index.html"/>
+  </url>
+  <url>
+    <loc>/fr/flights.html</loc>
+    <xhtml:link rel="alternate" hreflang="it" href="/it/flights.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="/en/flights.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="/es/flights.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="/fr/flights.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="/de/flights.html"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="/ru/flights.html"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="/ar/flights.html"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="/hi/flights.html"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="/zh/flights.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="/en/flights.html"/>
+  </url>
+  <url>
+    <loc>/fr/programma-affiliato.html</loc>
+    <xhtml:link rel="alternate" hreflang="it" href="/it/programma-affiliato.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="/en/programma-affiliato.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="/es/programma-affiliato.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="/fr/programma-affiliato.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="/de/programma-affiliato.html"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="/ru/programma-affiliato.html"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="/ar/programma-affiliato.html"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="/hi/programma-affiliato.html"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="/zh/programma-affiliato.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="/en/programma-affiliato.html"/>
+  </url>
+  <url>
+    <loc>/fr/privacy.html</loc>
+    <xhtml:link rel="alternate" hreflang="it" href="/it/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="/en/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="/es/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="/fr/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="/de/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="/ru/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="/ar/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="/hi/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="/zh/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="/en/privacy.html"/>
+  </url>
+  <url>
+    <loc>/fr/termini.html</loc>
+    <xhtml:link rel="alternate" hreflang="it" href="/it/termini.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="/en/termini.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="/es/termini.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="/fr/termini.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="/de/termini.html"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="/ru/termini.html"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="/ar/termini.html"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="/hi/termini.html"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="/zh/termini.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="/en/termini.html"/>
+  </url>
+  <url>
+    <loc>/fr/cookie.html</loc>
+    <xhtml:link rel="alternate" hreflang="it" href="/it/cookie.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="/en/cookie.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="/es/cookie.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="/fr/cookie.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="/de/cookie.html"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="/ru/cookie.html"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="/ar/cookie.html"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="/hi/cookie.html"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="/zh/cookie.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="/en/cookie.html"/>
+  </url>
+</urlset>
