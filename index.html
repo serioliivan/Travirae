@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mappa Stay22 — Solo Mappa</title>
+  <meta name="description" content="Embed Stay22 senza destinazione preimpostata, centrata sull'Europa." />
+  <style>
+    /* Resetta i margini e occupa tutto lo schermo */
+    html, body { height: 100%; margin: 0; }
+    #app { height: 100%; }
+    .map-wrap {
+      height: 100vh;
+      width: 100vw;
+      overflow: hidden;
+    }
+    /* Fallback testo per utenti con JS disabilitato */
+    .nojs {
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      padding: 12px 16px;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, 'Helvetica Neue', Arial, 'Noto Sans', 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
+      background: #fff3cd;
+      color: #7a5d00;
+      border-bottom: 1px solid #ffe69c;
+      z-index: 10;
+    }
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
+  </style>
+</head>
+<body>
+  <div id="app">
+    <noscript>
+      <div class="nojs">Per vedere la mappa, abilita JavaScript.</div>
+    </noscript>
+
+    <div class="map-wrap">
+      <!--
+        Variante SCRIPT ufficiale Stay22, consigliata per controllare affiliato e comportamento.
+        Sostituisci __AFFILIATE_ID__ con il tuo ID affiliato Stay22.
+        Nessuna destinazione impostata. Centro generico Europa (lat 54, lng 15). Nessuna ricerca automatica.
+      -->
+      <div id="stay22-map"
+           data-affiliateid="__AFFILIATE_ID__"
+           data-lat="54"
+           data-lng="15"
+           data-auto-search="false"
+           style="width:100%; height:100%;"></div>
+      <script async src="https://www.stay22.com/embed/generic.js"></script>
+      
+      <!--
+        (Opzionale) Se preferisci l'iframe semplice, sostituisci il blocco sopra con questo:
+        
+        <iframe
+          id="stay22-iframe"
+          title="Stay22 Map"
+          src="https://www.stay22.com/embed/all?autoSearch=false&lat=54&lng=15"
+          style="border:0; width:100%; height:100%;"
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
+        
+        Nota: Con alcuni embed ID 'hash' l'affiliato può non essere esplicito.
+        In tal caso è più sicuro usare la variante SCRIPT impostando data-affiliateid.
+      -->
+    </div>
+  </div>
+</body>
+</html>
