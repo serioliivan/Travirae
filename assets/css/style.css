@@ -1,0 +1,690 @@
+/* Travirae v7-worldwide-r7 (light theme) */
+:root{
+  --bg:#ffffff; --text:#111827; --muted:#6b7280;
+  --brand:#283aff; --brand-2:#283aff;
+  --radius:18px; --shadow:0 10px 30px rgba(0,0,0,.08);
+  --container:1200px; --border:#e5e7eb; --soft:#f8fafc;
+}
+*{box-sizing:border-box}
+html,body{height:100%}
+body{margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;color:var(--text);background:var(--bg);line-height:1.6;-webkit-font-smoothing:antialiased;text-align:center}
+img{max-width:100%;display:block}
+a{color:var(--text);text-decoration:none}
+.container{max-width:var(--container);margin:0 auto;padding:0 16px}
+.muted{color:var(--muted)} .small{font-size:.92rem}
+
+/* Header */
+.site-header{position:sticky;top:0;z-index:1000;backdrop-filter:saturate(180%) blur(10px);background:rgba(255,255,255,.85); border-bottom:1px solid var(--border)}
+.header-inner{display:flex;align-items:center;justify-content:space-between;min-height:64px}
+.brand{display:flex;align-items:center;gap:10px;font-weight:800;letter-spacing:.5px}
+.brand img{width:28px;height:28px}
+.brand.big img{width:36px;height:36px} .brand.big span{font-size:1.4rem}
+.main-nav{display:none;gap:12px;align-items:center;justify-content:center}
+.nav-link{display:inline-block;padding:.5rem .9rem;border-radius:999px;border:1px solid var(--border);opacity:.95}
+.nav-link:hover{opacity:1}
+.nav-link.active{background:linear-gradient(135deg,var(--brand),var(--brand-2));border-color:transparent;box-shadow:0 6px 16px rgba(85,102,255,.35);color:#fff}
+.nav-toggle{display:inline-flex;flex-direction:column;gap:4px;background:none;border:0}
+.nav-toggle span{width:24px;height:2px;background:#111827;border-radius:2px;display:block}
+@media (min-width: 860px){.main-nav{display:flex}.nav-toggle{display:none}}
+
+/* Buttons */
+.btn{display:inline-block;padding:.8rem 1.2rem;background:linear-gradient(135deg,var(--brand),var(--brand-2));border:none;border-radius:12px;color:#fff;font-weight:700;box-shadow:0 6px 16px rgba(85,102,255,.35);cursor:pointer;transition:.2s transform}
+.btn:hover{transform:translateY(-1px)}
+.cta-row{margin:14px 0 0}
+
+/* Hero */
+.hero{position:relative;padding:84px 0 16px;overflow:hidden}
+.hero-inner{position:relative;z-index:1}
+.hero h1{font-size:clamp(28px, 5vw, 48px);margin:.2rem 0 .4rem}
+.subtitle{color:var(--muted);margin-top:0}
+.hero-bg{position:absolute;inset:0;background-image:url('../img/common/hero.jpg');background-size:cover;background-position:center;opacity:.35}
+.hero--alt .hero-bg{background-image:url('../img/common/hero-plane.jpg')}
+.hero:before{content:"";position:absolute;inset:0;background:linear-gradient(to bottom,rgba(255,255,255,.9),rgba(255,255,255,.95) 25%, rgba(255,255,255,1) 60%, rgba(255,255,255,1) 100%);z-index:0}
+
+/* Map section */
+.map-section{margin:24px auto 0;background:#fff;border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow)}
+.map-header{display:flex;align-items:center;justify-content:center;padding:12px 14px;border-bottom:1px solid var(--border);gap:10px}
+.map-frame iframe{width:100%;height:clamp(320px, 55vh, 560px);border:0;border-radius:0 0 var(--radius) var(--radius)}
+
+/* Trust bar */
+.trustbar{display:flex;flex-wrap:nowrap;gap:12px;justify-content:center;align-items:stretch;margin:12px auto 8px;padding:10px 12px;border:1px solid var(--border);border-radius:16px;background:var(--soft);max-width:860px}
+.trust-item{flex:1 1 0;min-width:0;padding:10px 8px;border-radius:12px;background:linear-gradient(135deg, rgba(85,102,255,.08), rgba(157,107,255,.06))}
+.trust-item .value{font-weight:800;line-height:1;margin:0 0 4px;font-size:clamp(18px,4.6vw,26px)}
+.trust-item .label{color:var(--muted);font-size:clamp(11px,2.6vw,14px)}
+@media (max-width:420px){.trustbar{gap:8px;padding:8px}.trust-item{padding:8px 6px}}
+
+/* Sections */
+.section{padding:40px 0}
+.section-title{font-size:clamp(22px,3.6vw,32px);margin:0 0 8px}
+
+/* Accordion items */
+.accordion-item{background:transparent;border-radius:14px;margin:12px 0;overflow:hidden}
+.accordion-toggle{width:100%;display:flex;align-items:center;justify-content:center;background:none;border:0;color:var(--text);font-weight:800;padding:0;cursor:pointer;position:relative}
+.accordion-toggle .label{flex:0 0 auto}
+.accordion-toggle .chevron{opacity:.95;transition:.2s transform;position:absolute;right:12px}
+.accordion-item.open .accordion-toggle .chevron{transform:rotate(180deg)}
+.accordion-panel{padding:10px 6px 14px}
+
+/* Category gradient bar */
+.accordion-toggle.category{position:relative;height:96px;border-radius:22px;overflow:hidden;color:#fff;text-shadow:0 2px 6px rgba(0,0,0,.25);border:1px solid var(--border);margin:6px 0;padding:0 18px}
+.accordion-toggle.category::before{content:"";position:absolute;inset:0;background-image:linear-gradient(120deg,#5566ff,#9d6bff);z-index:0}
+.accordion-toggle.category .label{position:relative;z-index:2;color:#fff !important;font-weight:800}
+
+/* Carousel */
+.carousel{display:grid;grid-auto-flow:column;grid-auto-columns:85%;gap:16px;overflow-x:auto;padding:6px;scroll-snap-type:x mandatory}
+.carousel.within{grid-auto-columns:80%}
+.carousel .city-card{position:relative;scroll-snap-align:center;border-radius:16px;overflow:hidden;border:1px solid var(--border);background:#fff;box-shadow:var(--shadow)}
+.carousel .city-card.small img{height:180px;object-fit:cover}
+.city-card img{height:220px;width:100%;object-fit:cover;display:block}
+.city-info{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;padding:12px 14px}
+.city-info h3{margin:0;font-size:1.05rem}
+@media (min-width: 760px){.carousel{grid-auto-columns:calc(33.33% - 11px)}.carousel.within{grid-auto-columns:calc(33.33% - 11px)}.city-card img{height:220px}}
+
+/* Partners unified logos grid */
+.partners-logos{display:grid;grid-template-columns:repeat(5,1fr);gap:16px;align-items:center;justify-items:center;margin-top:12px}
+.partners-logos img{max-width:180px;width:100%;height:auto;filter:drop-shadow(0 4px 8px rgba(0,0,0,.08))}
+@media (max-width:900px){.partners-logos{grid-template-columns:repeat(3,1fr)}}
+@media (max-width:560px){.partners-logos{grid-template-columns:repeat(2,1fr)}}
+
+/* Mega footer (dark for contrast) */
+.mega-footer{background:#0c1226;color:#e6e9f2;border-top:1px solid rgba(255,255,255,.06);margin-top:10px}
+.mf-grid{display:grid;gap:26px;grid-template-columns:1.2fr 1fr 1fr 1.2fr;align-items:flex-start;padding:26px 16px}
+.mf-links ul,.mf-services ul{list-style:none;margin:0;padding:0;text-align:left}
+.mf-links li,.mf-services li{margin:8px 0}
+.mf-links a,.mf-services a{color:#e6e9f2;opacity:.9}
+.mf-socials{display:flex;gap:10px;margin-top:8px}
+.social{display:inline-block;padding:.45rem .7rem;border:1px solid rgba(255,255,255,.2);border-radius:999px;color:#e6e9f2}
+.contact-list{list-style:none;margin:0 0 10px;padding:0;text-align:left}
+.newsletter-form{display:flex;gap:8px;margin-top:6px;justify-content:flex-start}
+.newsletter-form input{flex:1 1 220px;padding:.7rem .9rem;border-radius:10px;border:1px solid rgba(255,255,255,.22);background:rgba(255,255,255,.06);color:#e6e9f2}
+.mf-bottom{display:flex;align-items:center;justify-content:space-between;border-top:1px solid rgba(255,255,255,.12);padding:12px 6px}
+.mf-legal a{color:#9aa3b2}
+@media (max-width:960px){.mf-grid{grid-template-columns:1fr 1fr}}
+@media (max-width:560px){.mf-grid{grid-template-columns:1fr}.newsletter-form{justify-content:center}.contact-list{text-align:center} .mf-bottom{flex-direction:column;gap:8px}}
+
+
+/* ===== Modal (white) ===== */
+.modal{position:fixed;inset:0;display:none;z-index:9999}
+.modal.open{display:block}
+.modal .modal-backdrop{position:absolute;inset:0;background:rgba(0,0,0,.55);backdrop-filter:blur(2px)}
+.modal .modal-dialog{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:min(900px,92vw);max-height:88vh;overflow:auto;background:#fff;color:#111;border-radius:18px;padding:22px 20px;box-shadow:0 30px 70px rgba(0,0,0,.35)}
+.modal .modal-title{font-size:1.8rem;margin:0 0 10px;text-align:center}
+.modal .modal-close{position:absolute;top:8px;right:10px;border:0;background:transparent;font-size:28px;line-height:1;cursor:pointer}
+.modal .map-embed{width:100%;height:360px;border:0;border-radius:12px;overflow:hidden;margin:6px 0 14px}
+.modal .modal-section{margin:12px 0}
+.modal .modal-section h4{margin:0 0 6px;font-size:1.05rem;text-align:center}
+.modal .modal-section p{margin:6px auto;max-width:66ch;line-height:1.55;text-align:center}
+.modal .modal-section ul{display:block;list-style:none;max-width:760px;margin:10px auto;padding-left:0}
+.modal .modal-section ul li{margin:6px 0}
+.modal .modal-actions{display:flex;justify-content:center;margin:16px 0 4px}
+.modal .modal-actions .btn{min-width:180px}
+@media (max-width:640px){.modal .map-embed{height:300px}}
+
+/* ===== Partners 2-col compact ===== */
+.partners-logos{display:grid;grid-template-columns:repeat(2,minmax(220px,auto));gap:10px 20px;align-items:center;justify-items:center;max-width:800px;margin:0 auto}
+.partners-logos img{display:block;margin:0 auto;max-height:46px;height:46px;width:auto;object-fit:contain}
+
+/* ===== Category bars: full background photo + light overlay + centered label ===== */
+.accordion-toggle.category{position:relative;background-position:center;background-size:cover;background-repeat:no-repeat}
+.accordion-toggle.category::before{content:"";position:absolute;inset:0;border-radius:22px;background:linear-gradient(120deg,rgba(85,102,255,.12),rgba(157,107,255,.12));z-index:0}
+.accordion-toggle.category .label{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);margin:0;text-align:center;color:#fff;font-weight:800;z-index:2;text-shadow:0 2px 4px rgba(0,0,0,.35);pointer-events:none}
+.accordion-toggle.category .cat-photo{display:none !important}
+.accordion-toggle.category .chevron{display:none !important}
+
+
+
+/* ===== Mobile hotfixes (2025-09-24) =====
+ * - Rimuove lo spazio a destra sulle viste mobile
+ * - Sezione "I nostri partner": in mobile mostra una sola colonna (uno sotto l'altro)
+ */
+html, body{
+  /* Evita lo scroll orizzontale dovuto a elementi che eccedono la larghezza */
+  overflow-x: hidden;
+}
+
+@media (max-width: 600px){
+  .partners-logos{
+    display: grid;
+    grid-template-columns: 1fr !important; /* una sola colonna */
+    row-gap: 18px;
+    justify-items: center;
+    align-items: center;
+  }
+  .partners-logos img{
+    max-width: 220px;
+    width: 100%;
+    height: auto;
+  }
+}
+/* ===== end mobile hotfixes ===== */
+
+/* ===== Category image overlay fix (2025-09-24) ===== */
+/* ensure the photo behind the gradient is visible */
+.accordion-toggle.category::before {
+  background-image: linear-gradient(120deg, rgba(85,102,255,.16), rgba(157,107,255,.16)) !important;
+}
+
+/* ===== GLOBAL BACKGROUND: DO NOT REMOVE ===== */
+html{
+  background-image:url('../img/common/pattern_topografico_tile.png') !important;
+  background-repeat:repeat !important;
+  background-position:top left !important;
+  background-size:auto !important;
+  background-color:transparent !important;
+}
+body{ background-color:transparent !important; }
+#root, main, .site, .site-wrap, .page, .page-wrap, .content, .content-wrap, .container-root{
+  background:transparent !important;
+}
+/* Center titles and category labels */
+.section-title{ text-align:center !important; }
+.accordion-toggle.category .label{
+  position:absolute !important; left:50% !important; top:50% !important;
+  transform:translate(-50%,-50%) !important;
+  text-align:center !important; width:100% !important;
+  z-index:2; color:#fff !important; font-weight:800 !important; pointer-events:none !important;
+}
+
+
+/* === Custom: backgrounds not faded + spacing + buttons color === */
+.hero-bg{ opacity:1 !important; background-size:cover !important; background-position:center !important; }
+.hero:before{ content:none !important; background:none !important; }
+
+/* Home hero beach background */
+.hero--beach .hero-bg{
+  background-image:url('../img/common/hotel-bg.jpg') !important;
+}
+
+/* Flights hero plane background */
+.hero--alt .hero-bg{
+  background-image:url('../img/common/flights-bg.jpg') !important;
+}
+
+/* Flights spacing tighten */
+.page--flights .hero{
+  padding:28px 0 80px !important;  /* estensione sfondo sotto "Cerca hotel" */
+  background-size:cover;
+  background-position:center bottom;
+}
+.page--flights #aviasales-widget.section,
+.page--flights #trustbar-section.section,
+.page--flights #cta-hotels.section{ padding:8px 0 !important; }
+.page--flights #aviasales-widget .card{ margin:0 auto !important; }
+.page--flights .trustbar{ margin:6px auto !important; }
+.page--flights #cta-hotels .btn{ margin:8px auto 4px !important; }
+
+/* Buttons color across site */
+.btn, button, input[type="submit"], .nav-link.active{
+  background:#283aff !important;
+  background-image:none !important;
+  border-color:transparent !important;
+  color:#fff !important;
+  box-shadow:0 6px 16px rgba(40,58,255,.3) !important;
+}
+.btn:hover, button:hover, input[type="submit"]:hover{
+  filter:brightness(.95);
+  transform:translateY(-1px);
+}
+
+
+/* Fix estensione background voli fino al bottone "Cerca hotel" */
+.page--flights .hero {
+  padding: 28px 0 0 !important;
+  background-size: cover;
+  background-position: center top;
+}
+
+.page--flights #cta-hotels
+
+
+/* ===== Flights: background confinato nella fascia blu ===== */
+.page--flights .hero{
+  background: url('../img/common/flights-bg.jpg') no-repeat center top;
+  background-size: cover;
+  padding: 24px 0 12px !important; /* stringo un po' sopra */
+  position: relative;
+  z-index: 0;
+}
+
+/* Rimuovo lo sfondo sull'intera sezione per evitare che si propaghi sotto */
+.page--flights #cta-hotels.section{
+  background: none !important;
+  position: relative;
+  padding-top: 24px !important;
+  padding-bottom: 48px !important;
+  z-index: 0;
+  overflow: hidden; /* taglia eventuali sbordi del pseudo-elemento */
+}
+
+/* Creo la fascia di sfondo SOLO all'interno della sezione del bottone */
+.page--flights #cta-hotels.section::before{
+  content: "";
+  position: absolute;
+  left: 0; right: 0; top: 0;
+  height: var(--flights-band-height, 340px); /* altezza della fascia (regolabile) */
+  background: url('../img/common/flights-bg.jpg') no-repeat center bottom;
+  background-size: cover;
+  z-index: 0;
+}
+
+/* Porto avanti i contenuti sopra la fascia */
+.page--flights #cta-hotels.section > *{
+  position: relative;
+  z-index: 1;
+}
+
+/* Titolo "I nostri partner" e loghi: sfondo neutro garantito */
+.page--flights .partners, 
+.page--flights .partners-logos{
+  background: transparent !important;
+}
+
+
+/* Isolo lo sfondo solo dentro la sezione voli */
+.hero--alt .hero-bg {
+  background: none !important;
+}
+
+.page--flights .flights-wrapper {
+  background: url('../img/common/flights-bg.jpg') no-repeat center top;
+  background-size: cover;
+  padding: 40px 0 80px;
+  position: relative;
+  z-index: 0;
+}
+
+.page--flights .flights-wrapper > * {
+  position: relative;
+  z-index: 1;
+}
+
+
+/* ===== Band sfondo per la pagina Voli ===== */
+.page--flights .flights-band{
+  background: url('../img/common/flights-bg.jpg') no-repeat center top;
+  background-size: cover;
+  position: relative;
+}
+.page--flights .flights-band > *{ position: relative; z-index: 1; }
+.page--flights .flights-band::after{ content:''; position:absolute; left:0; right:0; bottom:0; height:0; } /* segnaposto */
+
+.page--flights .hero-bg.hero-bg--plane{
+  background: none !important; /* rimuove sfondo globale */
+}
+
+
+/* === Reset: niente sfondo dietro alla sezione centrale === */
+.page--flights .flights-band{
+  background: none !important;
+}
+
+/* Hero con sfondo aereo SOLO in alto */
+.page--flights .hero-bg.hero-bg--plane{
+  background: url('../img/common/flights-bg.jpg') no-repeat center top !important;
+  background-size: cover !important;
+}
+
+/* Fascia aereo SOLO attorno al bottone "Cerca hotel" */
+.page--flights #cta-hotels{
+  position: relative;
+  background: none !important;
+  overflow: hidden;
+}
+.page--flights #cta-hotels::before{
+  content: "";
+  position: absolute;
+  left: 0; right: 0;
+  top: 0;
+  height: var(--cta-band-height, 220px); /* regola l'altezza della fascia */
+  background: url('../img/common/flights-bg.jpg') no-repeat center bottom;
+  background-size: cover;
+  z-index: 0;
+}
+.page--flights #cta-hotels .container,
+.page--flights #cta-hotels > *{
+  position: relative; z-index: 1;
+}
+
+/* Garantisco che le sezioni centrali mantengano lo sfondo originale */
+.page--flights #aviasales-widget,
+.page--flights #trustbar-section{
+  background: var(--section-bg, transparent) !important;
+}
+
+
+/* Cleanup: rimuovo effetti precedenti per banda voli */
+.page--flights .flights-band{ background:none !important; padding:0 !important; }
+.page--flights #cta-hotels{ background:none !important; }
+.page--flights #cta-hotels::before{ content:none !important; }
+
+
+/* === Voli: UNICO SFONDO per tutto il blocco dall'hero al bottone === */
+.page--flights .flights-scene{
+  background: url('../img/common/flights-bg.jpg') no-repeat center top;
+  background-size: cover;
+  position: relative;
+}
+
+/* Tutte le sezioni interne devono essere trasparenti per mostrare lo sfondo unico */
+.page--flights .flights-scene .hero,
+.page--flights .flights-scene .section{
+  background: transparent !important;
+}
+
+/* Disattivo qualsiasi bg specifico dell'hero aereo per evitare doppioni */
+.page--flights .hero-bg.hero-bg--plane{
+  background: transparent !important;
+}
+
+/* Se i pattern a linee sono applicati con pseudo-elementi, neutralizzali qui */
+.page--flights .flights-scene .section::before,
+.page--flights .flights-scene .hero::before{
+  content: none !important;
+}
+
+/* Banda bottone: niente bg proprio (usa quello unico di flights-scene) */
+.page--flights #cta-hotels{ background: transparent !important; }
+.page--flights #cta-hotels::before{ content: none !important; }
+
+
+/* ===== Flights page: reset all airplane backgrounds, then use ONE zone background ===== */
+
+/* Remove any airplane background in hero and other local areas */
+.page--flights .hero-bg.hero-bg--plane,
+.page--flights .hero.hero--alt .hero-bg,
+.page--flights #cta-hotels::before,
+.page--flights #cta-hotels,
+.page--flights .flights-band,
+.page--flights .flights-scene {
+  background: none !important;
+  content: none !important;
+}
+
+/* Single unified background only in .flights-zone */
+.page--flights .flights-zone{
+  background: url('../img/common/flights-bg.jpg') no-repeat center top;
+  background-size: cover;
+  position: relative;
+}
+
+/* Make all inner sections transparent so the zone background shows through */
+.page--flights .flights-zone .hero,
+.page--flights .flights-zone .section{
+  background: transparent !important;
+}
+
+/* Also remove any pseudo-element overlays that could mask the bg */
+.page--flights .flights-zone .hero::before,
+.page--flights .flights-zone .section::before{
+  content: none !important;
+}
+
+
+/* === VOLI: sfondo unico nella zona indicata (hero -> CTA) === */
+.page--flights .flights-zone{
+  position: relative !important;
+  background: none !important; /* evito conflitti */
+}
+.page--flights .flights-zone::before{
+  content: "" !important;
+  position: absolute !important;
+  inset: 0 !important;            /* copre tutta la zona */
+  background: url('../img/common/flights-bg.jpg') no-repeat center top !important;
+  background-size: cover !important;
+  z-index: 0 !important;
+}
+
+/* Porta in primo piano i contenuti della zona */
+.page--flights .flights-zone > *{
+  position: relative !important;
+  z-index: 1 !important;
+}
+
+/* Elimina pattern/overlay che oscurano lo sfondo nella zona */
+.page--flights .flights-zone .hero,
+.page--flights .flights-zone .section,
+.page--flights .flights-zone .hero::before,
+.page--flights .flights-zone .section::before{
+  background: transparent !important;
+  content: none !important;
+}
+
+/* Non tocco i singoli componenti (card, widget) che possono mantenere il proprio bg */
+
+
+/* === Flights page: single background ONLY inside .flights-zone === */
+.page--flights .hero-bg.hero-bg--plane{ background:none !important; } /* remove default plane */
+.page--flights .flights-zone{
+  background: url('../img/common/flights-bg.jpg') no-repeat center top;
+  background-size: cover;
+  position: relative;
+}
+.page--flights .flights-zone .hero,
+.page--flights .flights-zone .section{
+  background: transparent !important;
+}
+.page--flights .flights-zone .hero::before,
+.page--flights .flights-zone .section::before{
+  content:none !important;
+}
+
+
+/* === Trustbar restyle to match reference (three pill cards, no big container card) === */
+
+
+
+
+
+/* === Reduce vertical gaps in the flights page === */
+.page--flights #aviasales-widget.section{ padding-top: 10px !important; padding-bottom: 12px !important; }
+.page--flights #trustbar-section.section{ padding-top: 8px !important; padding-bottom: 8px !important; }
+.page--flights #cta-hotels.section{ padding-top: 8px !important; padding-bottom: 12px !important; }
+
+/* tighten spacing around the search form */
+.page--flights #aviasales-widget .card{ margin: 8px auto !important; }
+.page--flights .hero{ padding-bottom: 10px !important; }
+
+
+/* === Fix trustbar layout: horizontal row of 3 items === */
+
+
+
+
+/* === Flights trustbar: full-width horizontal pills === */
+
+
+
+
+
+
+/* === Force horizontal layout even with inner wrapper === */
+
+
+
+
+/* === Enforce hotel-like trustbar on flights === */
+.page--flights #trustbar-section .trustbar{
+  display:flex !important;
+  flex-direction: row !important;
+  align-items: stretch !important;
+  justify-content: center !important;
+  gap: 12px !important;
+  max-width: 980px !important;
+  margin: 0 auto !important;
+  background: var(--soft) !important;
+  border-radius: 16px !important;
+  padding: 8px !important;
+  box-shadow: var(--shadow);
+}
+.page--flights #trustbar-section .trust-item{
+  flex:1 1 0 !important;
+  display:block !important;
+  text-align:center !important;
+  padding: 10px 12px !important;
+  background: rgba(255,255,255,0.9) !important;
+  border: 1px solid var(--border) !important;
+  border-radius: 12px !important;
+}
+
+
+/* === Reduce gap between search form and trustbar to match CTA spacing === */
+.page--flights #aviasales-widget.section{
+  padding-bottom: 6px !important;
+}
+.page--flights #trustbar-section.section{
+  padding-top: 6px !important;
+}
+
+
+/* === Further reduce gap between search form and trustbar to equal trustbar->CTA gap === */
+.page--flights #aviasales-widget.section{
+  padding-bottom: 0px !important;
+}
+.page--flights #trustbar-section.section{
+  padding-top: 0px !important;
+}
+
+/* Tap highlight only removed where requested */
+.nav-toggle, .modal-close { -webkit-tap-highlight-color: transparent; }
+
+/* Active state: double underline only */
+.main-nav .nav-link{border:none;border-radius:0;background:transparent;padding:.4rem .6rem}
+.main-nav .nav-link:hover,.main-nav .nav-link:focus,.main-nav .nav-link:active{background:transparent;box-shadow:none}
+.main-nav .nav-link.active{position:relative;color:inherit;background:transparent; background:transparent !important;box-shadow:none color:#111 !important; }
+.main-nav .nav-link.active::before,.main-nav .nav-link.active::after{content:"";position:absolute;left:0;right:0;height:2px;background:#111}
+.main-nav .nav-link.active::before{top:-6px}.main-nav .nav-link.active::after{bottom:-6px}
+
+/* Hamburger button look (no blue bg) */
+.site-header .nav-toggle,.site-header .nav-toggle:focus,.site-header .nav-toggle:active{background:transparent;outline:none;box-shadow:none;border:0}
+.site-header .nav-toggle span{background:#111827}
+
+@media (max-width:860px){
+  .main-nav{display:none}
+  .main-nav.is-open{display:flex;flex-direction:column;align-items:flex-start;gap:10px}
+}
+
+/* Footer consistency and readability */
+.mega-footer{background:#fff;color:#111}
+.mega-footer a{color:#111}
+.mega-footer .brand.big img{width:28px;height:28px}
+.mega-footer .brand.big span{font-size:1rem}
+
+/* Force no blue bg on active nav item */
+.main-nav .nav-link.active{
+  background:transparent !important;
+  box-shadow:none !important;
+ color:#111 !important; }
+
+/* Burger: no blue bg/glow */
+.nav-toggle,
+.nav-toggle:focus,
+.nav-toggle:active{
+  background:transparent !important;
+  box-shadow:none !important;
+  outline:none !important;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-appearance:none;
+}
+
+/* Modal close button: transparent background, black X */
+.modal .modal-close,
+.modal .modal-close:focus,
+.modal .modal-close:active{
+  background:transparent !important;
+  color:#111 !important;
+  box-shadow:none !important;
+  outline:none !important;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Mobile dropdown under burger */
+@media (max-width:860px){
+  .site-header{position:relative}
+  .main-nav.is-open{
+    position:absolute;
+    top:100%;
+    right:16px;
+    background:#fff;
+    padding:10px 12px;
+    border:1px solid var(--border, #e5e7eb);
+    border-radius:10px;
+    box-shadow:0 10px 25px rgba(0,0,0,.08);
+    flex-direction:column;
+    align-items:flex-start;
+    gap:8px;
+    z-index:1000;
+  }
+}
+
+/* Footer alignment & centering */
+.mf-grid{
+  grid-template-columns: 1fr 1fr 1fr;
+  align-items:start;
+  justify-items:center;
+  margin-left:auto;
+  margin-right:auto;
+}
+.mega-footer .mf-brand, .mega-footer .mf-services, .mega-footer .mf-contact{ width:100%; }
+.mega-footer .mf-brand{ text-align:left }
+.mega-footer .mf-services{ text-align:center }
+.mega-footer .mf-contact{ text-align:right }
+@media (max-width:900px){
+  .mf-grid{ grid-template-columns:1fr; justify-items:stretch }
+  .mega-footer .mf-brand, .mega-footer .mf-services, .mega-footer .mf-contact{ text-align:left }
+}
+
+/* Ensure header/burger stay on top and clickable */
+.site-header{ position:sticky; top:0; z-index:5000 }
+.site-header .nav-toggle{ position:relative; z-index:5001 }
+
+
+/* ==== Travirae category images: definitive override (v6 fresh from original) ==== */
+.accordion-toggle.category{
+  position: relative;
+  background: transparent !important;
+  overflow: hidden;
+}
+.accordion-toggle.category::before{
+  content:"";
+  position:absolute; inset:0;
+  border-radius: inherit;
+  background:
+    linear-gradient(0deg, rgba(0,0,0,.35), rgba(0,0,0,.35)),
+    var(--cat-img, linear-gradient(120deg,#5566ff,#9d6bff)) !important;
+  background-position: center !important;
+  background-size: cover !important;
+  background-repeat: no-repeat !important;
+  z-index:0; pointer-events:none;
+}
+.accordion-toggle.category .label,
+.accordion-toggle.category .chevron{ position: relative; z-index:1; }
+
+/* ==== Responsive height for category pills ==== */
+.accordion-toggle.category{ height: clamp(96px, 13vw, 200px) !important; }
+@media (max-width: 420px){
+  .accordion-toggle.category{ height: 96px !important; }
+}
+
+
+/* Override: footer newsletter input border grey */
+.mega-footer .newsletter-form input{border:1px solid #bdbdbd !important;}
+
+/* Fix CTA dentro la card */
+.carousel .city-card .city-info{
+  display:flex; flex-direction:column; align-items:center;
+  justify-content:space-between; gap:10px;
+  padding:14px 16px 18px; min-height:132px;
+}
+.carousel .city-card .city-info .btn.more{ margin-top:8px; align-self:center; }
+.carousel .city-card{ overflow:hidden; }
+
+
+/* Bullets attached to text in modal highlights */
+.modal .modal-section ul li{ list-style:none; }
+.modal .modal-section ul li::before{
+  content: "•";
+  display: inline-block;
+  margin-right: 0.45ch;
+  transform: translateY(-0.02em);
+}
+
