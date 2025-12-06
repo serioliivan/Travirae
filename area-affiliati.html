@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="utf-8"/>
+  <title>Area affiliati – Travirae</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <link rel="icon" type="image/png" href="assets/img/common/plane-logo.png"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="assets/css/style.css"/>
+  <meta property="og:title" content="Area affiliati – Travirae"/>
+  <meta property="og:description" content="Accedi alla tua dashboard affiliato Travirae: ottieni il tuo Affiliate ID, i link tracciati e controlla click e guadagni."/>
+</head>
+<body class="page--affiliate">
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="index.html">
+        <img src="assets/img/common/plane-logo.png" alt="Travirae"/>
+        <span>TRAVIRAE</span>
+      </a>
+      <nav class="main-nav" aria-label="Navigazione principale">
+        <a class="nav-link" href="index.html">Hotel</a>
+        <a class="nav-link" href="flights.html">Voli</a>
+        <a class="nav-link active" href="programma-affiliato.html">Programma affiliato</a>
+      </nav>
+      <button class="nav-toggle" aria-label="Apri menu" aria-expanded="false"><span></span><span></span><span></span></button>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero hero--light">
+      <div class="container hero-inner">
+        <div class="hero-copy">
+          <h1>Area affiliati Travirae</h1>
+          <p class="subtitle">Accedi o registrati per generare il tuo Affiliate ID, ottenere i link tracciati e monitorare click e guadagni.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container" id="auth-section">
+        <div class="grid two">
+          <div>
+            <h2 class="section-title">Accedi o registrati</h2>
+            <p>Usa la stessa email che utilizzerai per ricevere i report e le comunicazioni sul programma.</p>
+            <form id="login-form" class="card" style="max-width:420px;margin:0 auto;">
+              <label>
+                Email<br/>
+                <input type="email" id="email" required/>
+              </label>
+              <br/>
+              <label>
+                Password<br/>
+                <input type="password" id="password" required minlength="6"/>
+              </label>
+              <br/>
+              <button type="submit" class="btn" style="width:100%;">Accedi / Registrati</button>
+            </form>
+            <p id="status" class="muted small" style="margin-top:12px;"></p>
+          </div>
+          <div>
+            <h2 class="section-title">Come funziona l'area affiliati</h2>
+            <ol class="big-list">
+              <li><strong>Registrati</strong> con la tua email.</li>
+              <li><strong>Crea il tuo Affiliate ID</strong> con un clic.</li>
+              <li><strong>Condividi i link</strong> con <code>?ref=TUO-ID</code>.</li>
+              <li><strong>Monitora</strong> click, vendite valide e guadagni nella dashboard.</li>
+            </ol>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section soft" id="dashboard-section" style="display:none;">
+      <div class="container">
+        <h2 class="section-title">La tua dashboard affiliato</h2>
+        <div id="dashboard-content"></div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div class="mf-main">
+        <div class="mf-brand">
+          <a class="brand" href="index.html">
+            <img src="assets/img/common/plane-logo.png" alt="Travirae"/>
+            <span>TRAVIRAE</span>
+          </a>
+          <p class="muted small">Viaggi lenti, link veloci. Monetizza la tua audience di viaggio con il programma affiliato Travirae.</p>
+        </div>
+      </div>
+      <div class="container mf-bottom muted small">
+        <div>© <span id="year-copy"></span> Travirae · Tutti i diritti riservati</div>
+        <div class="mf-legal">
+          <a href="privacy.html">Privacy</a> · <a href="termini.html">Termini</a> · <a href="cookie.html">Cookie</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Supabase + script area affiliati -->
+  <script src="https://unpkg.com/@supabase/supabase-js@2"></script>
+  <script>
+    const SUPABASE_URL = 'https://qihaslaxdfwounujpeuf.supabase.co';
+    const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InFpaGFzbGF4ZGZ3b3VudWpwZXVmIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjUwMzE5MTMsImV4cCI6MjA4MDYwNzkxM30.scqVi4SjN76Oqr3FVtHt5OZWcn8Zh7LyTgU-H4bNEdo';
+    const supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+    window.supabaseClient = supabaseClient;
+
+    const loginForm = document.getElementById('login-form');
+    const statusEl = document.getElementById('status');
+    const dashboardSection = document.getElementById('dashboard-section');
+    const dashboardContent = document.getElementById('dashboard-content');
+
+    async function getCurrentUser() {
+      const { data, error } = await supabaseClient.auth.getUser();
+      if (error) {
+        console.error(error);
+        return null;
+      }
+      return data.user;
+    }
+
+    function renderAffiliateLinks(slug) {
+      const base = window.location.origin || 'https://travirae.com';
+      return `
+        <section class="card" style="margin-bottom:24px;text-align:left;">
+          <h3>Il tuo Affiliate ID</h3>
+          <p style="font-size:1.1rem;"><strong>${slug}</strong></p>
+          <p class="muted small">Usa questo ID aggiungendo <code>?ref=${slug}</code> ai link di Travirae.</p>
+          <div class="grid two" style="gap:16px;margin-top:12px;">
+            <div>
+              <p class="muted small">Link home</p>
+              <code>${base}/?ref=${slug}</code>
+            </div>
+            <div>
+              <p class="muted small">Link voli</p>
+              <code>${base}/flights.html?ref=${slug}</code>
+            </div>
+          </div>
+        </section>
+      `;
+    }
+
+    function renderStatsSummary(totalClicks, totalEarnings, currentMonthEarnings) {
+      function fmtMoney(v){
+        if (v == null || isNaN(v)) return '0.00';
+        return Number(v).toFixed(2);
+      }
+      return `
+        <section class="grid three" style="margin-bottom:24px;">
+          <div class="card">
+            <div class="muted small">Click ricevuti</div>
+            <div style="font-size:1.6rem;font-weight:700;">${totalClicks}</div>
+          </div>
+          <div class="card">
+            <div class="muted small">Guadagni totali</div>
+            <div style="font-size:1.6rem;font-weight:700;">${fmtMoney(totalEarnings)} USD</div>
+          </div>
+          <div class="card">
+            <div class="muted small">Guadagni mese corrente*</div>
+            <div style="font-size:1.6rem;font-weight:700;">${fmtMoney(currentMonthEarnings)} USD</div>
+            <p class="muted small" style="margin-top:4px;">*stima non definitiva</p>
+          </div>
+        </section>
+      `;
+    }
+
+    function renderMonthlyTable(rows) {
+      if (!rows || !rows.length) {
+        return '<p class="muted">Non ci sono ancora vendite registrate a tuo nome.</p>';
+      }
+      const body = rows.map(r => {
+        const monthLabel = r.month?.slice(0, 7) || '';
+        const tier = Math.round((r.share_percent || 0) * 100);
+        const net = Number(r.net_commissions || 0).toFixed(2);
+        const earnings = Number((r.net_commissions || 0) * (r.share_percent || 0)).toFixed(2);
+        return `
+          <tr>
+            <td>${monthLabel}</td>
+            <td>${r.sales_count}</td>
+            <td>${net} USD</td>
+            <td>${tier}%</td>
+            <td>${earnings} USD</td>
+          </tr>
+        `;
+      }).join('');
+      return `
+        <section class="card" style="overflow-x:auto;">
+          <h3>Dettaglio mensile</h3>
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Mese</th>
+                <th>Vendite valide</th>
+                <th>Commissioni nette Travirae</th>
+                <th>Revenue share</th>
+                <th>Guadagno affiliato</th>
+              </tr>
+            </thead>
+            <tbody>${body}</tbody>
+          </table>
+        </section>
+      `;
+    }
+
+    async function fetchStats(slug) {
+      // Click totali
+      const { count: clickCount, error: clickError } = await supabaseClient
+        .from('affiliate_clicks')
+        .select('*', { count: 'exact', head: true })
+        .eq('affiliate_slug', slug);
+      if (clickError) {
+        console.error(clickError);
+      }
+
+      // Statistiche mensili (view)
+      const { data: monthlyRows, error: monthlyError } = await supabaseClient
+        .from('monthly_affiliate_payouts')
+        .select('month,sales_count,net_commissions,share_percent,affiliate_earnings')
+        .eq('affiliate_slug', slug)
+        .order('month', { ascending: false });
+
+      if (monthlyError) {
+        console.error(monthlyError);
+      }
+
+      let totalEarnings = 0;
+      let currentMonthEarnings = 0;
+      const now = new Date();
+      const currentMonthStr = now.toISOString().slice(0, 7); // YYYY-MM
+
+      (monthlyRows || []).forEach(r => {
+        const earn = Number(r.affiliate_earnings || 0);
+        totalEarnings += earn;
+        if ((r.month || '').slice(0, 7) === currentMonthStr) {
+          currentMonthEarnings += earn;
+        }
+      });
+
+      return {
+        totalClicks: clickCount || 0,
+        totalEarnings,
+        currentMonthEarnings,
+        monthlyRows: monthlyRows || []
+      };
+    }
+
+    async function loadDashboard() {
+      const user = await getCurrentUser();
+      if (!user) {
+        // rimaniamo sulla sezione login
+        dashboardSection.style.display = 'none';
+        return;
+      }
+
+      statusEl.textContent = 'Caricamento dati affiliato...';
+
+      const { data: affiliate, error } = await supabaseClient
+        .from('affiliates')
+        .select('slug')
+        .eq('user_id', user.id)
+        .maybeSingle();
+
+      if (error) {
+        console.error(error);
+        statusEl.textContent = 'Errore nel recupero del profilo affiliato.';
+        return;
+      }
+
+      if (!affiliate) {
+        statusEl.textContent = '';
+        dashboardSection.style.display = 'block';
+        dashboardContent.innerHTML = `
+          <section class="card">
+            <h3>Crea il tuo Affiliate ID</h3>
+            <p>Ancora nessun ID assegnato. Clicca il pulsante qui sotto per generare il tuo Affiliate ID univoco.</p>
+            <button id="create-affiliate" class="btn">Genera il mio Affiliate ID</button>
+          </section>
+        `;
+        const btn = document.getElementById('create-affiliate');
+        btn.addEventListener('click', async () => {
+          btn.disabled = true;
+          btn.textContent = 'Creazione in corso...';
+          const email = user.email || '';
+          const base = (email.split('@')[0] || 'affiliate')
+            .replace(/[^a-zA-Z0-9_-]/g, '')
+            .toLowerCase();
+          const slug = base + '-' + Math.floor(Math.random() * 10000).toString().padStart(4, '0');
+
+          const { data, error: insertError } = await supabaseClient
+            .from('affiliates')
+            .insert({ user_id: user.id, slug })
+            .select('slug')
+            .single();
+
+          if (insertError) {
+            console.error(insertError);
+            statusEl.textContent = 'Errore nella creazione dell'Affiliate ID.';
+            btn.disabled = false;
+            btn.textContent = 'Genera il mio Affiliate ID';
+            return;
+          }
+          statusEl.textContent = 'Affiliate ID creato con successo.';
+          await renderDashboard(data.slug);
+        });
+      } else {
+        statusEl.textContent = '';
+        dashboardSection.style.display = 'block';
+        await renderDashboard(affiliate.slug);
+      }
+    }
+
+    async function renderDashboard(slug) {
+      const stats = await fetchStats(slug);
+
+      const html = [
+        renderAffiliateLinks(slug),
+        renderStatsSummary(stats.totalClicks, stats.totalEarnings, stats.currentMonthEarnings),
+        renderMonthlyTable(stats.monthlyRows)
+      ].join('\n');
+
+      dashboardContent.innerHTML = html;
+    }
+
+    loginForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const email = document.getElementById('email').value.trim();
+      const password = document.getElementById('password').value.trim();
+      if (!email || !password) {
+        statusEl.textContent = 'Inserisci email e password.';
+        return;
+      }
+      statusEl.textContent = 'Accesso in corso...';
+
+      // prima provo il login
+      const { error: signInError } = await supabaseClient.auth.signInWithPassword({ email, password });
+      if (signInError) {
+        // se errore, provo la registrazione
+        const { error: signUpError } = await supabaseClient.auth.signUp({ email, password });
+        if (signUpError) {
+          statusEl.textContent = 'Errore: ' + signUpError.message;
+          return;
+        }
+        statusEl.textContent = 'Registrazione completata. Controlla la mail (se richiesta) e poi accedi di nuovo.';
+        return;
+      }
+
+      statusEl.textContent = 'Login effettuato.';
+      await loadDashboard();
+    });
+
+    // Se la pagina si apre con utente già loggato, mostra direttamente la dashboard
+    (async function init(){
+      const user = await getCurrentUser();
+      if (user) {
+        await loadDashboard();
+      }
+    })();
+  </script>
+
+  <!-- Script di base del sito (nav, ecc.) -->
+  <script src="assets/js/main.js"></script>
+</body>
+</html>
