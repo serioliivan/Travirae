@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <link rel="icon" type="image/png" href="assets/img/common/plane-logo.png" />
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Area affiliati – Travirae</title>
+  <meta name="description" content="Area affiliati Travirae: gestisci il tuo Affiliate ID, i link tracciati e monitora click e guadagni generati dal tuo traffico." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+<body class="page--affiliate-portal">
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="index.html">
+        <img src="assets/img/common/plane-logo.png" alt="Travirae" />
+        <span>TRAVIRAE</span>
+      </a>
+      <nav class="main-nav" aria-label="Navigazione principale">
+        <a class="nav-link" href="index.html">Hotel</a>
+        <a class="nav-link" href="flights.html">Voli</a>
+        <a class="nav-link active" href="programma-affiliato.html">Programma affiliato</a>
+      </nav>
+      <button class="nav-toggle" aria-label="Apri menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <main class="section">
+    <div class="container auth-layout">
+      <section class="auth-intro">
+        <h1>Area affiliati Travirae</h1>
+        <p class="lead">
+          Qui gestisci il tuo Affiliate ID, i link tracciati e le statistiche delle prenotazioni generate tramite il tuo traffico.
+        </p>
+        <ul class="auth-benefits">
+          <li>Revenue share dal <strong>40%</strong> al <strong>60%</strong> sulle commissioni nette Travirae.</li>
+          <li>Click e vendite tracciate automaticamente tramite Travelpayouts e Stay22.</li>
+          <li>Payout mensile a partire da <strong>50 USD</strong>.</li>
+        </ul>
+      </section>
+
+      <section class="auth-panel">
+        <div id="auth-card" class="auth-card">
+          <!-- Il contenuto (login/registrazione/dashboard/reset) viene inserito via JS -->
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <script src="https://unpkg.com/@supabase/supabase-js@2"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script>
+    const SUPABASE_URL = 'https://qihaslaxdfwounujpeuf.supabase.co';
+    const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InFpaGFzbGF4ZGZ3b3VudWpwZXVmIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjUwMzE5MTMsImV4cCI6MjA4MDYwNzkxM30.scqVi4SjN76Oqr3FVtHt5OZWcn8Zh7LyTgU-H4bNEdo';
+    window.supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+  </script>
+  <script src="assets/js/main.js"></script>
+  <script>
+    (function(){
+      const supabase = window.supabaseClient;
+      const card = document.getElementById('auth-card');
+
+      function setActiveTab(tab){
+        const tabs = card.querySelectorAll('.auth-tab');
+        tabs.forEach(function(el){
+          el.classList.toggle('is-active', el.dataset.tab === tab);
+        });
+      }
+
+      function renderLogin(message){
+        card.innerHTML = `
+          <div class="auth-tabs" role="tablist">
+            <button class="auth-tab is-active" data-tab="login" type="button">Accedi</button>
+            <button class="auth-tab" data-tab="signup" type="button">Registrati</button>
+          </div>
+          <div class="auth-body">
+            <h2>Accedi alla tua area</h2>
+            ${message ? `<p class="auth-message">${message}</p>` : ''}
+            <form id="login-form" class="auth-form">
+              <label class="auth-field">
+                <span>Email</span>
+                <input type="email" name="email" required autocomplete="email" />
+              </label>
+              <label class="auth-field">
+                <span>Password</span>
+                <input type="password" name="password" required autocomplete="current-password" />
+              </label>
+              <div class="auth-actions">
+                <button type="submit" class="btn">Accedi</button>
+                <button type="button" class="link-button" id="forgot-password-btn">Password dimenticata?</button>
+              </div>
+            </form>
+          </div>
+        `;
+        attachTabs();
+        const form = document.getElementById('login-form');
+        const forgotBtn = document.getElementById('forgot-password-btn');
+
+        form.addEventListener('submit', async function(e){
+          e.preventDefault();
+          const email = form.email.value.trim();
+          const password = form.password.value.trim();
+          const { data, error } = await supabase.auth.signInWithPassword({ email, password });
+          if(error){
+            renderLogin('Credenziali non valide. Controlla email e password e riprova.');
+            return;
+          }
+          showDashboard();
+        });
+
+        forgotBtn.addEventListener('click', function(){
+          renderForgotPassword();
+        });
+      }
+
+      function renderSignup(message){
+        card.innerHTML = `
+          <div class="auth-tabs" role="tablist">
+            <button class="auth-tab" data-tab="login" type="button">Accedi</button>
+            <button class="auth-tab is-active" data-tab="signup" type="button">Registrati</button>
+          </div>
+          <div class="auth-body">
+            <h2>Crea un nuovo account</h2>
+            ${message ? `<p class="auth-message">${message}</p>` : ''}
+            <form id="signup-form" class="auth-form">
+              <label class="auth-field">
+                <span>Email</span>
+                <input type="email" name="email" required autocomplete="email" />
+              </label>
+              <label class="auth-field">
+                <span>Password</span>
+                <input type="password" name="password" required autocomplete="new-password" minlength="6" />
+              </label>
+              <label class="auth-field">
+                <span>Conferma password</span>
+                <input type="password" name="passwordConfirm" required autocomplete="new-password" minlength="6" />
+              </label>
+              <div class="auth-actions">
+                <button type="submit" class="btn">Registrati</button>
+              </div>
+              <p class="auth-note">Riceverai una email di conferma. Dopo aver confermato l'indirizzo, potrai accedere con le stesse credenziali.</p>
+            </form>
+          </div>
+        `;
+        attachTabs();
+        const form = document.getElementById('signup-form');
+        form.addEventListener('submit', async function(e){
+          e.preventDefault();
+          const email = form.email.value.trim();
+          const password = form.password.value.trim();
+          const passwordConfirm = form.passwordConfirm.value.trim();
+          if(password !== passwordConfirm){
+            renderSignup('Le password non coincidono. Riprova.');
+            return;
+          }
+          const { data, error } = await supabase.auth.signUp({
+            email,
+            password,
+            options: {
+              emailRedirectTo: 'https://travirae.com/area-affiliati.html?email_confirmed=1'
+            }
+          });
+          if(error){
+            renderSignup('Errore nella registrazione: ' + error.message);
+            return;
+          }
+          renderLogin('Registrazione completata. Controlla la tua email per confermare l'account, poi accedi.');
+        });
+      }
+
+      function renderForgotPassword(message){
+        card.innerHTML = `
+          <div class="auth-tabs" role="tablist">
+            <button class="auth-tab is-active" data-tab="login" type="button">Accedi</button>
+            <button class="auth-tab" data-tab="signup" type="button">Registrati</button>
+          </div>
+          <div class="auth-body">
+            <h2>Recupera password</h2>
+            ${message ? `<p class="auth-message">${message}</p>` : ''}
+            <form id="forgot-form" class="auth-form">
+              <label class="auth-field">
+                <span>Email</span>
+                <input type="email" name="email" required autocomplete="email" />
+              </label>
+              <div class="auth-actions">
+                <button type="submit" class="btn">Invia link di reset</button>
+                <button type="button" class="link-button" id="back-to-login">Torna al login</button>
+              </div>
+            </form>
+          </div>
+        `;
+        attachTabs();
+        const form = document.getElementById('forgot-form');
+        const backBtn = document.getElementById('back-to-login');
+
+        form.addEventListener('submit', async function(e){
+          e.preventDefault();
+          const email = form.email.value.trim();
+          const { data, error } = await supabase.auth.resetPasswordForEmail(email, {
+            redirectTo: 'https://travirae.com/area-affiliati.html?mode=recovery'
+          });
+          if(error){
+            renderForgotPassword('Errore nell'invio della mail: ' + error.message);
+            return;
+          }
+          renderLogin('Ti abbiamo inviato una email con il link per reimpostare la password.');
+        });
+
+        backBtn.addEventListener('click', function(){
+          renderLogin();
+        });
+      }
+
+      function renderResetPassword(){
+        card.innerHTML = `
+          <div class="auth-body">
+            <h2>Imposta una nuova password</h2>
+            <p class="auth-message">Hai aperto il link di recupero password. Scegli una nuova password per il tuo account.</p>
+            <form id="reset-form" class="auth-form">
+              <label class="auth-field">
+                <span>Nuova password</span>
+                <input type="password" name="password" required minlength="6" autocomplete="new-password" />
+              </label>
+              <label class="auth-field">
+                <span>Conferma nuova password</span>
+                <input type="password" name="passwordConfirm" required minlength="6" autocomplete="new-password" />
+              </label>
+              <div class="auth-actions">
+                <button type="submit" class="btn">Aggiorna password</button>
+              </div>
+            </form>
+          </div>
+        `;
+        const form = document.getElementById('reset-form');
+        form.addEventListener('submit', async function(e){
+          e.preventDefault();
+          const password = form.password.value.trim();
+          const confirm = form.passwordConfirm.value.trim();
+          if(password !== confirm){
+            alert('Le password non coincidono.');
+            return;
+          }
+          const { data, error } = await supabase.auth.updateUser({ password });
+          if(error){
+            alert('Errore durante l\'aggiornamento: ' + error.message);
+            return;
+          }
+          // Pulisci hash dalla URL
+          if(window.history && window.history.replaceState){
+            history.replaceState(null, document.title, window.location.pathname + window.location.search);
+          }
+          renderLogin('Password aggiornata con successo. Ora puoi accedere con le nuove credenziali.');
+        });
+      }
+
+      function attachTabs(){
+        const tabs = card.querySelectorAll('.auth-tab');
+        tabs.forEach(function(btn){
+          btn.addEventListener('click', function(){
+            const tab = btn.dataset.tab;
+            if(tab === 'login') renderLogin();
+            if(tab === 'signup') renderSignup();
+          });
+        });
+      }
+
+      async function ensureAffiliate(user){
+        const { data, error } = await supabase
+          .from('affiliates')
+          .select('slug')
+          .eq('user_id', user.id)
+          .maybeSingle();
+        if(error){
+          console.error('Errore recupero affiliate', error);
+          return null;
+        }
+        if(data && data.slug) return data.slug;
+
+        const base = (user.email.split('@')[0] || 'affiliate')
+          .replace(/[^a-zA-Z0-9_-]/g, '')
+          .toLowerCase();
+        const slug = base + '-' + Math.floor(Math.random() * 10000);
+        const { data: inserted, error: insertError } = await supabase
+          .from('affiliates')
+          .insert({ user_id: user.id, slug })
+          .select('slug')
+          .single();
+        if(insertError){
+          console.error('Errore creazione Affiliate ID', insertError);
+          return null;
+        }
+        return inserted.slug;
+      }
+
+      async function fetchStats(slug){
+        // Click totali
+        const { count: clicksCount } = await supabase
+          .from('affiliate_clicks')
+          .select('*', { count: 'exact', head: true })
+          .eq('affiliate_slug', slug);
+
+        const { data: payouts } = await supabase
+          .from('monthly_affiliate_payouts')
+          .select('*')
+          .eq('affiliate_slug', slug)
+          .order('month', { ascending: true });
+
+        const allPayouts = payouts || [];
+        let totalEarnings = 0;
+        let currentMonthEarnings = 0;
+        const now = new Date();
+        const ymCurrent = now.toISOString().slice(0, 7);
+
+        const chartLabels = [];
+        const chartValues = [];
+
+        allPayouts.forEach(function(row){
+          const earnings = Number(row.affiliate_earnings || 0);
+          totalEarnings += earnings;
+          const ym = String(row.month).slice(0, 7);
+          if(ym === ymCurrent){
+            currentMonthEarnings += earnings;
+          }
+          chartLabels.push(ym);
+          chartValues.push(earnings);
+        });
+
+        return {
+          clicks: clicksCount || 0,
+          payouts: allPayouts,
+          totalEarnings,
+          currentMonthEarnings,
+          chartLabels,
+          chartValues
+        };
+      }
+
+      function formatUsd(n){
+        return (Number(n) || 0).toFixed(2) + ' USD';
+      }
+
+      function renderDashboardView(slug, stats){
+        const baseUrl = 'https://travirae.com';
+        const payoutsRows = (stats.payouts || []).map(function(row){
+          const ym = String(row.month).slice(0, 7);
+          const share = Number(row.share_percent || 0) * 100;
+          return `
+            <tr>
+              <td>${ym}</td>
+              <td>${row.sales_count || 0}</td>
+              <td>${formatUsd(row.net_commissions)}</td>
+              <td>${share.toFixed(0)}%</td>
+              <td>${formatUsd(row.affiliate_earnings)}</td>
+            </tr>
+          `;
+        }).join('') || `
+          <tr><td colspan="5">Non ci sono ancora guadagni registrati.</td></tr>
+        `;
+
+        card.innerHTML = `
+          <div class="auth-dashboard-header">
+            <h2>La tua dashboard affiliato</h2>
+            <button type="button" class="logout-btn" id="logout-btn">Esci</button>
+          </div>
+          <div class="affiliate-id-box">
+            <p>Affiliate ID</p>
+            <code>${slug}</code>
+          </div>
+          <div class="affiliate-links">
+            <h3>Il tuo link principale</h3>
+            <div class="affiliate-link-row">
+              <code class="affiliate-link-code">${baseUrl}/?ref=${slug}</code>
+              <button type="button" class="copy-btn" data-copy="${baseUrl}/?ref=${slug}">Copia</button>
+            </div>
+            <p class="muted">Usa questo link unico per inviare il tuo traffico a Travirae. Tutte le prenotazioni fatte sul sito dopo un clic saranno attribuite a te.</p>
+          </div>
+          <div class="stats-cards">
+            <div class="stats-card">
+              <h4>Click ricevuti</h4>
+              <p class="stats-number">${stats.clicks}</p>
+            </div>
+            <div class="stats-card">
+              <h4>Guadagno totale</h4>
+              <p class="stats-number">${formatUsd(stats.totalEarnings)}</p>
+            </div>
+            <div class="stats-card">
+              <h4>Guadagno mese corrente</h4>
+              <p class="stats-number">${formatUsd(stats.currentMonthEarnings)}</p>
+            </div>
+          </div>
+          <div class="chart-card">
+            <h3>Guadagni mensili</h3>
+            <div class="chart-container">
+              <canvas id="earningsChart" height="140"></canvas>
+            </div>
+          </div>
+          <div class="stats-table-wrapper">
+            <h3>Andamento mensile</h3>
+            <table class="stats-table">
+              <thead>
+                <tr>
+                  <th>Mese</th>
+                  <th>Vendite valide</th>
+                  <th>Commissioni nette Travirae</th>
+                  <th>Revenue share</th>
+                  <th>Guadagno affiliato</th>
+                </tr>
+              </thead>
+              <tbody>${payoutsRows}</tbody>
+            </table>
+          </div>
+        `;
+
+        // Logout
+        const logoutBtn = document.getElementById('logout-btn');
+        if(logoutBtn){
+          logoutBtn.addEventListener('click', async function(){
+            await supabase.auth.signOut();
+            renderLogin('Sei stato disconnesso.');
+          });
+        }
+
+        // Bottoni copia
+        const copyButtons = card.querySelectorAll('.copy-btn');
+        copyButtons.forEach(function(btn){
+          btn.addEventListener('click', function(){
+            const value = btn.getAttribute('data-copy') || '';
+            if(!value) return;
+            if(navigator.clipboard && navigator.clipboard.writeText){
+              navigator.clipboard.writeText(value).then(function(){
+                btn.textContent = 'Copiato!';
+                setTimeout(function(){ btn.textContent = 'Copia'; }, 1500);
+              });
+            }else{
+              const tmp = document.createElement('textarea');
+              tmp.value = value;
+              document.body.appendChild(tmp);
+              tmp.select();
+              try{ document.execCommand('copy'); }catch(e){}
+              document.body.removeChild(tmp);
+              btn.textContent = 'Copiato!';
+              setTimeout(function(){ btn.textContent = 'Copia'; }, 1500);
+            }
+          });
+        });
+
+        // Grafico
+        if(typeof Chart !== 'undefined' && stats.chartLabels.length){
+          var ctx = document.getElementById('earningsChart').getContext('2d');
+          new Chart(ctx, {
+            type: 'line',
+            data: {
+              labels: stats.chartLabels,
+              datasets: [{
+                label: 'Guadagni mensili (USD)',
+                data: stats.chartValues,
+                tension: 0.25,
+                fill: false
+              }]
+            },
+            options: {
+              responsive: true,
+              maintainAspectRatio: false,
+              plugins: {
+                legend: { display: false }
+              },
+              scales: {
+                x: { display: true },
+                y: { display: true }
+              }
+            }
+          });
+        } else {
+          var canvas = document.getElementById('earningsChart');
+          if(canvas && canvas.parentNode){
+            canvas.parentNode.innerHTML = '<p class="muted">Il grafico sarà visibile quando avrai almeno un guadagno registrato.</p>';
+          }
+        }
+      }
+
+      async function showDashboard(){
+        const { data } = await supabase.auth.getUser();
+        const user = data && data.user;
+        if(!user){
+          renderLogin();
+          return;
+        }
+        const slug = await ensureAffiliate(user);
+        if(!slug){
+          renderLogin('Errore nella creazione del tuo Affiliate ID. Riprova più tardi.');
+          return;
+        }
+        const stats = await fetchStats(slug);
+        renderDashboardView(slug, stats);
+      }
+
+      function handleAuthFlow(){
+        const hash = window.location.hash || '';
+        const query = window.location.search || '';
+
+        // Password recovery da email (type=recovery nel fragment)
+        if(hash.indexOf('type=recovery') !== -1 || query.indexOf('mode=recovery') !== -1){
+          // in questo caso l'utente è già autenticato con un token temporaneo
+          renderResetPassword();
+          return;
+        }
+
+        // Email confermata
+        if(query.indexOf('email_confirmed=1') !== -1){
+          renderLogin('Email confermata con successo. Ora puoi accedere.');
+          return;
+        }
+
+        supabase.auth.getUser().then(function(res){
+          if(res.data && res.data.user){
+            showDashboard();
+          } else {
+            renderLogin();
+          }
+        });
+      }
+
+      handleAuthFlow();
+    })();
+  </script>
+</body>
+</html>
