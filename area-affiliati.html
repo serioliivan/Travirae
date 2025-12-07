@@ -1,0 +1,714 @@
+<!DOCTYPE html>
+
+<html lang="it">
+<head>
+<link href="assets/img/common/plane-logo.png" rel="icon" type="image/png"/>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Area affiliati – Dashboard e login | Travirae</title>
+<meta name="description" content="Accedi alla tua area affiliati Travirae: registra un nuovo account, gestisci i tuoi link di referral e tieni d'occhio click e guadagni."/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="assets/css/style.css"/>
+</head>
+<body class="page--affiliate-portal">
+<header class="site-header">
+<div class="container header-inner">
+<a class="brand" href="index.html">
+<img alt="Travirae" src="assets/img/common/plane-logo.png"/>
+<span>TRAVIRAE</span>
+</a>
+<nav aria-label="Navigazione principale" class="main-nav">
+<a class="nav-link" href="index.html">Hotel</a>
+<a class="nav-link" href="flights.html">Voli</a>
+<a class="nav-link" href="programma-affiliato.html">Programma affiliato</a>
+</nav>
+<button aria-expanded="false" aria-label="Apri menu" class="nav-toggle"><span></span><span></span><span></span></button>
+</div>
+</header>
+<main>
+  <section class="section">
+    <div class="container affiliate-portal-layout">
+      <div class="affiliate-copy">
+        <span class="badge badge--soft">Programma Affiliato Travirae</span>
+        <h1 class="display">Area affiliati</h1>
+        <p class="subtitle">
+          Gestisci i tuoi link di referral e monitora in tempo reale click, vendite e guadagni generati con Travirae.
+        </p>
+        <ul class="affiliate-benefits">
+          <li>🔗 Link personale con parametro <code>?ref=TUO-ID</code> valido su tutto il sito.</li>
+          <li>📊 Statistiche mensili su click, vendite e commissioni.</li>
+          <li>💳 Payout automatici basati su <strong>revenue share</strong> sulle commissioni nette generate.</li>
+        </ul>
+        <p class="muted small">
+          Non hai ancora un account? Usa il tab <strong>Registrati</strong> per creare il tuo profilo affiliato
+          in pochi secondi.
+        </p>
+        <p class="small">
+          Hai dubbi su percentuali, termini o payout? <a href="programma-affiliato.html">Leggi la pagina del Programma Affiliato</a>.
+        </p>
+      </div>
+      <div class="affiliate-auth-panel">
+        <div class="auth-card" id="affiliate-auth-card">
+          <div class="auth-tabs" role="tablist">
+            <button class="auth-tab active" type="button" data-view="login" aria-selected="true">Accedi</button>
+            <button class="auth-tab" type="button" data-view="register" aria-selected="false">Registrati</button>
+          </div>
+          <div class="auth-alert" id="auth-alert" aria-live="polite"></div>
+          <div class="auth-views">
+            <!-- Login -->
+            <div class="auth-view auth-view--active" data-view="login">
+              <form class="auth-form" id="affiliate-login-form">
+                <div class="field">
+                  <label for="login-email">Email</label>
+                  <input id="login-email" name="email" type="email" required autocomplete="email" placeholder="tuoindirizzo@mail.com"/>
+                </div>
+                <div class="field">
+                  <label for="login-password">Password</label>
+                  <input id="login-password" name="password" type="password" required autocomplete="current-password" placeholder="La tua password"/>
+                </div>
+                <button class="btn btn--full" type="submit">Accedi</button>
+              </form>
+              <button class="auth-link" type="button" data-action="show-forgot">Password dimenticata?</button>
+            </div>
+            <!-- Registrazione -->
+            <div class="auth-view auth-view--hidden" data-view="register">
+              <form class="auth-form" id="affiliate-register-form">
+                <div class="field">
+                  <label for="register-email">Email</label>
+                  <input id="register-email" name="email" type="email" required autocomplete="email" placeholder="tuoindirizzo@mail.com"/>
+                </div>
+                <div class="field">
+                  <label for="register-password">Password</label>
+                  <input id="register-password" name="password" type="password" required autocomplete="new-password" placeholder="Crea una password sicura"/>
+                </div>
+                <div class="field">
+                  <label for="register-password-confirm">Conferma password</label>
+                  <input id="register-password-confirm" name="password_confirm" type="password" required autocomplete="new-password" placeholder="Ripeti la password"/>
+                </div>
+                <button class="btn btn--full" type="submit">Crea account</button>
+                <p class="muted small">
+                  Riceverai un'email per confermare l'account. Dopo la conferma potrai accedere a questa dashboard.
+                </p>
+              </form>
+            </div>
+            <!-- Password dimenticata -->
+            <div class="auth-view auth-view--hidden" data-view="forgot">
+              <form class="auth-form" id="affiliate-forgot-form">
+                <p class="muted small">
+                  Inserisci l'email con cui ti sei registrato. Riceverai un link per impostare una nuova password.
+                </p>
+                <div class="field">
+                  <label for="forgot-email">Email</label>
+                  <input id="forgot-email" name="email" type="email" required autocomplete="email" placeholder="tuoindirizzo@mail.com"/>
+                </div>
+                <button class="btn btn--full" type="submit">Invia link di reset</button>
+              </form>
+            </div>
+            <!-- Recovery password -->
+            <div class="auth-view auth-view--hidden" data-view="recovery">
+              <form class="auth-form" id="affiliate-recovery-form">
+                <p class="muted small">
+                  Imposta una nuova password per il tuo account affiliato.
+                </p>
+                <div class="field">
+                  <label for="recovery-password">Nuova password</label>
+                  <input id="recovery-password" name="password" type="password" required autocomplete="new-password" placeholder="Nuova password"/>
+                </div>
+                <div class="field">
+                  <label for="recovery-password-confirm">Conferma nuova password</label>
+                  <input id="recovery-password-confirm" name="password_confirm" type="password" required autocomplete="new-password" placeholder="Ripeti la nuova password"/>
+                </div>
+                <button class="btn btn--full" type="submit">Aggiorna password</button>
+              </form>
+            </div>
+            <!-- Dashboard affiliato -->
+            <div class="auth-view auth-view--hidden" data-view="dashboard" id="affiliate-dashboard-view">
+              <div class="dashboard-header">
+                <div>
+                  <h2>Dashboard affiliato</h2>
+                  <p class="muted small">
+                    Tieni d'occhio le performance dei tuoi link. I dati vengono aggiornati in base alle tabelle
+                    <code>affiliate_clicks</code> e <code>monthly_affiliate_payouts</code>.
+                  </p>
+                </div>
+                <button class="btn btn--ghost" type="button" id="affiliate-logout">Esci</button>
+              </div>
+              <div class="dashboard-section">
+                <h3>Il tuo link affiliato</h3>
+                <p class="muted small">
+                  Condividi questo link sul tuo sito, blog, newsletter o social. Tutte le visite con <code>?ref</code>
+                  saranno attribuite al tuo ID affiliato.
+                </p>
+                <div class="affiliate-link-row">
+                  <code class="affiliate-slug-pill" id="affiliate-slug">---</code>
+                  <div class="affiliate-link-group">
+                    <input class="affiliate-link-input" id="affiliate-link-input" type="text" readonly/>
+                    <button class="btn btn--copy" type="button" id="affiliate-copy-link">Copia</button>
+                  </div>
+                </div>
+              </div>
+              <div class="dashboard-section">
+                <h3>Statistiche rapide</h3>
+                <div class="affiliate-stats-grid">
+                  <div class="stat-card">
+                    <div class="stat-label">Click totali</div>
+                    <div class="stat-value" id="affiliate-clicks-count">—</div>
+                  </div>
+                  <div class="stat-card">
+                    <div class="stat-label">Guadagno totale</div>
+                    <div class="stat-value" id="affiliate-earnings-total">—</div>
+                  </div>
+                  <div class="stat-card">
+                    <div class="stat-label">Guadagno mese corrente</div>
+                    <div class="stat-value" id="affiliate-earnings-current">—</div>
+                  </div>
+                </div>
+              </div>
+              <div class="dashboard-section">
+                <h3>Andamento mensile guadagni</h3>
+                <div class="chart-wrapper">
+                  <canvas id="affiliate-earnings-chart" height="140"></canvas>
+                </div>
+              </div>
+              <div class="dashboard-section">
+                <h3>Dettaglio payout mensili</h3>
+                <div class="table-wrapper">
+                  <table class="payout-table">
+                    <thead>
+                      <tr>
+                        <th>Mese</th>
+                        <th>Vendite</th>
+                        <th>Commissioni nette</th>
+                        <th>Share %</th>
+                        <th>Guadagno affiliato</th>
+                      </tr>
+                    </thead>
+                    <tbody id="affiliate-payouts-body">
+                      <tr>
+                        <td colspan="5" class="muted small">Caricamento dati in corso…</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div> <!-- end .auth-views -->
+        </div> <!-- end .auth-card -->
+      </div>
+    </div>
+  </section>
+</main>
+<footer class="mega-footer">
+<div class="container mf-grid">
+<div class="mf-brand">
+<div class="brand big">
+<img alt="Travirae" src="assets/img/common/plane-logo.png" style="height:28px"/>
+<span>Travirae</span>
+</div>
+<p class="muted">La tua piattaforma di ispirazione e prenotazione hotel con mappa interattiva.</p>
+<div class="mf-socials">
+  <a class="social social--icon" href="https://www.instagram.com/travirae_official/" aria-label="Instagram" target="_blank" rel="noopener">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/e/e7/Instagram_logo_2016.svg" alt="" loading="lazy"/>
+  </a>
+  <a class="social social--icon" href="https://www.facebook.com/profile.php?id=61573037940606" aria-label="Facebook" target="_blank" rel="noopener">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg" alt="" loading="lazy"/>
+  </a>
+  <a class="social social--icon" href="https://www.tiktok.com/@travirae?lang=en" aria-label="TikTok" target="_blank" rel="noopener">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/a/a6/Tiktok_icon.svg" alt="" loading="lazy"/>
+  </a>
+  <a class="social social--icon" href="https://www.youtube.com/channel/UCgGtp3qTHUzMPqjpT8EnRbQ" aria-label="YouTube" target="_blank" rel="noopener">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/0/09/YouTube_full-color_icon_%282017%29.svg" alt="" loading="lazy"/>
+  </a>
+</div>
+</div>
+<nav class="mf-services"><h4>Servizi</h4><ul>
+<li><a href="flights.html">Voli</a></li>
+<li><a href="index.html">Hotel</a></li>
+<li><a href="programma-affiliato.html">Programma affiliato</a></li>
+</ul></nav>
+<div class="mf-contact">
+<h4>Resta in contatto</h4>
+<ul class="contact-list">
+<li>✉️ info@travirae.example</li>
+<li>Iscriviti alla nostra newsletter</li>
+</ul>
+<form class="newsletter-form wide" data-netlify="true" method="POST" name="newsletter">
+<input aria-label="Email per newsletter" name="email" placeholder="La tua email" required="" type="email"/>
+<button class="btn" type="submit">Iscriviti</button>
+</form>
+</div>
+</div>
+<div class="container mf-bottom muted small">
+<div>© <span id="year-copy"></span> Travirae · Tutti i diritti riservati</div>
+<div class="mf-legal">
+<a href="privacy.html">Privacy</a> · <a href="termini.html">Termini</a> · <a href="cookie.html">Cookie</a>
+</div>
+</div>
+</footer>
+<script src="https://unpkg.com/@supabase/supabase-js@2"></script>
+<script>
+const SUPABASE_URL = 'https://qihaslaxdfwounujpeuf.supabase.co';
+const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InFpaGFzbGF4ZGZ3b3VudWpwZXVmIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjUwMzE5MTMsImV4cCI6MjA4MDYwNzkxM30.scqVi4SjN76Oqr3FVtHt5OZWcn8Zh7LyTgU-H4bNEdo';
+window.supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+</script>
+<script src="assets/js/main.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+(function(){
+  if (!window.supabaseClient) {
+    console.error('Supabase client non inizializzato.');
+    return;
+  }
+  var supabase = window.supabaseClient;
+
+  var root = document.getElementById('affiliate-auth-card');
+  if (!root) return;
+
+  var alertEl = document.getElementById('auth-alert');
+  var tabs = root.querySelectorAll('.auth-tab');
+  var views = root.querySelectorAll('.auth-view');
+
+  var loginForm = document.getElementById('affiliate-login-form');
+  var registerForm = document.getElementById('affiliate-register-form');
+  var forgotForm = document.getElementById('affiliate-forgot-form');
+  var recoveryForm = document.getElementById('affiliate-recovery-form');
+
+  var logoutBtn = document.getElementById('affiliate-logout');
+  var copyBtn = document.getElementById('affiliate-copy-link');
+  var linkInput = document.getElementById('affiliate-link-input');
+  var slugEl = document.getElementById('affiliate-slug');
+
+  var clicksEl = document.getElementById('affiliate-clicks-count');
+  var totalEarnEl = document.getElementById('affiliate-earnings-total');
+  var currentEarnEl = document.getElementById('affiliate-earnings-current');
+  var payoutsBody = document.getElementById('affiliate-payouts-body');
+  var chartCanvas = document.getElementById('affiliate-earnings-chart');
+  var chartInstance = null;
+
+  var currentAffiliateSlug = null;
+
+  function setAlert(message, type){
+    if(!alertEl) return;
+    alertEl.textContent = message || '';
+    alertEl.className = 'auth-alert';
+    if(!message) return;
+    if(type === 'error') alertEl.classList.add('auth-alert--error');
+    else if(type === 'success') alertEl.classList.add('auth-alert--success');
+  }
+
+  function switchView(view){
+    views.forEach(function(v){
+      if(v.getAttribute('data-view') === view){
+        v.classList.add('auth-view--active');
+        v.classList.remove('auth-view--hidden');
+      } else {
+        v.classList.remove('auth-view--active');
+        v.classList.add('auth-view--hidden');
+      }
+    });
+    tabs.forEach(function(tab){
+      var target = tab.getAttribute('data-view');
+      var isActiveTab = (view === 'register' ? 'register' : 'login') === target;
+      tab.classList.toggle('active', isActiveTab);
+      tab.setAttribute('aria-selected', isActiveTab ? 'true' : 'false');
+    });
+  }
+
+  function getUrlParams(){
+    try {
+      return new URLSearchParams(window.location.search || '');
+    } catch(e) {
+      return new URLSearchParams('');
+    }
+  }
+
+  function buildAffiliateUrl(slug){
+    var origin = (window.location && window.location.origin) || 'https://travirae.com';
+    if(!origin) origin = 'https://travirae.com';
+    return origin.replace(/\/+$/, '') + '/?ref=' + encodeURIComponent(slug);
+  }
+
+  function formatCurrency(value){
+    var num = Number(value || 0);
+    if(!isFinite(num)) num = 0;
+    return num.toLocaleString('it-IT', {
+      minimumFractionDigits: 2,
+      maximumFractionDigits: 2
+    });
+  }
+
+  function generateSlugFromUser(user){
+    var email = (user && user.email) || '';
+    var base = email.split('@')[0] || 'affiliato';
+    base = base.toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-+|-+$/g,'');
+    if(!base) base = 'affiliato';
+    var rand = Math.floor(Math.random()*9000) + 1000;
+    return base + '-' + String(rand);
+  }
+
+  async function ensureAffiliateForUser(user){
+    if(!user) return null;
+    try {
+      var resp = await supabase
+        .from('affiliates')
+        .select('slug')
+        .eq('user_id', user.id)
+        .maybeSingle();
+      if(resp && resp.data && resp.data.slug){
+        return resp.data.slug;
+      }
+    } catch(err){
+      console.warn('Errore lettura affiliato esistente', err);
+    }
+    var slug = generateSlugFromUser(user);
+    try {
+      var insertResp = await supabase
+        .from('affiliates')
+        .insert({ user_id: user.id, slug: slug });
+      if(insertResp && insertResp.error){
+        console.warn('Errore creazione affiliato', insertResp.error);
+      }
+    } catch(err2){
+      console.warn('Errore rete creazione affiliato', err2);
+    }
+    return slug;
+  }
+
+  async function loadDashboardStats(slug){
+    if(!slug) return;
+    var totalClicks = 0;
+    var totalEarnings = 0;
+    var currentMonthEarnings = 0;
+    var labels = [];
+    var values = [];
+
+    if(clicksEl) clicksEl.textContent = '…';
+    if(totalEarnEl) totalEarnEl.textContent = '…';
+    if(currentEarnEl) currentEarnEl.textContent = '…';
+
+    try {
+      var clicksResp = await supabase
+        .from('affiliate_clicks')
+        .select('page', { count: 'exact', head: true })
+        .eq('affiliate_slug', slug);
+      if(clicksResp && typeof clicksResp.count === 'number'){
+        totalClicks = clicksResp.count;
+      }
+    } catch(err){
+      console.warn('Errore caricamento click affiliato', err);
+    }
+    if(clicksEl) clicksEl.textContent = String(totalClicks);
+
+    var rows = [];
+    try {
+      var payoutsResp = await supabase
+        .from('monthly_affiliate_payouts')
+        .select('month, sales_count, net_commissions, share_percent, affiliate_earnings')
+        .eq('affiliate_slug', slug)
+        .order('month', { ascending: true });
+      if(payoutsResp && Array.isArray(payoutsResp.data)){
+        rows = payoutsResp.data;
+      }
+    } catch(err2){
+      console.warn('Errore caricamento payout', err2);
+    }
+
+    if(payoutsBody) payoutsBody.innerHTML = '';
+
+    var now = new Date();
+    if(rows && rows.length){
+      var months = ['Gen','Feb','Mar','Apr','Mag','Giu','Lug','Ago','Set','Ott','Nov','Dic'];
+      rows.forEach(function(row){
+        var label = '';
+        if(row.month){
+          var d = new Date(row.month);
+          if(!isNaN(d)){
+            var m = d.getMonth();
+            var y = d.getFullYear();
+            label = (months[m] || '') + ' ' + y;
+            if(m === now.getMonth() && y === now.getFullYear()){
+              currentMonthEarnings += Number(row.affiliate_earnings || 0);
+            }
+          } else {
+            label = String(row.month);
+          }
+        }
+        var earnings = Number(row.affiliate_earnings || 0);
+        totalEarnings += earnings;
+        labels.push(label);
+        values.push(earnings);
+
+        if(payoutsBody){
+          var tr = document.createElement('tr');
+          var net = Number(row.net_commissions || 0);
+          var share = row.share_percent != null ? Number(row.share_percent) : null;
+          tr.innerHTML =
+            '<td>' + (label || '&mdash;') + '</td>' +
+            '<td>' + (row.sales_count != null ? row.sales_count : '—') + '</td>' +
+            '<td>' + (net ? '€ ' + formatCurrency(net) : '—') + '</td>' +
+            '<td>' + (share != null ? formatCurrency(share).replace(',', '.') + '%' : '—') + '</td>' +
+            '<td>' + (earnings ? '€ ' + formatCurrency(earnings) : '—') + '</td>';
+          payoutsBody.appendChild(tr);
+        }
+      });
+    } else if(payoutsBody){
+      var trEmpty = document.createElement('tr');
+      trEmpty.innerHTML = '<td colspan="5" class="muted small">Nessun dato disponibile al momento.</td>';
+      payoutsBody.appendChild(trEmpty);
+    }
+
+    if(totalEarnEl) totalEarnEl.textContent = '€ ' + formatCurrency(totalEarnings);
+    if(currentEarnEl) currentEarnEl.textContent = '€ ' + formatCurrency(currentMonthEarnings);
+
+    if(chartCanvas && typeof Chart !== 'undefined'){
+      try {
+        if(chartInstance) chartInstance.destroy();
+        var ctx = chartCanvas.getContext('2d');
+        chartInstance = new Chart(ctx, {
+          type: 'line',
+          data: {
+            labels: labels,
+            datasets: [{
+              label: 'Guadagni mensili',
+              data: values,
+              tension: 0.25
+            }]
+          },
+          options: {
+            responsive: true,
+            plugins: {
+              legend: { display: false }
+            },
+            scales: {
+              y: { beginAtZero: true }
+            }
+          }
+        });
+      } catch(errChart){
+        console.warn('Errore rendering grafico', errChart);
+      }
+    }
+  }
+
+  async function loadDashboardForCurrentUser(){
+    try {
+      var userResp = await supabase.auth.getUser();
+      if(!userResp || userResp.error || !userResp.data || !userResp.data.user){
+        switchView('login');
+        return;
+      }
+      var user = userResp.data.user;
+      var slug = await ensureAffiliateForUser(user);
+      if(!slug){
+        setAlert('Impossibile recuperare il tuo ID affiliato. Contatta il supporto.', 'error');
+        switchView('login');
+        return;
+      }
+      currentAffiliateSlug = slug;
+      if(slugEl) slugEl.textContent = slug;
+      if(linkInput){
+        linkInput.value = buildAffiliateUrl(slug);
+      }
+      switchView('dashboard');
+      await loadDashboardStats(slug);
+    } catch(err){
+      console.warn('Errore caricamento dashboard', err);
+      setAlert('Si è verificato un errore durante il caricamento della dashboard.', 'error');
+      switchView('login');
+    }
+  }
+
+  if(tabs && tabs.length){
+    tabs.forEach(function(tab){
+      tab.addEventListener('click', function(){
+        var target = tab.getAttribute('data-view');
+        if(target === 'login' || target === 'register'){
+          setAlert('', null);
+          switchView(target);
+        }
+      });
+    });
+  }
+
+  var forgotLink = root.querySelector('[data-action="show-forgot"]');
+  if(forgotLink){
+    forgotLink.addEventListener('click', function(){
+      setAlert('', null);
+      switchView('forgot');
+    });
+  }
+
+  function bindForm(form, handler){
+    if(!form) return;
+    form.addEventListener('submit', function(ev){
+      ev.preventDefault();
+      handler(form);
+    });
+  }
+
+  bindForm(loginForm, async function(form){
+    var email = (form.querySelector('[name="email"]') || {}).value || '';
+    var password = (form.querySelector('[name="password"]') || {}).value || '';
+    if(!email || !password){
+      setAlert('Inserisci email e password.', 'error');
+      return;
+    }
+    setAlert('', null);
+    try {
+      var resp = await supabase.auth.signInWithPassword({ email: email.trim(), password: password });
+      if(resp.error){
+        setAlert(resp.error.message || 'Impossibile effettuare l\'accesso.', 'error');
+        return;
+      }
+      setAlert('Accesso effettuato, stiamo caricando la dashboard…', 'success');
+      await loadDashboardForCurrentUser();
+    } catch(err){
+      console.warn('Errore login', err);
+      setAlert('Si è verificato un errore durante il login.', 'error');
+    }
+  });
+
+  bindForm(registerForm, async function(form){
+    var email = (form.querySelector('[name="email"]') || {}).value || '';
+    var password = (form.querySelector('[name="password"]') || {}).value || '';
+    var passwordConfirm = (form.querySelector('[name="password_confirm"]') || {}).value || '';
+    if(!email || !password || !passwordConfirm){
+      setAlert('Compila tutti i campi per registrarti.', 'error');
+      return;
+    }
+    if(password !== passwordConfirm){
+      setAlert('Le password non coincidono.', 'error');
+      return;
+    }
+    setAlert('', null);
+    try {
+      var resp = await supabase.auth.signUp({
+        email: email.trim(),
+        password: password,
+        options: {
+          emailRedirectTo: 'https://travirae.com/area-affiliati.html?email_confirmed=1'
+        }
+      });
+      if(resp.error){
+        setAlert(resp.error.message || 'Impossibile creare l\'account.', 'error');
+        return;
+      }
+      setAlert('Registrazione completata! Controlla la tua email e conferma l\'account, poi accedi dal tab "Accedi".', 'success');
+      switchView('login');
+    } catch(err){
+      console.warn('Errore registrazione', err);
+      setAlert('Si è verificato un errore durante la registrazione.', 'error');
+    }
+  });
+
+  bindForm(forgotForm, async function(form){
+    var email = (form.querySelector('[name="email"]') || {}).value || '';
+    if(!email){
+      setAlert('Inserisci la tua email per continuare.', 'error');
+      return;
+    }
+    setAlert('', null);
+    try {
+      var resp = await supabase.auth.resetPasswordForEmail(email.trim(), {
+        redirectTo: 'https://travirae.com/area-affiliati.html?mode=recovery'
+      });
+      if(resp.error){
+        setAlert(resp.error.message || 'Impossibile inviare la mail di reset.', 'error');
+        return;
+      }
+      setAlert('Se l\'indirizzo esiste nei nostri sistemi, riceverai a breve un\'email con le istruzioni per reimpostare la password.', 'success');
+      switchView('login');
+    } catch(err){
+      console.warn('Errore reset password', err);
+      setAlert('Si è verificato un errore durante l\'invio della mail di reset.', 'error');
+    }
+  });
+
+  bindForm(recoveryForm, async function(form){
+    var password = (form.querySelector('[name="password"]') || {}).value || '';
+    var passwordConfirm = (form.querySelector('[name="password_confirm"]') || {}).value || '';
+    if(!password || !passwordConfirm){
+      setAlert('Compila entrambi i campi per impostare la nuova password.', 'error');
+      return;
+    }
+    if(password !== passwordConfirm){
+      setAlert('Le password non coincidono.', 'error');
+      return;
+    }
+    setAlert('', null);
+    try {
+      var resp = await supabase.auth.updateUser({ password: password });
+      if(resp.error){
+        setAlert(resp.error.message || 'Impossibile aggiornare la password.', 'error');
+        return;
+      }
+      setAlert('Password aggiornata con successo! Ora puoi accedere con le nuove credenziali.', 'success');
+      switchView('login');
+    } catch(err){
+      console.warn('Errore update password', err);
+      setAlert('Si è verificato un errore durante l\'aggiornamento della password.', 'error');
+    }
+  });
+
+  if(copyBtn && linkInput){
+    copyBtn.addEventListener('click', function(){
+      var value = linkInput.value || '';
+      if(!value) return;
+      function onSuccess(){
+        setAlert('Link affiliato copiato negli appunti.', 'success');
+      }
+      function onError(){
+        setAlert('Impossibile copiare automaticamente. Copia il link manualmente.', 'error');
+      }
+      if(navigator.clipboard && navigator.clipboard.writeText){
+        navigator.clipboard.writeText(value).then(onSuccess).catch(onError);
+      } else {
+        try {
+          linkInput.focus();
+          linkInput.select();
+          var ok = document.execCommand && document.execCommand('copy');
+          if(ok) onSuccess();
+          else onError();
+        } catch(e) {
+          onError();
+        }
+      }
+    });
+  }
+
+  if(logoutBtn){
+    logoutBtn.addEventListener('click', async function(){
+      try {
+        await supabase.auth.signOut();
+        currentAffiliateSlug = null;
+        if(linkInput) linkInput.value = '';
+        if(slugEl) slugEl.textContent = '---';
+        setAlert('Sei uscito dall\'account.', 'success');
+        switchView('login');
+      } catch(err){
+        console.warn('Errore logout', err);
+        setAlert('Si è verificato un errore durante il logout.', 'error');
+      }
+    });
+  }
+
+  async function init(){
+    var params = getUrlParams();
+    if(params.get('mode') === 'recovery'){
+      switchView('recovery');
+      setAlert('Imposta una nuova password per il tuo account.', 'success');
+      return;
+    }
+    if(params.get('email_confirmed') === '1'){
+      setAlert('Email confermata! Ora puoi accedere con le tue credenziali.', 'success');
+    }
+    await loadDashboardForCurrentUser();
+  }
+
+  init();
+})();
+</script>
+</body>
+</html>
