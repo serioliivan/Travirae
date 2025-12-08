@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <link href="assets/img/common/plane-logo.png" rel="icon" type="image/png"/>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Pannello admin – Programma affiliato Travirae</title>
+  <meta name="description" content="Pannello admin Travirae per monitorare le performance del programma affiliati: commissioni nette, guadagni affiliati e guadagni Travirae."/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="assets/css/style.css"/>
+  <meta property="og:title" content="Pannello admin – Travirae Affiliati"/>
+  <meta property="og:description" content="Visualizza le statistiche del programma affiliati Travirae: vendite valide, commissioni nette, payout affiliati e margine Travirae."/>
+  <meta property="og:image" content="assets/img/common/hero.jpg"/>
+</head>
+<body class="page--affiliate-portal page--affiliate-admin">
+<header class="site-header">
+  <div class="container header-inner">
+    <a class="brand" href="index.html" aria-label="Travirae Home">
+      <img src="assets/img/common/plane-logo.png" alt="Travirae" style="height:28px"/>
+      <span>Travirae</span>
+    </a>
+    <nav class="main-nav" aria-label="Navigazione principale">
+      <a class="nav-link" href="index.html">Hotel</a>
+      <a class="nav-link" href="flights.html">Voli</a>
+      <a class="nav-link" href="programma-affiliato.html">Programma affiliato</a>
+    </nav>
+    <button class="nav-toggle" aria-label="Apri menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<main>
+  <section class="section">
+    <div class="container affiliate-portal-grid">
+      <div class="affiliate-intro">
+        <p class="muted small" style="margin:0 0 6px;">Programma Affiliato Travirae</p>
+        <h1>Pannello admin</h1>
+        <p class="subtitle">Monitora le performance del programma affiliati: vendite valide, commissioni nette, guadagni per gli affiliati e margine Travirae.</p>
+        <ul class="benefits-list">
+          <li>Vedi il totale delle <strong>vendite confermate</strong> generate dagli affiliati.</li>
+          <li>Controlla le <strong>commissioni nette</strong> riconosciute a Travirae dai partner.</li>
+          <li>Consulta i <strong>payout dovuti a ciascun affiliato</strong> e il margine che rimane a Travirae.</li>
+        </ul>
+        <p class="muted small">I dati provengono dalla view <code>monthly_affiliate_payouts</code> su Supabase. Per motivi di sicurezza l'accesso è limitato a uno o più indirizzi email admin.</p>
+      </div>
+
+      <div>
+        <div class="auth-card admin-card">
+          <div class="admin-header">
+            <h2>Pannello admin affiliati</h2>
+            <p>Accedi con il tuo account admin per visualizzare le statistiche globali degli affiliati.</p>
+          </div>
+
+          <div class="admin-views" id="admin-view-login">
+            <form id="admin-login-form" class="auth-form">
+              <div class="form-group">
+                <label for="admin-email">Email admin</label>
+                <input id="admin-email" name="email" type="email" autocomplete="username" required/>
+              </div>
+              <div class="form-group">
+                <label for="admin-password">Password</label>
+                <input id="admin-password" name="password" type="password" autocomplete="current-password" required/>
+              </div>
+              <div class="auth-actions">
+                <button type="submit" class="btn">Accedi come admin</button>
+              </div>
+              <p class="muted small" style="margin-top:6px;">L'account admin utilizza lo stesso sistema di login Supabase dell'area affiliati. Assicurati che l'indirizzo email sia abilitato come admin nel codice della pagina.</p>
+            </form>
+          </div>
+
+          <div class="admin-views" id="admin-view-dashboard" hidden>
+            <div class="admin-header">
+              <h2 id="admin-title">Dashboard admin</h2>
+              <p id="admin-subtitle">Statistiche programma affiliati.</p>
+            </div>
+
+            <div class="admin-stats-grid">
+              <div class="stat-card">
+                <div class="stat-label">Vendite confermate totali</div>
+                <div class="stat-value" id="admin-total-sales">—</div>
+              </div>
+              <div class="stat-card">
+                <div class="stat-label">Commissioni nette totali</div>
+                <div class="stat-value" id="admin-total-net">—</div>
+              </div>
+              <div class="stat-card">
+                <div class="stat-label">Payout totali affiliati</div>
+                <div class="stat-value" id="admin-total-aff">—</div>
+              </div>
+              <div class="stat-card">
+                <div class="stat-label">Guadagno totale Travirae</div>
+                <div class="stat-value" id="admin-total-trav">—</div>
+              </div>
+            </div>
+
+            <div class="affiliate-chart-card">
+              <h3>Guadagni mensili – affiliati vs Travirae</h3>
+              <div style="height:220px;">
+                <canvas id="admin-earnings-chart" aria-label="Grafico guadagni mensili admin"></canvas>
+              </div>
+            </div>
+
+            <h3 class="admin-section-title">Riepilogo per mese</h3>
+            <div class="admin-table-wrapper">
+              <table class="admin-table" id="admin-monthly-table">
+                <thead>
+                  <tr>
+                    <th>Mese</th>
+                    <th>Vendite valide</th>
+                    <th>Commissioni nette</th>
+                    <th>Payout affiliati</th>
+                    <th>Guadagno Travirae</th>
+                  </tr>
+                </thead>
+                <tbody id="admin-monthly-tbody">
+                  <tr><td colspan="5" class="muted small">Nessun dato disponibile.</td></tr>
+                </tbody>
+              </table>
+            </div>
+
+            <h3 class="admin-section-title">Riepilogo per affiliato (storico)</h3>
+            <div class="admin-table-wrapper">
+              <table class="admin-table" id="admin-affiliates-table">
+                <thead>
+                  <tr>
+                    <th>Affiliate ID</th>
+                    <th>Vendite valide totali</th>
+                    <th>Commissioni nette totali</th>
+                    <th>Payout totale affiliato</th>
+                    <th>Guadagno totale Travirae</th>
+                  </tr>
+                </thead>
+                <tbody id="admin-affiliates-tbody">
+                  <tr><td colspan="5" class="muted small">Nessun dato disponibile.</td></tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div class="admin-actions">
+              <button type="button" class="btn secondary" id="admin-reload-btn">Ricarica dati</button>
+              <button type="button" class="btn" id="admin-logout-btn">Esci</button>
+            </div>
+          </div>
+
+          <div id="admin-message" class="admin-message" aria-live="polite"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="mega-footer">
+  <div class="container mf-grid">
+    <div class="mf-brand">
+      <div class="brand big">
+        <img src="assets/img/common/plane-logo.png" alt="Travirae" style="height:28px"/>
+        <span>Travirae</span>
+      </div>
+      <p class="muted">La tua piattaforma di ispirazione e prenotazione hotel con mappa interattiva.</p>
+      <div class="mf-socials">
+        <a class="social social--icon" href="https://www.instagram.com/travirae.official/" aria-label="Instagram" target="_blank" rel="noopener">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/e/e7/Instagram_logo_2016.svg" alt="" loading="lazy"/>
+        </a>
+        <a class="social social--icon" href="https://www.facebook.com/profile.php?id=615587037940606" aria-label="Facebook" target="_blank" rel="noopener">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg" alt="" loading="lazy"/>
+        </a>
+        <a class="social social--icon" href="https://www.tiktok.com/@travirae?lang=en" aria-label="TikTok" target="_blank" rel="noopener">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/a/a6/Tiktok_icon.svg" alt="" loading="lazy"/>
+        </a>
+        <a class="social social--icon" href="https://www.youtube.com/channel/UCgGtp3qTHUzMPqjpT8EnRbQ" aria-label="YouTube" target="_blank" rel="noopener">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/0/09/YouTube_full-color_icon_%282017%29.svg" alt="" loading="lazy"/>
+        </a>
+      </div>
+    </div>
+
+    <nav class="mf-links">
+      <h4>Esplora</h4>
+      <ul>
+        <li><a href="index.html">Hotel</a></li>
+        <li><a href="flights.html">Voli</a></li>
+        <li><a href="programma-affiliato.html">Programma affiliato</a></li>
+      </ul>
+    </nav>
+
+    <nav class="mf-services">
+      <h4>Servizi</h4>
+      <ul>
+        <li><a href="flights.html">Voli</a></li>
+        <li><a href="index.html">Hotel</a></li>
+        <li><a href="programma-affiliato.html">Programma affiliato</a></li>
+      </ul>
+    </nav>
+
+    <div class="mf-contact">
+      <h4>Resta in contatto</h4>
+      <ul class="contact-list">
+        <li>✉️ info@travirae.example</li>
+        <li>Iscriviti alla nostra newsletter</li>
+      </ul>
+      <form class="newsletter-form wide" name="newsletter" method="POST" data-netlify="true">
+        <input type="email" name="email" aria-label="Email per newsletter" placeholder="La tua email" required/>
+        <button class="btn" type="submit">Iscriviti</button>
+      </form>
+    </div>
+  </div>
+
+  <div class="container mf-bottom muted small">
+    <div>© <span id="year-copy"></span> Travirae · Tutti i diritti riservati</div>
+    <div class="mf-legal">
+      <a href="privacy.html">Privacy</a> · <a href="termini.html">Termini</a> · <a href="cookie.html">Cookie</a>
+    </div>
+  </div>
+</footer>
+
+<script src="https://unpkg.com/@supabase/supabase-js@2"></script>
+<script>
+const SUPABASE_URL = 'https://qihaslaxdfwounujpeuf.supabase.co';
+const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InFpaGFzbGF4ZGZ3b3VudWpwZXVmIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjUwMzE5MTMsImV4cCI6MjA4MDYwNzkxM30.scqVi4SjN76Oqr3FVtHt5OZWcn8Zh7LyTgU-H4bNEdo';
+window.supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+</script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="assets/js/main.js"></script>
+<script>
+(function(){{
+  var ADMIN_EMAILS = ['serioliivan@gmail.com']; // <-- sostituisci con l'email admin reale
+
+  function $(sel, root){{ return (root || document).querySelector(sel); }}
+
+  function formatMoney(value){{ 
+    var n = Number(value || 0);
+    if (!isFinite(n)) n = 0;
+    try{{ 
+      return n.toLocaleString('it-IT', {{ minimumFractionDigits: 2, maximumFractionDigits: 2 }});
+    }}catch(e){{ 
+      return n.toFixed(2);
+    }}
+  }}
+
+  function formatMonthLabel(iso){{ 
+    if (!iso) return '';
+    try{{ 
+      var d = new Date(iso);
+      var m = d.getMonth() + 1;
+      var y = d.getFullYear();
+      return (m < 10 ? '0'+m : m) + '/' + y;
+    }}catch(e){{ 
+      return iso;
+    }}
+  }}
+
+  function init(){{ 
+    if (!document.body.classList.contains('page--affiliate-admin')) return;
+
+    var supa = window.supabaseClient || null;
+    var state = {{ user: null, chart: null }};
+
+    var loginView = $('#admin-view-login');
+    var dashboardView = $('#admin-view-dashboard');
+    var loginForm = $('#admin-login-form');
+    var logoutBtn = $('#admin-logout-btn');
+    var reloadBtn = $('#admin-reload-btn');
+    var messageEl = $('#admin-message');
+    var titleEl = $('#admin-title');
+    var subtitleEl = $('#admin-subtitle');
+
+    var kpiSales = $('#admin-total-sales');
+    var kpiNet = $('#admin-total-net');
+    var kpiAff = $('#admin-total-aff');
+    var kpiTrav = $('#admin-total-trav');
+
+    var monthlyTbody = $('#admin-monthly-tbody');
+    var affiliatesTbody = $('#admin-affiliates-tbody');
+
+    function refreshClient(){{ 
+      if (!supa && window.supabaseClient) supa = window.supabaseClient;
+      return supa;
+    }}
+
+    function setMessage(text, type){{ 
+      if (!messageEl) return;
+      messageEl.textContent = text || '';
+      messageEl.classList.remove('is-error','is-success');
+      if (type === 'error') messageEl.classList.add('is-error');
+      else if (type === 'success') messageEl.classList.add('is-success');
+    }}
+
+    function showLogin(){{ 
+      if (loginView) loginView.removeAttribute('hidden');
+      if (dashboardView) dashboardView.setAttribute('hidden','hidden');
+    }}
+
+    function showDashboard(){{ 
+      if (loginView) loginView.setAttribute('hidden','hidden');
+      if (dashboardView) dashboardView.removeAttribute('hidden');
+    }}
+
+    function isAdminEmail(email){{ 
+      if (!email) return false;
+      var lower = String(email).toLowerCase().trim();
+      return ADMIN_EMAILS.map(function(x){{return String(x).toLowerCase().trim();}}).indexOf(lower) !== -1;
+    }}
+
+    function buildChart(byMonthArray){{ 
+      var canvas = document.getElementById('admin-earnings-chart');
+      if (!canvas || !window.Chart) return;
+      var ctx = canvas.getContext('2d');
+      if (state.chart && typeof state.chart.destroy === 'function') state.chart.destroy();
+
+      var labels = byMonthArray.map(function(row){{ return formatMonthLabel(row.month); }});
+      var affVals = byMonthArray.map(function(row){{ return row.aff_earn; }});
+      var travVals = byMonthArray.map(function(row){{ return row.trav_earn; }});
+
+      state.chart = new Chart(ctx, {{
+        type: 'line',
+        data: {{
+          labels: labels,
+          datasets: [
+            {{
+              label: 'Affiliati',
+              data: affVals,
+              tension: 0.25,
+              fill: false
+            }},
+            {{
+              label: 'Travirae',
+              data: travVals,
+              tension: 0.25,
+              fill: false
+            }}
+          ]
+        }},
+        options: {{
+          responsive: true,
+          maintainAspectRatio: false,
+          scales: {{
+            y: {{ beginAtZero: true }}
+          }}
+        }}
+      }});
+    }}
+
+    function renderMonthlyTable(byMonthArray){{ 
+      if (!monthlyTbody) return;
+      monthlyTbody.innerHTML = '';
+      if (!byMonthArray.length){{ 
+        var tr = document.createElement('tr');
+        var td = document.createElement('td');
+        td.colSpan = 5;
+        td.className = 'muted small';
+        td.textContent = 'Nessun dato disponibile.';
+        tr.appendChild(td);
+        monthlyTbody.appendChild(tr);
+        return;
+      }}
+      byMonthArray.forEach(function(row){{ 
+        var tr = document.createElement('tr');
+        function cell(text){{ var td = document.createElement('td'); td.textContent = text; return td; }}
+        tr.appendChild(cell(formatMonthLabel(row.month)));
+        tr.appendChild(cell(String(row.sales)));
+        tr.appendChild(cell(formatMoney(row.net)));
+        tr.appendChild(cell(formatMoney(row.aff_earn)));
+        tr.appendChild(cell(formatMoney(row.trav_earn)));
+        monthlyTbody.appendChild(tr);
+      }});
+    }}
+
+    function renderAffiliatesTable(byAffArray){{ 
+      if (!affiliatesTbody) return;
+      affiliatesTbody.innerHTML = '';
+      if (!byAffArray.length){{ 
+        var tr = document.createElement('tr');
+        var td = document.createElement('td');
+        td.colSpan = 5;
+        td.className = 'muted small';
+        td.textContent = 'Nessun dato disponibile.';
+        tr.appendChild(td);
+        affiliatesTbody.appendChild(tr);
+        return;
+      }}
+      byAffArray.forEach(function(row){{ 
+        var tr = document.createElement('tr');
+        function cell(text){{ var td = document.createElement('td'); td.textContent = text; return td; }}
+        tr.appendChild(cell(row.slug));
+        tr.appendChild(cell(String(row.sales)));
+        tr.appendChild(cell(formatMoney(row.net)));
+        tr.appendChild(cell(formatMoney(row.aff_earn)));
+        tr.appendChild(cell(formatMoney(row.trav_earn)));
+        affiliatesTbody.appendChild(tr);
+      }});
+    }}
+
+    async function loadAdminData(){{ 
+      var client = refreshClient();
+      if (!client || !client.from) {{ 
+        setMessage('Client Supabase non disponibile.', 'error');
+        return;
+      }}
+      setMessage('Caricamento dati in corso...', null);
+      try {{ 
+        var resp = await client
+          .from('monthly_affiliate_payouts')
+          .select('affiliate_slug,month,sales_count,net_commissions,affiliate_earnings')
+          .order('month', {{ ascending: true }});
+        if (resp.error) {{ 
+          console.error('Errore monthly_affiliate_payouts', resp.error);
+          setMessage('Errore nel caricamento dei dati mensili: ' + (resp.error.message || ''), 'error');
+          return;
+        }}
+        var rows = Array.isArray(resp.data) ? resp.data : [];
+
+        var byMonth = {{}};
+        var byAff = {{}};
+        var totalSales = 0;
+        var totalNet = 0;
+        var totalAff = 0;
+        var totalTrav = 0;
+
+        rows.forEach(function(r){{ 
+          var monthKey = r.month;
+          var slug = r.affiliate_slug || '(sconosciuto)';
+          var sales = Number(r.sales_count || 0);
+          var net = Number(r.net_commissions || 0);
+          var affEarn = Number(r.affiliate_earnings || 0);
+          if (!isFinite(sales)) sales = 0;
+          if (!isFinite(net)) net = 0;
+          if (!isFinite(affEarn)) affEarn = 0;
+          var travEarn = net - affEarn;
+
+          totalSales += sales;
+          totalNet += net;
+          totalAff += affEarn;
+          totalTrav += travEarn;
+
+          if (!byMonth[monthKey]) {{ 
+            byMonth[monthKey] = {{ month: monthKey, sales: 0, net: 0, aff_earn: 0, trav_earn: 0 }};
+          }}
+          byMonth[monthKey].sales += sales;
+          byMonth[monthKey].net += net;
+          byMonth[monthKey].aff_earn += affEarn;
+          byMonth[monthKey].trav_earn += travEarn;
+
+          if (!byAff[slug]) {{ 
+            byAff[slug] = {{ slug: slug, sales: 0, net: 0, aff_earn: 0, trav_earn: 0 }};
+          }}
+          byAff[slug].sales += sales;
+          byAff[slug].net += net;
+          byAff[slug].aff_earn += affEarn;
+          byAff[slug].trav_earn += travEarn;
+        }});
+
+        var byMonthArr = Object.keys(byMonth).map(function(k){{ return byMonth[k]; }});
+        byMonthArr.sort(function(a,b){{ return new Date(a.month) - new Date(b.month); }});
+        var byAffArr = Object.keys(byAff).map(function(k){{ return byAff[k]; }});
+        byAffArr.sort(function(a,b){{ return b.aff_earn - a.aff_earn; }});
+
+        if (kpiSales) kpiSales.textContent = String(totalSales);
+        if (kpiNet) kpiNet.textContent = formatMoney(totalNet);
+        if (kpiAff) kpiAff.textContent = formatMoney(totalAff);
+        if (kpiTrav) kpiTrav.textContent = formatMoney(totalTrav);
+
+        renderMonthlyTable(byMonthArr.slice().reverse());
+        renderAffiliatesTable(byAffArr);
+        buildChart(byMonthArr);
+
+        setMessage('Dati aggiornati.', 'success');
+      }} catch(e) {{ 
+        console.error('Errore imprevisto loadAdminData', e);
+        setMessage('Errore imprevisto durante il caricamento dei dati admin.', 'error');
+      }}
+    }}
+
+    async function handleLogin(e){{ 
+      e.preventDefault();
+      setMessage('', null);
+      var client = refreshClient();
+      if (!client || !client.auth) {{ 
+        setMessage('Servizio di autenticazione non disponibile.', 'error');
+        return;
+      }}
+      var email = (document.getElementById('admin-email') || {{}}).value || '';
+      var password = (document.getElementById('admin-password') || {{}}).value || '';
+      if (!email || !password) {{ 
+        setMessage('Inserisci email e password admin.', 'error');
+        return;
+      }}
+      try {{ 
+        var result = await client.auth.signInWithPassword({{ email: email, password: password }});
+        var data = result && result.data;
+        var error = result && result.error;
+        if (error) {{ 
+          setMessage(error.message || 'Credenziali non valide.', 'error');
+          return;
+        }}
+        var user = data && data.user ? data.user : (data && data.session && data.session.user ? data.session.user : null);
+        if (!user) {{ 
+          setMessage('Accesso riuscito, ma impossibile recuperare i dati utente.', 'error');
+          return;
+        }}
+        if (!isAdminEmail(user.email)) {{ 
+          setMessage('Accesso negato: questo account non è abilitato come admin.', 'error');
+          try {{ await client.auth.signOut(); }} catch(eOut){{ console.warn('Errore signOut dopo accesso negato', eOut); }}
+          return;
+        }}
+        state.user = user;
+        if (titleEl) titleEl.textContent = 'Dashboard admin – ' + (user.email || '');
+        if (subtitleEl) subtitleEl.textContent = 'Stai visualizzando tutti gli affiliati e i relativi guadagni.';
+        showDashboard();
+        await loadAdminData();
+      }} catch(e) {{ 
+        console.error('Errore login admin', e);
+        setMessage('Errore imprevisto durante il login admin.', 'error');
+      }}
+    }}
+
+    async function checkExistingSession(){{ 
+      var client = refreshClient();
+      if (!client || !client.auth) return;
+      try {{ 
+        var resp = await client.auth.getUser();
+        if (resp && resp.data && resp.data.user) {{ 
+          var user = resp.data.user;
+          if (isAdminEmail(user.email)) {{ 
+            state.user = user;
+            if (titleEl) titleEl.textContent = 'Dashboard admin – ' + (user.email || '');
+            if (subtitleEl) subtitleEl.textContent = 'Stai visualizzando tutti gli affiliati e i relativi guadagni.';
+            showDashboard();
+            await loadAdminData();
+          }} else {{ 
+            showLogin();
+          }}
+        }} else {{ 
+          showLogin();
+        }}
+      }} catch(e) {{ 
+        console.warn('Errore getUser admin', e);
+        showLogin();
+      }}
+    }}
+
+    if (loginForm) loginForm.addEventListener('submit', handleLogin);
+
+    if (logoutBtn) logoutBtn.addEventListener('click', async function(){{ 
+      var client = refreshClient();
+      if (client && client.auth) {{ 
+        try {{ await client.auth.signOut(); }} catch(e){{ console.warn('Errore logout admin', e); }}
+      }}
+      state.user = null;
+      if (state.chart && typeof state.chart.destroy === 'function') state.chart.destroy();
+      setMessage('Sei uscito dal pannello admin.', 'success');
+      showLogin();
+    }});
+
+    if (reloadBtn) reloadBtn.addEventListener('click', function(){{ 
+      loadAdminData();
+    }});
+
+    checkExistingSession();
+  }}
+
+  if (document.readyState === 'loading'){{ 
+    document.addEventListener('DOMContentLoaded', init);
+  }} else {{ 
+    init();
+  }}
+})();
+</script>
+</body>
+</html>
