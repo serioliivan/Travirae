@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Disiscrizione Newsletter - Travirae</title>
+  <link rel="stylesheet" href="assets/css/style.css" />
+  <script src="assets/js/config.js"></script>
+  <script src="https://unpkg.com/@supabase/supabase-js@2"></script>
+  <script src="assets/js/supabase-init.js"></script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a aria-label="Travirae Home" href="index.html" class="brand">
+        <img src="assets/img/common/plane-logo.png" alt="Travirae" style="height:28px" />
+        <span>Travirae</span>
+      </a>
+
+      <nav class="main-nav" aria-label="Primary">
+        <a href="index.html" class="nav-link">Hotel</a>
+        <a href="flights.html" class="nav-link">Voli</a>
+        <a href="programma-affiliato.html" class="nav-link">Programma affiliato</a>
+      </nav>
+
+      <button class="nav-toggle" aria-label="Apri menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <main class="section" style="padding-top: 60px; padding-bottom: 80px;">
+    <div class="container" style="max-width: 720px;">
+      <div class="auth-card" style="text-align: center;">
+        <h1 class="auth-title">Newsletter</h1>
+        <p class="muted" id="unsub-status" style="margin-top: 12px;">Sto verificando la richiesta…</p>
+        <div style="margin-top: 22px;">
+          <a href="index.html" class="btn">Torna alla home</a>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script src="assets/js/main.js"></script>
+  <script src="assets/js/newsletter-unsubscribe.js"></script>
+</body>
+</html>
