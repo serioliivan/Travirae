@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Stay22 • Mappa</title>
+  <style>
+    html, body { height: 100%; margin: 0; }
+    body { font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; }
+    .wrap { height: 100%; display: flex; flex-direction: column; }
+    .note {
+      padding: 10px 14px;
+      font-size: 14px;
+      line-height: 1.3;
+      background: #0f172a;
+      color: #e2e8f0;
+    }
+    .map { flex: 1; min-height: 0; }
+    iframe { width: 100%; height: 100%; border: 0; display: block; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="note">
+      Stay22 • Mappa — Campo “destinazione” nel widget: <b>vuoto di default</b> (con placeholder).
+      (Opzionale sub‑tracking: aggiungi <code>?campaign=TUO_SLUG</code> all’URL della pagina).
+    </div>
+
+    <div class="map">
+      <!-- IMPORTANTISSIMO: non cambiare l'embed ID dopo /embed/ -->
+      <iframe
+        id="stay22-widget"
+        src="https://www.stay22.com/embed/68e0453924ecc1f8e80860e1?venue="
+        allowfullscreen
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"
+        title="Stay22 Map">
+      </iframe>
+    </div>
+  </div>
+
+  <script>
+    (function () {
+      const iframe = document.getElementById('stay22-widget');
+      if (!iframe) return;
+
+      // Base URL dell'embed (ID invariato)
+      const url = new URL(iframe.src);
+
+      // 1) Forza il campo destinazione "vuoto" (placeholder visibile)
+      //    NOTA: lo lasciamo intenzionalmente vuoto -> "venue="
+      url.searchParams.set('venue', '');
+
+      // 2) (Opzionale) Propaga campaign dalla URL della pagina al widget (sub-tracking).
+      //    Esempio: /?campaign=mario  ->  ...&campaign=mario
+      const pageCampaign = new URLSearchParams(window.location.search).get('campaign');
+      if (pageCampaign) {
+        url.searchParams.set('campaign', pageCampaign);
+      } else {
+        // Se non c'è campaign nella pagina, non la aggiungiamo e non la tocchiamo.
+        url.searchParams.delete('campaign');
+      }
+
+      // (Opzionale) Forza lingua italiana del widget (se vuoi sempre IT).
+      // Se preferisci "Auto", commenta la riga sotto.
+      url.searchParams.set('ljs', 'it');
+
+      // Aggiorna src solo se diverso (evita reload inutili)
+      const next = url.toString();
+      if (iframe.src !== next) iframe.src = next;
+    })();
+  </script>
+</body>
+</html>
