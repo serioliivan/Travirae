@@ -1,0 +1,80 @@
+/* Base */
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+  background: #ffffff;
+  color: #111827;
+}
+
+.app {
+  height: 100%;
+}
+
+/* Wrapper */
+.widget-wrap {
+  position: relative;
+  height: 100%;
+  width: 100%;
+}
+
+/* Iframe (the actual Stay22 widget) */
+#stay22-widget {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  z-index: 1;
+}
+
+/*
+  Placeholder overlay:
+  - Positioned to sit inside the Stay22 search bar area (top-left).
+  - Pointer-events disabled so clicks go through to the iframe.
+  - We hide it as soon as the iframe gains focus (first user interaction).
+*/
+.search-placeholder {
+  position: absolute;
+  top: 14px;
+  left: 44px; /* leaves space for the magnifier icon area */
+  z-index: 2;
+
+  max-width: calc(100% - 180px);
+  height: 24px;
+
+  display: flex;
+  align-items: center;
+
+  font-size: 14px;
+  line-height: 24px;
+  color: #6b7280;
+
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+
+  pointer-events: none;
+  user-select: none;
+
+  opacity: 1;
+  transition: opacity 120ms ease;
+}
+
+/* Slightly adjust on small screens */
+@media (max-width: 480px) {
+  .search-placeholder {
+    left: 40px;
+    max-width: calc(100% - 140px);
+    font-size: 13px;
+  }
+}
+
+
+/* Hide the placeholder once the iframe (or any element inside wrapper) is focused */
+.widget-wrap:focus-within .search-placeholder {
+  opacity: 0;
+}

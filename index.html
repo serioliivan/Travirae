@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Stay22 - Mappa</title>
+  <meta name="description" content="Mappa Stay22 incorporata. Il campo destinazione parte vuoto (placeholder), senza pre-compilazioni." />
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+  <main class="app">
+    <div class="widget-wrap" aria-label="Mappa Stay22">
+      <!--
+        Placeholder “finto” (UI only):
+        - Serve a mostrare il testo guida come nello screenshot 2.
+        - Il widget Stay22 sotto parte con venue impostato a un carattere invisibile (zero‑width space)
+          per NON mostrare 'Dubai...' anche se il widget prova a ripristinare l'ultima ricerca salvata.
+      -->
+      <div id="search-placeholder" class="search-placeholder" aria-hidden="true">
+        Search
+      </div>
+
+      <iframe
+        id="stay22-widget"
+        title="Stay22 Map"
+        width="100%"
+        height="100%"
+        frameborder="0"
+        tabindex="0"
+        loading="lazy"
+        referrerpolicy="strict-origin-when-cross-origin"
+      ></iframe>
+    </div>
+  </main>
+
+  <script src="./script.js"></script>
+</body>
+</html>
