@@ -1,0 +1,173 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Cookies – Travirae</title>
+  <link rel="stylesheet" href="assets/css/style.css" />
+<script id="travirae-lang-router">
+(function(){
+  try{
+    var key='travirae_email_lang';
+    var lang='';
+    try{ lang=String(localStorage.getItem(key)||'').toUpperCase(); }catch(e){}
+    var u=new URL(window.location.href);
+    var path=u.pathname||'';
+    var file=path.split('/').pop()||'';
+    var dir=path.slice(0, path.length - file.length);
+    if(!file) file='index.html';
+    var isDe=/-de\.html$/i.test(file);
+    if(lang==='DEU'){
+      if(!isDe && /\.html$/i.test(file)){
+        u.pathname = dir + file.replace(/\.html$/i,'-de.html');
+        window.location.replace(u.toString());
+      }
+    }else{
+      if(isDe){
+        u.pathname = dir + file.replace(/-de\.html$/i,'.html');
+        window.location.replace(u.toString());
+      }
+    }
+  }catch(e){}
+})();
+</script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a aria-label="Travirae Startseite" class="brand" href="index.html">
+        <img alt="Travirae" src="assets/img/common/plane-logo.png" style="height:28px"/>
+        <span>Travirae</span>
+      </a>
+
+      <nav aria-label="Hauptnavigation" class="main-nav">
+        <a class="nav-link" href="index.html">Hotels</a>
+        <a class="nav-link" href="flights.html">Flüge</a>
+        <a class="nav-link" href="programma-affiliato.html">Partnerprogramm</a>
+      </nav>
+
+      <button aria-expanded="false" aria-label="Menü öffnen" class="nav-toggle">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+<main>
+    <section class="section">
+      <div class="container">
+        <h1 class="section-title">Cookies</h1>
+        <div class="legal">
+          <h2>Cookie Policy</h2>
+          <p class="muted"><strong>Ultimo aggiornamento:</strong> 01/01/2026</p>
+
+          <p>
+            <strong>Nota importante:</strong> questa Cookie Policy è un testo informativo di base (modello).
+            La conformità effettiva dipende dai cookie/strumenti realmente utilizzati e dalle scelte di configurazione (es. analytics/marketing).
+            In caso di dubbi, fai verificare il testo da un consulente legale.
+          </p>
+
+          <h3>1) Cosa sono i cookie</h3>
+          <p>
+            I cookie sono piccoli file di testo che i siti salvano sul dispositivo dell’utente (o che leggono dal dispositivo) per far funzionare il sito,
+            migliorare l’esperienza o fornire funzionalità.
+          </p>
+
+          <h3>2) Tipologie di cookie</h3>
+          <ul>
+            <li><strong>Cookie tecnici/necessari</strong>: indispensabili per il funzionamento del sito (es. sessione/login, preferenze).</li>
+            <li><strong>Cookie di preferenza</strong>: memorizzano scelte dell’utente (es. lingua).</li>
+            <li><strong>Cookie statistici/analytics</strong>: misurano traffico e utilizzo del sito.</li>
+            <li><strong>Cookie di marketing/profilazione</strong>: usati per pubblicità personalizzata o tracciamenti avanzati.</li>
+          </ul>
+
+          <h3>3) Cookie e storage usati da Travirae</h3>
+          <p>
+            Travirae utilizza principalmente strumenti <strong>tecnici</strong> e di <strong>preferenza</strong> necessari alle funzionalità:
+          </p>
+          <ul>
+            <li><strong>Autenticazione</strong> (area affiliati/admin): possono essere utilizzati token/cookie o storage del browser per mantenere la sessione.</li>
+            <li><strong>Preferenza lingua</strong>: la lingua selezionata può essere salvata (es. tramite cookie o localStorage) per ricordare la scelta.</li>
+            <li><strong>Tracciamento affiliati</strong>: quando un utente arriva tramite link affiliato (parametro <code>?ref=</code>), il sito può salvare temporaneamente tale informazione per attribuire correttamente click/booking (programma affiliate).</li>
+          </ul>
+          <p>
+            Se in futuro verranno aggiunti cookie <strong>analytics</strong> o <strong>marketing</strong>, Travirae potrà adottare un banner di consenso e un pannello preferenze.
+          </p>
+
+          <h3>4) Cookie di terze parti</h3>
+          <p>
+            Alcune sezioni del sito incorporano o rimandano a <strong>widget/servizi di terze parti</strong> (es. servizi di ricerca/booking hotel e voli,
+            mappe e comparatori). Tali terze parti possono impostare cookie o utilizzare tecnologie simili secondo le proprie informative.
+            Travirae non controlla direttamente cookie e tracciamenti di tali terze parti.
+          </p>
+
+          <h3>5) Come gestire o cancellare i cookie</h3>
+          <p>
+            Puoi gestire i cookie dalle impostazioni del tuo browser (bloccare, cancellare, consentire solo alcuni cookie).
+            Disabilitare cookie tecnici può compromettere alcune funzionalità del sito (login, preferenze lingua, ecc.).
+          </p>
+
+          <h3>6) Contatti</h3>
+          <p>
+            Per domande sulla Cookie Policy: <a href="mailto:info@travirae.com">info@travirae.com</a>.
+          </p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+<footer class="mega-footer">
+<div class="container mf-grid">
+<div class="mf-brand">
+<div class="brand big">
+<img alt="Travirae" src="assets/img/common/plane-logo.png" style="height:28px"/>
+<span>Travirae</span>
+</div>
+<p class="muted">Deine Plattform für Reiseinspiration und Hotelbuchung mit interaktiver Karte.</p>
+<div class="mf-socials">
+<a aria-label="Instagram" class="social social--icon" href="https://www.instagram.com/travirae_official/" rel="noopener" target="_blank">
+<img alt="" loading="lazy" src="https://upload.wikimedia.org/wikipedia/commons/e/e7/Instagram_logo_2016.svg"/>
+</a>
+<a aria-label="Facebook" class="social social--icon" href="https://www.facebook.com/profile.php?id=61573037940606" rel="noopener" target="_blank">
+<img alt="" loading="lazy" src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg"/>
+</a>
+<a aria-label="TikTok" class="social social--icon" href="https://www.tiktok.com/@travirae?lang=en" rel="noopener" target="_blank">
+<img alt="" loading="lazy" src="https://upload.wikimedia.org/wikipedia/commons/a/a6/Tiktok_icon.svg"/>
+</a>
+<a aria-label="YouTube" class="social social--icon" href="https://www.youtube.com/channel/UCgGtp3qTHUzMPqjpT8EnRbQ" rel="noopener" target="_blank">
+<img alt="" loading="lazy" src="https://upload.wikimedia.org/wikipedia/commons/0/09/YouTube_full-color_icon_%282017%29.svg"/>
+</a>
+</div>
+</div>
+<nav class="mf-services"><h4>Services</h4><ul>
+<li><a href="flights.html">Flüge</a></li>
+<li><a href="index.html">Hotels</a></li>
+<li><a href="programma-affiliato.html">Partnerprogramm</a></li>
+</ul></nav>
+<div class="mf-contact">
+<h4>Bleib in Kontakt</h4>
+<ul class="contact-list">
+<li>✉️ info@travirae.com</li>
+<li>Abonniere unseren Newsletter</li>
+</ul>
+<!-- Newsletter (gestita via Supabase Edge Function).
+     Usiamo method="get" e un id fisso per evitare submit POST (405) e per collegare correttamente lo script. -->
+<form id="newsletter-form" class="newsletter-form wide" action="#" method="get" autocomplete="off">
+  <input aria-label="E-Mail für Newsletter" name="newsletter_email" placeholder="Deine E-Mail" required="" type="email"/>
+  <button class="btn" type="submit">Abonnieren</button>
+</form>
+</div>
+</div>
+<div class="container mf-bottom muted small">
+<div>© <span id="year-copy"></span> Travirae · Alle Rechte vorbehalten</div>
+<div class="mf-legal">
+<a href="privacy.html">Datenschutz</a> · <a href="termini.html">Bedingungen</a> · <a href="cookie.html">Cookies</a>
+</div>
+</div>
+</footer>
+
+<script src="https://unpkg.com/@supabase/supabase-js@2"></script>
+<script src="assets/js/config.js"></script>
+<script src="assets/js/supabase-init.js"></script>
+<script src="assets/js/main.js"></script>
+</body>
+</html>
