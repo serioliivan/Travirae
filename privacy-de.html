@@ -1,0 +1,241 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Datenschutz – Travirae</title>
+  <link rel="stylesheet" href="assets/css/style.css" />
+<script id="travirae-lang-router">
+(function(){
+  try{
+    var key='travirae_email_lang';
+    var lang='';
+    try{ lang=String(localStorage.getItem(key)||'').toUpperCase(); }catch(e){}
+    var u=new URL(window.location.href);
+    var path=u.pathname||'';
+    var file=path.split('/').pop()||'';
+    var dir=path.slice(0, path.length - file.length);
+    if(!file) file='index.html';
+    var isDe=/-de\.html$/i.test(file);
+    var isEn=/-en\.html$/i.test(file);
+
+    if(lang==='DEU'){
+      if(!isDe && /\.html$/i.test(file)){
+        var targetDe = isEn ? file.replace(/-en\.html$/i,'-de.html') : file.replace(/\.html$/i,'-de.html');
+        u.pathname = dir + targetDe;
+        window.location.replace(u.toString());
+      }
+    } else if(lang==='ENG'){
+      if(!isEn && /\.html$/i.test(file)){
+        var targetEn = isDe ? file.replace(/-de\.html$/i,'-en.html') : file.replace(/\.html$/i,'-en.html');
+        u.pathname = dir + targetEn;
+        window.location.replace(u.toString());
+      }
+    } else {
+      if(isDe){
+        u.pathname = dir + file.replace(/-de\.html$/i,'.html');
+        window.location.replace(u.toString());
+      } else if(isEn){
+        u.pathname = dir + file.replace(/-en\.html$/i,'.html');
+        window.location.replace(u.toString());
+      }
+    }
+  }catch(e){}
+})();
+</script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a aria-label="Travirae Startseite" class="brand" href="index.html">
+        <img alt="Travirae" src="assets/img/common/plane-logo.png" style="height:28px"/>
+        <span>Travirae</span>
+      </a>
+
+      <nav aria-label="Hauptnavigation" class="main-nav">
+        <a class="nav-link" href="index.html">Hotels</a>
+        <a class="nav-link" href="flights.html">Flüge</a>
+        <a class="nav-link" href="programma-affiliato.html">Partnerprogramm</a>
+      </nav>
+
+      <button aria-expanded="false" aria-label="Menü öffnen" class="nav-toggle">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+<main>
+    <section class="section">
+      <div class="container">
+        <h1 class="section-title">Datenschutz</h1>
+
+        <div class="legal">
+          <h2>Datenschutzerklärung (DSGVO)</h2>
+          <p class="muted"><strong>Zuletzt aktualisiert:</strong> 01/01/2026</p>
+          <p>
+            <strong>Wichtiger Hinweis:</strong> Dieses Dokument ist eine Informationsvorlage für die Testphase.
+            Damit es in deinem konkreten Fall (Rechtsform, Land, tatsächlich genutzte Tools, Cookies/Analytics usw.)
+            zu 100% passt, empfehlen wir eine Prüfung durch eine juristische Fachperson.
+          </p>
+
+          <h3>1) Kontakt</h3>
+          <p>
+            Für Anfragen oder Informationen zum Datenschutz: <a href="mailto:info@travirae.com">info@travirae.com</a>.
+          </p>
+
+          <h3>2) Arten verarbeiteter Daten</h3>
+          <ul>
+            <li>
+              <strong>Navigationsdaten</strong>: technische Informationen wie IP-Adresse, User-Agent, Datum/Uhrzeit der Anfrage,
+              Referrer-URL sowie Sicherheits-Logs. Diese Daten können von Hosting/CDN-Systemen und technischen Dienstleistern verarbeitet werden.
+            </li>
+            <li>
+              <strong>Kontodaten (Partnerbereich/Admin)</strong>: E-Mail, Affiliate-ID, Sprachpräferenz, Sicherheitseinstellungen
+              (z.&nbsp;B. 2FA) sowie Login- und Aktivitätsprotokolle.
+            </li>
+            <li>
+              <strong>Daten zum Partnerprogramm</strong>: Klicks, „Booking Clicks“ und statistische Daten zur Zuordnung von Provisionen.
+            </li>
+            <li>
+              <strong>Auszahlungsdaten</strong>: Informationen zur Bearbeitung von Auszahlungsanfragen (z.&nbsp;B. Beträge, Status, Methode).
+              <span class="muted">(Wenn du IBAN oder Steuerdaten erhebst, sollten sie hier explizit aufgeführt werden.)</span>
+            </li>
+            <li>
+              <strong>Newsletter</strong>: E-Mail, beim Abonnement gewählte Sprache, Abmelde-Token, Status (abonniert/nicht abonniert).
+            </li>
+            <li>
+              <strong>Kommunikation</strong>: Nachrichten, die per E-Mail oder Support-Kontakt gesendet werden.
+            </li>
+          </ul>
+
+          <h3>3) Zwecke der Verarbeitung und Rechtsgrundlagen</h3>
+          <ul>
+            <li>
+              <strong>Kontoerstellung und -verwaltung</strong> (Registrierung, Login, „Passwort vergessen“, Sicherheit):
+              Durchführung vorvertraglicher/vertraglicher Maßnahmen und <em>berechtigtes Interesse</em> an der Sicherheit des Dienstes.
+            </li>
+            <li>
+              <strong>Verwaltung des Partnerprogramms</strong> (Zuordnung von Klicks/Booking Clicks, Berechnung von Statistiken und Einnahmen):
+              Vertragserfüllung und berechtigtes Interesse an korrekter Zuordnung und Missbrauchsprävention.
+            </li>
+            <li>
+              <strong>Bearbeitung von Auszahlungsanfragen</strong>: Vertragserfüllung und – sofern anwendbar – gesetzliche Pflichten
+              (z.&nbsp;B. buchhalterische/steuerliche).
+            </li>
+            <li>
+              <strong>Versand des Newsletters</strong>: Einwilligung der betroffenen Person (freiwilliges Abonnement) und Verwaltung der Abmeldung.
+            </li>
+            <li>
+              <strong>Service-Kommunikation</strong> (z.&nbsp;B. operative E-Mails zum Konto): Vertragserfüllung/berechtigtes Interesse.
+            </li>
+            <li>
+              <strong>Betrugs-/Missbrauchsprävention</strong> und Schutz des Dienstes: berechtigtes Interesse.
+            </li>
+          </ul>
+
+          <h3>4) Verarbeitungsweise und Sicherheitsmaßnahmen</h3>
+          <p>
+            Die Verarbeitung erfolgt mithilfe elektronischer Tools und geeigneter Verfahren, um Vertraulichkeit und Integrität zu gewährleisten.
+            Passwörter werden über sichere Authentifizierungssysteme verwaltet (z.&nbsp;B. Hashing) und du kannst <strong>2FA</strong> aktivieren.
+            Es werden Maßnahmen getroffen, um unbefugten Zugriff zu begrenzen und die Sicherheit zu schützen.
+          </p>
+
+          <h3>5) Empfänger der Daten und Dienstleister</h3>
+          <p>Zur Bereitstellung des Dienstes können bestimmte Daten von Dienstleistern (Auftragsverarbeiter) oder eigenständigen Dritten verarbeitet werden.</p>
+          <ul>
+            <li><strong>Supabase</strong>: Datenbank, Authentifizierung, Edge Functions (Kontoverwaltung, Daten, Newsletter-Versand).</li>
+            <li><strong>Resend</strong> (oder ein anderer konfigurierter E-Mail-Provider): Versand von transaktionalen E-Mails und Newslettern.</li>
+            <li><strong>Hosting/CDN</strong>: Auslieferung der Website sowie Schutz/Optimierung des Traffics.</li>
+            <li>
+              <strong>Widgets und Drittanbieter-Dienste</strong> (z.&nbsp;B. Stay22, Aviasales, TravelPayouts, Hotellook usw.):
+              Wenn du mit diesen Widgets interagierst, kannst du weitergeleitet werden oder deren Richtlinien unterliegen.
+              Diese Anbieter können Daten gemäß ihren eigenen Datenschutzhinweisen verarbeiten.
+            </li>
+          </ul>
+
+          <h3>6) Datenübermittlungen außerhalb des EWR</h3>
+          <p>
+            Einige Anbieter können Daten in Ländern außerhalb des EWR verarbeiten.
+            In diesem Fall werden die im DSGVO vorgesehenen Garantien angewendet (z.&nbsp;B. Standardvertragsklauseln).
+          </p>
+
+          <h3>7) Speicherdauer</h3>
+          <ul>
+            <li><strong>Kontodaten</strong>: für die Dauer des Kontos und bis zur Löschanfrage, vorbehaltlich gesetzlicher Pflichten.</li>
+            <li><strong>Newsletter-Daten</strong>: bis zur Abmeldung oder Löschanfrage.</li>
+            <li><strong>Auszahlungs-/Buchhaltungsdaten</strong>: so lange wie nötig für Zahlungen und gesetzliche Pflichten.</li>
+            <li><strong>Technische Logs</strong>: für begrenzte Zeiträume, passend zu Sicherheits- und Audit-Anforderungen.</li>
+          </ul>
+
+          <h3>8) Rechte der betroffenen Person</h3>
+          <p>
+            Du hast das Recht auf Auskunft, Berichtigung, Löschung, Einschränkung, Datenübertragbarkeit, Widerspruch sowie den Widerruf einer Einwilligung
+            (sofern anwendbar). Zur Ausübung deiner Rechte: <a href="mailto:info@travirae.com">info@travirae.com</a>.
+            Außerdem hast du das Recht, eine Beschwerde bei der zuständigen Aufsichtsbehörde einzureichen (z.&nbsp;B. <strong>Garante per la protezione dei dati personali</strong>).
+          </p>
+
+          <h3>9) Änderungen</h3>
+          <p>
+            Wir können diese Datenschutzerklärung aktualisieren. Das Datum „Zuletzt aktualisiert“ zeigt die letzte Überarbeitung an.
+          </p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+<footer class="mega-footer">
+<div class="container mf-grid">
+<div class="mf-brand">
+<div class="brand big">
+<img alt="Travirae" src="assets/img/common/plane-logo.png" style="height:28px"/>
+<span>Travirae</span>
+</div>
+<p class="muted">Deine Plattform für Reiseinspiration und Hotelbuchung mit interaktiver Karte.</p>
+<div class="mf-socials">
+<a aria-label="Instagram" class="social social--icon" href="https://www.instagram.com/travirae_official/" rel="noopener" target="_blank">
+<img alt="" loading="lazy" src="https://upload.wikimedia.org/wikipedia/commons/e/e7/Instagram_logo_2016.svg"/>
+</a>
+<a aria-label="Facebook" class="social social--icon" href="https://www.facebook.com/profile.php?id=61573037940606" rel="noopener" target="_blank">
+<img alt="" loading="lazy" src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg"/>
+</a>
+<a aria-label="TikTok" class="social social--icon" href="https://www.tiktok.com/@travirae?lang=en" rel="noopener" target="_blank">
+<img alt="" loading="lazy" src="https://upload.wikimedia.org/wikipedia/commons/a/a6/Tiktok_icon.svg"/>
+</a>
+<a aria-label="YouTube" class="social social--icon" href="https://www.youtube.com/channel/UCgGtp3qTHUzMPqjpT8EnRbQ" rel="noopener" target="_blank">
+<img alt="" loading="lazy" src="https://upload.wikimedia.org/wikipedia/commons/0/09/YouTube_full-color_icon_%282017%29.svg"/>
+</a>
+</div>
+</div>
+<nav class="mf-services"><h4>Services</h4><ul>
+<li><a href="flights.html">Flüge</a></li>
+<li><a href="index.html">Hotels</a></li>
+<li><a href="programma-affiliato.html">Partnerprogramm</a></li>
+</ul></nav>
+<div class="mf-contact">
+<h4>Bleib in Kontakt</h4>
+<ul class="contact-list">
+<li>✉️ info@travirae.com</li>
+<li>Abonniere unseren Newsletter</li>
+</ul>
+<!-- Newsletter (gestita via Supabase Edge Function).
+     Usiamo method="get" e un id fisso per evitare submit POST (405) e per collegare correttamente lo script. -->
+<form id="newsletter-form" class="newsletter-form wide" action="#" method="get" autocomplete="off">
+  <input aria-label="E-Mail für Newsletter" name="newsletter_email" placeholder="Deine E-Mail" required="" type="email"/>
+  <button class="btn" type="submit">Abonnieren</button>
+</form>
+</div>
+</div>
+<div class="container mf-bottom muted small">
+<div>© <span id="year-copy"></span> Travirae · Alle Rechte vorbehalten</div>
+<div class="mf-legal">
+<a href="privacy.html">Datenschutz</a> · <a href="termini.html">Bedingungen</a> · <a href="cookie.html">Cookies</a>
+</div>
+</div>
+</footer>
+
+<script src="https://unpkg.com/@supabase/supabase-js@2"></script>
+<script src="assets/js/config.js"></script>
+<script src="assets/js/supabase-init.js"></script>
+<script src="assets/js/main.js"></script>
+</body>
+</html>
