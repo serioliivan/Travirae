@@ -1,0 +1,204 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Cookies – Travirae</title>
+  <link rel="stylesheet" href="assets/css/style.css" />
+<script id="travirae-lang-router">
+(function(){
+  try{
+    var key='travirae_email_lang';
+    var lang='';
+    try{ lang=String(localStorage.getItem(key)||'').toUpperCase(); }catch(e){}
+    var u=new URL(window.location.href);
+    var path=u.pathname||'';
+    var file=path.split('/').pop()||'';
+    var dir=path.slice(0, path.length - file.length);
+    if(!file) file='index.html';
+    var isDe=/-de\.html$/i.test(file);
+    var isEn=/-en\.html$/i.test(file);
+    var isFr=/-fr\.html$/i.test(file);
+
+    if(lang==='DEU'){
+      if(!isDe && /\.html$/i.test(file)){
+        var targetDe = isEn ? file.replace(/-en\.html$/i,'-de.html')
+                    : (isFr ? file.replace(/-fr\.html$/i,'-de.html')
+                            : file.replace(/\.html$/i,'-de.html'));
+        u.pathname = dir + targetDe;
+        window.location.replace(u.toString());
+      }
+    } else if(lang==='ENG'){
+      if(!isEn && /\.html$/i.test(file)){
+        var targetEn = isDe ? file.replace(/-de\.html$/i,'-en.html')
+                    : (isFr ? file.replace(/-fr\.html$/i,'-en.html')
+                            : file.replace(/\.html$/i,'-en.html'));
+        u.pathname = dir + targetEn;
+        window.location.replace(u.toString());
+      }
+    } else if(lang==='FRA'){
+      if(!isFr && /\.html$/i.test(file)){
+        var targetFr = isDe ? file.replace(/-de\.html$/i,'-fr.html')
+                    : (isEn ? file.replace(/-en\.html$/i,'-fr.html')
+                            : file.replace(/\.html$/i,'-fr.html'));
+        u.pathname = dir + targetFr;
+        window.location.replace(u.toString());
+      }
+    } else {
+      if(isDe){
+        u.pathname = dir + file.replace(/-de\.html$/i,'.html');
+        window.location.replace(u.toString());
+      } else if(isEn){
+        u.pathname = dir + file.replace(/-en\.html$/i,'.html');
+        window.location.replace(u.toString());
+      } else if(isFr){
+        u.pathname = dir + file.replace(/-fr\.html$/i,'.html');
+        window.location.replace(u.toString());
+      }
+    }
+  }catch(e){}
+})();
+</script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a aria-label="Accueil Travirae" class="brand" href="index.html">
+        <img alt="Travirae" src="assets/img/common/plane-logo.png" style="height:28px"/>
+        <span>Travirae</span>
+      </a>
+
+      <nav aria-label="Navigation principale" class="main-nav">
+        <a class="nav-link" href="index.html">Hôtels</a>
+        <a class="nav-link" href="flights.html">Vols</a>
+        <a class="nav-link" href="programma-affiliato.html">Programme d’affiliation</a>
+      </nav>
+
+      <button aria-expanded="false" aria-label="Ouvrir le menu" class="nav-toggle">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+
+<main>
+    <section class="section">
+      <div class="container">
+        <h1 class="section-title">Cookies</h1>
+        <div class="legal">
+          <h2>Politique de cookies</h2>
+          <p class="muted"><strong>Dernière mise à jour :</strong> 01/01/2026</p>
+
+          <p>
+            <strong>Note importante :</strong> cette politique de cookies est un modèle d’information de base.
+            La conformité dépend des cookies/outils réellement utilisés et des choix de configuration (par ex. analytics/marketing).
+            En cas de doute, fais relire ce texte par un professionnel du droit.
+          </p>
+
+          <h3>1) Que sont les cookies ?</h3>
+          <p>
+            Les cookies sont de petits fichiers texte que les sites web stockent sur l’appareil d’un utilisateur (ou lisent depuis l’appareil) pour faire fonctionner le site,
+            améliorer l’expérience ou fournir des fonctionnalités.
+          </p>
+
+          <h3>2) Types de cookies</h3>
+          <ul>
+            <li><strong>Cookies techniques/nécessaires</strong> : indispensables au fonctionnement du site (session/connexion, préférences, etc.).</li>
+            <li><strong>Cookies de préférences</strong> : mémorisent les choix de l’utilisateur (par ex. la langue).</li>
+            <li><strong>Cookies d’analytics/statistiques</strong> : mesurent le trafic et l’utilisation du site.</li>
+            <li><strong>Cookies marketing/profilage</strong> : utilisés pour la publicité personnalisée ou un suivi avancé.</li>
+          </ul>
+
+          <h3>3) Cookies et stockage utilisés par Travirae</h3>
+          <p>
+            Travirae utilise principalement des outils <strong>techniques</strong> et de <strong>préférences</strong> nécessaires aux fonctionnalités essentielles :
+          </p>
+          <ul>
+            <li><strong>Authentification</strong> (espace affilié/admin) : des jetons/cookies ou le stockage du navigateur peuvent être utilisés pour maintenir la session.</li>
+            <li><strong>Préférence de langue</strong> : la langue choisie peut être enregistrée (par ex. via cookies ou localStorage) pour mémoriser ton choix.</li>
+            <li><strong>Tracking d’affiliation</strong> : lorsqu’un utilisateur arrive via un lien affilié (paramètre <code>?ref=</code>), le site peut stocker temporairement
+              cette information pour attribuer correctement les clics/réservations (programme d’affiliation).</li>
+          </ul>
+          <p>
+            Si des cookies d’analytics ou marketing sont ajoutés à l’avenir, Travirae pourra mettre en place une bannière de consentement et un panneau de préférences.
+          </p>
+
+          <h3>4) Cookies tiers</h3>
+          <p>
+            Certaines parties du site intègrent ou lient des <strong>widgets/services tiers</strong> (par ex. recherche et réservation d’hôtels/vols,
+            cartes et outils de comparaison). Ces tiers peuvent déposer des cookies ou utiliser des technologies similaires selon leurs propres politiques.
+            Travirae ne contrôle pas directement les cookies et le tracking de tiers.
+          </p>
+
+          <h3>5) Gérer ou supprimer les cookies</h3>
+          <p>
+            Tu peux gérer les cookies dans les paramètres de ton navigateur (bloquer, supprimer, autoriser certains cookies uniquement).
+            Désactiver les cookies techniques peut affecter certaines fonctionnalités (connexion, préférences de langue, etc.).
+          </p>
+
+          <h3>6) Contact</h3>
+          <p>
+            Pour toute question sur cette politique de cookies : <a href="mailto:info@travirae.com">info@travirae.com</a>.
+          </p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+<footer class="mega-footer">
+<div class="container mf-grid">
+<div class="mf-brand">
+<div class="brand big">
+<img alt="Travirae" src="assets/img/common/plane-logo.png" style="height:28px"/>
+<span>Travirae</span>
+</div>
+<p class="muted">Ta plateforme d’inspiration voyage et de réservation d’hôtels avec carte interactive.</p>
+<div class="mf-socials">
+<a aria-label="Instagram" class="social social--icon" href="https://www.instagram.com/travirae_official/" rel="noopener" target="_blank">
+<img alt="" loading="lazy" src="https://upload.wikimedia.org/wikipedia/commons/e/e7/Instagram_logo_2016.svg"/>
+</a>
+<a aria-label="Facebook" class="social social--icon" href="https://www.facebook.com/profile.php?id=61573037940606" rel="noopener" target="_blank">
+<img alt="" loading="lazy" src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg"/>
+</a>
+<a aria-label="TikTok" class="social social--icon" href="https://www.tiktok.com/@travirae?lang=en" rel="noopener" target="_blank">
+<img alt="" loading="lazy" src="https://upload.wikimedia.org/wikipedia/commons/a/a6/Tiktok_icon.svg"/>
+</a>
+<a aria-label="YouTube" class="social social--icon" href="https://www.youtube.com/channel/UCgGtp3qTHUzMPqjpT8EnRbQ" rel="noopener" target="_blank">
+<img alt="" loading="lazy" src="https://upload.wikimedia.org/wikipedia/commons/0/09/YouTube_full-color_icon_%282017%29.svg"/>
+</a>
+</div>
+</div>
+<nav class="mf-services"><h4>Services</h4><ul>
+<li><a href="flights.html">Vols</a></li>
+<li><a href="index.html">Hôtels</a></li>
+<li><a href="programma-affiliato.html">Programme d’affiliation</a></li>
+</ul></nav>
+<div class="mf-contact">
+<h4>Reste en contact</h4>
+<ul class="contact-list">
+<li>✉️ info@travirae.com</li>
+<li>Abonne-toi à notre newsletter</li>
+</ul>
+<!-- Newsletter (gestita via Supabase Edge Function).
+     Usiamo method="get" e un id fisso per evitare submit POST (405) e per collegare correttamente lo script. -->
+<form id="newsletter-form" class="newsletter-form wide" action="#" method="get" autocomplete="off">
+  <input aria-label="E‑mail pour la newsletter" name="newsletter_email" placeholder="Ton e-mail" required="" type="email"/>
+  <button class="btn" type="submit">S’abonner</button>
+</form>
+</div>
+</div>
+<div class="container mf-bottom muted small">
+<div>© <span id="year-copy"></span> Travirae · Tous droits réservés</div>
+<div class="mf-legal">
+<a href="privacy.html">Confidentialité</a> · <a href="termini.html">Conditions</a> · <a href="cookie.html">Cookies</a>
+</div>
+</div>
+</footer>
+
+
+<script src="https://unpkg.com/@supabase/supabase-js@2"></script>
+<script src="assets/js/config.js"></script>
+<script src="assets/js/supabase-init.js"></script>
+<script src="assets/js/main.js"></script>
+</body>
+</html>
