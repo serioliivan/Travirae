@@ -1,0 +1,491 @@
+
+<!DOCTYPE html>
+
+<html lang="es">
+<head>
+<link href="assets/img/common/plane-logo.png" rel="icon" type="image/png"/>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<title>Área de afiliados – Programa de afiliados de Travirae</title>
+<meta content="Accede al área de afiliados: genera enlaces con seguimiento, controla clics y ganancias, y solicita pagos." name="description"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="assets/css/style.css" rel="stylesheet"/>
+<script id="travirae-lang-router">
+(function(){
+  try{
+    var key='travirae_email_lang';
+    var lang='';
+    try{ lang=String(localStorage.getItem(key)||'').toUpperCase(); }catch(e){}
+    var u=new URL(window.location.href);
+    var path=u.pathname||'';
+    var file=path.split('/').pop()||'';
+    var dir=path.slice(0, path.length - file.length);
+    if(!file) file='index.html';
+    var isDe=/-de\.html$/i.test(file);
+    var isEn=/-en\.html$/i.test(file);
+    var isFr=/-fr\.html$/i.test(file);
+    var isEs=/-es\.html$/i.test(file);
+    var isRu=/-ru\.html$/i.test(file);
+
+    if(lang==='DEU'){
+      if(!isDe && /\.html$/i.test(file)){
+        var targetDe = isEn ? file.replace(/-en\.html$/i,'-de.html')
+                    : (isFr ? file.replace(/-fr\.html$/i,'-de.html')
+                            : (isEs ? file.replace(/-es\.html$/i,'-de.html')
+                                    : (isRu ? file.replace(/-ru\.html$/i,'-de.html')
+                                            : file.replace(/\.html$/i,'-de.html'))));
+        u.pathname = dir + targetDe;
+        window.location.replace(u.toString());
+      }
+    } else if(lang==='ENG'){
+      if(!isEn && /\.html$/i.test(file)){
+        var targetEn = isDe ? file.replace(/-de\.html$/i,'-en.html')
+                    : (isFr ? file.replace(/-fr\.html$/i,'-en.html')
+                            : (isEs ? file.replace(/-es\.html$/i,'-en.html')
+                                    : (isRu ? file.replace(/-ru\.html$/i,'-en.html')
+                                            : file.replace(/\.html$/i,'-en.html'))));
+        u.pathname = dir + targetEn;
+        window.location.replace(u.toString());
+      }
+    } else if(lang==='FRA'){
+      if(!isFr && /\.html$/i.test(file)){
+        var targetFr = isDe ? file.replace(/-de\.html$/i,'-fr.html')
+                    : (isEn ? file.replace(/-en\.html$/i,'-fr.html')
+                            : (isEs ? file.replace(/-es\.html$/i,'-fr.html')
+                                    : (isRu ? file.replace(/-ru\.html$/i,'-fr.html')
+                                            : file.replace(/\.html$/i,'-fr.html'))));
+        u.pathname = dir + targetFr;
+        window.location.replace(u.toString());
+      }
+    } else if(lang==='SPA'){
+      if(!isEs && /\.html$/i.test(file)){
+        var targetEs = isDe ? file.replace(/-de\.html$/i,'-es.html')
+                    : (isEn ? file.replace(/-en\.html$/i,'-es.html')
+                            : (isFr ? file.replace(/-fr\.html$/i,'-es.html')
+                                    : (isRu ? file.replace(/-ru\.html$/i,'-es.html')
+                                            : file.replace(/\.html$/i,'-es.html'))));
+        u.pathname = dir + targetEs;
+        window.location.replace(u.toString());
+      }
+    } else if(lang==='RUS'){
+      if(!isRu && /\.html$/i.test(file)){
+        var targetRu = isDe ? file.replace(/-de\.html$/i,'-ru.html')
+                    : (isEn ? file.replace(/-en\.html$/i,'-ru.html')
+                            : (isFr ? file.replace(/-fr\.html$/i,'-ru.html')
+                                    : (isEs ? file.replace(/-es\.html$/i,'-ru.html')
+                                            : file.replace(/\.html$/i,'-ru.html'))));
+        u.pathname = dir + targetRu;
+        window.location.replace(u.toString());
+      }
+    } else {
+      if(isDe){
+        u.pathname = dir + file.replace(/-de\.html$/i,'.html');
+        window.location.replace(u.toString());
+      } else if(isEn){
+        u.pathname = dir + file.replace(/-en\.html$/i,'.html');
+        window.location.replace(u.toString());
+      } else if(isFr){
+        u.pathname = dir + file.replace(/-fr\.html$/i,'.html');
+        window.location.replace(u.toString());
+      } else if(isEs){
+        u.pathname = dir + file.replace(/-es\.html$/i,'.html');
+        window.location.replace(u.toString());
+      } else if(isRu){
+        u.pathname = dir + file.replace(/-ru\.html$/i,'.html');
+        window.location.replace(u.toString());
+      }
+    }
+  }catch(e){}
+})();
+</script>
+</head>
+<body class="page--affiliate-portal">
+<header class="site-header">
+<div class="container header-inner">
+<a aria-label="Inicio de Travirae" class="brand" href="index.html">
+<img alt="Travirae" src="assets/img/common/plane-logo.png" style="height:28px"/>
+<span>Travirae</span>
+</a>
+<nav aria-label="Navegación principal" class="main-nav">
+<a class="nav-link" href="index.html">Hoteles</a>
+<a class="nav-link" href="flights.html">Vuelos</a>
+<a class="nav-link active" href="programma-affiliato.html">Programa de afiliados</a>
+</nav>
+<button aria-expanded="false" aria-label="Abrir menú" class="nav-toggle"><span></span><span></span><span></span></button>
+</div>
+</header>
+<main>
+<section class="section">
+<div class="container affiliate-portal-grid">
+<div class="affiliate-intro">
+<p class="muted small" style="margin:0 0 6px;">Programa de afiliados de Travirae</p>
+<h1>Área de afiliados</h1>
+<p class="subtitle">Gestiona tu ID de afiliado, genera enlaces con seguimiento y controla clics, clics a reservas y ganancias mensuales.</p>
+<ul class="benefits-list">
+<li>Obtén un<strong>ID de afiliado único</strong>vinculado a tu cuenta.</li>
+<li>Comparte páginas de hoteles o vuelos usando el parámetro<code>?ref=TU_ID</code>.</li>
+<li>Controla<strong>clics, clics a reservas y ganancias mensuales</strong>directamente desde tu panel.</li>
+</ul></div>
+<div>
+<div class="auth-card">
+<div class="auth-card-header" id="auth-card-header-main">
+<h2 class="auth-card-title">Inicia sesión o regístrate</h2>
+<p class="auth-card-subtitle">Inicia sesión en el Área de afiliados para obtener tu enlace con seguimiento y ver tus estadísticas.</p>
+</div>
+<div class="auth-tabs" role="tablist">
+<button class="auth-tab is-active" data-auth-tab="login" type="button">Iniciar sesión</button>
+<button class="auth-tab" data-auth-tab="register" type="button">Registrarse</button>
+</div>
+<div class="auth-views">
+INICIAR SESIÓN
+<div class="auth-view auth-view-login" data-view="login">
+<form autocomplete="on" class="auth-form" id="affiliate-login-form">
+<div class="form-group">
+<label for="login-email">Correo electrónico</label>
+<input autocomplete="email" id="login-email" name="email" required="" type="email"/>
+</div>
+<div class="form-group">
+<label for="login-password">Password</label>
+<input autocomplete="current-password" id="login-password" name="password" required="" type="password"/>
+</div>
+El idioma de los correos se elige desde el selector de idioma del sitio (arriba).
+<div class="checkbox-row" style="margin-top:8px;">
+<input checked="" id="login-remember" name="remember" type="checkbox"/>
+<label for="login-remember">Recuérdame</label>
+</div>
+<button class="auth-link auth-link--forgot" id="affiliate-forgot-link" type="button">¿Olvidaste tu contraseña?</button>
+<div class="auth-actions">
+<button class="btn" type="submit">Iniciar sesión</button>
+</div>
+</form>
+</div>
+REGISTRO
+<div class="auth-view auth-view-register" data-view="register" hidden="">
+<form autocomplete="on" class="auth-form" id="affiliate-register-form">
+<div class="form-group">
+<label for="register-email">Correo electrónico</label>
+<input autocomplete="email" id="register-email" name="email" required="" type="email"/>
+</div>
+<div class="form-group">
+<label for="register-password">Password</label>
+<input autocomplete="new-password" id="register-password" name="password" required="" type="password"/>
+</div>
+<div class="form-group">
+<label for="register-password-confirm">Confirmar contraseña</label>
+<input autocomplete="new-password" id="register-password-confirm" name="password_confirm" required="" type="password"/>
+</div>
+<!-- Idioma de los emails: ahora se toma del selector de idioma del sitio (arriba) -->
+<div class="auth-actions">
+<button class="btn" type="submit">Registrarse</button>
+</div>
+</form>
+</div>
+CONTRASEÑA OLVIDADA
+<div class="auth-view auth-view-forgot" data-view="forgot" hidden="">
+<form class="auth-form" id="affiliate-forgot-form">
+<div class="form-group">
+<label for="forgot-email">Correo electrónico</label>
+<input id="forgot-email" name="email" required="" type="email"/>
+</div>
+<!-- Idioma de los emails: ahora se toma del selector de idioma del sitio (arriba) -->
+<div class="auth-actions">
+<button class="btn" type="submit">Enviar enlace de restablecimiento</button>
+<button class="auth-link" data-back-to="login" type="button">Volver a iniciar sesión</button>
+</div>
+</form>
+</div>
+RECUPERACIÓN
+<div class="auth-view auth-view-recovery" data-view="recovery" hidden="">
+<form class="auth-form" id="affiliate-recovery-form">
+<p class="muted small">Has abierto un enlace para restablecer la contraseña. Establece una nueva contraseña para tu cuenta a continuación.</p>
+<div class="form-group">
+<label for="recovery-password">Nueva contraseña</label>
+<input id="recovery-password" name="password" required="" type="password"/>
+</div>
+<div class="form-group">
+<label for="recovery-password-confirm">Confirmar nueva contraseña</label>
+<input id="recovery-password-confirm" name="password_confirm" required="" type="password"/>
+</div>
+<div class="auth-actions">
+<button class="btn" type="submit">Actualizar contraseña</button>
+</div>
+</form>
+</div>
+PANEL
+<div class="auth-view auth-view-dashboard" data-view="dashboard" hidden="">
+<div class="auth-card-header">
+<h2 class="auth-card-title">Panel de afiliados</h2>
+<p class="auth-card-subtitle">Gestiona tu ID de afiliado, clics, clics a reservas y ganancias.</p>
+</div>
+<div class="affiliate-id-block">
+<div class="muted small">Tu ID de afiliado</div>
+<code id="affiliate-slug"></code>
+<div class="affiliate-link-row">
+<label class="muted small" for="affiliate-link-input">Enlace principal para compartir</label>
+<div class="affiliate-link-input-row">
+<input id="affiliate-link-input" readonly="" type="text"/>
+<button class="btn" id="affiliate-copy-btn" type="button">Copiar</button>
+</div>
+</div>
+</div>
+<div class="affiliate-stats-grid">
+<div class="stat-card">
+<div class="stat-label">Clics totales</div>
+<div class="stat-value" id="affiliate-stat-clicks">—</div>
+</div>
+<div class="stat-card">
+<div class="stat-label">Clics a reservas totales</div>
+<div class="stat-value" id="affiliate-stat-bookings">—</div>
+</div>
+<div class="stat-card">
+<div class="stat-label">Ganancias totales</div>
+<div class="stat-value" id="affiliate-stat-total">—</div>
+</div>
+<div class="stat-card">
+<div class="stat-label">Ganancias este mes</div>
+<div class="stat-value" id="affiliate-stat-month">—</div>
+</div>
+</div>
+<div class="affiliate-tier-card">
+<div class="tier-top">
+<h3 style="margin:0;">Reparto de ingresos actual</h3>
+<span class="badge" id="affiliate-share-percent">—</span>
+</div>
+<p class="muted small" id="affiliate-tier-subtitle" style="margin:6px 0 10px;">Basado en las ventas válidas del mes en curso.</p>
+<div aria-label="Revenue share progress" class="progress">
+<div class="progress-bar" id="affiliate-tier-progress" style="width:0%"></div>
+</div>
+<div class="tier-foot muted small" style="display:flex;justify-content:space-between;gap:12px;margin-top:8px;flex-wrap:wrap;">
+<span>Ventas válidas este mes:<strong id="affiliate-tier-sales">0</strong></span>
+<span id="affiliate-tier-next">—</span>
+</div>
+</div>
+<div class="affiliate-payout-card">
+<h3 style="margin-top:0;">Pagos</h3>
+<p class="muted small" style="margin-top:4px;">Pago mínimo:<strong>50 USD</strong>. Las solicitudes se envían al administrador y se procesan manualmente.</p>
+<div class="payout-balance-box">
+<div class="muted small">Saldo disponible</div>
+<div class="stat-value" id="affiliate-available-balance">—</div>
+</div>
+<div class="payout-actions">
+<button class="btn" id="affiliate-open-payout-form-btn" type="button">Solicitar pago</button>
+</div>
+<div hidden="" id="affiliate-payout-form-wrap">
+<form autocomplete="on" class="auth-form" id="affiliate-payout-form">
+<div class="form-row-2">
+<div class="form-group">
+<label for="payout-amount">Importe (USD)</label>
+<input id="payout-amount" min="50" name="amount" required="" step="0.01" type="number"/>
+</div>
+<div class="form-group">
+<label for="payout-method">Método</label>
+<select id="payout-method" name="method" required="">
+<option value="paypal">PayPal</option>
+<option value="bank">Transferencia bancaria SEPA/SWIFT</option>
+</select>
+</div>
+</div>
+<div id="payout-method-paypal">
+<div class="form-group">
+<label for="payout-paypal-email">Email de PayPal</label>
+<input id="payout-paypal-email" name="paypal_email" placeholder="name@example.com" type="email"/>
+</div>
+</div>
+<div hidden="" id="payout-method-bank">
+<div class="form-row-2">
+<div class="form-group">
+<label for="payout-beneficiary-name">Titular de la cuenta</label>
+<input id="payout-beneficiary-name" name="beneficiary_name" placeholder="Nombre completo / Nombre de la empresa" type="text"/>
+</div>
+<div class="form-group">
+<label for="payout-bank-country">País del banco</label>
+<input id="payout-bank-country" name="bank_country" placeholder="p. ej. GB, IT, DE, US" type="text"/>
+</div>
+</div>
+<div class="form-row-2">
+<div class="form-group">
+<label for="payout-iban">IBAN (SEPA)</label>
+<input id="payout-iban" name="iban" placeholder="IT60X0542811101000000123456" type="text"/>
+</div>
+<div class="form-group">
+<label for="payout-swift">SWIFT/BIC (si aplica)</label>
+<input id="payout-swift" name="swift_bic" placeholder="UNCRITMMXXX" type="text"/>
+</div>
+</div>
+<div class="form-group">
+<label for="payout-bank-name">Nombre del banco (opcional)</label>
+<input id="payout-bank-name" name="bank_name" type="text"/>
+</div>
+<div class="form-group">
+<label for="payout-bank-address">Dirección del banco (opcional)</label>
+<input id="payout-bank-address" name="bank_address" type="text"/>
+</div>
+</div>
+<div class="divider-line"></div>
+<h4 style="margin:0 0 6px;">Datos fiscales (para cumplimiento internacional)</h4>
+<p class="muted small" style="margin:0 0 10px;">Se utiliza para identificar al beneficiario del pago y gestionar posibles verificaciones KYC / antifraude.</p>
+<div class="form-row-2">
+<div class="form-group">
+<label for="payout-legal-name">Nombre legal / Nombre de la empresa</label>
+<input id="payout-legal-name" name="legal_name" required="" type="text"/>
+</div>
+<div class="form-group">
+<label for="payout-subject-type">Tipo de entidad</label>
+<select id="payout-subject-type" name="subject_type" required="">
+<option value="individual">Persona física</option>
+<option value="company">Empresa / Autónomo</option>
+</select>
+</div>
+</div>
+<div class="form-row-2">
+<div class="form-group">
+<label for="payout-tax-country">País de residencia fiscal</label>
+<input id="payout-tax-country" name="tax_residence_country" placeholder="p. ej. GB" required="" type="text"/>
+</div>
+<div class="form-group">
+<label for="payout-tax-id">NIF / N.º de IVA (si disponible)</label>
+<input id="payout-tax-id" name="tax_id" placeholder="Opcional, pero recomendado" type="text"/>
+</div>
+</div>
+<div class="form-row-2">
+<div class="form-group">
+<label for="payout-address-country">País (dirección)</label>
+<input id="payout-address-country" name="address_country" placeholder="p. ej. GB" required="" type="text"/>
+</div>
+<div class="form-group">
+<label for="payout-address-city">Ciudad</label>
+<input id="payout-address-city" name="address_city" required="" type="text"/>
+</div>
+</div>
+<div class="form-group">
+<label class="checkbox-row">
+<input id="payout-remember" name="remember" type="checkbox"/>
+<span>Recordar para pagos futuros (guardar datos en tu perfil)</span>
+</label>
+</div>
+<div class="form-group">
+<label class="checkbox-row">
+<input id="payout-confirm" name="confirm" required="" type="checkbox"/>
+<span>Confirmo que los datos proporcionados son correctos y que soy el beneficiario de los fondos.</span>
+</label>
+</div>
+<div class="auth-actions" style="justify-content:flex-start;">
+<button class="btn" type="submit">Enviar solicitud</button>
+<button class="btn secondary" id="affiliate-cancel-payout-form-btn" type="button">Cancelar</button>
+</div>
+</form>
+</div>
+<div class="affiliate-table-card" style="margin-top:12px;">
+<h3 style="margin-top:0;">Historial de solicitudes de pago</h3>
+<div class="table-wrapper">
+<table class="table affiliate-payouts-table">
+<thead>
+<tr>
+<th>Fecha</th>
+<th>Importe</th>
+<th>Método</th>
+<th>Estado</th>
+</tr>
+</thead>
+<tbody id="affiliate-payout-requests-tbody">
+<tr><td class="muted small" colspan="4">Aún no se han enviado solicitudes.</td></tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="affiliate-chart-card">
+<h3>Ganancias mensuales</h3>
+<div style="height:220px;">
+<canvas aria-label="Gráfico de ganancias mensuales" id="affiliate-payouts-chart"></canvas>
+</div>
+</div>
+<div class="affiliate-table-card">
+<h3>Historial de pagos mensuales</h3>
+<table class="table affiliate-payouts-table">
+<thead>
+<tr>
+<th>Mes</th>
+<th>Ventas válidas</th>
+<th>Comisiones netas</th>
+<th>Reparto de ingresos</th>
+<th>Tus ganancias</th>
+</tr>
+</thead>
+<tbody id="affiliate-payouts-table-body">
+<tr><td class="muted small" colspan="5">Aún no hay pagos registrados.</td></tr>
+</tbody>
+</table>
+</div>
+<div class="affiliate-dashboard-actions">
+<button class="btn secondary" id="affiliate-2fa-btn" type="button">Seguridad (2FA)</button>
+<button class="btn secondary" id="affiliate-change-lang-btn" type="button">Cambiar idioma</button>
+<button class="btn" id="affiliate-logout-btn" type="button">Cerrar sesión</button>
+</div>
+</div>
+</div>
+<div aria-live="polite" class="auth-message" id="affiliate-auth-message"></div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<footer class="mega-footer">
+<div class="container mf-grid">
+<div class="mf-brand">
+<div class="brand big">
+<img alt="Travirae" src="assets/img/common/plane-logo.png" style="height:28px"/>
+<span>Travirae</span>
+</div>
+<p class="muted">Tu plataforma de inspiración para viajar y reservar hoteles con un mapa interactivo.</p>
+<div class="mf-socials">
+<a aria-label="Instagram" class="social social--icon" href="https://www.instagram.com/travirae_official/" rel="noopener" target="_blank">
+<img alt="" loading="lazy" src="https://upload.wikimedia.org/wikipedia/commons/e/e7/Instagram_logo_2016.svg"/>
+</a>
+<a aria-label="Facebook" class="social social--icon" href="https://www.facebook.com/profile.php?id=61573037940606" rel="noopener" target="_blank">
+<img alt="" loading="lazy" src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg"/>
+</a>
+<a aria-label="TikTok" class="social social--icon" href="https://www.tiktok.com/@travirae?lang=en" rel="noopener" target="_blank">
+<img alt="" loading="lazy" src="https://upload.wikimedia.org/wikipedia/commons/a/a6/Tiktok_icon.svg"/>
+</a>
+<a aria-label="YouTube" class="social social--icon" href="https://www.youtube.com/channel/UCgGtp3qTHUzMPqjpT8EnRbQ" rel="noopener" target="_blank">
+<img alt="" loading="lazy" src="https://upload.wikimedia.org/wikipedia/commons/0/09/YouTube_full-color_icon_%282017%29.svg"/>
+</a>
+</div>
+</div>
+<nav class="mf-services"><h4>Servicios</h4><ul>
+<li><a href="flights.html">Flights</a></li>
+<li><a href="index.html">Hotels</a></li>
+<li><a href="programma-affiliato.html">Programa de afiliados</a></li>
+</ul></nav>
+<div class="mf-contact">
+<h4>Mantente en contacto</h4>
+<ul class="contact-list">
+<li>✉️ info@travirae.com</li>
+<li>Suscríbete a nuestro boletín</li>
+</ul>
+Newsletter (gestionada mediante Supabase Edge Function).
+     Usamos method="get" y un id fijo para evitar envíos POST (405) si JS no se ha cargado.
+<form action="#" class="newsletter-form wide" id="newsletter-form" method="get">
+<input aria-label="Correo de la newsletter" name="newsletter_email" placeholder="Tu correo electrónico" required="" type="email"/>
+<button class="btn" type="submit">Subscribe</button>
+</form>
+</div>
+</div>
+<div class="container mf-bottom muted small">
+<div>© <span id="year-copy"></span> Travirae · Todos los derechos reservados</div>
+<div class="mf-legal">
+<a href="privacy.html">Privacidad</a> · <a href="termini.html">Términos</a> · <a href="cookie.html">Cookies</a>
+</div>
+</div>
+</footer>
+<script src="https://unpkg.com/@supabase/supabase-js@2"></script>
+<script src="assets/js/config.js"></script>
+<script src="assets/js/supabase-init.js"></script>
+<script src="assets/js/main.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="assets/js/affiliate-area-es.js"></script>
+</body>
+</html>

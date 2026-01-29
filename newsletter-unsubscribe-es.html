@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+
+<html lang="es">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Baja de la newsletter – Travirae</title>
+<link href="assets/css/style.css" rel="stylesheet"/>
+<script src="assets/js/config.js"></script>
+<script src="https://unpkg.com/@supabase/supabase-js@2"></script>
+<script src="assets/js/supabase-init.js"></script>
+<script id="travirae-lang-router">
+(function(){
+  try{
+    var key='travirae_email_lang';
+    var lang='';
+    try{ lang=String(localStorage.getItem(key)||'').toUpperCase(); }catch(e){}
+    var u=new URL(window.location.href);
+    var path=u.pathname||'';
+    var file=path.split('/').pop()||'';
+    var dir=path.slice(0, path.length - file.length);
+    if(!file) file='index.html';
+    var isDe=/-de\.html$/i.test(file);
+    var isEn=/-en\.html$/i.test(file);
+    var isFr=/-fr\.html$/i.test(file);
+    var isEs=/-es\.html$/i.test(file);
+    var isRu=/-ru\.html$/i.test(file);
+
+    if(lang==='DEU'){
+      if(!isDe && /\.html$/i.test(file)){
+        var targetDe = isEn ? file.replace(/-en\.html$/i,'-de.html')
+                    : (isFr ? file.replace(/-fr\.html$/i,'-de.html')
+                            : (isEs ? file.replace(/-es\.html$/i,'-de.html')
+                                    : (isRu ? file.replace(/-ru\.html$/i,'-de.html')
+                                            : file.replace(/\.html$/i,'-de.html'))));
+        u.pathname = dir + targetDe;
+        window.location.replace(u.toString());
+      }
+    } else if(lang==='ENG'){
+      if(!isEn && /\.html$/i.test(file)){
+        var targetEn = isDe ? file.replace(/-de\.html$/i,'-en.html')
+                    : (isFr ? file.replace(/-fr\.html$/i,'-en.html')
+                            : (isEs ? file.replace(/-es\.html$/i,'-en.html')
+                                    : (isRu ? file.replace(/-ru\.html$/i,'-en.html')
+                                            : file.replace(/\.html$/i,'-en.html'))));
+        u.pathname = dir + targetEn;
+        window.location.replace(u.toString());
+      }
+    } else if(lang==='FRA'){
+      if(!isFr && /\.html$/i.test(file)){
+        var targetFr = isDe ? file.replace(/-de\.html$/i,'-fr.html')
+                    : (isEn ? file.replace(/-en\.html$/i,'-fr.html')
+                            : (isEs ? file.replace(/-es\.html$/i,'-fr.html')
+                                    : (isRu ? file.replace(/-ru\.html$/i,'-fr.html')
+                                            : file.replace(/\.html$/i,'-fr.html'))));
+        u.pathname = dir + targetFr;
+        window.location.replace(u.toString());
+      }
+    } else if(lang==='SPA'){
+      if(!isEs && /\.html$/i.test(file)){
+        var targetEs = isDe ? file.replace(/-de\.html$/i,'-es.html')
+                    : (isEn ? file.replace(/-en\.html$/i,'-es.html')
+                            : (isFr ? file.replace(/-fr\.html$/i,'-es.html')
+                                    : (isRu ? file.replace(/-ru\.html$/i,'-es.html')
+                                            : file.replace(/\.html$/i,'-es.html'))));
+        u.pathname = dir + targetEs;
+        window.location.replace(u.toString());
+      }
+    } else if(lang==='RUS'){
+      if(!isRu && /\.html$/i.test(file)){
+        var targetRu = isDe ? file.replace(/-de\.html$/i,'-ru.html')
+                    : (isEn ? file.replace(/-en\.html$/i,'-ru.html')
+                            : (isFr ? file.replace(/-fr\.html$/i,'-ru.html')
+                                    : (isEs ? file.replace(/-es\.html$/i,'-ru.html')
+                                            : file.replace(/\.html$/i,'-ru.html'))));
+        u.pathname = dir + targetRu;
+        window.location.replace(u.toString());
+      }
+    } else {
+      if(isDe){
+        u.pathname = dir + file.replace(/-de\.html$/i,'.html');
+        window.location.replace(u.toString());
+      } else if(isEn){
+        u.pathname = dir + file.replace(/-en\.html$/i,'.html');
+        window.location.replace(u.toString());
+      } else if(isFr){
+        u.pathname = dir + file.replace(/-fr\.html$/i,'.html');
+        window.location.replace(u.toString());
+      } else if(isEs){
+        u.pathname = dir + file.replace(/-es\.html$/i,'.html');
+        window.location.replace(u.toString());
+      } else if(isRu){
+        u.pathname = dir + file.replace(/-ru\.html$/i,'.html');
+        window.location.replace(u.toString());
+      }
+    }
+  }catch(e){}
+})();
+</script>
+</head>
+<body>
+<header class="site-header">
+<div class="container header-inner">
+<a aria-label="Inicio de Travirae" class="brand" href="index.html">
+<img alt="Travirae" src="assets/img/common/plane-logo.png" style="height:28px"/>
+<span>Travirae</span>
+</a>
+<nav aria-label="Navegación principal" class="main-nav">
+<a class="nav-link" href="index.html">Hoteles</a>
+<a class="nav-link" href="flights.html">Vuelos</a>
+<a class="nav-link" href="programma-affiliato.html">Programa de afiliados</a>
+</nav>
+<button aria-label="Abrir menú" class="nav-toggle">
+<span></span><span></span><span></span>
+</button>
+</div>
+</header>
+<main class="section" style="padding-top: 60px; padding-bottom: 80px;">
+<div class="container" style="max-width: 720px;">
+<div class="auth-card" style="text-align: center;">
+<h1 class="auth-title">Newsletter</h1>
+<p class="muted" id="unsub-status" style="margin-top: 12px;">Estamos verificando tu solicitud…</p>
+<div style="margin-top: 22px;">
+<a class="btn" href="index.html">Volver a inicio</a>
+</div>
+</div>
+</div>
+</main>
+<script src="assets/js/main.js"></script>
+<script src="assets/js/newsletter-unsubscribe.js"></script>
+</body>
+</html>
