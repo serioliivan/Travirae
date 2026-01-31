@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+
+<html lang="ru">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<title>Условия использования — Travirae</title>
+<link href="assets/css/style.css" rel="stylesheet"/>
+<script id="travirae-lang-router">(function(){
+  try{
+    var key='travirae_email_lang';
+    var lang='';
+    try{ lang=String(localStorage.getItem(key)||'').toUpperCase(); }catch(e){}
+    if(!lang) return;
+
+    var map={DEU:'de', ENG:'en', FRA:'fr', SPA:'es', RUS:'ru', ARA:'ar'};
+    var suf=map[lang];
+    if(!suf) return;
+
+    var u=new URL(window.location.href);
+    var path=u.pathname||'';
+    var file=path.split('/').pop()||'';
+    var dir=path.slice(0, path.length - file.length);
+    if(!file) file='index.html';
+
+    // If already on the correct language page, do nothing
+    var reTarget=new RegExp('-'+suf+'\\.html$','i');
+    if(reTarget.test(file)) return;
+
+    // Only handle .html pages
+    if(!/\\.html$/i.test(file)) return;
+
+    // Strip any other supported suffix, then append the requested one
+    var target=file.replace(/-(de|en|fr|es|ru|ar)\\.html$/i,'.html').replace(/\\.html$/i,'-'+suf+'.html');
+    u.pathname = dir + target;
+    window.location.replace(u.toString());
+  }catch(e){}
+})();</script>
+</head>
+<body>
+<header class="site-header">
+<div class="container header-inner">
+<a aria-label="Travirae — главная" class="brand" href="index.html">
+<img alt="Travirae" src="assets/img/common/plane-logo.png" style="height:28px"/>
+<span>Travirae</span>
+</a>
+<nav aria-label="Основная навигация" class="main-nav">
+<a class="nav-link" href="index.html">Отели</a>
+<a class="nav-link" href="flights.html">Авиабилеты</a>
+<a class="nav-link" href="programma-affiliato.html">Партнёрская программа</a>
+</nav>
+<button aria-expanded="false" aria-label="Открыть меню" class="nav-toggle">
+<span></span><span></span><span></span>
+</button>
+</div>
+</header>
+<main>
+<section class="section">
+<div class="container">
+<h1 class="section-title">Условия</h1>
+<div class="legal">
+<h2>Условия and Conditions of Use</h2>
+<p class="muted"><strong>Обновлено:</strong> 01/01/2026</p>
+<p>
+<strong>Важное примечание:</strong> these Условия are a generic template.
+            To fully adapt them to your specific case (legal form, payment flows, tax matters, tracking tools, etc.),
+            we recommend having them reviewed by a legal professional.
+          </p>
+<h3>1) Контакты</h3>
+<p>Контакты: <a href="mailto:info@travirae.com">info@travirae.com</a>.</p>
+<h3>2) Описание сервиса</h3>
+<p>
+            Travirae — это платформа для вдохновения и сравнения, которая интегрирует виджеты/ссылки сторонних провайдеров
+            (например, карты отелей, поисковики авиабилетов). Любое бронирование/покупка завершается <strong>на сайтах третьих лиц</strong>
+            и на их условиях.
+          </p>
+<h3>3) Не туристическое агентство — ограничение ответственности</h3>
+<ul>
+<li>Travirae — <strong>не</strong> a travel agency and does не directly sell travel services, unless explicitly stated otherwise.</li>
+<li>Цены, доступность, условия, отмены и послепродажная поддержка зависят от сторонних провайдеров.</li>
+<li>Travirae — не responsible for service issues, delays, cancellations, changes or disputes between the user and third-party providers.</li>
+</ul>
+<h3>4) Партнёрский кабинет — регистрация и безопасность</h3>
+<ul>
+<li>Для участия в партнёрской программе необходимо создать аккаунт (e-mail и пароль).</li>
+<li>Если вы включите <strong>2FA</strong>, для защищённых действий также потребуется код Authenticator.</li>
+<li>Вы несёте ответственность за конфиденциальность учётных данных и за всю активность, выполненную через ваш аккаунт.</li>
+</ul>
+<h3>5) Трекинг, партнёрские ссылки и атрибуция</h3>
+<p>
+            Партнёры получают идентификатор (Affiliate ID) и могут делиться ссылками с параметром (например, <code>?ref=...</code>).
+            Когда пользователь посещает сайт по такой ссылке, могут записываться события трекинга (например, клик/клик по бронированию),
+            необходимые для расчёта статистики и комиссий.
+          </p>
+<p class="muted">
+            Important: “booking click” means a click that takes the user off the Site to a partner (it is не necessarily a confirmed sale).
+          </p>
+<h3>6) Комиссии, маржа и выплаты</h3>
+<ul>
+<li>Комиссии и маржа могут зависеть от данных, предоставленных партнёрами, и от импортированных отчётов (например, CSV или API).</li>
+<li>Продажи могут быть аннулированы, отменены, оспорены (chargeback) или признаны недействительными партнёрами.</li>
+<li>Запросы на выплату могут требовать проверок (например, минимальный порог, антифрод‑проверки, подтверждение учётных данных/2FA).</li>
+</ul>
+<h3>7) Допустимое использование</h3>
+<ul>
+<li>Запрещено использовать сайт для незаконной деятельности, спама, мошеннического трекинга, манипуляций кликами или любого злоупотребления программой.</li>
+<li>Мы оставляем за собой право приостанавливать/закрывать аккаунты в случае нарушений или подозрения на злоупотребления.</li>
+</ul>
+<h3>8) Интеллектуальная собственность</h3>
+<p>
+            Контент, товарные знаки, дизайн и код защищены законами об интеллектуальной собственности. Несанкционированное воспроизведение запрещено.
+          </p>
+<h3>9) Отказ от гарантий</h3>
+<p>
+            The Site is provided “as is”. While we aim for accuracy and continuity, we do не guarantee the absence of errors,
+            interruptions or the constant availability of integrated third-party services.
+          </p>
+<h3>10) Применимое право и юрисдикция</h3>
+<p>
+            Unless mandatory consumer-protection rules apply, these Условия are governed by Italian law.
+          </p>
+</div>
+</div>
+</section>
+</main>
+<footer class="mega-footer">
+<div class="container mf-grid">
+<div class="mf-brand">
+<div class="brand big">
+<img alt="Travirae" src="assets/img/common/plane-logo.png" style="height:28px"/>
+<span>Travirae</span>
+</div>
+<p class="muted">Платформа для вдохновения в путешествиях и бронирования отелей с интерактивной картой.</p>
+<div class="mf-socials">
+<a aria-label="Instagram" class="social social--icon" href="https://www.instagram.com/travirae_official/" rel="noopener" target="_blank">
+<img alt="" loading="lazy" src="https://upload.wikimedia.org/wikipedia/commons/e/e7/Instagram_logo_2016.svg"/>
+</a>
+<a aria-label="Facebook" class="social social--icon" href="https://www.facebook.com/profile.php?id=61573037940606" rel="noopener" target="_blank">
+<img alt="" loading="lazy" src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg"/>
+</a>
+<a aria-label="TikTok" class="social social--icon" href="https://www.tiktok.com/@travirae?lang=en" rel="noopener" target="_blank">
+<img alt="" loading="lazy" src="https://upload.wikimedia.org/wikipedia/commons/a/a6/Tiktok_icon.svg"/>
+</a>
+<a aria-label="YouTube" class="social social--icon" href="https://www.youtube.com/channel/UCgGtp3qTHUzMPqjpT8EnRbQ" rel="noopener" target="_blank">
+<img alt="" loading="lazy" src="https://upload.wikimedia.org/wikipedia/commons/0/09/YouTube_full-color_icon_%282017%29.svg"/>
+</a>
+</div>
+</div>
+<nav class="mf-services"><h4>Сервисы</h4><ul>
+<li><a href="flights.html">Авиабилеты</a></li>
+<li><a href="index.html">Отели</a></li>
+<li><a href="programma-affiliato.html">Партнёрская программа</a></li>
+</ul></nav>
+<div class="mf-contact">
+<h4>Оставайтесь на связи</h4>
+<ul class="contact-list">
+<li>✉️ info@travirae.com</li>
+<li>Подпишитесь на нашу рассылку</li>
+</ul>
+<!-- Newsletter (gestita via Supabase Edge Function).
+     Usiamo method="get" e un id fisso per evitare submit POST (405) e per collegare correttamente lo script. -->
+<form action="#" autocomplete="off" class="newsletter-form wide" id="newsletter-form" method="get">
+<input aria-label="Email для рассылки" name="newsletter_email" placeholder="Ваш e-mail" required="" type="email"/>
+<button class="btn" type="submit">Подписаться</button>
+</form>
+</div>
+</div>
+<div class="container mf-bottom muted small">
+<div>© <span id="year-copy"></span> Travirae · Все права защищены</div>
+<div class="mf-legal">
+<a href="privacy.html">Конфиденциальность</a> · <a href="termini.html">Условия</a> · <a href="cookie.html">Cookie‑файлы</a>
+</div>
+</div>
+</footer>
+<script src="https://unpkg.com/@supabase/supabase-js@2"></script>
+<script src="assets/js/config.js"></script>
+<script src="assets/js/supabase-init.js"></script>
+<script src="assets/js/main.js"></script>
+</body>
+</html>

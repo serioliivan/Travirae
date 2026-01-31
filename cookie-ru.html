@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+
+<html lang="ru">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<title>Cookie‑файлы — Travirae</title>
+<link href="assets/css/style.css" rel="stylesheet"/>
+<script id="travirae-lang-router">(function(){
+  try{
+    var key='travirae_email_lang';
+    var lang='';
+    try{ lang=String(localStorage.getItem(key)||'').toUpperCase(); }catch(e){}
+    if(!lang) return;
+
+    var map={DEU:'de', ENG:'en', FRA:'fr', SPA:'es', RUS:'ru', ARA:'ar'};
+    var suf=map[lang];
+    if(!suf) return;
+
+    var u=new URL(window.location.href);
+    var path=u.pathname||'';
+    var file=path.split('/').pop()||'';
+    var dir=path.slice(0, path.length - file.length);
+    if(!file) file='index.html';
+
+    // If already on the correct language page, do nothing
+    var reTarget=new RegExp('-'+suf+'\\.html$','i');
+    if(reTarget.test(file)) return;
+
+    // Only handle .html pages
+    if(!/\\.html$/i.test(file)) return;
+
+    // Strip any other supported suffix, then append the requested one
+    var target=file.replace(/-(de|en|fr|es|ru|ar)\\.html$/i,'.html').replace(/\\.html$/i,'-'+suf+'.html');
+    u.pathname = dir + target;
+    window.location.replace(u.toString());
+  }catch(e){}
+})();</script>
+</head>
+<body>
+<header class="site-header">
+<div class="container header-inner">
+<a aria-label="Travirae — главная" class="brand" href="index.html">
+<img alt="Travirae" src="assets/img/common/plane-logo.png" style="height:28px"/>
+<span>Travirae</span>
+</a>
+<nav aria-label="Основная навигация" class="main-nav">
+<a class="nav-link" href="index.html">Отели</a>
+<a class="nav-link" href="flights.html">Авиабилеты</a>
+<a class="nav-link" href="programma-affiliato.html">Партнёрская программа</a>
+</nav>
+<button aria-expanded="false" aria-label="Открыть меню" class="nav-toggle">
+<span></span><span></span><span></span>
+</button>
+</div>
+</header>
+<main>
+<section class="section">
+<div class="container">
+<h1 class="section-title">Cookie‑файлы</h1>
+<div class="legal">
+<h2>Политика использования cookie‑файлов</h2>
+<p class="muted"><strong>Обновлено:</strong> 01/01/2026</p>
+<p>
+<strong>Важное примечание:</strong> this Политика использования cookie‑файлов is a basic information template.
+            Compliance depends on the cookies/tools actually used and configuration choices (e.g. analytics/marketing).
+            If in doubt, have this text reviewed by a legal professional.
+          </p>
+<h3>1) Что такое cookie‑файлы</h3>
+<p>
+            Cookie‑файлы are small text files that websites store on a user's device (or read from the device) to run the website,
+            improve the experience or provide functionality.
+          </p>
+<h3>2) Типы cookie‑файлов</h3>
+<ul>
+<li><strong>Технические/необходимые cookie‑файлы</strong>: нужны для работы сайта (например, сессия/вход, предпочтения).</li>
+<li><strong>Cookie‑файлы предпочтений</strong>: сохраняют выбор пользователя (например, язык).</li>
+<li><strong>Cookie‑файлы аналитики/статистики</strong>: измеряют трафик и использование сайта.</li>
+<li><strong>Маркетинговые/профилирующие cookie‑файлы</strong>: используются для персонализированной рекламы или расширенного трекинга.</li>
+</ul>
+<h3>3) Cookie‑файлы and storage used by Travirae</h3>
+<p>
+            Travirae mainly uses <strong>technical</strong> and <strong>preference</strong> tools required for core functionality:
+          </p>
+<ul>
+<li><strong>Аутентификация</strong> (партнёрский кабинет/админ): для поддержания сессии могут использоваться токены/cookie‑файлы или хранилище браузера.</li>
+<li><strong>Выбор языка</strong>: выбранный язык может сохраняться (например, через cookie‑файлы или localStorage), чтобы запомнить ваш выбор.</li>
+<li><strong>Партнёрский трекинг</strong>: когда пользователь приходит по партнёрской ссылке (параметр <code>?ref=</code>), сайт может временно сохранить
+              эту информацию, чтобы корректно атрибутировать клики/бронирования (партнёрская программа).</li>
+</ul>
+<p>
+            Если в будущем будут добавлены аналитические или маркетинговые cookie‑файлы, Travirae может внедрить баннер согласия и панель настроек.
+          </p>
+<h3>4) Cookie‑файлы третьих лиц</h3>
+<p>
+            Некоторые части сайта встраивают или ссылаются на <strong>сторонние виджеты/сервисы</strong> (например, поиск и бронирование отелей/авиабилетов,
+            карты и инструменты сравнения). Эти третьи лица могут устанавливать cookie‑файлы или использовать похожие технологии по своим политикам.
+            Travirae не контролирует напрямую cookie‑файлы и трекинг третьих лиц.
+          </p>
+<h3>5) Как управлять или удалять cookie‑файлы</h3>
+<p>
+            Вы можете управлять cookie‑файлами в настройках браузера (блокировать, удалять, разрешать только определённые cookie‑файлы).
+            Отключение технических cookie‑файлов может повлиять на некоторые функции сайта (вход, настройки языка и т. д.).
+          </p>
+<h3>6) Контакты</h3>
+<p>
+            For questions about this Политика использования cookie‑файлов: <a href="mailto:info@travirae.com">info@travirae.com</a>.
+          </p>
+</div>
+</div>
+</section>
+</main>
+<footer class="mega-footer">
+<div class="container mf-grid">
+<div class="mf-brand">
+<div class="brand big">
+<img alt="Travirae" src="assets/img/common/plane-logo.png" style="height:28px"/>
+<span>Travirae</span>
+</div>
+<p class="muted">Платформа для вдохновения в путешествиях и бронирования отелей с интерактивной картой.</p>
+<div class="mf-socials">
+<a aria-label="Instagram" class="social social--icon" href="https://www.instagram.com/travirae_official/" rel="noopener" target="_blank">
+<img alt="" loading="lazy" src="https://upload.wikimedia.org/wikipedia/commons/e/e7/Instagram_logo_2016.svg"/>
+</a>
+<a aria-label="Facebook" class="social social--icon" href="https://www.facebook.com/profile.php?id=61573037940606" rel="noopener" target="_blank">
+<img alt="" loading="lazy" src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg"/>
+</a>
+<a aria-label="TikTok" class="social social--icon" href="https://www.tiktok.com/@travirae?lang=en" rel="noopener" target="_blank">
+<img alt="" loading="lazy" src="https://upload.wikimedia.org/wikipedia/commons/a/a6/Tiktok_icon.svg"/>
+</a>
+<a aria-label="YouTube" class="social social--icon" href="https://www.youtube.com/channel/UCgGtp3qTHUzMPqjpT8EnRbQ" rel="noopener" target="_blank">
+<img alt="" loading="lazy" src="https://upload.wikimedia.org/wikipedia/commons/0/09/YouTube_full-color_icon_%282017%29.svg"/>
+</a>
+</div>
+</div>
+<nav class="mf-services"><h4>Сервисы</h4><ul>
+<li><a href="flights.html">Авиабилеты</a></li>
+<li><a href="index.html">Отели</a></li>
+<li><a href="programma-affiliato.html">Партнёрская программа</a></li>
+</ul></nav>
+<div class="mf-contact">
+<h4>Оставайтесь на связи</h4>
+<ul class="contact-list">
+<li>✉️ info@travirae.com</li>
+<li>Подпишитесь на нашу рассылку</li>
+</ul>
+<!-- Newsletter (gestita via Supabase Edge Function).
+     Usiamo method="get" e un id fisso per evitare submit POST (405) e per collegare correttamente lo script. -->
+<form action="#" autocomplete="off" class="newsletter-form wide" id="newsletter-form" method="get">
+<input aria-label="Email для рассылки" name="newsletter_email" placeholder="Ваш e-mail" required="" type="email"/>
+<button class="btn" type="submit">Подписаться</button>
+</form>
+</div>
+</div>
+<div class="container mf-bottom muted small">
+<div>© <span id="year-copy"></span> Travirae · Все права защищены</div>
+<div class="mf-legal">
+<a href="privacy.html">Конфиденциальность</a> · <a href="termini.html">Условия</a> · <a href="cookie.html">Cookie‑файлы</a>
+</div>
+</div>
+</footer>
+<script src="https://unpkg.com/@supabase/supabase-js@2"></script>
+<script src="assets/js/config.js"></script>
+<script src="assets/js/supabase-init.js"></script>
+<script src="assets/js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+
+<html lang="es">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<title>Política de privacidad – Travirae</title>
+<link href="assets/css/style.css" rel="stylesheet"/>
+<script id="travirae-lang-router">(function(){
+  try{
+    var key='travirae_email_lang';
+    var lang='';
+    try{ lang=String(localStorage.getItem(key)||'').toUpperCase(); }catch(e){}
+    if(!lang) return;
+
+    var map={DEU:'de', ENG:'en', FRA:'fr', SPA:'es', RUS:'ru', ARA:'ar'};
+    var suf=map[lang];
+    if(!suf) return;
+
+    var u=new URL(window.location.href);
+    var path=u.pathname||'';
+    var file=path.split('/').pop()||'';
+    var dir=path.slice(0, path.length - file.length);
+    if(!file) file='index.html';
+
+    // If already on the correct language page, do nothing
+    var reTarget=new RegExp('-'+suf+'\\.html$','i');
+    if(reTarget.test(file)) return;
+
+    // Only handle .html pages
+    if(!/\\.html$/i.test(file)) return;
+
+    // Strip any other supported suffix, then append the requested one
+    var target=file.replace(/-(de|en|fr|es|ru|ar)\\.html$/i,'.html').replace(/\\.html$/i,'-'+suf+'.html');
+    u.pathname = dir + target;
+    window.location.replace(u.toString());
+  }catch(e){}
+})();</script>
+</head>
+<body>
+<header class="site-header">
+<div class="container header-inner">
+<a aria-label="Inicio de Travirae" class="brand" href="index.html">
+<img alt="Travirae" src="assets/img/common/plane-logo.png" style="height:28px"/>
+<span>Travirae</span>
+</a>
+<nav aria-label="Navegación principal" class="main-nav">
+<a class="nav-link" href="index.html">Hoteles</a>
+<a class="nav-link" href="flights.html">Vuelos</a>
+<a class="nav-link" href="programma-affiliato.html">Programa de afiliados</a>
+</nav>
+<button aria-expanded="false" aria-label="Abrir menú" class="nav-toggle">
+<span></span><span></span><span></span>
+</button>
+</div>
+</header>
+<main>
+<section class="section">
+<div class="container">
+<h1 class="section-title">Política de privacidad</h1>
+<div class="legal">
+<h2>Aviso de privacidad (RGPD)</h2>
+<p class="muted"><strong>Última actualización:</strong> 01/01/2026</p>
+<p><strong>Nota importante:</strong> este documento es una plantilla informativa básica para la fase de prueba. El cumplimiento completo depende de tu configuración específica (entidad legal, país, herramientas realmente utilizadas, cookies/analytics, etc.). Si tienes dudas, haz que este texto sea revisado por un profesional legal.</p>
+<h3>1) Contacto</h3>
+<p>Para solicitudes o información relacionadas con la privacidad: <a href="mailto:info@travirae.com">info@travirae.com</a>.</p>
+<h3>2) Tipos de datos tratados</h3>
+<ul>
+<li><strong>Datos de navegación</strong>: información técnica como dirección IP, user agent, fecha/hora de la solicitud, URL de referencia y logs de seguridad. Estos datos pueden ser tratados por sistemas de hosting/CDN y proveedores técnicos.</li>
+<li><strong>Datos de cuenta (Área de afiliados/Admin)</strong>: email, ID de afiliado, preferencia de idioma, ajustes de seguridad (p. ej., 2FA) y registros de inicio de sesión/actividad.</li>
+<li><strong>Datos del programa de afiliados</strong>: clics, “booking clicks” y datos estadísticos usados para atribuir comisiones.</li>
+<li><strong>Datos de pagos</strong>: información necesaria para gestionar solicitudes de pago (p. ej., importes, estado, método). <span class="muted">(Si recopilas IBAN o datos fiscales, deben indicarse explícitamente aquí.)</span></li>
+<li><strong>Newsletter</strong>: consentimiento (puedes darte de baja en cualquier momento).</li>
+<li><strong>Comunicaciones</strong>: mensajes enviados por email o contacto de soporte.</li>
+</ul>
+<h3>3) Fines y bases legales</h3>
+<ul>
+<li><strong>Creación y gestión de la cuenta</strong> (registro, inicio de sesión, recuperación de contraseña, seguridad): ejecución de un contrato / medidas precontractuales y <em>interés legítimo</em> en mantener el servicio seguro.</li>
+<li><strong>Gestión del programa de afiliados</strong> (atribución de clics/booking clicks, cálculo de estadísticas y ganancias): ejecución de un contrato e interés legítimo en una atribución correcta y prevención de abusos.</li>
+<li><strong>Solicitudes de pago</strong>: ejecución del contrato y verificaciones de cumplimiento/anti‑fraude cuando corresponda.</li>
+<li><strong>Newsletter</strong>: consentimiento (puedes darte de baja en cualquier momento).</li>
+</ul>
+<h3>4) Compartición de datos</h3>
+<p>Los datos pueden ser tratados por proveedores técnicos (p. ej., hosting/CDN), por el proveedor de base de datos/autenticación (Supabase) y por servicios de terceros integrados en el sitio (widgets, comparadores, mapas). Cada proveedor trata los datos conforme a su propia política de privacidad.</p>
+<h3>5) Conservación de datos</h3>
+<p>Conservamos los datos personales solo durante el tiempo necesario para los fines descritos arriba, o según lo requiera la ley. Puedes solicitar la eliminación de tu cuenta cuando corresponda.</p>
+<h3>6) Tus derechos</h3>
+<p>Según tu jurisdicción, puedes tener derechos de acceso, rectificación, eliminación, limitación del tratamiento, portabilidad de datos y oposición. Para ejercer tus derechos, contacta con: <a href="mailto:info@travirae.com">info@travirae.com</a>.</p>
+<h3>7) Cambios</h3>
+<p>Podemos actualizar este aviso de privacidad de vez en cuando. La fecha de “Última actualización” se modificará en consecuencia.</p>
+</div>
+</div>
+</section>
+</main>
+<footer class="mega-footer">
+<div class="container mf-grid">
+<div class="mf-brand">
+<div class="brand big">
+<img alt="Travirae" src="assets/img/common/plane-logo.png" style="height:28px"/>
+<span>Travirae</span>
+</div>
+<p class="muted">Tu plataforma de inspiración de viajes y reserva de hoteles con un mapa interactivo.</p>
+<div class="mf-socials">
+<a aria-label="Instagram" class="social social--icon" href="https://www.instagram.com/travirae_official/" rel="noopener" target="_blank">
+<img alt="" loading="lazy" src="https://upload.wikimedia.org/wikipedia/commons/e/e7/Instagram_logo_2016.svg"/>
+</a>
+<a aria-label="Facebook" class="social social--icon" href="https://www.facebook.com/profile.php?id=61573037940606" rel="noopener" target="_blank">
+<img alt="" loading="lazy" src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg"/>
+</a>
+<a aria-label="TikTok" class="social social--icon" href="https://www.tiktok.com/@travirae?lang=en" rel="noopener" target="_blank">
+<img alt="" loading="lazy" src="https://upload.wikimedia.org/wikipedia/commons/a/a6/Tiktok_icon.svg"/>
+</a>
+<a aria-label="YouTube" class="social social--icon" href="https://www.youtube.com/channel/UCgGtp3qTHUzMPqjpT8EnRbQ" rel="noopener" target="_blank">
+<img alt="" loading="lazy" src="https://upload.wikimedia.org/wikipedia/commons/0/09/YouTube_full-color_icon_%282017%29.svg"/>
+</a>
+</div>
+</div>
+<nav class="mf-services"><h4>Servicios</h4><ul>
+<li><a href="flights.html">Vuelos</a></li>
+<li><a href="index.html">Hoteles</a></li>
+<li><a href="programma-affiliato.html">Programa de afiliados</a></li>
+</ul></nav>
+<div class="mf-contact">
+<h4>Mantente en contacto</h4>
+<ul class="contact-list">
+<li>✉️ info@travirae.com</li>
+<li>Suscríbete a nuestro boletín</li>
+</ul>
+<!-- Newsletter (gestita via Supabase Edge Function).
+     Usiamo method="get" e un id fisso per evitare submit POST (405) e per collegare correttamente lo script. -->
+<form action="#" autocomplete="off" class="newsletter-form wide" id="newsletter-form" method="get">
+<input aria-label="Correo del boletín" name="newsletter_email" placeholder="Tu correo electrónico" required="" type="email"/>
+<button class="btn" type="submit">Suscribirme</button>
+</form>
+</div>
+</div>
+<div class="container mf-bottom muted small">
+<div>© <span id="year-copy"></span> Travirae · Todos los derechos reservados</div>
+<div class="mf-legal">
+<a href="privacy.html">Privacidad</a> · <a href="termini.html">Términos</a> · <a href="cookie.html">Cookies</a>
+</div>
+</div>
+</footer>
+<script src="https://unpkg.com/@supabase/supabase-js@2"></script>
+<script src="assets/js/config.js"></script>
+<script src="assets/js/supabase-init.js"></script>
+<script src="assets/js/main.js"></script>
+</body>
+</html>

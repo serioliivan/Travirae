@@ -1,0 +1,450 @@
+
+<!DOCTYPE html>
+
+<html lang="de">
+<head>
+<link href="assets/img/common/plane-logo.png" rel="icon" type="image/png"/>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<title>Admin – Partnerprogramm | Travirae</title>
+<meta content="Admin-Dashboard zur Überwachung von Verkäufen, Netto-Provisionen, Affiliate-Auszahlungen und Travirae-Marge – aggregiert nach Monat und Affiliate." name="description"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="assets/css/style.css" rel="stylesheet"/>
+<script id="travirae-lang-router">(function(){
+  try{
+    var key='travirae_email_lang';
+    var lang='';
+    try{ lang=String(localStorage.getItem(key)||'').toUpperCase(); }catch(e){}
+    if(!lang) return;
+
+    var map={DEU:'de', ENG:'en', FRA:'fr', SPA:'es', RUS:'ru', ARA:'ar'};
+    var suf=map[lang];
+    if(!suf) return;
+
+    var u=new URL(window.location.href);
+    var path=u.pathname||'';
+    var file=path.split('/').pop()||'';
+    var dir=path.slice(0, path.length - file.length);
+    if(!file) file='index.html';
+
+    // If already on the correct language page, do nothing
+    var reTarget=new RegExp('-'+suf+'\\.html$','i');
+    if(reTarget.test(file)) return;
+
+    // Only handle .html pages
+    if(!/\\.html$/i.test(file)) return;
+
+    // Strip any other supported suffix, then append the requested one
+    var target=file.replace(/-(de|en|fr|es|ru|ar)\\.html$/i,'.html').replace(/\\.html$/i,'-'+suf+'.html');
+    u.pathname = dir + target;
+    window.location.replace(u.toString());
+  }catch(e){}
+})();</script>
+</head>
+<body class="page--affiliate-admin">
+<header class="site-header">
+<div class="container header-inner">
+<a aria-label="Travirae Startseite" class="brand" href="index.html">
+<img alt="Travirae" src="assets/img/common/plane-logo.png" style="height:28px"/>
+<span>Travirae</span>
+</a>
+<nav aria-label="Hauptnavigation" class="main-nav">
+<a class="nav-link" href="index.html">Hotels</a>
+<a class="nav-link" href="flights.html">Flüge</a>
+<a class="nav-link" href="programma-affiliato.html">Partnerprogramm</a>
+</nav>
+<button aria-expanded="false" aria-label="Menü öffnen" class="nav-toggle"><span></span><span></span><span></span></button>
+</div>
+</header>
+<main>
+<section class="section">
+<div class="container">
+<div class="auth-card">
+<div class="admin-header">
+<h1 id="admin-title" style="font-size:1.3rem;margin:0 0 4px;">Admin-Dashboard Partnerprogramm</h1>
+<p class="muted small" id="admin-subtitle" style="margin:0;">Melde dich mit dem Admin-Konto an, um die globalen Statistiken des Partnerprogramms zu sehen.</p>
+</div>
+<div id="admin-view-login">
+<form autocomplete="on" class="auth-form" id="admin-login-form">
+<div class="form-group">
+<label for="admin-email">Admin-E-Mail</label>
+<input id="admin-email" name="email" required="" type="email"/>
+</div>
+<div class="form-group">
+<label for="admin-password">Passwort</label>
+<input id="admin-password" name="password" required="" type="password"/>
+</div>
+<div class="auth-actions">
+<button class="btn" type="submit">Anmelden</button>
+</div>
+</form>
+</div>
+<div hidden="" id="admin-view-dashboard">
+<div class="admin-stats-grid">
+<div class="stat-card">
+<div class="stat-label">Gültige Verkäufe (laufender Monat)</div>
+<div class="stat-value" id="admin-total-sales">—</div>
+</div>
+<div class="stat-card">
+<div class="stat-label">Netto-Provisionen (laufender Monat)</div>
+<div class="stat-value" id="admin-total-net">—</div>
+</div>
+<div class="stat-card">
+<div class="stat-label">Affiliate-Auszahlungen (laufender Monat)</div>
+<div class="stat-value" id="admin-total-aff">—</div>
+</div>
+<div class="stat-card">
+<div class="stat-label">Travirae-Marge (laufender Monat)</div>
+<div class="stat-value" id="admin-total-trav">—</div>
+</div>
+<div class="stat-card">
+<div class="stat-label">Direkte Verkäufe (ohne Affiliate)</div>
+<div class="stat-value" id="admin-direct-sales">—</div>
+</div>
+<div class="stat-card">
+<div class="stat-label">Direkte Netto-Provisionen (ohne Affiliate)</div>
+<div class="stat-value" id="admin-direct-net">—</div>
+</div>
+</div>
+<h2 class="admin-section-title">Website-Traffic (laufender Monat)</h2>
+<div class="admin-stats-grid">
+<div class="stat-card">
+<div class="stat-label">Besuche gesamt</div>
+<div class="stat-value" id="admin-traffic-visits">—</div>
+</div>
+<div class="stat-card">
+<div class="stat-label">Pageviews gesamt</div>
+<div class="stat-value" id="admin-traffic-pageviews">—</div>
+</div>
+<div class="stat-card">
+<div class="stat-label">Besuche über Affiliates</div>
+<div class="stat-value" id="admin-traffic-visits-affiliate">—</div>
+</div>
+<div class="stat-card">
+<div class="stat-label">Direkte Besuche</div>
+<div class="stat-value" id="admin-traffic-visits-direct">—</div>
+</div>
+</div>
+<div class="admin-note" style="margin-top:10px;">
+<span class="muted small">„Besuche“ sind eindeutige Sessions (session_id); „Pageviews“ sind Seitenaufrufe, die von der Website erfasst werden. Die Daten enthalten Traffic mit und ohne Parameter <code>?ref=</code>.</span>
+</div>
+<h2 class="admin-section-title" style="margin-top:18px;">Booking Clicks auf der Website (laufender Monat)</h2>
+<div class="admin-stats-grid">
+<div class="stat-card">
+<div class="stat-label">Booking Clicks gesamt</div>
+<div class="stat-value" id="admin-bclick-total">—</div>
+</div>
+<div class="stat-card">
+<div class="stat-label">Booking Clicks über Affiliates</div>
+<div class="stat-value" id="admin-bclick-affiliate">—</div>
+</div>
+<div class="stat-card">
+<div class="stat-label">Direkte Booking Clicks (ohne Affiliate)</div>
+<div class="stat-value" id="admin-bclick-direct">—</div>
+</div>
+</div>
+<div class="admin-note" style="margin-top:10px;">
+<span class="muted small">„Booking Clicks“ sind Klicks innerhalb der Widgets (Stay22 / Aviasales), die Nutzerinnen und Nutzer von der Website zu einem Partner weiterleiten. <strong>Das sind keine</strong> bestätigten Verkäufe.</span>
+</div>
+<div class="admin-actions">
+<button class="btn secondary" id="admin-reload-btn" type="button">Daten neu laden</button>
+<button class="btn secondary" id="admin-import-aviasales-btn" type="button">Aviasales-Verkäufe importieren</button>
+<button class="btn secondary" id="admin-import-stay22-csv-btn" type="button">Stay22-CSV importieren</button>
+<input accept=".csv,text/csv" hidden="" id="admin-stay22-csv-input" type="file"/>
+<button class="btn secondary" id="admin-refresh-payouts-btn" type="button">Auszahlungen aktualisieren</button>
+<button class="btn secondary" id="admin-2fa-btn" type="button">Sicherheit (2FA)</button>
+<button class="btn" id="admin-logout-btn" type="button">Abmelden</button>
+</div>
+<details class="admin-accordion" id="admin-newsletter-accordion">
+<summary class="admin-section-title admin-accordion-summary">Newsletter</summary>
+<div class="admin-stats-grid" style="margin-top: 10px;">
+<div class="stat-card">
+<div class="stat-label">Newsletter-Abonnenten (gesamt)</div>
+<div class="stat-value" id="admin-newsletter-count">—</div>
+</div>
+<div class="stat-card">
+<div class="stat-label">Abonnenten (ITA)</div>
+<div class="stat-value" id="admin-newsletter-count-ITA">—</div>
+</div>
+<div class="stat-card">
+<div class="stat-label">Abonnenten (ENG)</div>
+<div class="stat-value" id="admin-newsletter-count-ENG">—</div>
+</div>
+<div class="stat-card">
+<div class="stat-label">Abonnenten (ARA)</div>
+<div class="stat-value" id="admin-newsletter-count-ARA">—</div>
+</div>
+<div class="stat-card">
+<div class="stat-label">Abonnenten (DEU)</div>
+<div class="stat-value" id="admin-newsletter-count-DEU">—</div>
+</div>
+<div class="stat-card">
+<div class="stat-label">Abonnenten (SPA)</div>
+<div class="stat-value" id="admin-newsletter-count-SPA">—</div>
+</div>
+<div class="stat-card">
+<div class="stat-label">Abonnenten (RUS)</div>
+<div class="stat-value" id="admin-newsletter-count-RUS">—</div>
+</div>
+<div class="stat-card">
+<div class="stat-label">Abonnenten (NLD)</div>
+<div class="stat-value" id="admin-newsletter-count-NLD">—</div>
+</div>
+<div class="stat-card">
+<div class="stat-label">Abonnenten (ZHO)</div>
+<div class="stat-value" id="admin-newsletter-count-ZHO">—</div>
+</div>
+<div class="stat-card">
+<div class="stat-label">Abonnenten (FRA)</div>
+<div class="stat-value" id="admin-newsletter-count-FRA">—</div>
+</div>
+</div>
+<div class="admin-card" style="margin-top: 12px;">
+<form class="admin-newsletter-form" id="admin-newsletter-form">
+<p class="muted small" style="margin: 0 0 12px;">
+            Um den Newsletter zu senden, musst du <strong>BETREFF</strong> und <strong>TEXT</strong> für <strong>alle Sprachen</strong> ausfüllen.
+            Wenn auch nur ein einziges Feld fehlt, wird der Versand blockiert.
+            Der Newsletter wird in der Sprache versendet, die zum Zeitpunkt der Anmeldung gespeichert wurde (z. B. wenn sich jemand auf der Website mit ENG anmeldet, erhält die Person den Newsletter auf Englisch).
+          </p>
+<div class="admin-newsletter-grid">
+<div class="admin-newsletter-lang" data-lang="ITA">
+<div class="admin-newsletter-lang-head"><span class="code">ITA</span><span class="name">Italienisch</span></div>
+<label for="newsletter-subject-ITA">Betreff</label>
+<input autocomplete="off" id="newsletter-subject-ITA" placeholder="Betreff (ITA)" type="text"/>
+<label for="newsletter-body-ITA">Text</label>
+<textarea id="newsletter-body-ITA" placeholder="Newsletter-Text (ITA)" rows="6"></textarea>
+</div>
+<div class="admin-newsletter-lang" data-lang="ENG">
+<div class="admin-newsletter-lang-head"><span class="code">ENG</span><span class="name">Englisch</span></div>
+<label for="newsletter-subject-ENG">Betreff</label>
+<input autocomplete="off" id="newsletter-subject-ENG" placeholder="Betreff (ENG)" type="text"/>
+<label for="newsletter-body-ENG">Text</label>
+<textarea id="newsletter-body-ENG" placeholder="Newsletter-Text (ENG)" rows="6"></textarea>
+</div>
+<div class="admin-newsletter-lang" data-lang="FRA">
+<div class="admin-newsletter-lang-head"><span class="code">FRA</span><span class="name">Französisch</span></div>
+<label for="newsletter-subject-FRA">Betreff</label>
+<input autocomplete="off" id="newsletter-subject-FRA" placeholder="Betreff (FRA)" type="text"/>
+<label for="newsletter-body-FRA">Text</label>
+<textarea id="newsletter-body-FRA" placeholder="Newsletter-Text (FRA)" rows="6"></textarea>
+</div>
+<div class="admin-newsletter-lang" data-lang="DEU">
+<div class="admin-newsletter-lang-head"><span class="code">DEU</span><span class="name">Deutsch</span></div>
+<label for="newsletter-subject-DEU">Betreff</label>
+<input autocomplete="off" id="newsletter-subject-DEU" placeholder="Betreff (DEU)" type="text"/>
+<label for="newsletter-body-DEU">Text</label>
+<textarea id="newsletter-body-DEU" placeholder="Newsletter-Text (DEU)" rows="6"></textarea>
+</div>
+<div class="admin-newsletter-lang" data-lang="SPA">
+<div class="admin-newsletter-lang-head"><span class="code">SPA</span><span class="name">Spanisch</span></div>
+<label for="newsletter-subject-SPA">Betreff</label>
+<input autocomplete="off" id="newsletter-subject-SPA" placeholder="Betreff (SPA)" type="text"/>
+<label for="newsletter-body-SPA">Text</label>
+<textarea id="newsletter-body-SPA" placeholder="Newsletter-Text (SPA)" rows="6"></textarea>
+</div>
+<div class="admin-newsletter-lang" data-lang="NLD">
+<div class="admin-newsletter-lang-head"><span class="code">NLD</span><span class="name">Niederländisch</span></div>
+<label for="newsletter-subject-NLD">Betreff</label>
+<input autocomplete="off" id="newsletter-subject-NLD" placeholder="Betreff (NLD)" type="text"/>
+<label for="newsletter-body-NLD">Text</label>
+<textarea id="newsletter-body-NLD" placeholder="Newsletter-Text (NLD)" rows="6"></textarea>
+</div>
+<div class="admin-newsletter-lang" data-lang="RUS">
+<div class="admin-newsletter-lang-head"><span class="code">RUS</span><span class="name">Russisch</span></div>
+<label for="newsletter-subject-RUS">Betreff</label>
+<input autocomplete="off" id="newsletter-subject-RUS" placeholder="Betreff (RUS)" type="text"/>
+<label for="newsletter-body-RUS">Text</label>
+<textarea id="newsletter-body-RUS" placeholder="Newsletter-Text (RUS)" rows="6"></textarea>
+</div>
+<div class="admin-newsletter-lang" data-lang="ARA">
+<div class="admin-newsletter-lang-head"><span class="code">ARA</span><span class="name">Arabisch</span></div>
+<label for="newsletter-subject-ARA">Betreff</label>
+<input autocomplete="off" id="newsletter-subject-ARA" placeholder="Betreff (ARA)" type="text"/>
+<label for="newsletter-body-ARA">Text</label>
+<textarea id="newsletter-body-ARA" placeholder="Newsletter-Text (ARA)" rows="6"></textarea>
+</div>
+<div class="admin-newsletter-lang" data-lang="ZHO">
+<div class="admin-newsletter-lang-head"><span class="code">ZHO</span><span class="name">Chinesisch</span></div>
+<label for="newsletter-subject-ZHO">Betreff</label>
+<input autocomplete="off" id="newsletter-subject-ZHO" placeholder="Betreff (ZHO)" type="text"/>
+<label for="newsletter-body-ZHO">Text</label>
+<textarea id="newsletter-body-ZHO" placeholder="Newsletter-Text (ZHO)" rows="6"></textarea>
+</div>
+</div>
+<div class="admin-actions" style="justify-content:flex-end; margin-top: 12px;">
+<button class="btn secondary" id="admin-newsletter-clear-btn" type="button">Entwürfe löschen</button>
+<button class="btn btn-primary" id="admin-newsletter-send-btn" type="submit">Newsletter senden</button>
+</div>
+<div class="admin-message" id="admin-newsletter-status" style="display:none; margin-top: 10px;"></div>
+<!-- Mini preview HTML: scegli una lingua e vedi l'email prima di inviare -->
+<div aria-label="Newsletter-Vorschau (HTML)" class="admin-newsletter-preview">
+<div class="admin-newsletter-preview__head">
+<div class="admin-newsletter-preview__title">Newsletter-Vorschau (HTML)</div>
+<div class="admin-newsletter-preview__controls">
+<label class="small muted" for="admin-newsletter-preview-lang">Sprache</label>
+<select aria-label="Sprache für Vorschau auswählen" class="admin-newsletter-preview__select" id="admin-newsletter-preview-lang"></select>
+</div>
+</div>
+<div class="admin-newsletter-preview__meta small muted">
+<span>Betreff:</span>
+<span class="admin-newsletter-preview__subject" id="admin-newsletter-preview-subject"></span>
+</div>
+<div class="admin-newsletter-preview__meta small muted">
+<span>Text (HTML):</span>
+</div>
+<textarea class="admin-newsletter-preview__raw" id="admin-newsletter-preview-body" readonly="" rows="6"></textarea>
+<iframe class="admin-newsletter-preview__iframe" id="admin-newsletter-preview-iframe" sandbox="" title="Newsletter-Vorschau"></iframe>
+</div>
+</form>
+</div>
+</details>
+<h2 class="admin-section-title">Monatliche Entwicklung (aggregiert)</h2>
+<div class="admin-table-wrapper">
+<table class="admin-table">
+<thead>
+<tr>
+<th>Monat</th>
+<th>Verkäufe</th>
+<th>Netto-Provisionen</th>
+<th>Affiliate-Auszahlungen</th>
+<th>Travirae-Marge</th>
+</tr>
+</thead>
+<tbody id="admin-monthly-tbody">
+<tr><td class="muted small" colspan="5">Keine Daten verfügbar.</td></tr>
+</tbody>
+</table>
+</div>
+<h2 class="admin-section-title">Übersicht pro Affiliate</h2>
+<div class="admin-table-wrapper">
+<table class="admin-table">
+<thead>
+<tr>
+<th>Affiliate ID</th>
+<th>Verkäufe</th>
+<th>Netto-Provisionen</th>
+<th>Affiliate-Auszahlungen</th>
+<th>Travirae-Marge</th>
+</tr>
+</thead>
+<tbody id="admin-affiliates-tbody">
+<tr><td class="muted small" colspan="5">Keine Daten verfügbar.</td></tr>
+</tbody>
+</table>
+</div>
+<h2 class="admin-section-title">Operativ (Klicks und Booking Clicks)</h2>
+<p class="muted small" style="margin-top:-4px;">„Booking Click“ = Klick in den Widgets (Stay22 / Aviasales), der Nutzerinnen und Nutzer von der Website zu einem Partner weiterleitet. Das ist kein bestätigter Verkauf.</p>
+<div class="admin-table-wrapper">
+<table class="admin-table">
+<thead>
+<tr>
+<th>Affiliate ID</th>
+<th>E-Mail</th>
+<th>Link-Klicks</th>
+<th>Booking Clicks gesamt</th>
+<th>Booking Clicks Aviasales</th>
+<th>Booking Clicks Stay22</th>
+<th>Bestätigte Verkäufe (Monat)</th>
+<th>Revenue Share (Monat)</th>
+<th>Monatsverdienst</th>
+<th>Verfügbares Guthaben</th>
+<th>Ausstehende Anfragen</th>
+<th>Letzte Aktivität</th>
+</tr>
+</thead>
+<tbody id="admin-affiliates-kpi-tbody">
+<tr><td class="muted small" colspan="12">Keine Daten verfügbar.</td></tr>
+</tbody>
+</table>
+</div>
+<h2 class="admin-section-title">Auszahlungsanfragen</h2>
+<div class="admin-table-wrapper">
+<table class="admin-table">
+<thead>
+<tr>
+<th>Datum</th>
+<th>Affiliate</th>
+<th>Betrag (USD)</th>
+<th>Methode</th>
+<th>Status</th>
+<th>Details</th>
+<th>Aktionen</th>
+</tr>
+</thead>
+<tbody id="admin-payout-requests-tbody">
+<tr><td class="muted small" colspan="7">Keine Auszahlungsanfragen.</td></tr>
+</tbody>
+</table>
+</div>
+</div>
+<div style="margin-top:18px;">
+<h2 class="admin-section-title">Diagramm (Affiliates vs Travirae)</h2>
+<div style="height:260px;">
+<canvas aria-label="Diagramm der Affiliate-Einnahmen vs Travirae" id="admin-earnings-chart"></canvas>
+</div>
+</div>
+</div>
+<div aria-live="polite" class="admin-message" id="admin-message"></div>
+</div>
+
+</section>
+</main>
+<footer class="mega-footer">
+<div class="container mf-grid">
+<div class="mf-brand">
+<div class="brand big">
+<img alt="Travirae" src="assets/img/common/plane-logo.png" style="height:28px"/>
+<span>Travirae</span>
+</div>
+<p class="muted">Deine Plattform für Reiseinspiration und Hotelbuchung mit interaktiver Karte.</p>
+<div class="mf-socials">
+<a aria-label="Instagram" class="social social--icon" href="https://www.instagram.com/travirae_official/" rel="noopener" target="_blank">
+<img alt="" loading="lazy" src="https://upload.wikimedia.org/wikipedia/commons/e/e7/Instagram_logo_2016.svg"/>
+</a>
+<a aria-label="Facebook" class="social social--icon" href="https://www.facebook.com/profile.php?id=61573037940606" rel="noopener" target="_blank">
+<img alt="" loading="lazy" src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg"/>
+</a>
+<a aria-label="TikTok" class="social social--icon" href="https://www.tiktok.com/@travirae?lang=en" rel="noopener" target="_blank">
+<img alt="" loading="lazy" src="https://upload.wikimedia.org/wikipedia/commons/a/a6/Tiktok_icon.svg"/>
+</a>
+<a aria-label="YouTube" class="social social--icon" href="https://www.youtube.com/channel/UCgGtp3qTHUzMPqjpT8EnRbQ" rel="noopener" target="_blank">
+<img alt="" loading="lazy" src="https://upload.wikimedia.org/wikipedia/commons/0/09/YouTube_full-color_icon_%282017%29.svg"/>
+</a>
+</div>
+</div>
+<nav class="mf-services"><h4>Services</h4><ul>
+<li><a href="flights.html">Flüge</a></li>
+<li><a href="index.html">Hotels</a></li>
+<li><a href="programma-affiliato.html">Partnerprogramm</a></li>
+</ul></nav>
+<div class="mf-contact">
+<h4>Bleib in Kontakt</h4>
+<ul class="contact-list">
+<li>✉️ info@travirae.com</li>
+<li>Abonniere unseren Newsletter</li>
+</ul>
+<!-- Newsletter (gestita via Supabase Edge Function).
+     Usiamo method="get" e un id fisso per evitare submit POST (405) se JS non è caricato. -->
+<form action="#" class="newsletter-form wide" id="newsletter-form" method="get">
+<input aria-label="E-Mail für Newsletter" name="newsletter_email" placeholder="Deine E-Mail" required="" type="email"/>
+<button class="btn" type="submit">Abonnieren</button>
+</form>
+</div>
+</div>
+<div class="container mf-bottom muted small">
+<div>© <span id="year-copy"></span> Travirae · Alle Rechte vorbehalten</div>
+<div class="mf-legal">
+<a href="privacy.html">Datenschutz</a> · <a href="termini.html">Bedingungen</a> · <a href="cookie.html">Cookies</a>
+</div>
+</div>
+</footer>
+<script src="https://unpkg.com/@supabase/supabase-js@2"></script>
+<script src="assets/js/config.js"></script>
+<script src="assets/js/supabase-init.js"></script>
+<script src="assets/js/main.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="assets/js/admin-affiliati-de.js"></script>
+</body>
+</html>
