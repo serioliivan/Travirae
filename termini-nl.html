@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+
+<html lang="nl">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<title>Voorwaarden – Travirae</title>
+<link href="assets/css/style.css" rel="stylesheet"/>
+<script id="travirae-lang-router">(function(){
+  try{
+    var key='travirae_email_lang';
+    var lang='';
+    try{ lang=String(localStorage.getItem(key)||'').toUpperCase(); }catch(e){}
+    if(!lang) return;
+
+    var map={ DEU:'de', ENG:'en', FRA:'fr', SPA:'es', RUS:'ru', ARA:'ar', NLD:'nl', ZHO:'zh' };
+    var suf=map[lang];
+    if(!suf) return;
+
+    var u=new URL(window.location.href);
+    var path=u.pathname||'';
+    var file=path.split('/').pop()||'';
+    var dir=path.slice(0, path.length - file.length);
+    if(!file) file='index.html';
+
+    // If already on the correct language page, do nothing
+    var reTarget=new RegExp('-'+suf+'\\.html$','i');
+    if(reTarget.test(file)) return;
+
+    // Only handle .html pages
+    if(!/\\.html$/i.test(file)) return;
+
+    // Strip any other supported suffix, then append the requested one
+    var target=file.replace(/-(de|en|fr|es|ru|ar|nl|zh)\\.html$/i,'.html').replace(/\\.html$/i,'-'+suf+'.html');
+    u.pathname = dir + target;
+    window.location.replace(u.toString());
+  }catch(e){}
+})();</script>
+</head>
+<body>
+<header class="site-header">
+<div class="container header-inner">
+<a aria-label="Travirae startpagina" class="brand" href="index.html">
+<img alt="Travirae" src="assets/img/common/plane-logo.png" style="height:28px"/>
+<span>Travirae</span>
+</a>
+<nav aria-label="Hoofdnavigatie" class="main-nav">
+<a class="nav-link" href="index.html">Hotels</a>
+<a class="nav-link" href="flights.html">Vluchten</a>
+<a class="nav-link" href="programma-affiliato.html">Partnerprogramma</a>
+</nav>
+<button aria-expanded="false" aria-label="Menu openen" class="nav-toggle">
+<span></span><span></span><span></span>
+</button>
+</div>
+</header>
+<main>
+<section class="section">
+<div class="container">
+<h1 class="section-title">Voorwaarden</h1>
+<div class="legal">
+<h2>Gebruiksvoorwaarden</h2>
+<p class="muted"><strong>Laatst bijgewerkt:</strong> 01/01/2026</p>
+<p>
+<strong>Belangrijke opmerking:</strong> deze voorwaarden zijn een generiek sjabloon.
+            Om ze volledig aan te passen aan jouw specifieke situatie (rechtsvorm, betaalstromen, fiscale aspecten, trackingtools, enz.),
+            raden we aan deze tekst te laten controleren door een juridisch professional.
+          </p>
+<h3>1) Contact</h3>
+<p>Contact: <a href="mailto:info@travirae.com">info@travirae.com</a>.</p>
+<h3>2) Beschrijving van de dienst</h3>
+<p>
+            Travirae is een inspiratie- en vergelijkingsplatform dat widgets/links integreert van externe aanbieders
+            (bijv. hotelkaarten, vluchtzoekmachines). Elke boeking/aankoop wordt <strong>op websites van derden</strong> afgerond
+            en onder hun eigen voorwaarden.
+          </p>
+<h3>3) Geen reisorganisatie — beperkte aansprakelijkheid</h3>
+<ul>
+<li>Travirae is <strong>geen</strong> reisorganisatie en verkoopt niet rechtstreeks reisdiensten, tenzij uitdrukkelijk anders vermeld.</li>
+<li>Prijzen, beschikbaarheid, voorwaarden, annuleringen en aftersales support zijn afhankelijk van externe aanbieders.</li>
+<li>Travirae is niet verantwoordelijk voor serviceproblemen, vertragingen, annuleringen, wijzigingen of geschillen tussen de gebruiker en externe aanbieders.</li>
+</ul>
+<h3>4) Partneromgeving — registratie en beveiliging</h3>
+<ul>
+<li>Om toegang te krijgen tot het partnerprogramma moet je een account aanmaken (e‑mail en wachtwoord).</li>
+<li>Als je <strong>2FA</strong> inschakelt, heb je ook een Authenticator‑code nodig voor beveiligde acties.</li>
+<li>Je bent verantwoordelijk voor het vertrouwelijk houden van je inloggegevens en voor alle activiteiten die via jouw account worden uitgevoerd.</li>
+</ul>
+<h3>5) Tracking, affiliate link en toerekening</h3>
+<p>
+            Partners ontvangen een identificatie (affiliate ID) en kunnen links delen met een speciale parameter (bijv. <code>?ref=...</code>).
+            Wanneer een gebruiker de site via die link bezoekt, kunnen trackingevents worden geregistreerd (bijv. klik/boekingsklik) voor het berekenen van statistieken en commissies.
+          </p>
+<p class="muted">
+            Belangrijk: een “boekingsklik” is een klik die de gebruiker van de site naar een partner stuurt (dit is niet per se een bevestigde verkoop).
+          </p>
+<h3>6) Commissies, marges en uitbetalingen</h3>
+<ul>
+<li>Commissies en marges kunnen afhankelijk zijn van gegevens die partners aanleveren en van geïmporteerde rapporten (bijv. CSV of API).</li>
+<li>Verkopen kunnen worden teruggedraaid door refunds, annuleringen, chargebacks of ongeldigverklaring door partners.</li>
+<li>Uitbetalingsaanvragen kunnen controles vereisen (bijv. minimumdrempel, anti‑fraudechecks, bevestiging van inloggegevens/2FA).</li>
+</ul>
+<h3>7) Toegestaan gebruik</h3>
+<ul>
+<li>Het is verboden de site te gebruiken voor illegale activiteiten, spam, frauduleuze tracking, klikmanipulatie of ander misbruik van het programma.</li>
+<li>We behouden ons het recht voor om accounts te schorsen/te sluiten bij overtredingen of vermoedelijk misbruik.</li>
+</ul>
+<h3>8) Intellectuele eigendom</h3>
+<p>
+            Content, merken, lay‑out en code zijn beschermd door wetten inzake intellectuele eigendom. Ongeautoriseerde reproductie is verboden.
+          </p>
+<h3>9) Afwijzing van garanties</h3>
+<p>
+            De site wordt geleverd “zoals deze is”. Hoewel we streven naar nauwkeurigheid en continuïteit, garanderen we niet dat er geen fouten of onderbrekingen zijn,
+            of dat geïntegreerde diensten van derden altijd beschikbaar zijn.
+          </p>
+<h3>10) Toepasselijk recht en bevoegde rechter</h3>
+<p>
+            Tenzij dwingende regels inzake consumentenbescherming van toepassing zijn, worden deze voorwaarden beheerst door Italiaans recht.
+          </p>
+</div>
+</div>
+</section>
+</main>
+<footer class="mega-footer">
+<div class="container mf-grid">
+<div class="mf-brand">
+<div class="brand big">
+<img alt="Travirae" src="assets/img/common/plane-logo.png" style="height:28px"/>
+<span>Travirae</span>
+</div>
+<p class="muted">Jouw platform voor reisinspiratie en hotelboeken met een interactieve kaart.</p>
+<div class="mf-socials">
+<a aria-label="Instagram" class="social social--icon" href="https://www.instagram.com/travirae_official/" rel="noopener" target="_blank">
+<img alt="" loading="lazy" src="https://upload.wikimedia.org/wikipedia/commons/e/e7/Instagram_logo_2016.svg"/>
+</a>
+<a aria-label="Facebook" class="social social--icon" href="https://www.facebook.com/profile.php?id=61573037940606" rel="noopener" target="_blank">
+<img alt="" loading="lazy" src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg"/>
+</a>
+<a aria-label="TikTok" class="social social--icon" href="https://www.tiktok.com/@travirae?lang=en" rel="noopener" target="_blank">
+<img alt="" loading="lazy" src="https://upload.wikimedia.org/wikipedia/commons/a/a6/Tiktok_icon.svg"/>
+</a>
+<a aria-label="YouTube" class="social social--icon" href="https://www.youtube.com/channel/UCgGtp3qTHUzMPqjpT8EnRbQ" rel="noopener" target="_blank">
+<img alt="" loading="lazy" src="https://upload.wikimedia.org/wikipedia/commons/0/09/YouTube_full-color_icon_%282017%29.svg"/>
+</a>
+</div>
+</div>
+<nav class="mf-services"><h4>Diensten</h4><ul>
+<li><a href="flights.html">Vluchten</a></li>
+<li><a href="index.html">Hotels</a></li>
+<li><a href="programma-affiliato.html">Partnerprogramma</a></li>
+</ul></nav>
+<div class="mf-contact">
+<h4>Blijf in contact</h4>
+<ul class="contact-list">
+<li>✉️ info@travirae.com</li>
+<li>Abonneer je op onze nieuwsbrief</li>
+</ul>
+<!-- Newsletter (gestita via Supabase Edge Function).
+     Usiamo method="get" e un id fisso per evitare submit POST (405) e per collegare correttamente lo script. -->
+<form action="#" autocomplete="off" class="newsletter-form wide" id="newsletter-form" method="get">
+<input aria-label="E-mailadres voor nieuwsbrief" name="newsletter_email" placeholder="Jouw e-mailadres" required="" type="email"/>
+<button class="btn" type="submit">Abonneren</button>
+</form>
+</div>
+</div>
+<div class="container mf-bottom muted small">
+<div>© <span id="year-copy"></span> Travirae · Alle rechten voorbehouden</div>
+<div class="mf-legal">
+<a href="privacy.html">Privacy</a> · <a href="termini.html">Voorwaarden</a> · <a href="cookie.html">Cookies</a>
+</div>
+</div>
+</footer>
+<script src="https://unpkg.com/@supabase/supabase-js@2"></script>
+<script src="assets/js/config.js"></script>
+<script src="assets/js/supabase-init.js"></script>
+<script src="assets/js/main.js"></script>
+</body>
+</html>
