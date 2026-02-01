@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+
+<html lang="zh">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<title>Cookie 政策 – Travirae</title>
+<link href="assets/css/style.css" rel="stylesheet"/>
+<script id="travirae-lang-router">(function(){
+  try{
+    var key='travirae_email_lang';
+    var lang='';
+    try{ lang=String(localStorage.getItem(key)||'').toUpperCase(); }catch(e){}
+    if(!lang) return;
+
+    var map={ DEU:'de', ENG:'en', FRA:'fr', SPA:'es', RUS:'ru', ARA:'ar', NLD:'nl', ZHO:'zh' };
+    var suf=map[lang];
+    if(!suf) return;
+
+    var u=new URL(window.location.href);
+    var path=u.pathname||'';
+    var file=path.split('/').pop()||'';
+    var dir=path.slice(0, path.length - file.length);
+    if(!file) file='index.html';
+
+    // If already on the correct language page, do nothing
+    var reTarget=new RegExp('-'+suf+'\\.html$','i');
+    if(reTarget.test(file)) return;
+
+    // Only handle .html pages
+    if(!/\\.html$/i.test(file)) return;
+
+    // Strip any other supported suffix, then append the requested one
+    var target=file.replace(/-(de|en|fr|es|ru|ar|nl|zh)\\.html$/i,'.html').replace(/\\.html$/i,'-'+suf+'.html');
+    u.pathname = dir + target;
+    window.location.replace(u.toString());
+  }catch(e){}
+})();</script>
+</head>
+<body>
+<header class="site-header">
+<div class="container header-inner">
+<a aria-label="Travirae 首页" class="brand" href="index.html">
+<img alt="Travirae" src="assets/img/common/plane-logo.png" style="height:28px"/>
+<span>Travirae</span>
+</a>
+<nav aria-label="主导航" class="main-nav">
+<a class="nav-link" href="index.html">酒店</a>
+<a class="nav-link" href="flights.html">航班</a>
+<a class="nav-link" href="programma-affiliato.html">联盟计划</a>
+</nav>
+<button aria-expanded="false" aria-label="打开菜单" class="nav-toggle">
+<span></span><span></span><span></span>
+</button>
+</div>
+</header>
+<main>
+<section class="section">
+<div class="container">
+<h1 class="section-title">Cookie 政策</h1>
+<div class="legal">
+<h2>Cookie 政策</h2>
+<p class="muted"><strong>最后更新：</strong> 01/01/2026</p>
+<p>
+<strong>重要提示：</strong>本 Cookie 政策为基础信息模板。
+            合规性取决于实际使用的 Cookie/工具以及配置选择（例如分析/营销）。
+            如有疑问，建议请法律专业人士审阅。
+          </p>
+<h3>1）什么是 Cookie</h3>
+<p>
+            Cookie 是网站为运行站点、提升体验或提供功能而存储在用户设备上（或从设备读取）的微小文本文件，
+            用于提升体验或提供功能。
+          </p>
+<h3>2）Cookie 的类型</h3>
+<ul>
+<li><strong>技术/必要 Cookie</strong>：网站正常运行所必需（如会话/登录、偏好设置）。</li>
+<li><strong>偏好 Cookie</strong>：保存用户选择（如语言）。</li>
+<li><strong>分析/统计 Cookie</strong>：用于衡量网站流量与使用情况。</li>
+<li><strong>营销/画像 Cookie</strong>：用于个性化广告或更高级的追踪。</li>
+</ul>
+<h3>3）Travirae 使用的 Cookie 与存储</h3>
+<p>
+            Travirae 主要使用实现核心功能所需的<strong>技术</strong>与<strong>偏好</strong>工具：
+          </p>
+<ul>
+<li><strong>身份验证</strong>（联盟后台/管理后台）：可能使用令牌/Cookie 或浏览器存储来保持会话。</li>
+<li><strong>语言偏好</strong>：可能保存所选语言（如通过 Cookie 或 localStorage）以记住你的选择。</li>
+<li><strong>联盟追踪</strong>：当用户通过联盟链接访问（参数 <code>?ref=</code>）时，网站可能会临时保存
+              该信息以便正确归因点击/预订（联盟计划）。</li>
+</ul>
+<p>
+            如果未来添加分析或营销 Cookie，Travirae 可能会采用同意横幅与偏好设置面板。
+          </p>
+<h3>4）第三方 Cookie</h3>
+<p>
+            本站部分内容会嵌入或链接到<strong>第三方组件/服务</strong>（例如酒店/航班搜索与预订、
+            地图与比价工具）。这些第三方可能依据其政策设置 Cookie 或使用类似技术。
+            Travirae 无法直接控制第三方的 Cookie 与追踪。
+          </p>
+<h3>5）如何管理或删除 Cookie</h3>
+<p>
+            你可以在浏览器设置中管理 Cookie（阻止、删除或仅允许特定 Cookie）。
+            禁用技术 Cookie 可能会影响部分功能（登录、语言偏好等）。
+          </p>
+<h3>6）联系方式</h3>
+<p>
+            如对本 Cookie 政策有任何疑问： <a href="mailto:info@travirae.com">info@travirae.com</a>.
+          </p>
+</div>
+</div>
+</section>
+</main>
+<footer class="mega-footer">
+<div class="container mf-grid">
+<div class="mf-brand">
+<div class="brand big">
+<img alt="Travirae" src="assets/img/common/plane-logo.png" style="height:28px"/>
+<span>Travirae</span>
+</div>
+<p class="muted">通过互动地图获取旅行灵感并预订酒店的一站式平台。</p>
+<div class="mf-socials">
+<a aria-label="Instagram" class="social social--icon" href="https://www.instagram.com/travirae_official/" rel="noopener" target="_blank">
+<img alt="" loading="lazy" src="https://upload.wikimedia.org/wikipedia/commons/e/e7/Instagram_logo_2016.svg"/>
+</a>
+<a aria-label="Facebook" class="social social--icon" href="https://www.facebook.com/profile.php?id=61573037940606" rel="noopener" target="_blank">
+<img alt="" loading="lazy" src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg"/>
+</a>
+<a aria-label="TikTok" class="social social--icon" href="https://www.tiktok.com/@travirae?lang=en" rel="noopener" target="_blank">
+<img alt="" loading="lazy" src="https://upload.wikimedia.org/wikipedia/commons/a/a6/Tiktok_icon.svg"/>
+</a>
+<a aria-label="YouTube" class="social social--icon" href="https://www.youtube.com/channel/UCgGtp3qTHUzMPqjpT8EnRbQ" rel="noopener" target="_blank">
+<img alt="" loading="lazy" src="https://upload.wikimedia.org/wikipedia/commons/0/09/YouTube_full-color_icon_%282017%29.svg"/>
+</a>
+</div>
+</div>
+<nav class="mf-services"><h4>服务</h4><ul>
+<li><a href="flights.html">航班</a></li>
+<li><a href="index.html">酒店</a></li>
+<li><a href="programma-affiliato.html">联盟计划</a></li>
+</ul></nav>
+<div class="mf-contact">
+<h4>保持联系</h4>
+<ul class="contact-list">
+<li>✉️ info@travirae.com</li>
+<li>订阅我们的 Newsletter</li>
+</ul>
+<!-- Newsletter (gestita via Supabase Edge Function).
+     Usiamo method="get" e un id fisso per evitare submit POST (405) e per collegare correttamente lo script. -->
+<form action="#" autocomplete="off" class="newsletter-form wide" id="newsletter-form" method="get">
+<input aria-label="Newsletter 邮箱" name="newsletter_email" placeholder="你的邮箱" required="" type="email"/>
+<button class="btn" type="submit">订阅</button>
+</form>
+</div>
+</div>
+<div class="container mf-bottom muted small">
+<div>© <span id="year-copy"></span> Travirae · 保留所有权利</div>
+<div class="mf-legal">
+<a href="privacy.html">隐私政策</a> · <a href="termini.html">使用条款</a> · <a href="cookie.html">Cookie 政策</a>
+</div>
+</div>
+</footer>
+<script src="https://unpkg.com/@supabase/supabase-js@2"></script>
+<script src="assets/js/config.js"></script>
+<script src="assets/js/supabase-init.js"></script>
+<script src="assets/js/main.js"></script>
+</body>
+</html>

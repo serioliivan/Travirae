@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+
+<html lang="zh">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<title>使用条款 – Travirae</title>
+<link href="assets/css/style.css" rel="stylesheet"/>
+<script id="travirae-lang-router">(function(){
+  try{
+    var key='travirae_email_lang';
+    var lang='';
+    try{ lang=String(localStorage.getItem(key)||'').toUpperCase(); }catch(e){}
+    if(!lang) return;
+
+    var map={ DEU:'de', ENG:'en', FRA:'fr', SPA:'es', RUS:'ru', ARA:'ar', NLD:'nl', ZHO:'zh' };
+    var suf=map[lang];
+    if(!suf) return;
+
+    var u=new URL(window.location.href);
+    var path=u.pathname||'';
+    var file=path.split('/').pop()||'';
+    var dir=path.slice(0, path.length - file.length);
+    if(!file) file='index.html';
+
+    // If already on the correct language page, do nothing
+    var reTarget=new RegExp('-'+suf+'\\.html$','i');
+    if(reTarget.test(file)) return;
+
+    // Only handle .html pages
+    if(!/\\.html$/i.test(file)) return;
+
+    // Strip any other supported suffix, then append the requested one
+    var target=file.replace(/-(de|en|fr|es|ru|ar|nl|zh)\\.html$/i,'.html').replace(/\\.html$/i,'-'+suf+'.html');
+    u.pathname = dir + target;
+    window.location.replace(u.toString());
+  }catch(e){}
+})();</script>
+</head>
+<body>
+<header class="site-header">
+<div class="container header-inner">
+<a aria-label="Travirae 首页" class="brand" href="index.html">
+<img alt="Travirae" src="assets/img/common/plane-logo.png" style="height:28px"/>
+<span>Travirae</span>
+</a>
+<nav aria-label="主导航" class="main-nav">
+<a class="nav-link" href="index.html">酒店</a>
+<a class="nav-link" href="flights.html">航班</a>
+<a class="nav-link" href="programma-affiliato.html">联盟计划</a>
+</nav>
+<button aria-expanded="false" aria-label="打开菜单" class="nav-toggle">
+<span></span><span></span><span></span>
+</button>
+</div>
+</header>
+<main>
+<section class="section">
+<div class="container">
+<h1 class="section-title">使用条款</h1>
+<div class="legal">
+<h2>使用条款与条件</h2>
+<p class="muted"><strong>最后更新：</strong> 01/01/2026</p>
+<p>
+<strong>重要提示：</strong>这些条款为通用模板。
+            要完全适配你的具体情况（主体形式、支付流程、税务事项、追踪工具等），
+            建议请法律专业人士审阅。
+          </p>
+<h3>1）联系方式</h3>
+<p>Contact: <a href="mailto:info@travirae.com">info@travirae.com</a>.</p>
+<h3>2）服务说明</h3>
+<p>
+            Travirae 是一个旅行灵感与比价平台，集成了第三方服务商的组件/链接
+            (e.g. hotel maps, flight engines). 任何预订/购买都在<strong>第三方网站</strong>完成
+            并受其各自条款约束。
+          </p>
+<h3>3）非旅行社 — 责任限制</h3>
+<ul>
+<li>除非另有明确说明，Travirae <strong>不是</strong>旅行社，也不直接销售旅行服务。</li>
+<li>价格、库存、条款、取消与售后支持均由第三方服务商决定。</li>
+<li>Travirae 不对服务问题、延误、取消、变更或用户与第三方服务商之间的争议承担责任。</li>
+</ul>
+<h3>4）联盟后台 — 注册与安全</h3>
+<ul>
+<li>要访问联盟计划，你需要创建账户（邮箱与密码）。</li>
+<li>如启用<strong>2FA</strong>，执行受保护操作时还需要验证器（Authenticator）代码。</li>
+<li>你有责任妥善保管凭据并对账户下的所有活动负责。</li>
+</ul>
+<h3>5）追踪、联盟链接与归因</h3>
+<p>
+            联盟伙伴会获得标识符（联盟 ID），并可通过专用参数分享链接（例如 <code>?ref=...</code>）。
+            当用户通过该链接访问本站时，系统可能会记录追踪事件（如点击/导流点击）以便
+            计算统计数据与佣金。
+          </p>
+<p class="muted">
+            重要说明：“导流点击（booking click）”指把用户从本站带到合作伙伴网站的点击（不一定代表已确认的销售）。
+          </p>
+<h3>6）佣金、分成与提现</h3>
+<ul>
+<li>佣金与利润可能依赖合作伙伴提供的数据以及导入的报表（如 CSV 或 API）。</li>
+<li>销售可能因撤销、取消、拒付或合作伙伴判定无效而被调整。</li>
+<li>提现请求可能需要审核（如最低门槛、反欺诈检查、凭据/2FA 确认）。</li>
+</ul>
+<h3>7）允许的使用方式</h3>
+<ul>
+<li>禁止将本站用于非法活动、垃圾信息、欺诈性追踪、点击操纵或任何滥用联盟计划的行为。</li>
+<li>如发生违规或疑似滥用，我们保留暂停/关闭账户的权利。</li>
+</ul>
+<h3>8）知识产权</h3>
+<p>
+            内容、商标、版式与代码受知识产权法律保护，禁止未经授权的复制。
+          </p>
+<h3>9）免责声明</h3>
+<p>
+            本站按“现状”提供。尽管我们力求准确与持续可用，但不保证不存在错误、
+            不中断，或集成的第三方服务始终可用。
+          </p>
+<h3>10）适用法律与管辖</h3>
+<p>
+            除非适用强制性的消费者保护规定，否则本条款受意大利法律管辖。
+          </p>
+</div>
+</div>
+</section>
+</main>
+<footer class="mega-footer">
+<div class="container mf-grid">
+<div class="mf-brand">
+<div class="brand big">
+<img alt="Travirae" src="assets/img/common/plane-logo.png" style="height:28px"/>
+<span>Travirae</span>
+</div>
+<p class="muted">通过互动地图获取旅行灵感并预订酒店的一站式平台。</p>
+<div class="mf-socials">
+<a aria-label="Instagram" class="social social--icon" href="https://www.instagram.com/travirae_official/" rel="noopener" target="_blank">
+<img alt="" loading="lazy" src="https://upload.wikimedia.org/wikipedia/commons/e/e7/Instagram_logo_2016.svg"/>
+</a>
+<a aria-label="Facebook" class="social social--icon" href="https://www.facebook.com/profile.php?id=61573037940606" rel="noopener" target="_blank">
+<img alt="" loading="lazy" src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg"/>
+</a>
+<a aria-label="TikTok" class="social social--icon" href="https://www.tiktok.com/@travirae?lang=en" rel="noopener" target="_blank">
+<img alt="" loading="lazy" src="https://upload.wikimedia.org/wikipedia/commons/a/a6/Tiktok_icon.svg"/>
+</a>
+<a aria-label="YouTube" class="social social--icon" href="https://www.youtube.com/channel/UCgGtp3qTHUzMPqjpT8EnRbQ" rel="noopener" target="_blank">
+<img alt="" loading="lazy" src="https://upload.wikimedia.org/wikipedia/commons/0/09/YouTube_full-color_icon_%282017%29.svg"/>
+</a>
+</div>
+</div>
+<nav class="mf-services"><h4>服务</h4><ul>
+<li><a href="flights.html">航班</a></li>
+<li><a href="index.html">酒店</a></li>
+<li><a href="programma-affiliato.html">联盟计划</a></li>
+</ul></nav>
+<div class="mf-contact">
+<h4>保持联系</h4>
+<ul class="contact-list">
+<li>✉️ info@travirae.com</li>
+<li>订阅我们的 Newsletter</li>
+</ul>
+<!-- Newsletter (gestita via Supabase Edge Function).
+     Usiamo method="get" e un id fisso per evitare submit POST (405) e per collegare correttamente lo script. -->
+<form action="#" autocomplete="off" class="newsletter-form wide" id="newsletter-form" method="get">
+<input aria-label="Newsletter 邮箱" name="newsletter_email" placeholder="你的邮箱" required="" type="email"/>
+<button class="btn" type="submit">订阅</button>
+</form>
+</div>
+</div>
+<div class="container mf-bottom muted small">
+<div>© <span id="year-copy"></span> Travirae · 保留所有权利</div>
+<div class="mf-legal">
+<a href="privacy.html">隐私政策</a> · <a href="termini.html">使用条款</a> · <a href="cookie.html">Cookie 政策</a>
+</div>
+</div>
+</footer>
+<script src="https://unpkg.com/@supabase/supabase-js@2"></script>
+<script src="assets/js/config.js"></script>
+<script src="assets/js/supabase-init.js"></script>
+<script src="assets/js/main.js"></script>
+</body>
+</html>
