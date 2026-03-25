@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+
+<html lang="zh">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<title>隐私政策 – Travirae</title>
+<link href="assets/css/style.css" rel="stylesheet"/>
+<script id="travirae-lang-router">(function(){
+  try{
+    var key='travirae_email_lang';
+    var lang='';
+    try{ lang=String(localStorage.getItem(key)||'').toUpperCase(); }catch(e){}
+    if(!lang) return;
+
+    var map={ DEU:'de', ENG:'en', FRA:'fr', SPA:'es', RUS:'ru', ARA:'ar', NLD:'nl', ZHO:'zh' };
+    var suf=map[lang];
+    if(!suf) return;
+
+    var u=new URL(window.location.href);
+    var path=u.pathname||'';
+    var file=path.split('/').pop()||'';
+    var dir=path.slice(0, path.length - file.length);
+    if(!file) file='index.html';
+
+    // If already on the correct language page, do nothing
+    var reTarget=new RegExp('-'+suf+'\\.html$','i');
+    if(reTarget.test(file)) return;
+
+    // Only handle .html pages
+    if(!/\\.html$/i.test(file)) return;
+
+    // Strip any other supported suffix, then append the requested one
+    var target=file.replace(/-(de|en|fr|es|ru|ar|nl|zh)\\.html$/i,'.html').replace(/\\.html$/i,'-'+suf+'.html');
+    u.pathname = dir + target;
+    window.location.replace(u.toString());
+  }catch(e){}
+})();</script>
+</head>
+<body>
+<header class="site-header">
+<div class="container header-inner">
+<a aria-label="Travirae 首页" class="brand" href="index.html">
+<img alt="Travirae" src="assets/img/common/plane-logo.png" style="height:28px"/>
+<span>Travirae</span>
+</a>
+<nav aria-label="主导航" class="main-nav">
+<a class="nav-link" href="index.html">酒店</a>
+<a class="nav-link" href="flights.html">航班</a>
+<a class="nav-link" href="programma-affiliato.html">联盟计划</a>
+</nav>
+<button aria-expanded="false" aria-label="打开菜单" class="nav-toggle">
+<span></span><span></span><span></span>
+</button>
+</div>
+</header>
+<main>
+<section class="section">
+<div class="container">
+<h1 class="section-title">隐私政策</h1>
+<div class="legal">
+<h2>隐私声明（GDPR）</h2>
+<p class="muted"><strong>最后更新：</strong> 01/01/2026</p>
+<p>
+<strong>重要提示：</strong>本文件为测试阶段的基础信息模板。
+            完整合规取决于你的具体配置（主体、国家/地区、实际使用的工具、Cookie/分析等）。
+            如有疑问，建议请法律专业人士审阅本内容。
+          </p>
+<h3>1）联系方式</h3>
+<p>
+            如需隐私相关请求或信息： <a href="mailto:info@travirae.com">info@travirae.com</a>.
+          </p>
+<h3>2）我们处理的数据类型</h3>
+<ul>
+<li>
+<strong>浏览数据</strong>：例如 IP 地址、User-Agent、请求日期/时间、来源 URL 以及安全日志等技术信息。这些数据可能由托管/CDN 系统及技术服务商处理。
+            </li>
+<li>
+<strong>账户数据（联盟后台/管理后台）</strong>：邮箱、联盟 ID、语言偏好、安全设置（例如 2FA）以及登录/活动日志。
+            </li>
+<li>
+<strong>联盟计划数据</strong>：点击、“导流点击”以及用于佣金归因的统计数据。
+            </li>
+<li>
+<strong>提现数据</strong>：用于处理提现申请的信息（例如金额、状态、方式）。
+              <span class="muted">（如果你收集 IBAN 或税务信息，应在此处明确列出。）</span>
+</li>
+<li>
+<strong>邮件通讯</strong>：邮箱、订阅时选择的语言、退订令牌、订阅状态（已订阅/已退订）。
+            </li>
+<li>
+<strong>沟通记录</strong>： messages sent via email or support contact.
+            </li>
+</ul>
+<h3>3）处理目的与法律依据</h3>
+<ul>
+<li>
+<strong>账户创建与管理</strong>（注册、登录、忘记密码、安全措施）：
+              履行合同/合同前步骤，以及出于保障服务安全的合法利益。
+            </li>
+<li>
+<strong>联盟计划管理</strong>（点击/导流点击归因、统计与收益计算）：
+              履行合同，以及出于正确归因与防滥用的合法利益。
+            </li>
+<li>
+<strong>提现请求</strong>：履行合同；在适用情况下进行合规/反欺诈检查。
+            </li>
+<li>
+<strong>邮件通讯</strong>：基于同意（你可随时退订）。
+            </li>
+</ul>
+<h3>4）数据共享</h3>
+<p>
+            数据可能由技术服务商（如主机/CDN）、数据库/认证服务商（Supabase）处理
+            以及网站中嵌入的第三方服务（组件、比价工具、地图等）处理。
+            各服务商将依据其各自的隐私政策处理数据。
+          </p>
+<h3>5）数据保留期限</h3>
+<p>
+            我们仅在实现上述目的所必需的期限内或法律要求的期限内保存个人数据。
+            在适用的情况下，你可以申请删除账户。
+          </p>
+<h3>6）你的权利</h3>
+<p>
+            根据你所在司法辖区，你可能享有访问、更正、删除、限制处理等权利，
+            以及数据可携带与反对权。 如需行使上述权利，请联系： <a href="mailto:info@travirae.com">info@travirae.com</a>.
+          </p>
+<h3>7）变更</h3>
+<p>
+            我们可能会不时更新本隐私声明，“最后更新”日期将随之调整。
+          </p>
+</div>
+</div>
+</section>
+</main>
+<footer class="mega-footer">
+<div class="container mf-grid">
+<div class="mf-brand">
+<div class="brand big">
+<img alt="Travirae" src="assets/img/common/plane-logo.png" style="height:28px"/>
+<span>Travirae</span>
+</div>
+<p class="muted">通过互动地图获取旅行灵感并预订酒店的一站式平台。</p>
+<div class="mf-socials">
+<a aria-label="Instagram" class="social social--icon" href="https://www.instagram.com/travirae_official/" rel="noopener" target="_blank">
+<img alt="" loading="lazy" src="https://upload.wikimedia.org/wikipedia/commons/e/e7/Instagram_logo_2016.svg"/>
+</a>
+<a aria-label="Facebook" class="social social--icon" href="https://www.facebook.com/profile.php?id=61573037940606" rel="noopener" target="_blank">
+<img alt="" loading="lazy" src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg"/>
+</a>
+<a aria-label="TikTok" class="social social--icon" href="https://www.tiktok.com/@travirae?lang=en" rel="noopener" target="_blank">
+<img alt="" loading="lazy" src="https://upload.wikimedia.org/wikipedia/commons/a/a6/Tiktok_icon.svg"/>
+</a>
+<a aria-label="YouTube" class="social social--icon" href="https://www.youtube.com/channel/UCgGtp3qTHUzMPqjpT8EnRbQ" rel="noopener" target="_blank">
+<img alt="" loading="lazy" src="https://upload.wikimedia.org/wikipedia/commons/0/09/YouTube_full-color_icon_%282017%29.svg"/>
+</a>
+</div>
+</div>
+<nav class="mf-services"><h4>服务</h4><ul>
+<li><a href="flights.html">航班</a></li>
+<li><a href="index.html">酒店</a></li>
+<li><a href="programma-affiliato.html">联盟计划</a></li>
+</ul></nav>
+<div class="mf-contact">
+<h4>保持联系</h4>
+<ul class="contact-list">
+<li>✉️ info@travirae.com</li>
+<li>订阅我们的邮件通讯</li>
+</ul>
+<!-- Newsletter (gestita via Supabase Edge Function).
+     Usiamo method="get" e un id fisso per evitare submit POST (405) e per collegare correttamente lo script. -->
+<form action="#" autocomplete="off" class="newsletter-form wide" id="newsletter-form" method="get">
+<input aria-label="订阅邮箱" name="newsletter_email" placeholder="你的邮箱" required="" type="email"/>
+<button class="btn" type="submit">订阅</button>
+</form>
+</div>
+</div>
+<div class="container mf-bottom muted small">
+<div>© <span id="year-copy"></span> Travirae · 保留所有权利</div>
+<div class="mf-legal">
+<a href="privacy.html">隐私政策</a> · <a href="termini.html">使用条款</a> · <a href="cookie.html">Cookie 政策</a>
+</div>
+</div>
+</footer>
+<script src="https://unpkg.com/@supabase/supabase-js@2"></script>
+<script src="assets/js/config.js"></script>
+<script src="assets/js/supabase-init.js"></script>
+<script src="assets/js/main.js"></script>
+</body>
+</html>
