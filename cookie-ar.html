@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+
+<html dir="rtl" lang="ar">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<title>ملفات تعريف الارتباط – Travirae</title>
+<link href="assets/css/style.css" rel="stylesheet"/><link href="assets/css/rtl-ar.css" rel="stylesheet"/>
+<script id="travirae-lang-router">(function(){
+  try{
+    var key='travirae_email_lang';
+    var lang='';
+    try{ lang=String(localStorage.getItem(key)||'').toUpperCase(); }catch(e){}
+    if(!lang) return;
+
+    var map={ DEU:'de', ENG:'en', FRA:'fr', SPA:'es', RUS:'ru', ARA:'ar', NLD:'nl', ZHO:'zh' };
+    var suf=map[lang];
+    if(!suf) return;
+
+    var u=new URL(window.location.href);
+    var path=u.pathname||'';
+    var file=path.split('/').pop()||'';
+    var dir=path.slice(0, path.length - file.length);
+    if(!file) file='index.html';
+
+    // If already on the correct language page, do nothing
+    var reTarget=new RegExp('-'+suf+'\\.html$','i');
+    if(reTarget.test(file)) return;
+
+    // Only handle .html pages
+    if(!/\\.html$/i.test(file)) return;
+
+    // Strip any other supported suffix, then append the requested one
+    var target=file.replace(/-(de|en|fr|es|ru|ar|nl|zh)\\.html$/i,'.html').replace(/\\.html$/i,'-'+suf+'.html');
+    u.pathname = dir + target;
+    window.location.replace(u.toString());
+  }catch(e){}
+})();</script>
+</head>
+<body>
+<header class="site-header">
+<div class="container header-inner">
+<a aria-label="الصفحة الرئيسية لـ Travirae" class="brand" href="index.html">
+<img alt="Travirae" src="assets/img/common/plane-logo.png" style="height:28px"/>
+<span>Travirae</span>
+</a>
+<nav aria-label="التنقل الرئيسي" class="main-nav">
+<a class="nav-link" href="index.html">فنادق</a>
+<a class="nav-link" href="flights.html">رحلات</a>
+<a class="nav-link" href="programma-affiliato.html">برنامج الشركاء</a>
+</nav>
+<button aria-expanded="false" aria-label="فتح القائمة" class="nav-toggle">
+<span></span><span></span><span></span>
+</button>
+</div>
+</header>
+<main>
+<section class="section">
+<div class="container">
+<h1 class="section-title">ملفات تعريف الارتباط</h1>
+<div class="legal">
+<h2>سياسة ملفات تعريف الارتباط</h2>
+<p class="muted"><strong>آخر تحديث:</strong> 01/01/2026</p>
+<p><strong>ملاحظة مهمة:</strong> هذه الصفحة نموذج معلوماتي أساسي. يعتمد الامتثال على ملفات تعريف الارتباط/الأدوات المستخدمة فعليًا وإعدادات الموافقة. إذا كانت لديك شكوك، يُنصح بمراجعة هذا النص بواسطة مستشار قانوني.</p>
+<h3>1) ما هي ملفات تعريف الارتباط</h3>
+<p>ملفات تعريف الارتباط هي ملفات نصية صغيرة تخزنها مواقع الويب على جهاز المستخدم (أو تقرأها منه) لتشغيل الموقع أو تحسين التجربة أو توفير وظائف إضافية.</p>
+<h3>2) أنواع ملفات تعريف الارتباط</h3>
+<ul>
+<li><strong>ملفات تعريف ارتباط تقنية/ضرورية</strong>: مطلوبة لعمل الموقع (مثل الجلسة/تسجيل الدخول والتفضيلات).</li>
+<li><strong>ملفات تعريف ارتباط التفضيلات</strong>: تحفظ اختيارات المستخدم (مثل اللغة).</li>
+<li><strong>ملفات تعريف ارتباط التحليلات/الإحصاءات</strong>: تقيس حركة المرور واستخدام الموقع.</li>
+<li><strong>ملفات تعريف ارتباط التسويق/الملف الشخصي</strong>: تُستخدم للإعلانات المخصصة أو التتبع المتقدم.</li>
+</ul>
+<h3>3) ملفات تعريف الارتباط والتخزين المستخدم في Travirae</h3>
+<p>يستخدم Travirae بشكل أساسي أدوات <strong>تقنية</strong> و<strong>تفضيلية</strong> مطلوبة للوظائف الأساسية:</p>
+<ul>
+<li><strong>المصادقة</strong> (منطقة الشركاء/الإدارة): قد تُستخدم رموز/ملفات تعريف ارتباط أو تخزين المتصفح للحفاظ على الجلسة.</li>
+<li><strong>تفضيل اللغة</strong>: قد يتم حفظ اللغة المختارة (مثلًا عبر ملفات تعريف الارتباط أو localStorage) لتذكر اختيارك.</li>
+<li><strong>تتبع الشركاء</strong>: يدعم الموقع معلمة الإحالة <code>?ref=</code> في الرابط. قد تتضمن الأدوات (Stay22 / Aviasales) معلمة <code>campaign</code> أو <code>sub_id</code> للحفاظ على الإسناد.</li>
+</ul>
+<p>إذا تمت إضافة ملفات تعريف ارتباط للتحليلات أو التسويق في المستقبل، فقد يعتمد Travirae لافتة موافقة ولوحة تفضيلات.</p>
+<h3>4) ملفات تعريف الارتباط التابعة لجهات خارجية</h3>
+<p>قد تتضمن بعض أجزاء الموقع <strong>أدوات/خدمات تابعة لجهات خارجية</strong> (مثل البحث والحجز للفنادق/الرحلات والخرائط وأدوات المقارنة). قد تقوم هذه الجهات بوضع ملفات تعريف ارتباط أو استخدام تقنيات مشابهة وفق سياساتها الخاصة. لا يتحكم Travirae مباشرة في ملفات تعريف ارتباط الجهات الخارجية أو تتبعها.</p>
+<h3>5) كيفية إدارة أو حذف ملفات تعريف الارتباط</h3>
+<p>يمكنك إدارة ملفات تعريف الارتباط من إعدادات المتصفح (حظرها، حذفها، أو السماح لبعضها فقط). قد يؤدي تعطيل ملفات تعريف الارتباط التقنية إلى التأثير على بعض ميزات الموقع (مثل تفضيل اللغة أو تسجيل الدخول).</p>
+<h3>6) التواصل</h3>
+<p>للاستفسارات حول سياسة ملفات تعريف الارتباط: <a href="mailto:info@travirae.com">info@travirae.com</a></p>
+</div>
+</div>
+</section>
+</main>
+<footer class="mega-footer">
+<div class="container mf-grid">
+<div class="mf-brand">
+<div class="brand big">
+<img alt="Travirae" src="assets/img/common/plane-logo.png" style="height:28px"/>
+<span>Travirae</span>
+</div>
+<p class="muted">منصتك لإلهام السفر وحجز الفنادق عبر خريطة تفاعلية.</p>
+<div class="mf-socials">
+<a aria-label="Instagram" class="social social--icon" href="https://www.instagram.com/travirae_official/" rel="noopener" target="_blank">
+<img alt="" loading="lazy" src="https://upload.wikimedia.org/wikipedia/commons/e/e7/Instagram_logo_2016.svg"/>
+</a>
+<a aria-label="Facebook" class="social social--icon" href="https://www.facebook.com/profile.php?id=61573037940606" rel="noopener" target="_blank">
+<img alt="" loading="lazy" src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg"/>
+</a>
+<a aria-label="TikTok" class="social social--icon" href="https://www.tiktok.com/@travirae?lang=en" rel="noopener" target="_blank">
+<img alt="" loading="lazy" src="https://upload.wikimedia.org/wikipedia/commons/a/a6/Tiktok_icon.svg"/>
+</a>
+<a aria-label="YouTube" class="social social--icon" href="https://www.youtube.com/channel/UCgGtp3qTHUzMPqjpT8EnRbQ" rel="noopener" target="_blank">
+<img alt="" loading="lazy" src="https://upload.wikimedia.org/wikipedia/commons/0/09/YouTube_full-color_icon_%282017%29.svg"/>
+</a>
+</div>
+</div>
+<nav class="mf-services"><h4>الخدمات</h4><ul>
+<li><a href="flights.html">رحلات</a></li>
+<li><a href="index.html">فنادق</a></li>
+<li><a href="programma-affiliato.html">برنامج الشركاء</a></li>
+</ul></nav>
+<div class="mf-contact">
+<h4>ابقَ على تواصل</h4>
+<ul class="contact-list">
+<li>✉️ info@travirae.com</li>
+<li>اشترك في نشرتنا البريدية</li>
+</ul>
+<!-- Newsletter (gestita via Supabase Edge Function).
+     Usiamo method="get" e un id fisso per evitare submit POST (405) e per collegare correttamente lo script. -->
+<form action="#" autocomplete="off" class="newsletter-form wide" id="newsletter-form" method="get">
+<input aria-label="بريد النشرة البريدية" name="newsletter_email" placeholder="بريدك الإلكتروني" required="" type="email"/>
+<button class="btn" type="submit">اشترك</button>
+</form>
+</div>
+</div>
+<div class="container mf-bottom muted small">
+<div>© <span id="year-copy"></span> Travirae · جميع الحقوق محفوظة</div>
+<div class="mf-legal">
+<a href="privacy.html">سياسة الخصوصية</a> · <a href="termini.html">الشروط</a> · <a href="cookie.html">ملفات تعريف الارتباط</a>
+</div>
+</div>
+</footer>
+<script src="https://unpkg.com/@supabase/supabase-js@2"></script>
+<script src="assets/js/config.js"></script>
+<script src="assets/js/supabase-init.js"></script>
+<script src="assets/js/main.js"></script>
+</body>
+</html>
