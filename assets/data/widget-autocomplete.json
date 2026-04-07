@@ -1,0 +1,582 @@
+{
+  "stay22Destinations": [
+    "Naples / Napoli, Italy",
+    "Rome / Roma, Italy",
+    "Milan / Milano, Italy",
+    "Florence / Firenze, Italy",
+    "Venice / Venezia, Italy",
+    "Turin / Torino, Italy",
+    "Bologna, Italy",
+    "Verona, Italy",
+    "Genoa / Genova, Italy",
+    "Palermo, Italy",
+    "Catania, Italy",
+    "Bari, Italy",
+    "Lecce, Italy",
+    "Amalfi Coast / Costiera Amalfitana, Italy",
+    "Sorrento, Italy",
+    "Sicily / Sicilia, Italy",
+    "Sardinia / Sardegna, Italy",
+    "Dolomites / Dolomiti, Italy",
+    "Lake Como / Lago di Como, Italy",
+    "Barcelona, Spain",
+    "Madrid, Spain",
+    "Seville / Siviglia, Spain",
+    "Valencia, Spain",
+    "Malaga, Spain",
+    "Ibiza, Spain",
+    "Mallorca / Maiorca, Spain",
+    "Tenerife, Spain",
+    "Paris, France",
+    "Nice, France",
+    "Marseille, France",
+    "Lyon, France",
+    "London, United Kingdom",
+    "Edinburgh, United Kingdom",
+    "Dublin, Ireland",
+    "Amsterdam, Netherlands",
+    "Rotterdam, Netherlands",
+    "Berlin, Germany",
+    "Munich / München, Germany",
+    "Hamburg, Germany",
+    "Vienna / Wien, Austria",
+    "Prague / Praha, Czech Republic",
+    "Budapest, Hungary",
+    "Athens / Atene, Greece",
+    "Santorini, Greece",
+    "Mykonos, Greece",
+    "Lisbon / Lisboa, Portugal",
+    "Porto, Portugal",
+    "Algarve, Portugal",
+    "Dubrovnik, Croatia",
+    "Split, Croatia",
+    "Zagreb, Croatia",
+    "Istanbul, Türkiye",
+    "Dubai, UAE",
+    "Abu Dhabi, UAE",
+    "Marrakech, Morocco",
+    "New York, USA",
+    "Miami, USA",
+    "Los Angeles, USA",
+    "San Francisco, USA",
+    "Las Vegas, USA",
+    "Cancún, Mexico",
+    "Tokyo, Japan",
+    "Kyoto, Japan",
+    "Osaka, Japan",
+    "Bangkok, Thailand",
+    "Singapore",
+    "Bali, Indonesia",
+    "Phuket, Thailand",
+    "Seoul, South Korea",
+    "Sydney, Australia",
+    "Melbourne, Australia",
+    "Corfu / Kerkyra, Greece",
+    "Corfu Town / Kerkyra, Greece",
+    "Santorini / Thira, Greece",
+    "Corfu, Greece",
+    "Oslo, Norway",
+    "Athens, Greece",
+    "Seville / Sevilla, Spain",
+    "Prague, Czech Republic",
+    "Vienna, Austria",
+    "Lisbon, Portugal",
+    "Manchester, United Kingdom",
+    "Copenhagen, Denmark",
+    "Stockholm, Sweden",
+    "Helsinki, Finland",
+    "Reykjavik, Iceland",
+    "Dubai, United Arab Emirates",
+    "Abu Dhabi, United Arab Emirates",
+    "Bali / Denpasar, Indonesia",
+    "Chicago, USA",
+    "Boston, USA",
+    "Toronto, Canada",
+    "Montreal, Canada",
+    "Vancouver, Canada",
+    "Zurich, Switzerland",
+    "Geneva, Switzerland"
+  ],
+  "airports": [
+    {
+      "code": "NAP",
+      "label": "Naples / Napoli — Naples International (NAP)"
+    },
+    {
+      "code": "FCO",
+      "label": "Rome / Roma — Fiumicino (FCO)"
+    },
+    {
+      "code": "CIA",
+      "label": "Rome / Roma — Ciampino (CIA)"
+    },
+    {
+      "code": "MXP",
+      "label": "Milan / Milano — Malpensa (MXP)"
+    },
+    {
+      "code": "LIN",
+      "label": "Milan / Milano — Linate (LIN)"
+    },
+    {
+      "code": "BGY",
+      "label": "Bergamo — Orio al Serio (BGY)"
+    },
+    {
+      "code": "VCE",
+      "label": "Venice / Venezia — Marco Polo (VCE)"
+    },
+    {
+      "code": "TSF",
+      "label": "Venice / Venezia — Treviso (TSF)"
+    },
+    {
+      "code": "FLR",
+      "label": "Florence / Firenze — Amerigo Vespucci (FLR)"
+    },
+    {
+      "code": "PSA",
+      "label": "Pisa — Galileo Galilei (PSA)"
+    },
+    {
+      "code": "BLQ",
+      "label": "Bologna — Guglielmo Marconi (BLQ)"
+    },
+    {
+      "code": "VRN",
+      "label": "Verona — Valerio Catullo (VRN)"
+    },
+    {
+      "code": "TRN",
+      "label": "Turin / Torino — Caselle (TRN)"
+    },
+    {
+      "code": "GOA",
+      "label": "Genoa / Genova — Cristoforo Colombo (GOA)"
+    },
+    {
+      "code": "CTA",
+      "label": "Catania — Fontanarossa (CTA)"
+    },
+    {
+      "code": "PMO",
+      "label": "Palermo — Falcone Borsellino (PMO)"
+    },
+    {
+      "code": "BRI",
+      "label": "Bari — Karol Wojtyła (BRI)"
+    },
+    {
+      "code": "SUF",
+      "label": "Lamezia Terme (SUF)"
+    },
+    {
+      "code": "CAG",
+      "label": "Cagliari — Elmas (CAG)"
+    },
+    {
+      "code": "OLB",
+      "label": "Olbia — Costa Smeralda (OLB)"
+    },
+    {
+      "code": "BCN",
+      "label": "Barcelona — El Prat (BCN)"
+    },
+    {
+      "code": "MAD",
+      "label": "Madrid — Barajas (MAD)"
+    },
+    {
+      "code": "SVQ",
+      "label": "Seville / Siviglia (SVQ)"
+    },
+    {
+      "code": "VLC",
+      "label": "Valencia (VLC)"
+    },
+    {
+      "code": "AGP",
+      "label": "Malaga (AGP)"
+    },
+    {
+      "code": "PMI",
+      "label": "Mallorca / Palma de Mallorca (PMI)"
+    },
+    {
+      "code": "IBZ",
+      "label": "Ibiza (IBZ)"
+    },
+    {
+      "code": "TFS",
+      "label": "Tenerife South (TFS)"
+    },
+    {
+      "code": "CDG",
+      "label": "Paris — Charles de Gaulle (CDG)"
+    },
+    {
+      "code": "ORY",
+      "label": "Paris — Orly (ORY)"
+    },
+    {
+      "code": "NCE",
+      "label": "Nice Côte d’Azur (NCE)"
+    },
+    {
+      "code": "MRS",
+      "label": "Marseille Provence (MRS)"
+    },
+    {
+      "code": "LYS",
+      "label": "Lyon Saint-Exupéry (LYS)"
+    },
+    {
+      "code": "LHR",
+      "label": "London Heathrow (LHR)"
+    },
+    {
+      "code": "LGW",
+      "label": "London Gatwick (LGW)"
+    },
+    {
+      "code": "STN",
+      "label": "London Stansted (STN)"
+    },
+    {
+      "code": "LTN",
+      "label": "London Luton (LTN)"
+    },
+    {
+      "code": "EDI",
+      "label": "Edinburgh (EDI)"
+    },
+    {
+      "code": "DUB",
+      "label": "Dublin (DUB)"
+    },
+    {
+      "code": "AMS",
+      "label": "Amsterdam Schiphol (AMS)"
+    },
+    {
+      "code": "RTM",
+      "label": "Rotterdam The Hague (RTM)"
+    },
+    {
+      "code": "BER",
+      "label": "Berlin Brandenburg (BER)"
+    },
+    {
+      "code": "MUC",
+      "label": "Munich / München (MUC)"
+    },
+    {
+      "code": "HAM",
+      "label": "Hamburg (HAM)"
+    },
+    {
+      "code": "FRA",
+      "label": "Frankfurt (FRA)"
+    },
+    {
+      "code": "VIE",
+      "label": "Vienna / Wien (VIE)"
+    },
+    {
+      "code": "PRG",
+      "label": "Prague / Praha (PRG)"
+    },
+    {
+      "code": "BUD",
+      "label": "Budapest (BUD)"
+    },
+    {
+      "code": "ATH",
+      "label": "Athens / Atene (ATH)"
+    },
+    {
+      "code": "JTR",
+      "label": "Santorini / Thira (JTR)"
+    },
+    {
+      "code": "JMK",
+      "label": "Mykonos (JMK)"
+    },
+    {
+      "code": "LIS",
+      "label": "Lisbon / Lisboa (LIS)"
+    },
+    {
+      "code": "OPO",
+      "label": "Porto (OPO)"
+    },
+    {
+      "code": "FAO",
+      "label": "Faro / Algarve (FAO)"
+    },
+    {
+      "code": "DBV",
+      "label": "Dubrovnik (DBV)"
+    },
+    {
+      "code": "SPU",
+      "label": "Split (SPU)"
+    },
+    {
+      "code": "ZAG",
+      "label": "Zagreb (ZAG)"
+    },
+    {
+      "code": "IST",
+      "label": "Istanbul Airport (IST)"
+    },
+    {
+      "code": "SAW",
+      "label": "Istanbul Sabiha Gökçen (SAW)"
+    },
+    {
+      "code": "DXB",
+      "label": "Dubai International (DXB)"
+    },
+    {
+      "code": "DWC",
+      "label": "Dubai Al Maktoum (DWC)"
+    },
+    {
+      "code": "AUH",
+      "label": "Abu Dhabi (AUH)"
+    },
+    {
+      "code": "RAK",
+      "label": "Marrakech Menara (RAK)"
+    },
+    {
+      "code": "CMN",
+      "label": "Casablanca Mohammed V (CMN)"
+    },
+    {
+      "code": "JFK",
+      "label": "New York JFK (JFK)"
+    },
+    {
+      "code": "EWR",
+      "label": "New York Newark (EWR)"
+    },
+    {
+      "code": "LGA",
+      "label": "New York LaGuardia (LGA)"
+    },
+    {
+      "code": "MIA",
+      "label": "Miami (MIA)"
+    },
+    {
+      "code": "FLL",
+      "label": "Fort Lauderdale (FLL)"
+    },
+    {
+      "code": "LAX",
+      "label": "Los Angeles (LAX)"
+    },
+    {
+      "code": "SFO",
+      "label": "San Francisco (SFO)"
+    },
+    {
+      "code": "LAS",
+      "label": "Las Vegas (LAS)"
+    },
+    {
+      "code": "ORD",
+      "label": "Chicago O’Hare (ORD)"
+    },
+    {
+      "code": "BOS",
+      "label": "Boston Logan (BOS)"
+    },
+    {
+      "code": "CUN",
+      "label": "Cancún (CUN)"
+    },
+    {
+      "code": "MEX",
+      "label": "Mexico City (MEX)"
+    },
+    {
+      "code": "NRT",
+      "label": "Tokyo Narita (NRT)"
+    },
+    {
+      "code": "HND",
+      "label": "Tokyo Haneda (HND)"
+    },
+    {
+      "code": "KIX",
+      "label": "Osaka Kansai (KIX)"
+    },
+    {
+      "code": "ITM",
+      "label": "Osaka Itami (ITM)"
+    },
+    {
+      "code": "UKB",
+      "label": "Kobe (UKB)"
+    },
+    {
+      "code": "BKK",
+      "label": "Bangkok Suvarnabhumi (BKK)"
+    },
+    {
+      "code": "DMK",
+      "label": "Bangkok Don Mueang (DMK)"
+    },
+    {
+      "code": "SIN",
+      "label": "Singapore Changi (SIN)"
+    },
+    {
+      "code": "DPS",
+      "label": "Bali Denpasar (DPS)"
+    },
+    {
+      "code": "HKT",
+      "label": "Phuket (HKT)"
+    },
+    {
+      "code": "ICN",
+      "label": "Seoul Incheon (ICN)"
+    },
+    {
+      "code": "GMP",
+      "label": "Seoul Gimpo (GMP)"
+    },
+    {
+      "code": "SYD",
+      "label": "Sydney (SYD)"
+    },
+    {
+      "code": "MEL",
+      "label": "Melbourne (MEL)"
+    },
+    {
+      "code": "AKL",
+      "label": "Auckland (AKL)"
+    },
+    {
+      "code": "DOH",
+      "label": "Doha Hamad (DOH)"
+    },
+    {
+      "code": "CAI",
+      "label": "Cairo (CAI)"
+    },
+    {
+      "code": "TLV",
+      "label": "Tel Aviv (TLV)"
+    },
+    {
+      "code": "CPH",
+      "label": "Copenhagen (CPH)"
+    },
+    {
+      "code": "OSL",
+      "label": "Oslo (OSL)"
+    },
+    {
+      "code": "ARN",
+      "label": "Stockholm Arlanda (ARN)"
+    },
+    {
+      "code": "HEL",
+      "label": "Helsinki (HEL)"
+    },
+    {
+      "code": "RIX",
+      "label": "Riga (RIX)"
+    },
+    {
+      "code": "VNO",
+      "label": "Vilnius (VNO)"
+    },
+    {
+      "code": "WAW",
+      "label": "Warsaw Chopin (WAW)"
+    },
+    {
+      "code": "KRK",
+      "label": "Kraków (KRK)"
+    },
+    {
+      "code": "OTP",
+      "label": "Bucharest Otopeni (OTP)"
+    },
+    {
+      "code": "SOF",
+      "label": "Sofia (SOF)"
+    },
+    {
+      "code": "TGD",
+      "label": "Podgorica (TGD)"
+    },
+    {
+      "code": "TIA",
+      "label": "Tirana (TIA)"
+    },
+    {
+      "code": "SKG",
+      "label": "Thessaloniki (SKG)"
+    },
+    {
+      "code": "FUE",
+      "label": "Fuerteventura (FUE)"
+    },
+    {
+      "code": "ACE",
+      "label": "Lanzarote (ACE)"
+    },
+    {
+      "code": "ALC",
+      "label": "Alicante (ALC)"
+    },
+    {
+      "code": "BIO",
+      "label": "Bilbao (BIO)"
+    },
+    {
+      "code": "GVA",
+      "label": "Geneva (GVA)"
+    },
+    {
+      "code": "ZRH",
+      "label": "Zurich (ZRH)"
+    },
+    {
+      "code": "BRU",
+      "label": "Brussels (BRU)"
+    },
+    {
+      "code": "KEF",
+      "label": "Reykjavík Keflavík (KEF)"
+    },
+    {
+      "code": "CFU",
+      "label": "Corfu / Kerkyra — Corfu International (CFU)"
+    },
+    {
+      "code": "MAN",
+      "label": "Manchester (MAN)"
+    },
+    {
+      "code": "YYZ",
+      "label": "Toronto — Pearson (YYZ)"
+    },
+    {
+      "code": "YUL",
+      "label": "Montreal (YUL)"
+    },
+    {
+      "code": "YVR",
+      "label": "Vancouver (YVR)"
+    }
+  ]
+}
