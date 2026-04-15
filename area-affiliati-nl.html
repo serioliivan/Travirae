@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+
+<!DOCTYPE html>
+
+<html lang="nl">
+<head>
+<link href="assets/img/common/plane-logo.png" rel="icon" type="image/png"/>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<title>Partneromgeving – Travirae Partnerprogramma</title>
+<meta content="Log in op het Travirae Affiliate-gedeelte om je Affiliate ID te beheren, trackinglinks te maken en affiliate-landings, bevestigde verkopen en maandelijkse inkomsten te volgen." name="description"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="assets/css/style.css" rel="stylesheet"/>
+<script id="travirae-lang-router">(function(){
+  try{
+    var siteKey='travirae_site_lang';
+    var explicitKey='travirae_site_lang_explicit';
+    var manualKey='travirae_site_lang_manual';
+    var lang='';
+    try{
+      if(String(localStorage.getItem(manualKey)||'')==='1') lang=String(localStorage.getItem(siteKey)||'').toUpperCase();
+    }catch(e){}
+    if(!lang){
+      var candidates=[];
+      try{
+        if(navigator.language) candidates.push(navigator.language);
+        if(Array.isArray(navigator.languages)) candidates=candidates.concat(navigator.languages);
+      }catch(e){}
+      var mapByBase={ it:'ITA', en:'ENG', ar:'ARA', de:'DEU', es:'SPA', ru:'RUS', nl:'NLD', zh:'ZHO', fr:'FRA' };
+      for(var i=0;i<candidates.length;i+=1){
+        var base=String(candidates[i]||'').toLowerCase().split(/[-_]/)[0];
+        if(mapByBase[base]){ lang=mapByBase[base]; break; }
+      }
+      if(!lang) lang='ENG';
+    }
+    var map={ DEU:'de', ENG:'en', FRA:'fr', SPA:'es', RUS:'ru', ARA:'ar', NLD:'nl', ZHO:'zh' };
+    var suf=map[lang] || '';
+    var u=new URL(window.location.href);
+    var path=u.pathname||'';
+    var file=path.split('/').pop()||'';
+    var dir=path.slice(0, path.length-file.length);
+    if(!file) file='index.html';
+    if(!/\.html$/i.test(file)) return;
+    var baseFile=file.replace(/-(de|en|fr|es|ru|ar|nl|zh)\.html$/i,'.html');
+    var target=suf ? baseFile.replace(/\.html$/i,'-'+suf+'.html') : baseFile;
+    if(target===file) return;
+    u.pathname=dir+target;
+    window.location.replace(u.toString());
+  }catch(e){}
+})();</script>
+</head>
+<body class="page--affiliate-portal">
+<header class="site-header">
+<div class="container header-inner">
+<a aria-label="Travirae startpagina" class="brand" href="index.html">
+<img alt="Travirae" src="assets/img/common/plane-logo.png" style="height:28px"/>
+<span>Travirae</span>
+</a>
+<nav aria-label="Hoofdnavigatie" class="main-nav">
+<a class="nav-link" href="index.html">Hotels</a>
+<a class="nav-link" href="flights.html">Vluchten</a>
+<a class="nav-link" href="influencers-vlogs-nl.html">Influencer-vlogs</a>
+<a class="nav-link active" href="programma-affiliato.html">Partnerprogramma</a>
+</nav>
+<button aria-expanded="false" aria-label="Menu openen" class="nav-toggle"><span></span><span></span><span></span></button>
+</div>
+</header>
+<main>
+<section class="section">
+<div class="container affiliate-portal-grid">
+<div class="if-page-tabs if-page-tabs--portal if-auth-gated-tabs" hidden="">
+<a class="if-page-tab is-active if-auth-only-tab" hidden="" href="area-affiliati-nl.html">Dashboard</a>
+<a class="if-page-tab if-auth-only-tab" hidden="" href="area-affiliati-profilo-nl.html">Profiel</a>
+</div>
+<div class="affiliate-intro">
+<p class="muted small" style="margin:0 0 6px;">Travirae Affiliate Programme</p>
+<h1>Partneromgeving</h1>
+<p class="subtitle">Beheer je Affiliate ID, maak trackinglinks aan en volg affiliate-landings, bevestigde verkopen en maandelijkse inkomsten.</p>
+<ul class="benefits-list">
+<li>Ontvang een <strong>uniek affiliate ID</strong> gekoppeld aan je account.</li>
+<li>Deel hotel- of vluchtpagina’s met de parameter <code>?ref=YOUR_ID</code>.</li>
+<li>Volg <strong>affiliate-landings, bevestigde verkopen en maandelijkse inkomsten</strong> rechtstreeks vanuit je dashboard.</li>
+</ul></div>
+<div>
+<div class="auth-card">
+<div class="auth-card-header" id="auth-card-header-main">
+<h2 class="auth-card-title">Inloggen of registreren</h2>
+<p class="auth-card-subtitle">Ga naar het affiliategedeelte om je trackinglink en statistieken te bekijken.</p>
+</div>
+<div class="auth-tabs" role="tablist">
+<button class="auth-tab is-active" data-auth-tab="login" type="button">Inloggen</button>
+<button class="auth-tab" data-auth-tab="register" type="button">Registreren</button>
+</div>
+<div class="auth-views">
+<!-- LOGIN -->
+<div class="auth-view auth-view-login" data-view="login">
+<form autocomplete="on" class="auth-form" id="affiliate-login-form">
+<div class="form-group">
+<label for="login-email">E‑mail</label>
+<input autocomplete="email" id="login-email" name="email" required="" type="email"/>
+</div>
+<div class="form-group">
+<label for="login-password">Wachtwoord</label>
+<input autocomplete="current-password" id="login-password" name="password" required="" type="password"/>
+</div>
+<!-- La lingua email viene scelta dal selettore lingua del sito (in alto). -->
+<div class="checkbox-row" style="margin-top:8px;">
+<input checked="" id="login-remember" name="remember" type="checkbox"/>
+<label for="login-remember">Onthoud mij</label>
+</div>
+<button class="auth-link auth-link--forgot" id="affiliate-forgot-link" type="button">Wachtwoord vergeten?</button>
+<div class="auth-actions">
+<button class="btn" type="submit">Inloggen</button>
+</div>
+</form>
+</div>
+<!-- REGISTRAZIONE -->
+<div class="auth-view auth-view-register" data-view="register" hidden="">
+<form autocomplete="on" class="auth-form" id="affiliate-register-form">
+<div class="form-group">
+<label for="register-email">E‑mail</label>
+<input autocomplete="email" id="register-email" name="email" required="" type="email"/>
+</div>
+<div class="form-group">
+<label for="register-password">Wachtwoord</label>
+<input autocomplete="new-password" id="register-password" name="password" required="" type="password"/>
+</div>
+<div class="form-group">
+<label for="register-password-confirm">Wachtwoord bevestigen</label>
+<input autocomplete="new-password" id="register-password-confirm" name="password_confirm" required="" type="password"/>
+</div>
+<!-- Lingua email: ora viene presa dal selettore lingua del sito (in alto) -->
+<div class="auth-actions">
+<button class="btn" type="submit">Registreren</button>
+</div>
+</form>
+</div>
+<!-- FORGOT PASSWORD -->
+<div class="auth-view auth-view-forgot" data-view="forgot" hidden="">
+<form class="auth-form" id="affiliate-forgot-form">
+<div class="form-group">
+<label for="forgot-email">E‑mail</label>
+<input id="forgot-email" name="email" required="" type="email"/>
+</div>
+<!-- Lingua email: ora viene presa dal selettore lingua del sito (in alto) -->
+<div class="auth-actions">
+<button class="btn" type="submit">Resetlink verzenden</button>
+<button class="auth-link" data-back-to="login" type="button">Terug naar inloggen</button>
+</div>
+</form>
+</div>
+<!-- RECOVERY -->
+<div class="auth-view auth-view-recovery" data-view="recovery" hidden="">
+<form class="auth-form" id="affiliate-recovery-form">
+<p class="muted small">Je hebt een wachtwoordresetlink geopend. Stel hieronder een nieuw wachtwoord in voor je account.</p>
+<div class="form-group">
+<label for="recovery-password">Nieuw wachtwoord</label>
+<input id="recovery-password" name="password" required="" type="password"/>
+</div>
+<div class="form-group">
+<label for="recovery-password-confirm">Nieuw wachtwoord bevestigen</label>
+<input id="recovery-password-confirm" name="password_confirm" required="" type="password"/>
+</div>
+<div class="auth-actions">
+<button class="btn" type="submit">Wachtwoord bijwerken</button>
+</div>
+</form>
+</div>
+<!-- DASHBOARD -->
+<div class="auth-view auth-view-dashboard" data-view="dashboard" hidden="">
+<div class="auth-card-header">
+<h2 class="auth-card-title">Partnerdashboard</h2>
+<p class="auth-card-subtitle">Beheer je Affiliate ID, affiliate-landings, bevestigde verkopen en inkomsten.</p>
+</div>
+<div class="affiliate-id-block">
+<div class="muted small">Jouw affiliate ID</div>
+<code id="affiliate-slug"></code>
+<div class="affiliate-link-row">
+<label class="muted small" for="affiliate-link-input">Hoofdlink om te delen</label>
+<div class="affiliate-link-input-row">
+<input id="affiliate-link-input" readonly="" type="text"/>
+<button class="btn" id="affiliate-copy-btn" type="button">Kopiëren</button>
+</div>
+</div>
+</div>
+<div class="affiliate-stats-grid">
+<div class="stat-card">
+<div class="stat-label">Affiliate-landings (historisch)</div>
+<div class="stat-value" id="affiliate-stat-clicks">—</div>
+</div>
+<div class="stat-card">
+<div class="stat-label">Bevestigde verkopen (huidige maand)</div>
+<div class="stat-value" id="affiliate-stat-sales-month">—</div>
+</div>
+<div class="stat-card">
+<div class="stat-label">Totale opgebouwde inkomsten</div>
+<div class="stat-value" id="affiliate-stat-total">—</div>
+</div>
+<div class="stat-card">
+<div class="stat-label">Inkomsten huidige maand</div>
+<div class="stat-value" id="affiliate-stat-month">—</div>
+</div>
+</div>
+<div class="affiliate-tier-card">
+<div class="tier-top">
+<h3 style="margin:0;">Huidige revenue share</h3>
+<span class="badge" id="affiliate-share-percent">—</span>
+</div>
+<p class="muted small" id="affiliate-tier-subtitle" style="margin:6px 0 10px;">Gebaseerd op bevestigde verkopen van de huidige maand.</p>
+<div aria-label="Voortgang revenue share" class="progress">
+<div class="progress-bar" id="affiliate-tier-progress" style="width:0%"></div>
+</div>
+<div class="tier-foot muted small" style="display:flex;justify-content:space-between;gap:12px;margin-top:8px;flex-wrap:wrap;">
+<span>Bevestigde verkopen deze maand: <strong id="affiliate-tier-sales">0</strong></span>
+<span id="affiliate-tier-next">—</span>
+</div>
+</div>
+<div class="affiliate-payout-card">
+<h3 style="margin-top:0;">Uitbetalingen</h3>
+<p class="muted small" style="margin-top:4px;">Minimum uitbetaling: <strong>50 USD</strong>. Aanvragen worden naar de beheerder gestuurd en handmatig verwerkt.</p>
+<div class="payout-balance-box">
+<div class="muted small">Beschikbaar saldo</div>
+<div class="stat-value" id="affiliate-available-balance">—</div>
+</div>
+<div class="payout-actions">
+<button class="btn" id="affiliate-open-payout-form-btn" type="button">Uitbetaling aanvragen</button>
+</div>
+<div hidden="" id="affiliate-payout-form-wrap">
+<form autocomplete="on" class="auth-form" id="affiliate-payout-form">
+<div class="form-row-2">
+<div class="form-group">
+<label for="payout-amount">Bedrag (USD)</label>
+<input id="payout-amount" min="50" name="amount" required="" step="0.01" type="number"/>
+</div>
+<div class="form-group">
+<label for="payout-method">Methode</label>
+<select id="payout-method" name="method" required="">
+<option value="paypal">PayPal</option>
+<option value="bank">SEPA/SWIFT bankoverschrijving</option>
+</select>
+</div>
+</div>
+<div id="payout-method-paypal">
+<div class="form-group">
+<label for="payout-paypal-email">PayPal e-mailadres</label>
+<input id="payout-paypal-email" name="paypal_email" placeholder="name@example.com" type="email"/>
+</div>
+</div>
+<div hidden="" id="payout-method-bank">
+<div class="form-row-2">
+<div class="form-group">
+<label for="payout-beneficiary-name">Rekeninghouder</label>
+<input id="payout-beneficiary-name" name="beneficiary_name" placeholder="Volledige naam / Bedrijfsnaam" type="text"/>
+</div>
+<div class="form-group">
+<label for="payout-bank-country">Land van de bank</label>
+<input id="payout-bank-country" name="bank_country" placeholder="bijv. GB, IT, DE, US" type="text"/>
+</div>
+</div>
+<div class="form-row-2">
+<div class="form-group">
+<label for="payout-iban">IBAN (SEPA)</label>
+<input id="payout-iban" name="iban" placeholder="IT60X0542811101000000123456" type="text"/>
+</div>
+<div class="form-group">
+<label for="payout-swift">SWIFT/BIC (indien nodig)</label>
+<input id="payout-swift" name="swift_bic" placeholder="UNCRITMMXXX" type="text"/>
+</div>
+</div>
+<div class="form-group">
+<label for="payout-bank-name">Banknaam (optioneel)</label>
+<input id="payout-bank-name" name="bank_name" type="text"/>
+</div>
+<div class="form-group">
+<label for="payout-bank-address">Bankadres (optioneel)</label>
+<input id="payout-bank-address" name="bank_address" type="text"/>
+</div>
+</div>
+<div class="divider-line"></div>
+<h4 style="margin:0 0 6px;">Fiscale gegevens (voor internationale compliance)</h4>
+<p class="muted small" style="margin:0 0 10px;">Gebruikt om de begunstigde van de uitbetaling te identificeren en eventuele KYC-/anti‑fraudecontroles uit te voeren.</p>
+<div class="form-row-2">
+<div class="form-group">
+<label for="payout-legal-name">Juridische naam / Bedrijfsnaam</label>
+<input id="payout-legal-name" name="legal_name" required="" type="text"/>
+</div>
+<div class="form-group">
+<label for="payout-subject-type">Entiteitstype</label>
+<select id="payout-subject-type" name="subject_type" required="">
+<option value="individual">Persoon</option>
+<option value="company">Bedrijf / Zelfstandig</option>
+</select>
+</div>
+</div>
+<div class="form-row-2">
+<div class="form-group">
+<label for="payout-tax-country">Land van fiscale woonplaats</label>
+<input id="payout-tax-country" name="tax_residence_country" placeholder="e.g. GB" required="" type="text"/>
+</div>
+<div class="form-group">
+<label for="payout-tax-id">Belastingnummer / btw-nummer (indien beschikbaar)</label>
+<input id="payout-tax-id" name="tax_id" placeholder="Optioneel maar aanbevolen" type="text"/>
+</div>
+</div>
+<div class="form-row-2">
+<div class="form-group">
+<label for="payout-address-country">Land (adres)</label>
+<input id="payout-address-country" name="address_country" placeholder="e.g. GB" required="" type="text"/>
+</div>
+<div class="form-group">
+<label for="payout-address-city">Stad</label>
+<input id="payout-address-city" name="address_city" required="" type="text"/>
+</div>
+</div>
+<div class="form-group">
+<label class="checkbox-row">
+<input id="payout-remember" name="remember" type="checkbox"/>
+<span>Onthouden voor toekomstige uitbetalingen (gegevens opslaan in je profiel)</span>
+</label>
+</div>
+<div class="form-group">
+<label class="checkbox-row">
+<input id="payout-confirm" name="confirm" required="" type="checkbox"/>
+<span>Ik bevestig dat de opgegeven gegevens correct zijn en dat ik de begunstigde van de fondsen ben.</span>
+</label>
+</div>
+<div class="auth-actions" style="justify-content:flex-start;">
+<button class="btn" type="submit">Aanvraag indienen</button>
+<button class="btn secondary" id="affiliate-cancel-payout-form-btn" type="button">Annuleren</button>
+</div>
+</form>
+</div>
+<div class="affiliate-table-card" style="margin-top:12px;">
+<h3 style="margin-top:0;">Geschiedenis van uitbetalingsaanvragen</h3>
+<div class="table-wrapper">
+<table class="table affiliate-payouts-table">
+<thead>
+<tr>
+<th>Datum</th>
+<th>Bedrag</th>
+<th>Methode</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody id="affiliate-payout-requests-tbody">
+<tr><td class="muted small" colspan="4">Nog geen aanvragen ingediend.</td></tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="affiliate-chart-card">
+<h3>Opgebouwde maandelijkse inkomsten</h3>
+<div style="height:220px;">
+<canvas aria-label="Grafiek van opgebouwde maandelijkse affiliate-inkomsten" id="affiliate-payouts-chart"></canvas>
+</div>
+</div>
+<div class="affiliate-table-card">
+<h3>Geschiedenis maandelijkse inkomsten</h3>
+<table class="table affiliate-payouts-table">
+<thead>
+<tr><th>Maand</th><th>Bevestigde verkopen</th><th>Netto-commissies</th><th>Revenue share</th><th>Opgebouwde inkomsten</th></tr>
+</thead>
+<tbody id="affiliate-payouts-table-body">
+<tr><td class="muted small" colspan="5">Nog geen maandelijkse inkomsten geregistreerd.</td></tr>
+</tbody>
+</table>
+</div>
+<div class="affiliate-dashboard-actions">
+<button class="btn secondary" id="affiliate-2fa-btn" type="button">Beveiliging (2FA)</button>
+<button class="btn secondary" id="affiliate-change-lang-btn" type="button">Taal wijzigen</button>
+<button class="btn" id="affiliate-logout-btn" type="button">Uitloggen</button>
+</div>
+</div>
+</div>
+<div aria-live="polite" class="auth-message" id="affiliate-auth-message"></div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<footer class="mega-footer">
+<div class="container mf-grid">
+<div class="mf-brand">
+<div class="brand big">
+<img alt="Travirae" src="assets/img/common/plane-logo.png" style="height:28px"/>
+<span>Travirae</span>
+</div>
+<p class="muted">Jouw platform voor reisinspiratie en hotelboeken met een interactieve kaart.</p>
+<div class="mf-socials">
+<a aria-label="Instagram" class="social social--icon" href="https://www.instagram.com/travirae_official/" rel="noopener" target="_blank">
+<img alt="" loading="lazy" src="https://upload.wikimedia.org/wikipedia/commons/e/e7/Instagram_logo_2016.svg"/>
+</a>
+<a aria-label="Facebook" class="social social--icon" href="https://www.facebook.com/profile.php?id=61573037940606" rel="noopener" target="_blank">
+<img alt="" loading="lazy" src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg"/>
+</a>
+<a aria-label="TikTok" class="social social--icon" href="https://www.tiktok.com/@travirae?lang=en" rel="noopener" target="_blank">
+<img alt="" loading="lazy" src="https://upload.wikimedia.org/wikipedia/commons/a/a6/Tiktok_icon.svg"/>
+</a>
+<a aria-label="YouTube" class="social social--icon" href="https://www.youtube.com/channel/UCgGtp3qTHUzMPqjpT8EnRbQ" rel="noopener" target="_blank">
+<img alt="" loading="lazy" src="https://upload.wikimedia.org/wikipedia/commons/0/09/YouTube_full-color_icon_%282017%29.svg"/>
+</a>
+</div>
+</div>
+<nav class="mf-services"><h4>Diensten</h4><ul>
+<li><a href="flights.html">Vluchten</a></li>
+<li><a href="index.html">Hotels</a></li>
+<li><a href="programma-affiliato.html">Partnerprogramma</a></li>
+</ul></nav>
+<div class="mf-contact">
+<h4>Blijf in contact</h4>
+<ul class="contact-list">
+<li>✉️ info@travirae.com</li>
+<li>Abonneer je op onze nieuwsbrief</li>
+</ul>
+<!-- Newsletter (gestita via Supabase Edge Function).
+     Usiamo method="get" e un id fisso per evitare submit POST (405) se JS non è caricato. -->
+<form action="#" class="newsletter-form wide" id="newsletter-form" method="get">
+<input aria-label="E-mailadres voor nieuwsbrief" name="newsletter_email" placeholder="Jouw e-mailadres" required="" type="email"/>
+<button class="btn" type="submit">Abonneren</button>
+</form>
+</div>
+</div>
+<div class="container mf-bottom muted small">
+<div>© <span id="year-copy"></span> Travirae · Alle rechten voorbehouden</div>
+<div class="mf-legal">
+<a href="privacy.html">Privacy</a> · <a href="termini.html">Voorwaarden</a> · <a href="cookie.html">Cookies</a>
+</div>
+</div>
+</footer>
+<script src="https://unpkg.com/@supabase/supabase-js@2"></script>
+<script src="assets/js/config.js"></script>
+<script src="assets/js/supabase-init.js"></script>
+<script src="assets/js/main.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="assets/js/affiliate-area-nl.js"></script>
+</body>
+</html>
