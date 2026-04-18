@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+
+
+<html lang="it">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<title>Travirae — Termini</title>
+<link href="assets/css/style.css" rel="stylesheet"/>
+<script id="travirae-lang-router">(function(){
+  try{
+    var siteKey='travirae_site_lang';
+    var manualKey='travirae_site_lang_manual';
+    var suffixToLang={ en:'ENG', de:'DEU', fr:'FRA', es:'SPA', ru:'RUS', ar:'ARA', nl:'NLD', zh:'ZHO' };
+    var langToSuffix={ DEU:'de', ENG:'en', FRA:'fr', SPA:'es', RUS:'ru', ARA:'ar', NLD:'nl', ZHO:'zh' };
+    var u=new URL(window.location.href);
+    var path=u.pathname||'';
+    var file=path.split('/').pop()||'';
+    var dir=path.slice(0, path.length-file.length);
+    if(!file) file='index.html';
+    if(!/\.html$/i.test(file)) return;
+    var suffixMatch=file.match(/-(de|en|fr|es|ru|ar|nl|zh)\.html$/i);
+    var pageLang=suffixMatch ? suffixToLang[String(suffixMatch[1]).toLowerCase()] : '';
+    var lang='';
+    try{
+      if(String(localStorage.getItem(manualKey)||'')==='1') lang=String(localStorage.getItem(siteKey)||'').toUpperCase();
+    }catch(e){}
+    if(!lang && pageLang) lang=pageLang;
+    if(!lang){
+      var candidates=[];
+      try{
+        if(navigator.language) candidates.push(navigator.language);
+        if(Array.isArray(navigator.languages)) candidates=candidates.concat(navigator.languages);
+      }catch(e){}
+      var mapByBase={ it:'ITA', en:'ENG', ar:'ARA', de:'DEU', es:'SPA', ru:'RUS', nl:'NLD', zh:'ZHO', fr:'FRA' };
+      for(var i=0;i<candidates.length;i+=1){
+        var base=String(candidates[i]||'').toLowerCase().split(/[-_]/)[0];
+        if(mapByBase[base]){ lang=mapByBase[base]; break; }
+      }
+      if(!lang) lang='ENG';
+    }
+    window.TRAVIRAE_LANG=lang;
+    var suf=langToSuffix[lang] || '';
+    var baseFile=file.replace(/-(de|en|fr|es|ru|ar|nl|zh)\.html$/i,'.html');
+    var target=suf ? baseFile.replace(/\.html$/i,'-'+suf+'.html') : baseFile;
+    if(target===file) return;
+    u.pathname=dir+target;
+    window.location.replace(u.toString());
+  }catch(e){}
+})();</script>
+</head>
+<body>
+<header class="site-header">
+<div class="container header-inner">
+<a aria-label="Travirae Home" class="brand" href="index.html">
+<img alt="Travirae" src="assets/img/common/plane-logo.png" style="height:28px"/>
+<span>Travirae</span>
+</a>
+<nav aria-label="Navigazione principale" class="main-nav">
+<a class="nav-link" href="index.html">Hotel</a>
+<a class="nav-link" href="flights.html">Voli</a>
+<a class="nav-link" href="influencers-vlogs.html">Vlog degli influencer</a>
+<a class="nav-link" href="programma-affiliato.html">Programma affiliato</a>
+</nav>
+<button aria-expanded="false" aria-label="Apri menu" class="nav-toggle">
+<span></span><span></span><span></span>
+</button>
+</div>
+</header>
+<main>
+<section class="section">
+<div class="container">
+<h1 class="section-title">Termini</h1>
+<div class="legal">
+<h2>Termini e Condizioni d’Uso</h2>
+<p class="muted"><strong>Ultimo aggiornamento:</strong> 01/01/2026</p>
+<p>
+<strong>Nota importante:</strong> questi Termini sono un modello generico.
+            Per adeguarli in modo completo al tuo caso (forma giuridica, flussi di pagamento, fiscalità, strumenti di tracking, ecc.)
+            è consigliata una revisione da parte di un professionista legale.
+          </p>
+<h3>1) Contatti</h3>
+<p>Contatti: <a href="mailto:info@travirae.com">info@travirae.com</a>.</p>
+<h3>2) Oggetto del servizio</h3>
+<p>
+            Travirae è una piattaforma di ispirazione e comparazione che integra widget/collegamenti verso fornitori terzi (es. mappe hotel, motori voli).
+            L’eventuale prenotazione/acquisto avviene <strong>su siti di terze parti</strong> e alle loro condizioni.
+          </p>
+<h3>3) Nessuna agenzia di viaggi — responsabilità limitata</h3>
+<ul>
+<li>Travirae <strong>non</strong> è un’agenzia di viaggi e non vende direttamente servizi turistici, salvo diversa indicazione esplicita.</li>
+<li>Prezzi, disponibilità, condizioni, cancellazioni e assistenza post-vendita dipendono dai fornitori terzi.</li>
+<li>Travirae non è responsabile per disservizi, ritardi, cancellazioni, modifiche o controversie tra utente e fornitore terzo.</li>
+</ul>
+<h3>4) Area Affiliati — registrazione e sicurezza</h3>
+<ul>
+<li>Per accedere al Programma Affiliati è necessario creare un account (email e password).</li>
+<li>Se attivi la <strong>2FA</strong>, dovrai utilizzare anche il codice generato dall’app Authenticator per operazioni protette.</li>
+<li>Sei responsabile della riservatezza delle credenziali e di ogni attività effettuata con il tuo account.</li>
+</ul>
+<h3>5) Tracking, link affiliato e attribuzione</h3>
+<p>Gli affiliati ricevono un identificativo (Affiliate ID) e possono condividere link con un parametro dedicato (es. <code>?ref=...</code>). Quando un utente visita il Sito tramite quel link, possono essere registrati eventi di tracking relativi alla landing affiliata e, successivamente, dati statistici e di vendita confermata necessari a calcolare statistiche e commissioni.</p>
+<p class="muted">L’attribuzione non usa più booking click nei widget: i conteggi si basano sull’ingresso tramite link affiliato e sulle vendite confermate importate dai partner.</p>
+<h3>6) Commissioni, margini e payout</h3>
+<ul>
+<li>Le commissioni e i margini possono dipendere dai dati forniti dai partner e dai report importati (es. CSV o API).</li>
+<li>Le vendite possono essere soggette a storni, cancellazioni, chargeback o invalidazioni da parte dei partner.</li>
+<li>Le richieste di payout possono richiedere verifiche (es. soglia minima, controlli antifrode, conferma credenziali/2FA).</li>
+</ul>
+<h3>7) Uso consentito</h3>
+<ul>
+<li>È vietato utilizzare il Sito per attività illecite, spam, tracciamenti fraudolenti, manipolazione di click o qualsiasi abuso del Programma.</li>
+<li>Ci riserviamo la facoltà di sospendere/chiudere account in caso di violazioni o sospetto abuso.</li>
+</ul>
+<h3>8) Proprietà intellettuale</h3>
+<p>
+            Contenuti, marchi, layout e codice del Sito sono protetti da norme su proprietà intellettuale. È vietata la riproduzione non autorizzata.
+          </p>
+<h3>9) Limitazioni di garanzia</h3>
+<p>
+            Il Sito è fornito “così com’è”. Pur impegnandoci per accuratezza e continuità, non garantiamo assenza di errori, interruzioni o la disponibilità
+            costante di servizi terzi integrati.
+          </p>
+<h3>10) Legge applicabile e foro competente</h3>
+<p>
+            Salvo norme inderogabili a tutela del consumatore, i presenti Termini sono regolati dalla legge italiana.
+          </p>
+</div>
+</div>
+</section>
+</main>
+<footer class="mega-footer">
+<div class="container mf-grid">
+<div class="mf-brand">
+<div class="brand big">
+<img alt="Travirae" src="assets/img/common/plane-logo.png" style="height:28px"/>
+<span>Travirae</span>
+</div>
+<p class="muted">La tua piattaforma di ispirazione e prenotazione hotel con mappa interattiva.</p>
+<div class="mf-socials">
+<a aria-label="Instagram" class="social social--icon" href="https://www.instagram.com/travirae_official/" rel="noopener" target="_blank">
+<img alt="" loading="lazy" src="https://upload.wikimedia.org/wikipedia/commons/e/e7/Instagram_logo_2016.svg"/>
+</a>
+<a aria-label="Facebook" class="social social--icon" href="https://www.facebook.com/profile.php?id=61573037940606" rel="noopener" target="_blank">
+<img alt="" loading="lazy" src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg"/>
+</a>
+<a aria-label="TikTok" class="social social--icon" href="https://www.tiktok.com/@travirae?lang=en" rel="noopener" target="_blank">
+<img alt="" loading="lazy" src="https://upload.wikimedia.org/wikipedia/commons/a/a6/Tiktok_icon.svg"/>
+</a>
+<a aria-label="YouTube" class="social social--icon" href="https://www.youtube.com/channel/UCgGtp3qTHUzMPqjpT8EnRbQ" rel="noopener" target="_blank">
+<img alt="" loading="lazy" src="https://upload.wikimedia.org/wikipedia/commons/0/09/YouTube_full-color_icon_%282017%29.svg"/>
+</a>
+</div>
+</div>
+<nav class="mf-services"><h4>Servizi</h4><ul>
+<li><a href="flights.html">Voli</a></li>
+<li><a href="index.html">Hotel</a></li>
+<li><a href="programma-affiliato.html">Programma affiliato</a></li>
+</ul></nav>
+<div class="mf-contact">
+<h4>Resta in contatto</h4>
+<ul class="contact-list">
+<li>✉️ info@travirae.com</li>
+<li>Iscriviti alla nostra newsletter</li>
+</ul>
+<!-- Newsletter (gestita via Supabase Edge Function).
+     Usiamo method="get" e un id fisso per evitare submit POST (405) e per collegare correttamente lo script. -->
+<form action="#" autocomplete="off" class="newsletter-form wide" id="newsletter-form" method="get">
+<input aria-label="Email per newsletter" name="newsletter_email" placeholder="La tua email" required="" type="email"/>
+<button class="btn" type="submit">Iscriviti</button>
+</form>
+</div>
+</div>
+<div class="container mf-bottom muted small">
+<div>© <span id="year-copy"></span> Travirae · Tutti i diritti riservati</div>
+<div class="mf-legal">
+<a href="privacy.html">Privacy</a> · <a href="termini.html">Termini</a> · <a href="cookie.html">Cookie</a>
+</div>
+</div>
+</footer>
+<script src="https://unpkg.com/@supabase/supabase-js@2"></script>
+<script src="assets/js/config.js"></script>
+<script src="assets/js/supabase-init.js"></script>
+<script src="assets/js/main.js"></script>
+<script src="assets/js/travirae-i18n-fixes.js"></script>
+</body>
+</html>
