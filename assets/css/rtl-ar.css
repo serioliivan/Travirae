@@ -1,0 +1,49 @@
+/*
+  Travirae — Arabic (RTL) tweaks
+  Loaded ONLY on *-ar.html pages.
+*/
+
+html[dir="rtl"] body{
+  direction: rtl;
+}
+
+/* Header / navigation */
+html[dir="rtl"] .site-header .header-inner{
+  flex-direction: row-reverse;
+}
+
+html[dir="rtl"] .main-nav{
+  direction: rtl;
+}
+
+/* Language selector spacing (when header is reversed) */
+html[dir="rtl"] .site-lang{
+  margin-left: 0;
+  margin-right: 12px;
+}
+
+/* Text alignment */
+html[dir="rtl"] .hero-inner,
+html[dir="rtl"] .section-title,
+html[dir="rtl"] .card,
+html[dir="rtl"] .auth-card,
+html[dir="rtl"] .affiliate-intro,
+html[dir="rtl"] .mf-grid,
+html[dir="rtl"] .mf-bottom{
+  text-align: right;
+}
+
+/* Forms */
+html[dir="rtl"] input,
+html[dir="rtl"] textarea{
+  text-align: right;
+}
+
+/* Toast */
+html[dir="rtl"] .tva-toast{
+  direction: rtl;
+}
+
+html[dir="rtl"] .tva-toast__inner{
+  text-align: right;
+}
