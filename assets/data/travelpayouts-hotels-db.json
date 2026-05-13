@@ -1,0 +1,8 @@
+{
+  "version": 1,
+  "source": "travelpayouts_hotels_static_export",
+  "generated_at": null,
+  "notes": "Optional local snapshot. Populate this file from archived Travelpayouts/Hotellook static exports if you have them.",
+  "locations": [],
+  "hotels": []
+}
