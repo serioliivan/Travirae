@@ -1765,7 +1765,7 @@
     if (block.partner === 'stay22' && block.destination){
       embedHtml = '' +
         '<div class="if-widget-card__embed if-widget-card__embed--map" data-widget-interactive="1">' +
-          '<iframe loading="lazy" referrerpolicy="strict-origin-when-cross-origin" src="' + escapeAttr(buildStay22EmbedUrl({ trackingCode: trackingCode, destination: block.destination, checkin: block.checkin, checkout: block.checkout, locale: block.widgetLocale })) + '" title="' + escapeAttr(block.title || 'Hotel Map') + '" data-widget-interactive="1"></iframe>' +
+          '<iframe data-stay22-safe-embed="1" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" sandbox="allow-scripts allow-same-origin allow-forms" src="' + escapeAttr(buildStay22EmbedUrl({ trackingCode: trackingCode, destination: block.destination, checkin: block.checkin, checkout: block.checkout, locale: block.widgetLocale })) + '" title="' + escapeAttr(block.title || 'Hotel Map') + '" data-widget-interactive="1"></iframe>' +
         '</div>';
     } else if (block.partner === 'aviasales'){
       var hasFlightOrigin = !!String(block.origin || '').trim();

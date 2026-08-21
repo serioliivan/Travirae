@@ -117,6 +117,11 @@ function updateModalWidgetActions(modal, href, city, key){
         frame.width = '100%'; frame.height = '428';
         frame.setAttribute('frameborder','0');
         frame.setAttribute('loading','lazy');
+        // Keep the map interactive, but prevent the cross-origin widget from
+        // spawning unsolicited tabs/windows. Booking remains available through
+        // the explicit tracked Stay22 button rendered below the map.
+        frame.setAttribute('sandbox','allow-scripts allow-same-origin allow-forms');
+        frame.setAttribute('data-stay22-safe-embed','1');
         frame.setAttribute('allowfullscreen','');
         frame.setAttribute('style','border:0;');
 
