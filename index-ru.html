@@ -12,6 +12,7 @@
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
 <link href="assets/css/style.css" rel="stylesheet"/>
+<link href="assets/css/stay22-search-widget.css" rel="stylesheet"/>
 <meta content="index, follow" name="robots"/><meta content="Travirae — отели и идеи для путешествий" property="og:title"/><meta content="Подобранные направления, интерактивные карты, основные фишки и полезные бонусы." property="og:description"/><meta content="website" property="og:type"/><meta content="assets/img/common/hero.jpg" property="og:image"/><meta content="summary_large_image" name="twitter:card"/><meta content="Travirae — отели и идеи для путешествий" name="twitter:title"/><meta content="Travel inspiration and hotel booking in one place." name="twitter:description"/><meta content="assets/img/common/hero.jpg" name="twitter:image"/><link crossorigin="" href="https://www.stay22.com" rel="preconnect"/><link href="//www.stay22.com" rel="dns-prefetch"/><link as="fetch" crossorigin="" href="assets/data/maps.json" rel="preload"/><script id="travirae-lang-router">(function(){
   try{
     var siteKey='travirae_site_lang';
@@ -79,111 +80,46 @@
 <div class="container hero-inner center">
 <h1>Найдите своё следующее путешествие</h1>
 <p class="subtitle"><span style="color:black;">Найдите ниже жильё, которое подходит именно вам.</span></p>
-<div aria-label="Stay22 hotel map" class="map-section" id="map-section">
-<div class="map-header">
-<strong id="map-destination-label">Карта отелей</strong>
-<small class="muted">При поддержке Stay22</small>
+<section aria-label="Поиск жилья Travirae" class="travirae-stay-search" id="travirae-stay-search">
+<div class="travirae-stay-search__header">
+<div class="travirae-stay-search__heading"><span class="travirae-stay-search__heading-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 19v-8a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v8"></path><path d="M3 15h18"></path><path d="M7 9V6a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v3"></path></svg></span><strong class="travirae-stay-search__title">Найдите жильё</strong></div>
+<span class="travirae-stay-search__powered">Powered by <strong>Stay22</strong></span>
 </div>
-<div class="map-frame">
-<iframe data-stay22-safe-embed="1" frameborder="0" height="428" id="stay22-widget" loading="lazy" referrerpolicy="no-referrer-when-downgrade" sandbox="allow-scripts allow-same-origin allow-forms" src="https://www.stay22.com/embed/68e1638724ecc1f8e809a503?venue=%E2%80%8B&amp;ljs=it&amp;currency=EUR" width="100%"></iframe>
-<script>
-(function(){
-  function setupStay22Widget(){
-    var iframe = document.getElementById('stay22-widget');
-    if (!iframe) return;
-
-    function getAffiliateId(){
-      try {
-        if (window.traviraeAffiliate && typeof window.traviraeAffiliate.getId === 'function') {
-          return window.traviraeAffiliate.getId() || '';
-        }
-      } catch(e){}
-      return '';
-    }
-
-    var aff = getAffiliateId();
-    if (!aff) return;
-
-    try {
-      var url = new URL(iframe.src);
-      url.searchParams.set('campaign', aff);
-      iframe.src = url.toString();
-    } catch(e) {
-      try {
-        if (iframe.src.indexOf('?') === -1) iframe.src += '?campaign=' + encodeURIComponent(aff);
-        else iframe.src += '&campaign=' + encodeURIComponent(aff);
-      } catch(e2){}
-    }
-  }
-
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', setupStay22Widget);
-  } else {
-    setupStay22Widget();
-  }
-})();
-</script>
-<script>
-/* Widget i18n: sync Stay22 language + currency with site language selector */
-(function(){
-  var MAP = {
-    ENG: { ljs: 'en', currency: 'USD' },
-	    // NOTE: Stay22 MAP currently does not support Arabic/Russian UI via `ljs`.
-	    // We keep the currency aligned with the selected language, but fall back to English UI.
-	    ARA: { ljs: 'en', currency: 'AED' },
-    DEU: { ljs: 'de', currency: 'EUR' },
-    SPA: { ljs: 'es', currency: 'EUR' },
-	    RUS: { ljs: 'en', currency: 'RUB' },
-    NLD: { ljs: 'nl', currency: 'EUR' },
-    ZHO: { ljs: 'zh', currency: 'CNY' },
-    ITA: { ljs: 'it', currency: 'EUR' },
-    FRA: { ljs: 'fr', currency: 'EUR' }
-  };
-
-  function safeGetLS(key){
-    try { return (window.localStorage ? localStorage.getItem(key) : '') || ''; } catch(e) { return ''; }
-  }
-
-  function currentLangCode(){
-    var sel = document.getElementById('site-lang-select');
-    if (sel && sel.value) return sel.value;
-    if (window.TRAVIRAE_LANG) return window.TRAVIRAE_LANG;
-    return safeGetLS('travirae_email_lang') || 'ENG';
-  }
-
-  function getCfg(){
-    var code = currentLangCode();
-    return MAP[code] || MAP.ENG;
-  }
-
-  function applyToMainStay22(){
-    var iframe = document.getElementById('stay22-widget');
-    if (!iframe || !iframe.src) return;
-    var cfg = getCfg();
-    try {
-      var u = new URL(iframe.src);
-      var curL = (u.searchParams.get('ljs') || '');
-      var curC = (u.searchParams.get('currency') || '');
-      if (curL === cfg.ljs && curC === cfg.currency) return; // already aligned
-      u.searchParams.set('ljs', cfg.ljs);
-      u.searchParams.set('currency', cfg.currency);
-      iframe.src = u.toString();
-    } catch(e) {}
-  }
-
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', applyToMainStay22);
-  } else {
-    applyToMainStay22();
-  }
-
-  document.addEventListener('change', function(e){
-    if (e && e.target && e.target.id === 'site-lang-select') applyToMainStay22();
-  });
-})();
-</script>
+<form action="https://www.stay22.com/allez/searchbar" id="travirae-stay-search-form" method="get" novalidate="">
+<input name="aid" type="hidden" value="travirae"/>
+<input name="campaign" type="hidden" value=""/>
+<input name="lang" type="hidden" value="ru"/>
+<input name="currency" type="hidden" value="RUB"/>
+<div class="travirae-stay-search__grid">
+<div class="travirae-stay-search__field travirae-stay-search__field--destination" data-field="destination">
+<label class="travirae-stay-search__label" for="travirae-stay-destination">Направление</label>
+<div class="travirae-stay-search__control"><svg class="travirae-stay-search__control-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path d="m20 20-3.5-3.5"></path></svg><input aria-autocomplete="list" aria-controls="travirae-stay-suggestions" autocomplete="off" id="travirae-stay-destination" name="address" placeholder="Город, район или объект" required="" spellcheck="false" type="text"/></div>
+<div class="travirae-stay-search__suggestions" hidden="" id="travirae-stay-suggestions" role="listbox"></div>
 </div>
+<div class="travirae-stay-search__field" data-field="checkin">
+<label class="travirae-stay-search__label" for="travirae-stay-checkin">Заезд</label>
+<div class="travirae-stay-search__control"><svg class="travirae-stay-search__control-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"></rect><path d="M16 3v4M8 3v4M3 10h18"></path></svg><input id="travirae-stay-checkin" name="checkin" required="" type="date"/></div>
 </div>
+<div class="travirae-stay-search__field" data-field="checkout">
+<label class="travirae-stay-search__label" for="travirae-stay-checkout">Выезд</label>
+<div class="travirae-stay-search__control"><svg class="travirae-stay-search__control-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"></rect><path d="M16 3v4M8 3v4M3 10h18"></path></svg><input id="travirae-stay-checkout" name="checkout" required="" type="date"/></div>
+</div>
+<div class="travirae-stay-search__field travirae-stay-search__field--guests">
+<span class="travirae-stay-search__label" id="travirae-stay-guests-label">Гости</span>
+<button aria-controls="travirae-stay-guests-panel" aria-expanded="false" aria-haspopup="dialog" class="travirae-stay-search__guest-button" id="travirae-stay-guests-button" type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"></path></svg><span data-guest-summary="">2 гости</span><svg class="travirae-stay-search__chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"></path></svg></button>
+<div aria-labelledby="travirae-stay-guests-label" class="travirae-stay-search__guest-panel" hidden="" id="travirae-stay-guests-panel" role="dialog">
+<div class="travirae-stay-search__guest-row"><div class="travirae-stay-search__guest-copy"><strong>Взрослые</strong><small>От 18 лет</small></div><div class="travirae-stay-search__stepper"><button aria-label="-" data-step-action="decrease" data-step-target="adults" type="button">−</button><output data-step-output="adults">2</output><button aria-label="+" data-step-action="increase" data-step-target="adults" type="button">+</button></div></div>
+<div class="travirae-stay-search__guest-row"><div class="travirae-stay-search__guest-copy"><strong>Дети</strong><small>0–17 лет</small></div><div class="travirae-stay-search__stepper"><button aria-label="-" data-step-action="decrease" data-step-target="children" type="button">−</button><output data-step-output="children">0</output><button aria-label="+" data-step-action="increase" data-step-target="children" type="button">+</button></div></div>
+<button class="travirae-stay-search__guest-done" data-guest-done="" type="button">Готово</button>
+</div>
+<input id="travirae-stay-adults" max="10" min="1" name="adults" type="hidden" value="2"/>
+<input id="travirae-stay-children" max="10" min="0" name="children" type="hidden" value="0"/>
+</div>
+<button class="travirae-stay-search__submit" type="submit"><span data-submit-label="">Показать отели</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></button>
+</div>
+<div class="travirae-stay-search__footer"><p class="travirae-stay-search__note">Бронирование завершается на сайте партнёра, выбранного Stay22. Travirae может получить комиссию без дополнительных расходов для вас.</p><p aria-live="polite" class="travirae-stay-search__error" data-search-error="" role="alert"></p></div>
+</form>
+</section>
 <!-- Trust bar -->
 <div aria-label="Индикаторы доверия Travirae" class="trustbar" role="region">
 <div class="trust-item"><div class="value">40k+</div><div class="label">Довольных пользователей</div></div>
@@ -686,6 +622,7 @@
 <script src="assets/js/config.js"></script>
 <script src="assets/js/supabase-init.js"></script>
 <script src="assets/js/main.js"></script>
+<script src="assets/js/stay22-search-widget.js"></script>
 <script src="assets/js/travirae-i18n-fixes.js"></script>
 <script defer="" src="assets/js/replace_maps.js"></script></body>
 </html>
