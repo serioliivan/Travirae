@@ -1,15 +1,15 @@
 /* Travirae accommodation search widget (Stay22 searchbar integration) */
 .travirae-stay-search{
   position:relative;
-  width:min(100%,1060px);
+  width:min(100%,1040px);
   margin:24px auto 0;
-  padding:clamp(18px,2.4vw,28px);
-  border:1px solid rgba(40,58,255,.16);
-  border-radius:24px;
+  padding:clamp(22px,2.5vw,30px);
+  border:1px solid rgba(40,58,255,.14);
+  border-radius:28px;
   background:
-    radial-gradient(circle at top right,rgba(40,58,255,.10),transparent 34%),
-    linear-gradient(145deg,rgba(255,255,255,.98),rgba(248,250,255,.98));
-  box-shadow:0 24px 64px rgba(15,23,42,.15);
+    radial-gradient(circle at top right,rgba(40,58,255,.12),transparent 34%),
+    linear-gradient(150deg,rgba(255,255,255,.98),rgba(247,249,255,.97));
+  box-shadow:0 24px 64px rgba(15,23,42,.16);
   text-align:start;
   overflow:visible;
   isolation:isolate;
@@ -20,59 +20,77 @@
   inset:0;
   border-radius:inherit;
   padding:1px;
-  background:linear-gradient(135deg,rgba(40,58,255,.34),rgba(157,107,255,.14),rgba(255,255,255,.2));
+  background:linear-gradient(135deg,rgba(40,58,255,.20),rgba(111,76,255,.10),rgba(255,255,255,.25));
   -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);
   -webkit-mask-composite:xor;
   mask-composite:exclude;
   pointer-events:none;
 }
 .travirae-stay-search__header{
+  position:relative;
   display:flex;
+  justify-content:center;
   align-items:center;
-  justify-content:space-between;
-  gap:18px;
-  margin-bottom:18px;
+  margin-bottom:24px;
+  text-align:center;
 }
 .travirae-stay-search__heading{
   display:flex;
+  flex-direction:column;
   align-items:center;
-  gap:11px;
+  gap:10px;
   min-width:0;
 }
-.travirae-stay-search__heading-icon{
-  display:grid;
-  place-items:center;
-  flex:0 0 auto;
-  width:42px;
-  height:42px;
-  border-radius:14px;
-  color:#fff;
-  background:linear-gradient(135deg,var(--brand),#6f4cff);
-  box-shadow:0 10px 24px rgba(40,58,255,.24);
+.travirae-stay-search__brand{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:10px;
+  color:#111827;
+  font-size:clamp(18px,1.8vw,22px);
+  font-weight:850;
+  line-height:1;
 }
-.travirae-stay-search__heading-icon svg{width:21px;height:21px}
+.travirae-stay-search__brand img{
+  display:block;
+  width:auto;
+  height:24px;
+}
+.travirae-stay-search__brand span{
+  font-weight:850;
+  letter-spacing:-.02em;
+}
 .travirae-stay-search__title{
   display:block;
   margin:0;
   color:var(--text);
-  font-size:clamp(17px,2vw,21px);
-  font-weight:800;
-  line-height:1.2;
+  font-size:clamp(22px,2vw,30px);
+  font-weight:850;
+  line-height:1.12;
+  letter-spacing:-.03em;
 }
 .travirae-stay-search__powered{
-  flex:0 0 auto;
+  position:absolute;
+  top:0;
+  inset-inline-end:0;
   display:inline-flex;
   align-items:center;
   gap:6px;
-  color:var(--muted);
-  font-size:12px;
+  padding:8px 12px;
+  border:1px solid rgba(40,58,255,.10);
+  border-radius:999px;
+  background:rgba(255,255,255,.78);
+  backdrop-filter:blur(10px);
+  color:#667085;
+  font-size:11px;
   white-space:nowrap;
+  box-shadow:0 10px 24px rgba(15,23,42,.08);
 }
 .travirae-stay-search__powered strong{color:#283aff;font-weight:800}
 .travirae-stay-search__grid{
   display:grid;
-  grid-template-columns:minmax(230px,2.25fr) repeat(2,minmax(145px,1fr)) minmax(170px,1.05fr) minmax(150px,.92fr);
-  gap:12px;
+  grid-template-columns:minmax(240px,2.05fr) minmax(165px,1fr) minmax(165px,1fr) minmax(180px,1.02fr) minmax(155px,.92fr);
+  gap:14px;
   align-items:end;
 }
 .travirae-stay-search__field{
@@ -81,29 +99,35 @@
 }
 .travirae-stay-search__label{
   display:block;
-  margin:0 0 7px 3px;
+  margin:0 0 8px 4px;
   color:#334155;
-  font-size:12px;
+  font-size:11px;
   font-weight:800;
-  letter-spacing:.02em;
+  letter-spacing:.08em;
+  text-transform:uppercase;
 }
-html[dir="rtl"] .travirae-stay-search__label{margin-inline:3px 0}
+html[dir="rtl"] .travirae-stay-search__label{margin-inline:4px 0}
 .travirae-stay-search__control{
   position:relative;
   display:flex;
   align-items:center;
   width:100%;
-  height:58px;
-  border:1px solid #dbe2ee;
-  border-radius:15px;
-  background:#fff;
-  box-shadow:0 6px 18px rgba(15,23,42,.045);
-  transition:border-color .18s ease,box-shadow .18s ease,transform .18s ease;
+  height:60px;
+  border:1px solid #dde4f0;
+  border-radius:18px;
+  background:linear-gradient(180deg,#ffffff,#f8fbff);
+  box-shadow:0 8px 22px rgba(15,23,42,.05);
+  transition:border-color .18s ease,box-shadow .18s ease,transform .18s ease,background-color .18s ease;
+}
+.travirae-stay-search__control:hover,
+.travirae-stay-search__guest-button:hover{
+  border-color:rgba(40,58,255,.28);
+  box-shadow:0 12px 24px rgba(15,23,42,.07);
 }
 .travirae-stay-search__control:focus-within,
 .travirae-stay-search__guest-button[aria-expanded="true"]{
   border-color:rgba(40,58,255,.68);
-  box-shadow:0 0 0 4px rgba(40,58,255,.10),0 8px 22px rgba(15,23,42,.06);
+  box-shadow:0 0 0 4px rgba(40,58,255,.10),0 12px 26px rgba(15,23,42,.08);
 }
 .travirae-stay-search__control-icon{
   position:absolute;
@@ -124,29 +148,45 @@ html[dir="rtl"] .travirae-stay-search__label{margin-inline:3px 0}
   background:transparent;
   color:#111827;
   font:inherit;
-  font-size:14px;
-  font-weight:650;
-  padding:0 14px 0 47px;
+  font-size:13px;
+  font-weight:700;
+  line-height:1.2;
+  padding:0 14px 0 48px;
 }
 html[dir="rtl"] .travirae-stay-search input[type="text"],
 html[dir="rtl"] .travirae-stay-search input[type="date"]{
-  padding:0 47px 0 14px;
+  padding:0 48px 0 14px;
 }
 .travirae-stay-search input::placeholder{color:#8a96a8;font-weight:500;opacity:1}
-.travirae-stay-search input[type="date"]{color-scheme:light}
-.travirae-stay-search input[type="date"]::-webkit-calendar-picker-indicator{cursor:pointer;opacity:.72}
+.travirae-stay-search input[type="date"]{
+  color-scheme:light;
+  letter-spacing:-.01em;
+}
+.travirae-stay-search input[type="date"]::-webkit-calendar-picker-indicator{
+  cursor:pointer;
+  opacity:.72;
+  margin-inline-start:6px;
+}
+.travirae-stay-search input[type="date"]::-webkit-datetime-edit,
+.travirae-stay-search input[type="date"]::-webkit-datetime-edit-fields-wrapper,
+.travirae-stay-search input[type="date"]::-webkit-datetime-edit-text,
+.travirae-stay-search input[type="date"]::-webkit-datetime-edit-month-field,
+.travirae-stay-search input[type="date"]::-webkit-datetime-edit-day-field,
+.travirae-stay-search input[type="date"]::-webkit-datetime-edit-year-field{
+  padding:0;
+}
 .travirae-stay-search__guest-button{
   width:100%;
-  height:58px;
+  height:60px;
   display:flex;
   align-items:center;
   gap:12px;
   padding:0 14px 0 16px;
-  border:1px solid #dbe2ee;
-  border-radius:15px;
-  background:#fff;
+  border:1px solid #dde4f0;
+  border-radius:18px;
+  background:linear-gradient(180deg,#ffffff,#f8fbff);
   color:#111827;
-  box-shadow:0 6px 18px rgba(15,23,42,.045);
+  box-shadow:0 8px 22px rgba(15,23,42,.05);
   cursor:pointer;
   font:inherit;
   font-size:14px;
@@ -168,13 +208,14 @@ html[dir="rtl"] .travirae-stay-search__guest-button{padding:0 16px 0 14px}
   position:absolute;
   z-index:40;
   inset-inline-end:0;
-  top:calc(100% + 9px);
-  width:min(320px,calc(100vw - 42px));
+  top:calc(100% + 10px);
+  width:min(330px,calc(100vw - 42px));
   padding:16px;
-  border:1px solid #dbe2ee;
-  border-radius:18px;
-  background:#fff;
-  box-shadow:0 24px 70px rgba(15,23,42,.20);
+  border:1px solid #dde4f0;
+  border-radius:20px;
+  background:rgba(255,255,255,.98);
+  box-shadow:0 24px 70px rgba(15,23,42,.18);
+  backdrop-filter:blur(18px);
 }
 .travirae-stay-search__guest-panel[hidden]{display:none!important}
 .travirae-stay-search__guest-row{
@@ -191,8 +232,8 @@ html[dir="rtl"] .travirae-stay-search__guest-button{padding:0 16px 0 14px}
 .travirae-stay-search__stepper button{
   display:grid;
   place-items:center;
-  width:34px;
-  height:34px;
+  width:36px;
+  height:36px;
   border:1px solid #cfd8e6;
   border-radius:50%;
   background:#fff;
@@ -208,9 +249,9 @@ html[dir="rtl"] .travirae-stay-search__guest-button{padding:0 16px 0 14px}
 .travirae-stay-search__guest-done{
   width:100%;
   margin-top:8px;
-  padding:10px 14px;
+  padding:11px 14px;
   border:0;
-  border-radius:12px;
+  border-radius:14px;
   background:#eef0ff;
   color:#2437ea;
   font:inherit;
@@ -220,17 +261,17 @@ html[dir="rtl"] .travirae-stay-search__guest-button{padding:0 16px 0 14px}
 }
 .travirae-stay-search__submit{
   width:100%;
-  height:58px;
+  height:60px;
   display:inline-flex;
   align-items:center;
   justify-content:center;
-  gap:9px;
+  gap:10px;
   border:0;
-  border-radius:15px;
+  border-radius:18px;
   padding:0 18px;
   background:linear-gradient(135deg,var(--brand),#6f4cff);
   color:#fff;
-  box-shadow:0 12px 28px rgba(40,58,255,.28);
+  box-shadow:0 14px 30px rgba(40,58,255,.28);
   cursor:pointer;
   font:inherit;
   font-size:14px;
@@ -238,45 +279,36 @@ html[dir="rtl"] .travirae-stay-search__guest-button{padding:0 16px 0 14px}
   white-space:nowrap;
   transition:transform .18s ease,box-shadow .18s ease,opacity .18s ease;
 }
-.travirae-stay-search__submit:hover{transform:translateY(-1px);box-shadow:0 15px 32px rgba(40,58,255,.34)}
+.travirae-stay-search__submit:hover{transform:translateY(-1px);box-shadow:0 16px 34px rgba(40,58,255,.34)}
 .travirae-stay-search__submit:active{transform:translateY(0)}
 .travirae-stay-search__submit:disabled{opacity:.72;cursor:wait;transform:none}
 .travirae-stay-search__submit svg{width:18px;height:18px;flex:0 0 auto}
 .travirae-stay-search__footer{
-  display:flex;
-  align-items:flex-start;
-  justify-content:space-between;
-  gap:16px;
-  margin-top:13px;
-  padding-inline:3px;
+  margin-top:10px;
+  min-height:18px;
 }
-.travirae-stay-search__note{
-  margin:0;
-  max-width:780px;
-  color:#667085;
-  font-size:11px;
-  line-height:1.5;
-}
+.travirae-stay-search__note{display:none!important}
 .travirae-stay-search__error{
-  min-height:17px;
+  min-height:18px;
   margin:0;
   color:#b42318;
   font-size:12px;
   font-weight:750;
-  text-align:end;
+  text-align:start;
 }
 .travirae-stay-search__suggestions{
   position:absolute;
   z-index:45;
-  top:calc(100% + 9px);
+  top:calc(100% + 10px);
   inset-inline:0;
   max-height:286px;
   overflow:auto;
   padding:7px;
-  border:1px solid #dbe2ee;
-  border-radius:16px;
-  background:#fff;
-  box-shadow:0 24px 70px rgba(15,23,42,.20);
+  border:1px solid #dde4f0;
+  border-radius:18px;
+  background:rgba(255,255,255,.98);
+  box-shadow:0 24px 70px rgba(15,23,42,.18);
+  backdrop-filter:blur(18px);
 }
 .travirae-stay-search__suggestions[hidden]{display:none!important}
 .travirae-stay-search__suggestion{
@@ -284,9 +316,9 @@ html[dir="rtl"] .travirae-stay-search__guest-button{padding:0 16px 0 14px}
   display:flex;
   align-items:center;
   gap:10px;
-  padding:10px 11px;
+  padding:11px 12px;
   border:0;
-  border-radius:11px;
+  border-radius:12px;
   background:transparent;
   color:#1f2937;
   cursor:pointer;
@@ -302,34 +334,45 @@ html[dir="rtl"] .travirae-stay-search__guest-button{padding:0 16px 0 14px}
 .travirae-stay-search__field.is-invalid .travirae-stay-search__guest-button{border-color:#f04438;box-shadow:0 0 0 4px rgba(240,68,56,.09)}
 .travirae-stay-search button:focus-visible,
 .travirae-stay-search input:focus-visible{outline:3px solid rgba(40,58,255,.20);outline-offset:2px}
-@media (max-width:980px){
-  .travirae-stay-search__grid{grid-template-columns:minmax(230px,1.7fr) repeat(2,minmax(145px,1fr))}
-  .travirae-stay-search__field--guests{grid-column:1 / span 2}
-  .travirae-stay-search__submit{grid-column:3}
-}
-@media (max-width:680px){
-  .travirae-stay-search{margin-top:18px;padding:17px;border-radius:20px}
-  .travirae-stay-search__header{align-items:flex-start;margin-bottom:15px}
-  .travirae-stay-search__powered{font-size:10px;padding-top:4px}
-  .travirae-stay-search__heading-icon{width:38px;height:38px;border-radius:12px}
-  .travirae-stay-search__grid{grid-template-columns:1fr 1fr;gap:11px}
-  .travirae-stay-search__field--destination{grid-column:1 / -1}
-  .travirae-stay-search__field--guests{grid-column:1 / -1}
+@media (max-width:1120px){
+  .travirae-stay-search__grid{
+    grid-template-columns:minmax(220px,1.8fr) minmax(155px,1fr) minmax(155px,1fr) minmax(170px,1fr);
+  }
   .travirae-stay-search__submit{grid-column:1 / -1}
-  .travirae-stay-search__footer{display:block}
-  .travirae-stay-search__error{text-align:start;margin-top:7px}
-  .travirae-stay-search__guest-panel{inset-inline:0;width:100%}
 }
-@media (max-width:430px){
-  .travirae-stay-search__header{gap:10px}
-  .travirae-stay-search__powered{display:none}
+@media (max-width:820px){
+  .travirae-stay-search{
+    margin-top:18px;
+    padding:20px;
+    border-radius:24px;
+  }
+  .travirae-stay-search__header{
+    align-items:flex-start;
+    margin-bottom:18px;
+    padding-top:38px;
+  }
+  .travirae-stay-search__powered{
+    position:absolute;
+    top:0;
+    inset-inline-start:50%;
+    inset-inline-end:auto;
+    transform:translateX(-50%);
+  }
+  .travirae-stay-search__grid{grid-template-columns:1fr 1fr}
+  .travirae-stay-search__field--destination,
+  .travirae-stay-search__submit{grid-column:1 / -1}
+}
+@media (max-width:560px){
+  .travirae-stay-search__brand{font-size:19px}
+  .travirae-stay-search__brand img{height:22px}
+  .travirae-stay-search__title{font-size:24px}
   .travirae-stay-search__grid{grid-template-columns:1fr}
   .travirae-stay-search__field--destination,
-  .travirae-stay-search__field--guests,
   .travirae-stay-search__submit{grid-column:auto}
   .travirae-stay-search__control,
   .travirae-stay-search__guest-button,
-  .travirae-stay-search__submit{height:56px}
+  .travirae-stay-search__submit{height:58px}
+  .travirae-stay-search__guest-panel{inset-inline:0;width:100%}
 }
 @media (prefers-reduced-motion:reduce){
   .travirae-stay-search *,
@@ -337,20 +380,23 @@ html[dir="rtl"] .travirae-stay-search__guest-button{padding:0 16px 0 14px}
   .travirae-stay-search *::after{scroll-behavior:auto!important;transition:none!important}
 }
 
-/* The legacy site stylesheet applies a blue !important background to every
-   <button>. These scoped overrides keep the custom widget controls readable. */
+/* Legacy site stylesheet applies strong button styles. Keep the widget controls scoped. */
 .travirae-stay-search .travirae-stay-search__guest-button{
-  background:#fff!important;
+  background:linear-gradient(180deg,#ffffff,#f8fbff)!important;
   background-image:none!important;
-  border-color:#dbe2ee!important;
+  border-color:#dde4f0!important;
   color:#111827!important;
-  box-shadow:0 6px 18px rgba(15,23,42,.045)!important;
+  box-shadow:0 8px 22px rgba(15,23,42,.05)!important;
   filter:none!important;
   transform:none!important;
 }
+.travirae-stay-search .travirae-stay-search__guest-button:hover{
+  border-color:rgba(40,58,255,.28)!important;
+  box-shadow:0 12px 24px rgba(15,23,42,.07)!important;
+}
 .travirae-stay-search .travirae-stay-search__guest-button[aria-expanded="true"]{
   border-color:rgba(40,58,255,.68)!important;
-  box-shadow:0 0 0 4px rgba(40,58,255,.10),0 8px 22px rgba(15,23,42,.06)!important;
+  box-shadow:0 0 0 4px rgba(40,58,255,.10),0 12px 26px rgba(15,23,42,.08)!important;
 }
 .travirae-stay-search .travirae-stay-search__stepper button{
   background:#fff!important;
@@ -393,12 +439,12 @@ html[dir="rtl"] .travirae-stay-search__guest-button{padding:0 16px 0 14px}
   background:linear-gradient(135deg,var(--brand),#6f4cff)!important;
   border-color:transparent!important;
   color:#fff!important;
-  box-shadow:0 12px 28px rgba(40,58,255,.28)!important;
+  box-shadow:0 14px 30px rgba(40,58,255,.28)!important;
   filter:none!important;
 }
 .travirae-stay-search .travirae-stay-search__submit:hover{
   background:linear-gradient(135deg,#2234ee,#633ff0)!important;
-  box-shadow:0 15px 32px rgba(40,58,255,.34)!important;
+  box-shadow:0 16px 34px rgba(40,58,255,.34)!important;
   filter:none!important;
   transform:translateY(-1px)!important;
 }
