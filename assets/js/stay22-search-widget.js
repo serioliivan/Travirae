@@ -11,21 +11,27 @@
   ];
 
   var COPY = {
-    it:{guestsOne:'ospite',guestsMany:'ospiti',searching:'Apro gli hotel…',destinationRequired:'Inserisci una destinazione.',datesRequired:'Seleziona le date di check-in e check-out.',dateOrder:'Il check-out deve essere successivo al check-in.',genericError:'Controlla i dati inseriti e riprova.'},
-    en:{guestsOne:'guest',guestsMany:'guests',searching:'Opening hotels…',destinationRequired:'Enter a destination.',datesRequired:'Select check-in and check-out dates.',dateOrder:'Check-out must be after check-in.',genericError:'Check the information and try again.'},
-    de:{guestsOne:'Gast',guestsMany:'Gäste',searching:'Hotels werden geöffnet…',destinationRequired:'Gib ein Reiseziel ein.',datesRequired:'Wähle Anreise- und Abreisedatum.',dateOrder:'Die Abreise muss nach der Anreise liegen.',genericError:'Prüfe deine Angaben und versuche es erneut.'},
-    fr:{guestsOne:'voyageur',guestsMany:'voyageurs',searching:'Ouverture des hôtels…',destinationRequired:'Saisissez une destination.',datesRequired:'Sélectionnez les dates d’arrivée et de départ.',dateOrder:'La date de départ doit être postérieure à l’arrivée.',genericError:'Vérifiez les informations et réessayez.'},
-    es:{guestsOne:'huésped',guestsMany:'huéspedes',searching:'Abriendo hoteles…',destinationRequired:'Introduce un destino.',datesRequired:'Selecciona las fechas de entrada y salida.',dateOrder:'La salida debe ser posterior a la entrada.',genericError:'Revisa los datos e inténtalo de nuevo.'},
-    nl:{guestsOne:'gast',guestsMany:'gasten',searching:'Hotels openen…',destinationRequired:'Vul een bestemming in.',datesRequired:'Selecteer de in- en uitcheckdatum.',dateOrder:'Uitchecken moet na inchecken zijn.',genericError:'Controleer de gegevens en probeer opnieuw.'},
-    ru:{guestsOne:'гость',guestsMany:'гостей',searching:'Открываем отели…',destinationRequired:'Укажите направление.',datesRequired:'Выберите даты заезда и выезда.',dateOrder:'Дата выезда должна быть позже даты заезда.',genericError:'Проверьте данные и повторите попытку.'},
-    ar:{guestsOne:'ضيف',guestsMany:'ضيوف',searching:'جارٍ فتح الفنادق…',destinationRequired:'أدخل وجهة.',datesRequired:'اختر تاريخي الوصول والمغادرة.',dateOrder:'يجب أن يكون تاريخ المغادرة بعد الوصول.',genericError:'تحقق من البيانات وحاول مرة أخرى.'},
-    zh:{guestsOne:'位旅客',guestsMany:'位旅客',searching:'正在打开酒店…',destinationRequired:'请输入目的地。',datesRequired:'请选择入住和退房日期。',dateOrder:'退房日期必须晚于入住日期。',genericError:'请检查信息后重试。'}
+    it:{guestsOne:'ospite',guestsMany:'ospiti',searching:'Apro gli hotel…',destinationRequired:'Inserisci una destinazione.',datesRequired:'Seleziona le date di check-in e check-out.',dateOrder:'Il check-out deve essere successivo al check-in.',genericError:'Controlla i dati inseriti e riprova.',datePlaceholder:'gg/mm/aaaa',today:'Oggi',close:'Chiudi'},
+    en:{guestsOne:'guest',guestsMany:'guests',searching:'Opening hotels…',destinationRequired:'Enter a destination.',datesRequired:'Select check-in and check-out dates.',dateOrder:'Check-out must be after check-in.',genericError:'Check the information and try again.',datePlaceholder:'dd/mm/yyyy',today:'Today',close:'Close'},
+    de:{guestsOne:'Gast',guestsMany:'Gäste',searching:'Hotels werden geöffnet…',destinationRequired:'Gib ein Reiseziel ein.',datesRequired:'Wähle Anreise- und Abreisedatum.',dateOrder:'Die Abreise muss nach der Anreise liegen.',genericError:'Prüfe deine Angaben und versuche es erneut.',datePlaceholder:'tt/mm/jjjj',today:'Heute',close:'Schließen'},
+    fr:{guestsOne:'voyageur',guestsMany:'voyageurs',searching:'Ouverture des hôtels…',destinationRequired:'Saisissez une destination.',datesRequired:'Sélectionnez les dates d’arrivée et de départ.',dateOrder:'La date de départ doit être postérieure à l’arrivée.',genericError:'Vérifiez les informations et réessayez.',datePlaceholder:'jj/mm/aaaa',today:'Aujourd’hui',close:'Fermer'},
+    es:{guestsOne:'huésped',guestsMany:'huéspedes',searching:'Abriendo hoteles…',destinationRequired:'Introduce un destino.',datesRequired:'Selecciona las fechas de entrada y salida.',dateOrder:'La salida debe ser posterior a la entrada.',genericError:'Revisa los datos e inténtalo de nuevo.',datePlaceholder:'dd/mm/aaaa',today:'Hoy',close:'Cerrar'},
+    nl:{guestsOne:'gast',guestsMany:'gasten',searching:'Hotels openen…',destinationRequired:'Vul een bestemming in.',datesRequired:'Selecteer de in- en uitcheckdatum.',dateOrder:'Uitchecken moet na inchecken zijn.',genericError:'Controleer de gegevens en probeer opnieuw.',datePlaceholder:'dd/mm/jjjj',today:'Vandaag',close:'Sluiten'},
+    ru:{guestsOne:'гость',guestsMany:'гостей',searching:'Открываем отели…',destinationRequired:'Укажите направление.',datesRequired:'Выберите даты заезда и выезда.',dateOrder:'Дата выезда должна быть позже даты заезда.',genericError:'Проверьте данные и повторите попытку.',datePlaceholder:'дд/мм/гггг',today:'Сегодня',close:'Закрыть'},
+    ar:{guestsOne:'ضيف',guestsMany:'ضيوف',searching:'جارٍ فتح الفنادق…',destinationRequired:'أدخل وجهة.',datesRequired:'اختر تاريخي الوصول والمغادرة.',dateOrder:'يجب أن يكون تاريخ المغادرة بعد الوصول.',genericError:'تحقق من البيانات وحاول مرة أخرى.',datePlaceholder:'يوم/شهر/سنة',today:'اليوم',close:'إغلاق'},
+    zh:{guestsOne:'位旅客',guestsMany:'位旅客',searching:'正在打开酒店…',destinationRequired:'请输入目的地。',datesRequired:'请选择入住和退房日期。',dateOrder:'退房日期必须晚于入住日期。',genericError:'请检查信息后重试。',datePlaceholder:'日/月/年',today:'今天',close:'关闭'}
   };
 
   var LOCALE_CONFIG = {
-    it:{lang:'it',currency:'EUR'}, en:{lang:'en',currency:'USD'}, de:{lang:'de',currency:'EUR'},
-    fr:{lang:'fr',currency:'EUR'}, es:{lang:'es',currency:'EUR'}, nl:{lang:'nl',currency:'EUR'},
-    ru:{lang:'ru',currency:'RUB'}, ar:{lang:'ar',currency:'AED'}, zh:{lang:'zh',currency:'CNY'}
+    it:{lang:'it',currency:'EUR',months:['gennaio','febbraio','marzo','aprile','maggio','giugno','luglio','agosto','settembre','ottobre','novembre','dicembre'],weekdays:['lu','ma','me','gi','ve','sa','do']},
+    en:{lang:'en',currency:'USD',months:['January','February','March','April','May','June','July','August','September','October','November','December'],weekdays:['mo','tu','we','th','fr','sa','su']},
+    de:{lang:'de',currency:'EUR',months:['Januar','Februar','März','April','Mai','Juni','Juli','August','September','Oktober','November','Dezember'],weekdays:['mo','di','mi','do','fr','sa','so']},
+    fr:{lang:'fr',currency:'EUR',months:['janvier','février','mars','avril','mai','juin','juillet','août','septembre','octobre','novembre','décembre'],weekdays:['lu','ma','me','je','ve','sa','di']},
+    es:{lang:'es',currency:'EUR',months:['enero','febrero','marzo','abril','mayo','junio','julio','agosto','septiembre','octubre','noviembre','diciembre'],weekdays:['lu','ma','mi','ju','vi','sa','do']},
+    nl:{lang:'nl',currency:'EUR',months:['januari','februari','maart','april','mei','juni','juli','augustus','september','oktober','november','december'],weekdays:['ma','di','wo','do','vr','za','zo']},
+    ru:{lang:'ru',currency:'RUB',months:['январь','февраль','март','апрель','май','июнь','июль','август','сентябрь','октябрь','ноябрь','декабрь'],weekdays:['пн','вт','ср','чт','пт','сб','вс']},
+    ar:{lang:'ar',currency:'AED',months:['يناير','فبراير','مارس','أبريل','مايو','يونيو','يوليو','أغسطس','سبتمبر','أكتوبر','نوفمبر','ديسمبر'],weekdays:['ن','ث','ر','خ','ج','س','ح']},
+    zh:{lang:'zh',currency:'CNY',months:['1月','2月','3月','4月','5月','6月','7月','8月','9月','10月','11月','12月'],weekdays:['一','二','三','四','五','六','日']}
   };
 
   function currentLocale(){
@@ -46,15 +52,176 @@
     return y + '-' + m + '-' + d;
   }
 
+  function parseIso(iso){
+    var match = String(iso || '').match(/^(\d{4})-(\d{2})-(\d{2})$/);
+    if (!match) return null;
+    var date = new Date(Number(match[1]), Number(match[2]) - 1, Number(match[3]));
+    if (Number.isNaN(date.getTime())) return null;
+    return date;
+  }
+
+  function displayFromIso(iso){
+    var date = parseIso(iso);
+    if (!date) return '';
+    return String(date.getDate()).padStart(2,'0') + '/' + String(date.getMonth()+1).padStart(2,'0') + '/' + date.getFullYear();
+  }
+
+  function isoFromDisplay(value){
+    var match = String(value || '').trim().match(/^(\d{1,2})\/(\d{1,2})\/(\d{4})$/);
+    if (!match) return '';
+    var day = Number(match[1]);
+    var month = Number(match[2]);
+    var year = Number(match[3]);
+    var date = new Date(year, month - 1, day);
+    if (date.getFullYear() !== year || date.getMonth() !== month - 1 || date.getDate() !== day) return '';
+    return dateToIso(date);
+  }
+
   function addDaysIso(iso, days){
-    var parts = String(iso || '').split('-').map(Number);
-    if (parts.length !== 3 || !parts[0] || !parts[1] || !parts[2]) return '';
-    var date = new Date(parts[0],parts[1]-1,parts[2]);
+    var date = parseIso(iso);
+    if (!date) return '';
     date.setDate(date.getDate() + days);
     return dateToIso(date);
   }
 
   function isAfter(a,b){ return !!(a && b && String(a) > String(b)); }
+
+  function getInputIso(input){ return input ? String(input.getAttribute('data-iso') || '').trim() : ''; }
+  function setInputIso(input, iso){
+    if (!input) return;
+    var value = String(iso || '').trim();
+    if (value){
+      input.setAttribute('data-iso', value);
+      input.value = displayFromIso(value);
+    } else {
+      input.removeAttribute('data-iso');
+      input.value = '';
+    }
+  }
+
+  function buildDatepicker(root, localeCfg, copy, checkin, checkout, onDateApplied){
+    var panel = document.createElement('div');
+    panel.className = 'travirae-stay-search__calendar';
+    panel.hidden = true;
+    panel.innerHTML = [
+      '<div class="travirae-stay-search__calendar-head">',
+        '<button type="button" class="travirae-stay-search__calendar-nav" data-cal-nav="prev" aria-label="Previous month">',
+          '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m15 18-6-6 6-6"></path></svg>',
+        '</button>',
+        '<strong class="travirae-stay-search__calendar-month" data-cal-month></strong>',
+        '<button type="button" class="travirae-stay-search__calendar-nav" data-cal-nav="next" aria-label="Next month">',
+          '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m9 18 6-6-6-6"></path></svg>',
+        '</button>',
+      '</div>',
+      '<div class="travirae-stay-search__calendar-weekdays" data-cal-weekdays></div>',
+      '<div class="travirae-stay-search__calendar-grid" data-cal-grid></div>',
+      '<div class="travirae-stay-search__calendar-actions">',
+        '<button type="button" class="travirae-stay-search__calendar-action" data-cal-today>' + copy.today + '</button>',
+        '<button type="button" class="travirae-stay-search__calendar-action travirae-stay-search__calendar-action--primary" data-cal-close>' + copy.close + '</button>',
+      '</div>'
+    ].join('');
+
+    var monthLabel = panel.querySelector('[data-cal-month]');
+    var weekdays = panel.querySelector('[data-cal-weekdays]');
+    var grid = panel.querySelector('[data-cal-grid]');
+    var state = { activeInput:null, viewYear:0, viewMonth:0, minIso:'', checkinInput:checkin, checkoutInput:checkout };
+
+    localeCfg.weekdays.forEach(function(day){
+      var el = document.createElement('span');
+      el.textContent = day;
+      weekdays.appendChild(el);
+    });
+
+    function startOfCalendar(month, year){
+      var first = new Date(year, month, 1);
+      var day = first.getDay();
+      var mondayIndex = (day + 6) % 7;
+      first.setDate(first.getDate() - mondayIndex);
+      return first;
+    }
+
+    function close(){
+      panel.hidden = true;
+      if (panel.parentNode) panel.parentNode.classList.remove('is-open');
+      state.activeInput = null;
+    }
+
+    function render(){
+      monthLabel.textContent = localeCfg.months[state.viewMonth] + ' ' + state.viewYear;
+      grid.innerHTML = '';
+      var base = startOfCalendar(state.viewMonth, state.viewYear);
+      var todayIso = dateToIso(new Date());
+      var selectedIso = state.activeInput ? getInputIso(state.activeInput) : '';
+      var minIso = state.minIso;
+      for (var i = 0; i < 42; i++){
+        var current = new Date(base.getFullYear(), base.getMonth(), base.getDate() + i);
+        var iso = dateToIso(current);
+        var button = document.createElement('button');
+        button.type = 'button';
+        button.className = 'travirae-stay-search__calendar-day';
+        button.textContent = String(current.getDate());
+        button.setAttribute('data-date', iso);
+        if (current.getMonth() !== state.viewMonth) button.classList.add('is-muted');
+        if (iso === todayIso) button.classList.add('is-today');
+        if (iso === selectedIso) button.classList.add('is-selected');
+        if (minIso && iso < minIso){
+          button.disabled = true;
+          button.classList.add('is-disabled');
+        }
+        button.addEventListener('click', function(event){
+          var value = event.currentTarget.getAttribute('data-date') || '';
+          if (!value || event.currentTarget.disabled || !state.activeInput) return;
+          onDateApplied(state.activeInput, value);
+          close();
+        });
+        grid.appendChild(button);
+      }
+    }
+
+    panel.querySelector('[data-cal-nav="prev"]').addEventListener('click', function(){
+      state.viewMonth -= 1;
+      if (state.viewMonth < 0){ state.viewMonth = 11; state.viewYear -= 1; }
+      render();
+    });
+    panel.querySelector('[data-cal-nav="next"]').addEventListener('click', function(){
+      state.viewMonth += 1;
+      if (state.viewMonth > 11){ state.viewMonth = 0; state.viewYear += 1; }
+      render();
+    });
+    panel.querySelector('[data-cal-today]').addEventListener('click', function(){
+      var todayIso = dateToIso(new Date());
+      var targetIso = todayIso;
+      if (state.minIso && targetIso < state.minIso) targetIso = state.minIso;
+      var targetDate = parseIso(targetIso) || new Date();
+      state.viewMonth = targetDate.getMonth();
+      state.viewYear = targetDate.getFullYear();
+      render();
+    });
+    panel.querySelector('[data-cal-close]').addEventListener('click', close);
+
+    return {
+      openFor: function(input, minIso){
+        if (!input) return;
+        var field = input.closest('.travirae-stay-search__field');
+        if (!field) return;
+        if (panel.parentNode && panel.parentNode !== field) panel.parentNode.classList.remove('is-open');
+        field.appendChild(panel);
+        field.classList.add('is-open');
+        state.activeInput = input;
+        state.minIso = String(minIso || '').trim();
+        var selectedIso = getInputIso(input) || state.minIso || dateToIso(new Date());
+        var date = parseIso(selectedIso) || new Date();
+        state.viewMonth = date.getMonth();
+        state.viewYear = date.getFullYear();
+        panel.hidden = false;
+        render();
+      },
+      close: close,
+      isOpen: function(){ return !panel.hidden; },
+      contains: function(node){ return panel.contains(node); },
+      activeInput: function(){ return state.activeInput; }
+    };
+  }
 
   function initWidget(root){
     if (!root || root.getAttribute('data-initialized') === '1') return;
@@ -145,6 +312,7 @@
       guestButton.addEventListener('click',function(event){
         event.preventDefault();
         setGuestPanel(guestPanel ? guestPanel.hidden : true);
+        datepicker.close();
       });
     }
     if (guestDone) guestDone.addEventListener('click',function(){ setGuestPanel(false); guestButton && guestButton.focus(); });
@@ -162,28 +330,6 @@
         updateGuestSummary();
       });
     });
-
-    document.addEventListener('click',function(event){
-      if (guestPanel && !guestPanel.hidden && !root.querySelector('.travirae-stay-search__field--guests').contains(event.target)) setGuestPanel(false);
-      if (suggestions && !suggestions.hidden && !root.querySelector('.travirae-stay-search__field--destination').contains(event.target)) hideSuggestions();
-    });
-    document.addEventListener('keydown',function(event){
-      if (event.key === 'Escape'){
-        setGuestPanel(false);
-        hideSuggestions();
-      }
-    });
-
-    var today = dateToIso(new Date());
-    checkin.min = today;
-    checkout.min = addDaysIso(today,1);
-    checkin.addEventListener('change',function(){
-      clearError();
-      checkout.min = checkin.value ? addDaysIso(checkin.value,1) : addDaysIso(today,1);
-      if (checkin.value && checkout.value && !isAfter(checkout.value,checkin.value)) checkout.value = addDaysIso(checkin.value,1);
-    });
-    checkout.addEventListener('change',clearError);
-    destination.addEventListener('input',function(){ clearError(); renderSuggestions(destination.value); });
 
     function hideSuggestions(){
       if (!suggestions) return;
@@ -245,6 +391,7 @@
       suggestions.hidden = false;
     }
 
+    destination.addEventListener('input',function(){ clearError(); renderSuggestions(destination.value); });
     destination.addEventListener('keydown',function(event){
       if (!suggestions || suggestions.hidden || !renderedSuggestions.length) return;
       if (event.key === 'ArrowDown'){ event.preventDefault(); setActiveSuggestion(activeSuggestion+1); }
@@ -271,22 +418,101 @@
         }).catch(function(){});
     }catch(_fetchError){}
 
+    checkin.type = 'text';
+    checkout.type = 'text';
+    checkin.readOnly = true;
+    checkout.readOnly = true;
+    checkin.inputMode = 'none';
+    checkout.inputMode = 'none';
+    checkin.autocomplete = 'off';
+    checkout.autocomplete = 'off';
+    checkin.placeholder = copy.datePlaceholder;
+    checkout.placeholder = copy.datePlaceholder;
+
+    var today = dateToIso(new Date());
+    var tomorrow = addDaysIso(today,1);
+
+    function syncDatesAfterSelection(input, iso){
+      clearError();
+      if (input === checkin){
+        setInputIso(checkin, iso);
+        var checkoutIso = getInputIso(checkout);
+        var minimumCheckout = addDaysIso(iso, 1);
+        if (!checkoutIso || !isAfter(checkoutIso, iso)) setInputIso(checkout, minimumCheckout);
+      } else {
+        setInputIso(checkout, iso);
+      }
+    }
+
+    var datepicker = buildDatepicker(root, localeCfg, copy, checkin, checkout, syncDatesAfterSelection);
+
+    function openDatepickerFor(input){
+      hideSuggestions();
+      setGuestPanel(false);
+      clearError();
+      var minIso = input === checkin ? today : (getInputIso(checkin) ? addDaysIso(getInputIso(checkin),1) : tomorrow);
+      datepicker.openFor(input, minIso);
+    }
+
+    [checkin, checkout].forEach(function(input){
+      var field = input.closest('.travirae-stay-search__field');
+      var control = field ? field.querySelector('.travirae-stay-search__control') : null;
+      var existingIso = String(input.value || '').trim();
+      if (/^\d{4}-\d{2}-\d{2}$/.test(existingIso)) setInputIso(input, existingIso); else input.value = '';
+      input.addEventListener('click', function(){ openDatepickerFor(input); });
+      input.addEventListener('focus', function(){ openDatepickerFor(input); });
+      input.addEventListener('keydown', function(event){
+        if (event.key === 'Enter' || event.key === ' ' || event.key === 'ArrowDown'){
+          event.preventDefault();
+          openDatepickerFor(input);
+        }
+      });
+      if (control){
+        control.addEventListener('click', function(event){
+          if (event.target === input) return;
+          openDatepickerFor(input);
+        });
+      }
+    });
+
+    document.addEventListener('click',function(event){
+      var guestField = root.querySelector('.travirae-stay-search__field--guests');
+      var destinationField = root.querySelector('.travirae-stay-search__field--destination');
+      var dateFields = [fieldCheckin, fieldCheckout].filter(Boolean);
+      if (guestPanel && !guestPanel.hidden && guestField && !guestField.contains(event.target)) setGuestPanel(false);
+      if (suggestions && !suggestions.hidden && destinationField && !destinationField.contains(event.target)) hideSuggestions();
+      if (datepicker.isOpen()){
+        var insideDateField = dateFields.some(function(field){ return field.contains(event.target); });
+        if (!insideDateField) datepicker.close();
+      }
+    });
+    document.addEventListener('keydown',function(event){
+      if (event.key === 'Escape'){
+        setGuestPanel(false);
+        hideSuggestions();
+        datepicker.close();
+      }
+    });
+
     form.addEventListener('submit',function(event){
       event.preventDefault();
       if (navigating) return;
       clearError();
       hideSuggestions();
       setGuestPanel(false);
+      datepicker.close();
 
       var destinationValue = String(destination.value || '').trim();
+      var checkinIso = getInputIso(checkin) || isoFromDisplay(checkin.value);
+      var checkoutIso = getInputIso(checkout) || isoFromDisplay(checkout.value);
       if (!destinationValue){ setError(copy.destinationRequired,fieldDestination); destination.focus(); return; }
-      if (!checkin.value || !checkout.value){
-        var missingField = !checkin.value ? fieldCheckin : fieldCheckout;
+      if (!checkinIso || !checkoutIso){
+        var missingField = !checkinIso ? fieldCheckin : fieldCheckout;
         setError(copy.datesRequired,missingField);
-        (!checkin.value ? checkin : checkout).focus();
+        (!checkinIso ? checkin : checkout).focus();
         return;
       }
-      if (!isAfter(checkout.value,checkin.value)){
+      if (!isAfter(checkoutIso,checkinIso)){
         setError(copy.dateOrder,fieldCheckout);
         checkout.focus();
         return;
@@ -296,8 +522,8 @@
         var url = new URL(SEARCH_ENDPOINT);
         url.searchParams.set('aid',AID);
         url.searchParams.set('address',destinationValue);
-        url.searchParams.set('checkin',checkin.value);
-        url.searchParams.set('checkout',checkout.value);
+        url.searchParams.set('checkin',checkinIso);
+        url.searchParams.set('checkout',checkoutIso);
         url.searchParams.set('adults',String(Math.max(1,Number(adultsInput.value || 1))));
         var children = Math.max(0,Number(childrenInput.value || 0));
         if (children > 0) url.searchParams.set('children',String(children));
@@ -322,7 +548,7 @@
               href:url.toString(),
               destination:destinationValue,
               affiliateSlug:affiliateId,
-              dedupeKey:'sitewidget_stay22_home_' + destinationValue + '_' + checkin.value + '_' + checkout.value,
+              dedupeKey:'sitewidget_stay22_home_' + destinationValue + '_' + checkinIso + '_' + checkoutIso,
               dedupeMs:1500
             });
             if (tracked && typeof tracked.catch === 'function') tracked.catch(function(){});
