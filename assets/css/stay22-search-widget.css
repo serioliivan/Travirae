@@ -213,9 +213,9 @@ html[dir="rtl"] .travirae-stay-search__guest-button{padding:0 16px 0 14px}
   padding:16px;
   border:1px solid #dde4f0;
   border-radius:20px;
-  background:rgba(255,255,255,.98);
-  box-shadow:0 24px 70px rgba(15,23,42,.18);
-  backdrop-filter:blur(18px);
+  background:#ffffff;
+  box-shadow:0 24px 70px rgba(15,23,42,.16);
+  backdrop-filter:none;
 }
 .travirae-stay-search__guest-panel[hidden]{display:none!important}
 .travirae-stay-search__guest-row{
@@ -306,9 +306,9 @@ html[dir="rtl"] .travirae-stay-search__guest-button{padding:0 16px 0 14px}
   padding:7px;
   border:1px solid #dde4f0;
   border-radius:18px;
-  background:rgba(255,255,255,.98);
-  box-shadow:0 24px 70px rgba(15,23,42,.18);
-  backdrop-filter:blur(18px);
+  background:#ffffff;
+  box-shadow:0 24px 70px rgba(15,23,42,.16);
+  backdrop-filter:none;
 }
 .travirae-stay-search__suggestions[hidden]{display:none!important}
 .travirae-stay-search__suggestion{
@@ -341,9 +341,9 @@ html[dir="rtl"] .travirae-stay-search__guest-button{padding:0 16px 0 14px}
   padding:16px;
   border:1px solid rgba(40,58,255,.16);
   border-radius:22px;
-  background:rgba(255,255,255,.98);
-  box-shadow:0 24px 70px rgba(15,23,42,.18);
-  backdrop-filter:blur(18px);
+  background:#ffffff;
+  box-shadow:0 24px 70px rgba(15,23,42,.16);
+  backdrop-filter:none;
 }
 .travirae-stay-search__calendar[hidden]{display:none!important}
 .travirae-stay-search__calendar-head{
@@ -358,18 +358,21 @@ html[dir="rtl"] .travirae-stay-search__guest-button{padding:0 16px 0 14px}
   font-size:15px;
   font-weight:850;
   text-transform:capitalize;
+  text-align:center;
+  flex:1;
 }
 .travirae-stay-search__calendar-nav{
   display:grid;
   place-items:center;
-  width:36px;
-  height:36px;
-  border:1px solid #d7dff0;
-  border-radius:50%;
-  background:#fff;
-  color:#2337e8;
-  box-shadow:0 6px 16px rgba(15,23,42,.06);
+  width:32px;
+  height:32px;
+  border:0;
+  border-radius:0;
+  background:transparent;
+  color:#111827;
+  box-shadow:none;
   cursor:pointer;
+  padding:0;
 }
 .travirae-stay-search__calendar-nav svg{width:16px;height:16px}
 .travirae-stay-search__calendar-weekdays,
@@ -381,7 +384,7 @@ html[dir="rtl"] .travirae-stay-search__guest-button{padding:0 16px 0 14px}
 .travirae-stay-search__calendar-weekdays{margin-bottom:8px}
 .travirae-stay-search__calendar-weekdays span{
   text-align:center;
-  color:#64748b;
+  color:#475569;
   font-size:11px;
   font-weight:800;
   text-transform:uppercase;
@@ -393,7 +396,7 @@ html[dir="rtl"] .travirae-stay-search__guest-button{padding:0 16px 0 14px}
   border:1px solid transparent;
   border-radius:12px;
   background:transparent;
-  color:#0f172a;
+  color:#111827;
   font:inherit;
   font-size:14px;
   font-weight:700;
@@ -401,13 +404,13 @@ html[dir="rtl"] .travirae-stay-search__guest-button{padding:0 16px 0 14px}
   transition:background-color .16s ease,border-color .16s ease,color .16s ease,transform .16s ease;
 }
 .travirae-stay-search__calendar-day:hover:not(.is-disabled){
-  background:#eef2ff;
-  border-color:#d9e0ff;
-  color:#2234ee;
+  background:#f3f4f6;
+  border-color:#e5e7eb;
+  color:#111827;
   transform:translateY(-1px);
 }
-.travirae-stay-search__calendar-day.is-muted{color:#97a3b6}
-.travirae-stay-search__calendar-day.is-today{border-color:rgba(40,58,255,.28)}
+.travirae-stay-search__calendar-day.is-muted{color:#9ca3af}
+.travirae-stay-search__calendar-day.is-today{border-color:#d1d5db}
 .travirae-stay-search__calendar-day.is-selected{
   background:linear-gradient(135deg,var(--brand),#6f4cff);
   color:#fff;
@@ -428,10 +431,10 @@ html[dir="rtl"] .travirae-stay-search__guest-button{padding:0 16px 0 14px}
 .travirae-stay-search__calendar-action{
   flex:1;
   min-height:40px;
-  border:1px solid #d7dff0;
+  border:1px solid #e5e7eb;
   border-radius:14px;
-  background:#fff;
-  color:#334155;
+  background:#ffffff;
+  color:#111827;
   font:inherit;
   font-size:13px;
   font-weight:800;
@@ -564,3 +567,58 @@ html[dir="rtl"] .travirae-stay-search__guest-button{padding:0 16px 0 14px}
 }
 .travirae-stay-search .travirae-stay-search__submit:active{transform:translateY(0)!important}
 .travirae-stay-search .travirae-stay-search__submit:disabled{transform:none!important}
+
+
+.travirae-stay-search .travirae-stay-search__calendar-nav,
+.travirae-stay-search .travirae-stay-search__calendar-day,
+.travirae-stay-search .travirae-stay-search__calendar-action{
+  background-image:none!important;
+  filter:none!important;
+}
+.travirae-stay-search .travirae-stay-search__calendar-nav{
+  background:transparent!important;
+  color:#111827!important;
+  border-color:transparent!important;
+  box-shadow:none!important;
+}
+.travirae-stay-search .travirae-stay-search__calendar-nav:hover{
+  background:transparent!important;
+  color:#111827!important;
+  border-color:transparent!important;
+  box-shadow:none!important;
+}
+.travirae-stay-search .travirae-stay-search__calendar-day{
+  background:transparent!important;
+  color:#111827!important;
+  border-color:transparent!important;
+  box-shadow:none!important;
+}
+.travirae-stay-search .travirae-stay-search__calendar-day:hover:not(.is-disabled){
+  background:#f3f4f6!important;
+  color:#111827!important;
+  border-color:#e5e7eb!important;
+  box-shadow:none!important;
+}
+.travirae-stay-search .travirae-stay-search__calendar-day.is-selected{
+  background:linear-gradient(135deg,var(--brand),#6f4cff)!important;
+  color:#fff!important;
+  border-color:transparent!important;
+  box-shadow:0 10px 22px rgba(40,58,255,.24)!important;
+}
+.travirae-stay-search .travirae-stay-search__calendar-day.is-muted{
+  color:#9ca3af!important;
+}
+.travirae-stay-search .travirae-stay-search__calendar-day.is-today:not(.is-selected){
+  border-color:#d1d5db!important;
+}
+.travirae-stay-search .travirae-stay-search__calendar-action{
+  background:#ffffff!important;
+  color:#111827!important;
+  border-color:#e5e7eb!important;
+  box-shadow:none!important;
+}
+.travirae-stay-search .travirae-stay-search__calendar-action--primary{
+  background:#eef0ff!important;
+  color:#2337e8!important;
+  border-color:#dde2ff!important;
+}
