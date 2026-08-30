@@ -861,6 +861,7 @@ html[dir="rtl"] .travirae-stay-search__guest-button{padding:0 16px 0 14px}
   font-weight:650;
   line-height:1.35;
 }
+.travirae-stay-search__hotel-selection{display:none!important}
 .travirae-stay-search__hotel-selection[hidden]{display:none!important}
 .travirae-stay-search__hotel-selection > svg{width:15px;height:15px;flex:0 0 auto;color:#283aff}
 .travirae-stay-search__hotel-selection > span{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}

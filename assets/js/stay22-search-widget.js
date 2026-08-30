@@ -516,8 +516,10 @@
       if (input === checkin){
         setInputIso(checkin, iso);
         var checkoutIso = getInputIso(checkout);
-        var minimumCheckout = addDaysIso(iso, 1);
-        if (!checkoutIso || !isAfter(checkoutIso, iso)) setInputIso(checkout, minimumCheckout);
+        // Check-in and check-out are selected independently. If a previously
+        // selected check-out is no longer valid, clear it instead of choosing
+        // a new date automatically.
+        if (checkoutIso && !isAfter(checkoutIso, iso)) setInputIso(checkout, '');
       } else {
         setInputIso(checkout, iso);
       }
