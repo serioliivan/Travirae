@@ -11428,3 +11428,20 @@ body.if-composer-modal-open::before{
   stroke-linecap:round !important;
   stroke-linejoin:round !important;
 }
+
+
+/* ===== Home Stay22 widget overlays must stay above following sections ===== */
+.page--home .hero,
+.page--home .hero-inner,
+.page--home .hero .container{
+  overflow:visible !important;
+}
+.page--home #travirae-stay-search{
+  position:relative;
+  z-index:1000;
+}
+.page--home #travirae-stay-search .travirae-stay-search__calendar,
+.page--home #travirae-stay-search .travirae-stay-search__guest-panel,
+.page--home #travirae-stay-search .travirae-stay-search__suggestions{
+  z-index:10050 !important;
+}
