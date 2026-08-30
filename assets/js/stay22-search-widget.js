@@ -12,15 +12,15 @@
   ];
 
   var COPY = {
-    it:{guestsOne:'ospite',guestsMany:'ospiti',searching:'Apro gli hotel…',searchingSpecific:'Cerco l’hotel…',specificSubmit:'Trova questo hotel',destinationRequired:'Inserisci una destinazione.',hotelNameRequired:'Inserisci il nome dell’hotel.',hotelLocationRequired:'Inserisci la città o il Paese dell’hotel.',datesRequired:'Seleziona le date di check-in e check-out.',dateOrder:'Il check-out deve essere successivo al check-in.',genericError:'Controlla i dati inseriti e riprova.',datePlaceholder:'gg/mm/aaaa',today:'Oggi',close:'Chiudi'},
-    en:{guestsOne:'guest',guestsMany:'guests',searching:'Opening hotels…',searchingSpecific:'Finding the hotel…',specificSubmit:'Find this hotel',destinationRequired:'Enter a destination.',hotelNameRequired:'Enter the hotel name.',hotelLocationRequired:'Enter the hotel city or country.',datesRequired:'Select check-in and check-out dates.',dateOrder:'Check-out must be after check-in.',genericError:'Check the information and try again.',datePlaceholder:'dd/mm/yyyy',today:'Today',close:'Close'},
-    de:{guestsOne:'Gast',guestsMany:'Gäste',searching:'Hotels werden geöffnet…',searchingSpecific:'Hotel wird gesucht…',specificSubmit:'Dieses Hotel finden',destinationRequired:'Gib ein Reiseziel ein.',hotelNameRequired:'Gib den Hotelnamen ein.',hotelLocationRequired:'Gib die Stadt oder das Land des Hotels ein.',datesRequired:'Wähle Anreise- und Abreisedatum.',dateOrder:'Die Abreise muss nach der Anreise liegen.',genericError:'Prüfe deine Angaben und versuche es erneut.',datePlaceholder:'tt/mm/jjjj',today:'Heute',close:'Schließen'},
-    fr:{guestsOne:'voyageur',guestsMany:'voyageurs',searching:'Ouverture des hôtels…',searchingSpecific:'Recherche de l’hôtel…',specificSubmit:'Trouver cet hôtel',destinationRequired:'Saisissez une destination.',hotelNameRequired:'Saisissez le nom de l’hôtel.',hotelLocationRequired:'Saisissez la ville ou le pays de l’hôtel.',datesRequired:'Sélectionnez les dates d’arrivée et de départ.',dateOrder:'La date de départ doit être postérieure à l’arrivée.',genericError:'Vérifiez les informations et réessayez.',datePlaceholder:'jj/mm/aaaa',today:'Aujourd’hui',close:'Fermer'},
-    es:{guestsOne:'huésped',guestsMany:'huéspedes',searching:'Abriendo hoteles…',searchingSpecific:'Buscando el hotel…',specificSubmit:'Encontrar este hotel',destinationRequired:'Introduce un destino.',hotelNameRequired:'Introduce el nombre del hotel.',hotelLocationRequired:'Introduce la ciudad o el país del hotel.',datesRequired:'Selecciona las fechas de entrada y salida.',dateOrder:'La salida debe ser posterior a la entrada.',genericError:'Revisa los datos e inténtalo de nuevo.',datePlaceholder:'dd/mm/aaaa',today:'Hoy',close:'Cerrar'},
-    nl:{guestsOne:'gast',guestsMany:'gasten',searching:'Hotels openen…',searchingSpecific:'Hotel zoeken…',specificSubmit:'Vind dit hotel',destinationRequired:'Vul een bestemming in.',hotelNameRequired:'Vul de hotelnaam in.',hotelLocationRequired:'Vul de stad of het land van het hotel in.',datesRequired:'Selecteer de in- en uitcheckdatum.',dateOrder:'Uitchecken moet na inchecken zijn.',genericError:'Controleer de gegevens en probeer opnieuw.',datePlaceholder:'dd/mm/jjjj',today:'Vandaag',close:'Sluiten'},
-    ru:{guestsOne:'гость',guestsMany:'гостей',searching:'Открываем отели…',searchingSpecific:'Ищем отель…',specificSubmit:'Найти этот отель',destinationRequired:'Укажите направление.',hotelNameRequired:'Укажите название отеля.',hotelLocationRequired:'Укажите город или страну отеля.',datesRequired:'Выберите даты заезда и выезда.',dateOrder:'Дата выезда должна быть позже даты заезда.',genericError:'Проверьте данные и повторите попытку.',datePlaceholder:'дд/мм/гггг',today:'Сегодня',close:'Закрыть'},
-    ar:{guestsOne:'ضيف',guestsMany:'ضيوف',searching:'جارٍ فتح الفنادق…',searchingSpecific:'جارٍ البحث عن الفندق…',specificSubmit:'اعثر على هذا الفندق',destinationRequired:'أدخل وجهة.',hotelNameRequired:'أدخل اسم الفندق.',hotelLocationRequired:'أدخل مدينة الفندق أو دولته.',datesRequired:'اختر تاريخي الوصول والمغادرة.',dateOrder:'يجب أن يكون تاريخ المغادرة بعد الوصول.',genericError:'تحقق من البيانات وحاول مرة أخرى.',datePlaceholder:'يوم/شهر/سنة',today:'اليوم',close:'إغلاق'},
-    zh:{guestsOne:'位旅客',guestsMany:'位旅客',searching:'正在打开酒店…',searchingSpecific:'正在查找酒店…',specificSubmit:'查找这家酒店',destinationRequired:'请输入目的地。',hotelNameRequired:'请输入酒店名称。',hotelLocationRequired:'请输入酒店所在城市或国家。',datesRequired:'请选择入住和退房日期。',dateOrder:'退房日期必须晚于入住日期。',genericError:'请检查信息后重试。',datePlaceholder:'日/月/年',today:'今天',close:'关闭'}
+    it:{guestsOne:'ospite',guestsMany:'ospiti',searching:'Apro gli hotel…',searchingSpecific:'Cerco l’hotel…',specificSubmit:'Trova questo hotel',destinationRequired:'Inserisci una destinazione.',hotelNameRequired:'Inserisci il nome dell’hotel.',hotelLocationRequired:'Inserisci la città o il Paese dell’hotel.',hotelSelectionRequired:'Scrivi il nome e seleziona una struttura dall’elenco.',hotelAutocompleteLoading:'Ricerca hotel…',hotelAutocompleteNoResults:'Nessuna struttura trovata. Prova ad aggiungere la città o il Paese.',hotelAutocompleteUnavailable:'Ricerca hotel temporaneamente non disponibile. Usa la ricerca per destinazione.',hotelAutocompleteSelecting:'Recupero i dettagli della struttura…',datesRequired:'Seleziona le date di check-in e check-out.',dateOrder:'Il check-out deve essere successivo al check-in.',genericError:'Controlla i dati inseriti e riprova.',datePlaceholder:'gg/mm/aaaa',today:'Oggi',close:'Chiudi'},
+    en:{guestsOne:'guest',guestsMany:'guests',searching:'Opening hotels…',searchingSpecific:'Finding the hotel…',specificSubmit:'Find this hotel',destinationRequired:'Enter a destination.',hotelNameRequired:'Enter the hotel name.',hotelLocationRequired:'Enter the hotel city or country.',hotelSelectionRequired:'Type the name and select a property from the list.',hotelAutocompleteLoading:'Searching hotels…',hotelAutocompleteNoResults:'No property found. Try adding the city or country.',hotelAutocompleteUnavailable:'Hotel search is temporarily unavailable. Use destination search.',hotelAutocompleteSelecting:'Loading property details…',datesRequired:'Select check-in and check-out dates.',dateOrder:'Check-out must be after check-in.',genericError:'Check the information and try again.',datePlaceholder:'dd/mm/yyyy',today:'Today',close:'Close'},
+    de:{guestsOne:'Gast',guestsMany:'Gäste',searching:'Hotels werden geöffnet…',searchingSpecific:'Hotel wird gesucht…',specificSubmit:'Dieses Hotel finden',destinationRequired:'Gib ein Reiseziel ein.',hotelNameRequired:'Gib den Hotelnamen ein.',hotelLocationRequired:'Gib die Stadt oder das Land des Hotels ein.',hotelSelectionRequired:'Gib den Namen ein und wähle eine Unterkunft aus der Liste.',hotelAutocompleteLoading:'Hotels werden gesucht…',hotelAutocompleteNoResults:'Keine Unterkunft gefunden. Ergänze Stadt oder Land.',hotelAutocompleteUnavailable:'Die Hotelsuche ist vorübergehend nicht verfügbar. Nutze die Reisezielsuche.',hotelAutocompleteSelecting:'Unterkunftsdetails werden geladen…',datesRequired:'Wähle Anreise- und Abreisedatum.',dateOrder:'Die Abreise muss nach der Anreise liegen.',genericError:'Prüfe deine Angaben und versuche es erneut.',datePlaceholder:'tt/mm/jjjj',today:'Heute',close:'Schließen'},
+    fr:{guestsOne:'voyageur',guestsMany:'voyageurs',searching:'Ouverture des hôtels…',searchingSpecific:'Recherche de l’hôtel…',specificSubmit:'Trouver cet hôtel',destinationRequired:'Saisissez une destination.',hotelNameRequired:'Saisissez le nom de l’hôtel.',hotelLocationRequired:'Saisissez la ville ou le pays de l’hôtel.',hotelSelectionRequired:'Saisissez le nom puis sélectionnez un hébergement dans la liste.',hotelAutocompleteLoading:'Recherche d’hôtels…',hotelAutocompleteNoResults:'Aucun hébergement trouvé. Ajoutez la ville ou le pays.',hotelAutocompleteUnavailable:'La recherche d’hôtels est temporairement indisponible. Utilisez la recherche par destination.',hotelAutocompleteSelecting:'Chargement des détails de l’hébergement…',datesRequired:'Sélectionnez les dates d’arrivée et de départ.',dateOrder:'La date de départ doit être postérieure à l’arrivée.',genericError:'Vérifiez les informations et réessayez.',datePlaceholder:'jj/mm/aaaa',today:'Aujourd’hui',close:'Fermer'},
+    es:{guestsOne:'huésped',guestsMany:'huéspedes',searching:'Abriendo hoteles…',searchingSpecific:'Buscando el hotel…',specificSubmit:'Encontrar este hotel',destinationRequired:'Introduce un destino.',hotelNameRequired:'Introduce el nombre del hotel.',hotelLocationRequired:'Introduce la ciudad o el país del hotel.',hotelSelectionRequired:'Escribe el nombre y selecciona un alojamiento de la lista.',hotelAutocompleteLoading:'Buscando hoteles…',hotelAutocompleteNoResults:'No se encontró ningún alojamiento. Añade la ciudad o el país.',hotelAutocompleteUnavailable:'La búsqueda de hoteles no está disponible temporalmente. Usa la búsqueda por destino.',hotelAutocompleteSelecting:'Cargando los datos del alojamiento…',datesRequired:'Selecciona las fechas de entrada y salida.',dateOrder:'La salida debe ser posterior a la entrada.',genericError:'Revisa los datos e inténtalo de nuevo.',datePlaceholder:'dd/mm/aaaa',today:'Hoy',close:'Cerrar'},
+    nl:{guestsOne:'gast',guestsMany:'gasten',searching:'Hotels openen…',searchingSpecific:'Hotel zoeken…',specificSubmit:'Vind dit hotel',destinationRequired:'Vul een bestemming in.',hotelNameRequired:'Vul de hotelnaam in.',hotelLocationRequired:'Vul de stad of het land van het hotel in.',hotelSelectionRequired:'Typ de naam en kies een accommodatie uit de lijst.',hotelAutocompleteLoading:'Hotels zoeken…',hotelAutocompleteNoResults:'Geen accommodatie gevonden. Voeg de stad of het land toe.',hotelAutocompleteUnavailable:'Hotel zoeken is tijdelijk niet beschikbaar. Gebruik zoeken op bestemming.',hotelAutocompleteSelecting:'Accommodatiegegevens laden…',datesRequired:'Selecteer de in- en uitcheckdatum.',dateOrder:'Uitchecken moet na inchecken zijn.',genericError:'Controleer de gegevens en probeer opnieuw.',datePlaceholder:'dd/mm/jjjj',today:'Vandaag',close:'Sluiten'},
+    ru:{guestsOne:'гость',guestsMany:'гостей',searching:'Открываем отели…',searchingSpecific:'Ищем отель…',specificSubmit:'Найти этот отель',destinationRequired:'Укажите направление.',hotelNameRequired:'Укажите название отеля.',hotelLocationRequired:'Укажите город или страну отеля.',hotelSelectionRequired:'Введите название и выберите объект размещения из списка.',hotelAutocompleteLoading:'Поиск отелей…',hotelAutocompleteNoResults:'Объект размещения не найден. Добавьте город или страну.',hotelAutocompleteUnavailable:'Поиск отелей временно недоступен. Используйте поиск по направлению.',hotelAutocompleteSelecting:'Загрузка данных объекта размещения…',datesRequired:'Выберите даты заезда и выезда.',dateOrder:'Дата выезда должна быть позже даты заезда.',genericError:'Проверьте данные и повторите попытку.',datePlaceholder:'дд/мм/гггг',today:'Сегодня',close:'Закрыть'},
+    ar:{guestsOne:'ضيف',guestsMany:'ضيوف',searching:'جارٍ فتح الفنادق…',searchingSpecific:'جارٍ البحث عن الفندق…',specificSubmit:'اعثر على هذا الفندق',destinationRequired:'أدخل وجهة.',hotelNameRequired:'أدخل اسم الفندق.',hotelLocationRequired:'أدخل مدينة الفندق أو دولته.',hotelSelectionRequired:'اكتب الاسم واختر مكان إقامة من القائمة.',hotelAutocompleteLoading:'جارٍ البحث عن الفنادق…',hotelAutocompleteNoResults:'لم يتم العثور على مكان إقامة. أضف المدينة أو الدولة.',hotelAutocompleteUnavailable:'البحث عن الفنادق غير متاح مؤقتًا. استخدم البحث حسب الوجهة.',hotelAutocompleteSelecting:'جارٍ تحميل تفاصيل مكان الإقامة…',datesRequired:'اختر تاريخي الوصول والمغادرة.',dateOrder:'يجب أن يكون تاريخ المغادرة بعد الوصول.',genericError:'تحقق من البيانات وحاول مرة أخرى.',datePlaceholder:'يوم/شهر/سنة',today:'اليوم',close:'إغلاق'},
+    zh:{guestsOne:'位旅客',guestsMany:'位旅客',searching:'正在打开酒店…',searchingSpecific:'正在查找酒店…',specificSubmit:'查找这家酒店',destinationRequired:'请输入目的地。',hotelNameRequired:'请输入酒店名称。',hotelLocationRequired:'请输入酒店所在城市或国家。',hotelSelectionRequired:'输入名称并从列表中选择住宿。',hotelAutocompleteLoading:'正在搜索酒店…',hotelAutocompleteNoResults:'未找到住宿，请添加城市或国家。',hotelAutocompleteUnavailable:'酒店搜索暂时不可用，请使用目的地搜索。',hotelAutocompleteSelecting:'正在加载住宿详情…',datesRequired:'请选择入住和退房日期。',dateOrder:'退房日期必须晚于入住日期。',genericError:'请检查信息后重试。',datePlaceholder:'日/月/年',today:'今天',close:'关闭'}
   };
 
   var LOCALE_CONFIG = {
@@ -234,7 +234,14 @@
     var form = root.querySelector('#travirae-stay-search-form');
     var destination = root.querySelector('#travirae-stay-destination');
     var hotelName = root.querySelector('#travirae-stay-hotel-name');
-    var hotelLocation = root.querySelector('#travirae-stay-hotel-location');
+    var hotelSuggestionsPanel = root.querySelector('#travirae-stay-hotel-suggestions');
+    var hotelSelectionBox = root.querySelector('#travirae-stay-hotel-selection');
+    var hotelSelectionLocation = root.querySelector('[data-selected-hotel-location]');
+    var hotelClearButton = root.querySelector('[data-clear-selected-hotel]');
+    var hotelPlaceIdInput = root.querySelector('#travirae-stay-hotel-place-id');
+    var hotelAddressInput = root.querySelector('#travirae-stay-hotel-address');
+    var hotelLatInput = root.querySelector('#travirae-stay-hotel-lat');
+    var hotelLngInput = root.querySelector('#travirae-stay-hotel-lng');
     var modeInput = root.querySelector('#travirae-stay-search-mode');
     var modeButtons = Array.prototype.slice.call(root.querySelectorAll('[data-search-mode]'));
     var checkin = root.querySelector('#travirae-stay-checkin');
@@ -254,7 +261,6 @@
     var currencyInput = root.querySelector('input[name="currency"]');
     var fieldDestination = root.querySelector('[data-field="destination"]');
     var fieldHotelName = root.querySelector('[data-field="hotelname"]');
-    var fieldHotelLocation = root.querySelector('[data-field="hoteladdress"]');
     var fieldCheckin = root.querySelector('[data-field="checkin"]');
     var fieldCheckout = root.querySelector('[data-field="checkout"]');
     var originalSubmitText = submitLabel ? submitLabel.textContent : '';
@@ -263,8 +269,9 @@
     var renderedSuggestions = [];
     var activeSuggestion = -1;
     var navigating = false;
+    var hotelAutocomplete = null;
 
-    if (!form || !destination || !hotelName || !hotelLocation || !checkin || !checkout || !adultsInput || !childrenInput) return;
+    if (!form || !destination || !hotelName || !hotelSuggestionsPanel || !checkin || !checkout || !adultsInput || !childrenInput) return;
 
     if (langInput) langInput.value = localeCfg.lang;
     if (currencyInput) currencyInput.value = localeCfg.currency;
@@ -279,7 +286,7 @@
     }
 
     function setError(message, field){
-      [fieldDestination,fieldHotelName,fieldHotelLocation,fieldCheckin,fieldCheckout].forEach(function(item){ if(item) item.classList.remove('is-invalid'); });
+      [fieldDestination,fieldHotelName,fieldCheckin,fieldCheckout].forEach(function(item){ if(item) item.classList.remove('is-invalid'); });
       if (field) field.classList.add('is-invalid');
       if (errorBox) errorBox.textContent = message || '';
     }
@@ -301,11 +308,9 @@
       destination.disabled = isHotel;
       destination.required = !isHotel;
       fieldHotelName.hidden = !isHotel;
-      fieldHotelLocation.hidden = !isHotel;
       hotelName.disabled = !isHotel;
-      hotelLocation.disabled = !isHotel;
       hotelName.required = isHotel;
-      hotelLocation.required = isHotel;
+      if (hotelAutocomplete) hotelAutocomplete.setActive(isHotel);
 
       modeButtons.forEach(function(button){
         var active = button.getAttribute('data-search-mode') === searchMode;
@@ -330,7 +335,27 @@
     });
 
     hotelName.addEventListener('input',clearError);
-    hotelLocation.addEventListener('input',clearError);
+
+    if (window.TraviraeHotelAutocomplete && typeof window.TraviraeHotelAutocomplete.create === 'function'){
+      hotelAutocomplete = window.TraviraeHotelAutocomplete.create({
+        input:hotelName,
+        panel:hotelSuggestionsPanel,
+        field:fieldHotelName,
+        selectionBox:hotelSelectionBox,
+        selectionLocation:hotelSelectionLocation,
+        clearButton:hotelClearButton,
+        hiddenPlaceId:hotelPlaceIdInput,
+        hiddenAddress:hotelAddressInput,
+        hiddenLat:hotelLatInput,
+        hiddenLng:hotelLngInput,
+        locale:localeCfg.lang,
+        copy:copy,
+        onError:function(message){
+          if (searchMode === 'hotel' && message) setError(message,fieldHotelName);
+        },
+        onClearError:clearError
+      });
+    }
 
     function guestCount(){
       return Math.max(1,Number(adultsInput.value || 1)) + Math.max(0,Number(childrenInput.value || 0));
@@ -544,6 +569,7 @@
       if (event.key === 'Escape'){
         setGuestPanel(false);
         hideSuggestions();
+        if (hotelAutocomplete) hotelAutocomplete.hide();
         datepicker.close();
       }
     });
@@ -558,13 +584,13 @@
 
       var isHotelSearch = searchMode === 'hotel';
       var destinationValue = String(destination.value || '').trim();
-      var hotelNameValue = String(hotelName.value || '').trim();
-      var hotelLocationValue = String(hotelLocation.value || '').trim();
+      var selectedHotel = hotelAutocomplete ? hotelAutocomplete.getSelected() : null;
+      var hotelNameValue = selectedHotel ? String(selectedHotel.name || '').trim() : String(hotelName.value || '').trim();
+      var hotelLocationValue = selectedHotel ? String(selectedHotel.address || '').trim() : '';
       var checkinIso = getInputIso(checkin) || isoFromDisplay(checkin.value);
       var checkoutIso = getInputIso(checkout) || isoFromDisplay(checkout.value);
       if (isHotelSearch){
-        if (!hotelNameValue){ setError(copy.hotelNameRequired,fieldHotelName); hotelName.focus(); return; }
-        if (!hotelLocationValue){ setError(copy.hotelLocationRequired,fieldHotelLocation); hotelLocation.focus(); return; }
+        if (!hotelNameValue || !selectedHotel){ setError(copy.hotelSelectionRequired || copy.hotelNameRequired,fieldHotelName); hotelName.focus(); return; }
       }else if (!destinationValue){
         setError(copy.destinationRequired,fieldDestination); destination.focus(); return;
       }
@@ -585,7 +611,9 @@
         url.searchParams.set('aid',AID);
         if (isHotelSearch){
           url.searchParams.set('hotelname',hotelNameValue);
-          url.searchParams.set('address',hotelLocationValue);
+          if (hotelLocationValue) url.searchParams.set('address',hotelLocationValue);
+          if (selectedHotel && Number.isFinite(Number(selectedHotel.lat))) url.searchParams.set('lat',String(selectedHotel.lat));
+          if (selectedHotel && Number.isFinite(Number(selectedHotel.lng))) url.searchParams.set('lng',String(selectedHotel.lng));
         }else{
           url.searchParams.set('address',destinationValue);
         }
@@ -613,8 +641,12 @@
               partner:'stay22',
               context:isHotelSearch ? 'homepage_stay22_specific_hotel' : 'homepage_stay22_search',
               href:url.toString(),
-              destination:isHotelSearch ? (hotelNameValue + ', ' + hotelLocationValue) : destinationValue,
+              destination:isHotelSearch ? (hotelNameValue + (hotelLocationValue ? ', ' + hotelLocationValue : '')) : destinationValue,
               affiliateSlug:affiliateId,
+              hotelPlaceId:isHotelSearch && selectedHotel ? String(selectedHotel.placeId || '') : '',
+              hotelName:isHotelSearch ? hotelNameValue : '',
+              hotelAddress:isHotelSearch ? hotelLocationValue : '',
+              searchMode:searchMode,
               dedupeKey:'sitewidget_stay22_home_' + searchMode + '_' + (isHotelSearch ? (hotelNameValue + '_' + hotelLocationValue) : destinationValue) + '_' + checkinIso + '_' + checkoutIso,
               dedupeMs:1500
             });

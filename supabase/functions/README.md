@@ -29,3 +29,17 @@ Proxy pubblico per l'autocomplete hotel/location usato dal creator panel.
 - se il provider hotel non risponde o risulta disattivato, il frontend ricade automaticamente su Aviasales Places + snapshot locale (`assets/data/travelpayouts-hotels-db.json`)
 
 ⚠️ Da deployare solo se vuoi provare anche il lookup hotel Travelpayouts lato server. Il sito continua comunque a funzionare con i fallback.
+
+
+
+## google-hotel-autocomplete
+
+Proxy protetto per Google Places API (New), utilizzato dalla modalità **Hotel specifico** del widget Stay22.
+
+- Secret richiesto: `GOOGLE_PLACES_API_KEY`
+- nessuna tabella e nessun SQL
+- restituisce suggerimenti hotel e dettagli con indirizzo/coordinate
+- la chiave Google rimane esclusivamente nei Secrets Supabase
+- lascia attiva la verifica JWT: il frontend usa la chiave pubblica/anon Supabase già configurata
+
+Guida completa: `DEPLOY_GOOGLE_PLACES_HOTEL_AUTOCOMPLETE.md`.

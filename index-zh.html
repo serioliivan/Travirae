@@ -12,7 +12,7 @@
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
 <link href="assets/css/style.css" rel="stylesheet"/>
-<link href="assets/css/stay22-search-widget.css?v=20260830-hotel-specific-v1" rel="stylesheet"/>
+<link href="assets/css/stay22-search-widget.css?v=20260830-google-places-v2" rel="stylesheet"/>
 <meta content="index, follow" name="robots"/><meta content="Travirae – 酒店与灵感" property="og:title"/><meta content="精选目的地、互动地图、亮点与实用加成。" property="og:description"/><meta content="website" property="og:type"/><meta content="assets/img/common/hero.jpg" property="og:image"/><meta content="summary_large_image" name="twitter:card"/><meta content="Travirae – 酒店与灵感" name="twitter:title"/><meta content="旅行灵感与酒店预订，一站式完成。" name="twitter:description"/><meta content="assets/img/common/hero.jpg" name="twitter:image"/><link crossorigin="" href="https://www.stay22.com" rel="preconnect"/><link href="//www.stay22.com" rel="dns-prefetch"/><link as="fetch" crossorigin="" href="assets/data/maps.json" rel="preload"/><script id="travirae-lang-router">(function(){
   try{
     var siteKey='travirae_site_lang';
@@ -108,12 +108,18 @@
 <div class="travirae-stay-search__suggestions" hidden="" id="travirae-stay-suggestions" role="listbox"></div>
 </div>
 <div class="travirae-stay-search__field travirae-stay-search__field--hotel-name" data-field="hotelname" hidden="">
-<label class="travirae-stay-search__label" for="travirae-stay-hotel-name">酒店名称</label>
-<div class="travirae-stay-search__control"><svg aria-hidden="true" class="travirae-stay-search__control-icon" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24"><path d="M3 21h18"></path><path d="M6 21V6a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v15"></path><path d="M9 8h1M14 8h1M9 12h1M14 12h1M9 16h1M14 16h1"></path></svg><input autocomplete="off" disabled="" id="travirae-stay-hotel-name" name="hotelname" placeholder="例如 Hotel Danieli" spellcheck="false" type="text"/></div>
+<label class="travirae-stay-search__label" for="travirae-stay-hotel-name">酒店或住宿</label>
+<div class="travirae-stay-search__control"><svg aria-hidden="true" class="travirae-stay-search__control-icon" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24"><path d="M3 21h18"></path><path d="M6 21V6a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v15"></path><path d="M9 8h1M14 8h1M9 12h1M14 12h1M9 16h1M14 16h1"></path></svg><input aria-autocomplete="list" aria-controls="travirae-stay-hotel-suggestions" autocomplete="off" disabled="" id="travirae-stay-hotel-name" name="hotel_query" placeholder="输入酒店名称" spellcheck="false" type="text"/></div>
+<div aria-label="酒店搜索结果" class="travirae-stay-search__hotel-suggestions" hidden="" id="travirae-stay-hotel-suggestions" role="listbox"></div>
+<div class="travirae-stay-search__hotel-selection" hidden="" id="travirae-stay-hotel-selection">
+<svg aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24"><path d="M20 10c0 5-8 12-8 12S4 15 4 10a8 8 0 1 1 16 0Z"></path><circle cx="12" cy="10" r="2.5"></circle></svg>
+<span data-selected-hotel-location=""></span>
+<button aria-label="移除已选择的酒店" data-clear-selected-hotel="" type="button">×</button>
 </div>
-<div class="travirae-stay-search__field travirae-stay-search__field--hotel-location" data-field="hoteladdress" hidden="">
-<label class="travirae-stay-search__label" for="travirae-stay-hotel-location">城市或国家</label>
-<div class="travirae-stay-search__control"><svg aria-hidden="true" class="travirae-stay-search__control-icon" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24"><path d="M20 10c0 5-8 12-8 12S4 15 4 10a8 8 0 1 1 16 0Z"></path><circle cx="12" cy="10" r="2.5"></circle></svg><input autocomplete="off" disabled="" id="travirae-stay-hotel-location" name="hotel_address" placeholder="例如 意大利威尼斯" spellcheck="false" type="text"/></div>
+<input id="travirae-stay-hotel-place-id" type="hidden" value=""/>
+<input id="travirae-stay-hotel-address" type="hidden" value=""/>
+<input id="travirae-stay-hotel-lat" type="hidden" value=""/>
+<input id="travirae-stay-hotel-lng" type="hidden" value=""/>
 </div>
 <div class="travirae-stay-search__field" data-field="checkin">
 <label class="travirae-stay-search__label" for="travirae-stay-checkin">入住</label>
@@ -641,7 +647,8 @@
 <script src="assets/js/config.js"></script>
 <script src="assets/js/supabase-init.js"></script>
 <script src="assets/js/main.js"></script>
-<script src="assets/js/stay22-search-widget.js?v=20260830-hotel-specific-v1"></script>
+<script src="assets/js/google-hotel-autocomplete.js?v=20260830-google-places-v2"></script>
+<script src="assets/js/stay22-search-widget.js?v=20260830-google-places-v2"></script>
 <script src="assets/js/travirae-i18n-fixes.js"></script>
 <script defer="" src="assets/js/replace_maps.js"></script></body>
 </html>

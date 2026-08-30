@@ -11442,6 +11442,7 @@ body.if-composer-modal-open::before{
 }
 .page--home #travirae-stay-search .travirae-stay-search__calendar,
 .page--home #travirae-stay-search .travirae-stay-search__guest-panel,
-.page--home #travirae-stay-search .travirae-stay-search__suggestions{
+.page--home #travirae-stay-search .travirae-stay-search__suggestions,
+.page--home #travirae-stay-search .travirae-stay-search__hotel-suggestions{
   z-index:10050 !important;
 }
