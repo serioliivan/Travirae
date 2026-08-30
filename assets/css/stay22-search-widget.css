@@ -634,3 +634,111 @@ html[dir="rtl"] .travirae-stay-search__guest-button{padding:0 16px 0 14px}
 .travirae-stay-search__suggestions{
   position:absolute;
 }
+
+/* Search mode switch: destination or a specific hotel */
+.travirae-stay-search__mode-switch{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  width:max-content;
+  max-width:100%;
+  margin:0 auto 20px;
+  padding:4px;
+  border:1px solid #dde4f0;
+  border-radius:999px;
+  background:rgba(255,255,255,.84);
+  box-shadow:0 8px 24px rgba(15,23,42,.07);
+}
+.travirae-stay-search__mode-option{
+  min-height:38px;
+  padding:0 18px;
+  border:0;
+  border-radius:999px;
+  background:transparent;
+  color:#334155;
+  font:inherit;
+  font-size:13px;
+  font-weight:800;
+  white-space:nowrap;
+  cursor:pointer;
+  transition:background-color .18s ease,color .18s ease,box-shadow .18s ease,transform .18s ease;
+}
+.travirae-stay-search__mode-option:hover:not(.is-active){
+  background:#f3f4f6;
+  color:#111827;
+}
+.travirae-stay-search__mode-option.is-active{
+  background:linear-gradient(135deg,var(--brand),#6f4cff);
+  color:#fff;
+  box-shadow:0 8px 20px rgba(40,58,255,.24);
+}
+.travirae-stay-search__field[hidden]{display:none!important}
+
+/* In specific-hotel mode, the two identification fields use the first row. */
+.travirae-stay-search.is-hotel-mode .travirae-stay-search__grid{
+  grid-template-columns:repeat(5,minmax(0,1fr));
+}
+.travirae-stay-search.is-hotel-mode .travirae-stay-search__field--hotel-name{
+  grid-column:1 / span 2;
+}
+.travirae-stay-search.is-hotel-mode .travirae-stay-search__field--hotel-location{
+  grid-column:3 / span 3;
+}
+.travirae-stay-search.is-hotel-mode [data-field="checkin"]{grid-column:1}
+.travirae-stay-search.is-hotel-mode [data-field="checkout"]{grid-column:2}
+.travirae-stay-search.is-hotel-mode .travirae-stay-search__field--guests{grid-column:3 / span 2}
+.travirae-stay-search.is-hotel-mode .travirae-stay-search__submit{grid-column:5}
+
+/* Override the legacy global button rules for the segmented control. */
+.travirae-stay-search .travirae-stay-search__mode-option{
+  background:transparent!important;
+  background-image:none!important;
+  border-color:transparent!important;
+  color:#334155!important;
+  box-shadow:none!important;
+  filter:none!important;
+  transform:none!important;
+}
+.travirae-stay-search .travirae-stay-search__mode-option:hover:not(.is-active){
+  background:#f3f4f6!important;
+  color:#111827!important;
+}
+.travirae-stay-search .travirae-stay-search__mode-option.is-active{
+  background:linear-gradient(135deg,var(--brand),#6f4cff)!important;
+  color:#fff!important;
+  box-shadow:0 8px 20px rgba(40,58,255,.24)!important;
+}
+
+@media (max-width:1120px){
+  .travirae-stay-search.is-hotel-mode .travirae-stay-search__grid{
+    grid-template-columns:repeat(4,minmax(0,1fr));
+  }
+  .travirae-stay-search.is-hotel-mode .travirae-stay-search__field--hotel-name{grid-column:1 / span 2}
+  .travirae-stay-search.is-hotel-mode .travirae-stay-search__field--hotel-location{grid-column:3 / span 2}
+  .travirae-stay-search.is-hotel-mode [data-field="checkin"]{grid-column:1}
+  .travirae-stay-search.is-hotel-mode [data-field="checkout"]{grid-column:2}
+  .travirae-stay-search.is-hotel-mode .travirae-stay-search__field--guests{grid-column:3 / span 2}
+  .travirae-stay-search.is-hotel-mode .travirae-stay-search__submit{grid-column:1 / -1}
+}
+@media (max-width:820px){
+  .travirae-stay-search__mode-switch{margin-bottom:17px}
+  .travirae-stay-search__mode-option{padding-inline:15px;font-size:12px}
+  .travirae-stay-search.is-hotel-mode .travirae-stay-search__grid{grid-template-columns:1fr 1fr}
+  .travirae-stay-search.is-hotel-mode .travirae-stay-search__field--hotel-name,
+  .travirae-stay-search.is-hotel-mode .travirae-stay-search__field--hotel-location,
+  .travirae-stay-search.is-hotel-mode .travirae-stay-search__field--guests,
+  .travirae-stay-search.is-hotel-mode .travirae-stay-search__submit{grid-column:1 / -1}
+  .travirae-stay-search.is-hotel-mode [data-field="checkin"]{grid-column:1}
+  .travirae-stay-search.is-hotel-mode [data-field="checkout"]{grid-column:2}
+}
+@media (max-width:560px){
+  .travirae-stay-search__mode-switch{width:100%;display:grid;grid-template-columns:1fr 1fr}
+  .travirae-stay-search__mode-option{width:100%;padding-inline:9px;white-space:normal;line-height:1.2}
+  .travirae-stay-search.is-hotel-mode .travirae-stay-search__grid{grid-template-columns:1fr}
+  .travirae-stay-search.is-hotel-mode .travirae-stay-search__field--hotel-name,
+  .travirae-stay-search.is-hotel-mode .travirae-stay-search__field--hotel-location,
+  .travirae-stay-search.is-hotel-mode [data-field="checkin"],
+  .travirae-stay-search.is-hotel-mode [data-field="checkout"],
+  .travirae-stay-search.is-hotel-mode .travirae-stay-search__field--guests,
+  .travirae-stay-search.is-hotel-mode .travirae-stay-search__submit{grid-column:auto}
+}

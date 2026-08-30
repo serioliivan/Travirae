@@ -12,7 +12,7 @@
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
 <link href="assets/css/style.css" rel="stylesheet"/>
-<link href="assets/css/stay22-search-widget.css" rel="stylesheet"/>
+<link href="assets/css/stay22-search-widget.css?v=20260830-hotel-specific-v1" rel="stylesheet"/>
 <meta content="index, follow" name="robots"/><meta content="Travirae – Hotels &amp; inspiration" property="og:title"/><meta content="Curated destinations, interactive maps, highlights and useful extras." property="og:description"/><meta content="website" property="og:type"/><meta content="assets/img/common/hero.jpg" property="og:image"/><meta content="summary_large_image" name="twitter:card"/><meta content="Travirae – Hotels &amp; inspiration" name="twitter:title"/><meta content="Travel inspiration and hotel booking in one place." name="twitter:description"/><meta content="assets/img/common/hero.jpg" name="twitter:image"/><link crossorigin="" href="https://www.stay22.com" rel="preconnect"/><link href="//www.stay22.com" rel="dns-prefetch"/><link as="fetch" crossorigin="" href="assets/data/maps.json" rel="preload"/><script id="travirae-lang-router">(function(){
   try{
     var siteKey='travirae_site_lang';
@@ -96,11 +96,24 @@
 <input name="campaign" type="hidden" value=""/>
 <input name="lang" type="hidden" value="en"/>
 <input name="currency" type="hidden" value="USD"/>
+<input id="travirae-stay-search-mode" name="search_mode" type="hidden" value="destination"/>
+<div aria-label="Search type" class="travirae-stay-search__mode-switch" role="group">
+<button aria-pressed="true" class="travirae-stay-search__mode-option is-active" data-search-mode="destination" type="button">By destination</button>
+<button aria-pressed="false" class="travirae-stay-search__mode-option" data-search-mode="hotel" type="button">Specific hotel</button>
+</div>
 <div class="travirae-stay-search__grid">
-<div class="travirae-stay-search__field travirae-stay-search__field--destination" data-field="destination">
+<div class="travirae-stay-search__field travirae-stay-search__field--destination" data-field="destination" data-mode-field="destination">
 <label class="travirae-stay-search__label" for="travirae-stay-destination">Destination</label>
 <div class="travirae-stay-search__control"><svg class="travirae-stay-search__control-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path d="m20 20-3.5-3.5"></path></svg><input aria-autocomplete="list" aria-controls="travirae-stay-suggestions" autocomplete="off" id="travirae-stay-destination" name="address" placeholder="City, area or property" required="" spellcheck="false" type="text"/></div>
 <div class="travirae-stay-search__suggestions" hidden="" id="travirae-stay-suggestions" role="listbox"></div>
+</div>
+<div class="travirae-stay-search__field travirae-stay-search__field--hotel-name" data-field="hotelname" hidden="">
+<label class="travirae-stay-search__label" for="travirae-stay-hotel-name">Hotel name</label>
+<div class="travirae-stay-search__control"><svg aria-hidden="true" class="travirae-stay-search__control-icon" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24"><path d="M3 21h18"></path><path d="M6 21V6a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v15"></path><path d="M9 8h1M14 8h1M9 12h1M14 12h1M9 16h1M14 16h1"></path></svg><input autocomplete="off" disabled="" id="travirae-stay-hotel-name" name="hotelname" placeholder="E.g. Hotel Danieli" spellcheck="false" type="text"/></div>
+</div>
+<div class="travirae-stay-search__field travirae-stay-search__field--hotel-location" data-field="hoteladdress" hidden="">
+<label class="travirae-stay-search__label" for="travirae-stay-hotel-location">City or country</label>
+<div class="travirae-stay-search__control"><svg aria-hidden="true" class="travirae-stay-search__control-icon" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24"><path d="M20 10c0 5-8 12-8 12S4 15 4 10a8 8 0 1 1 16 0Z"></path><circle cx="12" cy="10" r="2.5"></circle></svg><input autocomplete="off" disabled="" id="travirae-stay-hotel-location" name="hotel_address" placeholder="E.g. Venice, Italy" spellcheck="false" type="text"/></div>
 </div>
 <div class="travirae-stay-search__field" data-field="checkin">
 <label class="travirae-stay-search__label" for="travirae-stay-checkin">Check-in</label>
@@ -121,7 +134,7 @@
 <input id="travirae-stay-adults" max="10" min="1" name="adults" type="hidden" value="2"/>
 <input id="travirae-stay-children" max="10" min="0" name="children" type="hidden" value="0"/>
 </div>
-<button class="travirae-stay-search__submit" type="submit"><span data-submit-label="">Show hotels</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></button>
+<button class="travirae-stay-search__submit" type="submit"><span data-destination-label="Show hotels" data-hotel-label="Find this hotel" data-submit-label="">Show hotels</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></button>
 </div>
 <div class="travirae-stay-search__footer"><p aria-live="polite" class="travirae-stay-search__error" data-search-error="" role="alert"></p></div>
 </form>
@@ -628,7 +641,7 @@
 <script src="assets/js/config.js"></script>
 <script src="assets/js/supabase-init.js"></script>
 <script src="assets/js/main.js"></script>
-<script src="assets/js/stay22-search-widget.js"></script>
+<script src="assets/js/stay22-search-widget.js?v=20260830-hotel-specific-v1"></script>
 <script src="assets/js/travirae-i18n-fixes.js"></script>
 <script defer="" src="assets/js/replace_maps.js"></script></body>
 </html>
