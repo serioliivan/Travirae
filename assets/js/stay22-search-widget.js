@@ -4,7 +4,7 @@
 
   var AID = 'travirae';
   var SEARCH_ENDPOINT = 'https://www.stay22.com/allez/searchbar';
-  var HOTEL_ENDPOINT = 'https://www.stay22.com/allez/searchbar';
+  var HOTEL_ENDPOINT = 'https://www.stay22.com/allez/booking';
   var FALLBACK_DESTINATIONS = [
     'Rome / Roma, Italy','Paris, France','London, United Kingdom','New York, United States',
     'Barcelona, Spain','Tokyo, Japan','Dubai, United Arab Emirates','Amsterdam, Netherlands',
@@ -86,6 +86,24 @@
   }
 
   function isAfter(a,b){ return !!(a && b && String(a) > String(b)); }
+
+
+  function buildBookingHotelLink(hotelName, hotelAddress, checkinIso, checkoutIso, adults, children, localeCfg){
+    var target = new URL('https://www.booking.com/searchresults.html');
+    var exactQuery = String(hotelName || '').trim();
+    var address = String(hotelAddress || '').trim();
+    if (address) exactQuery += ', ' + address;
+    target.searchParams.set('ss',exactQuery);
+    target.searchParams.set('checkin',checkinIso);
+    target.searchParams.set('checkout',checkoutIso);
+    target.searchParams.set('group_adults',String(Math.max(1,Number(adults || 1))));
+    target.searchParams.set('group_children',String(Math.max(0,Number(children || 0))));
+    target.searchParams.set('no_rooms','1');
+    target.searchParams.set('sb_travel_purpose','leisure');
+    if (localeCfg && localeCfg.lang) target.searchParams.set('lang',String(localeCfg.lang));
+    if (localeCfg && localeCfg.currency) target.searchParams.set('selected_currency',String(localeCfg.currency));
+    return target.toString();
+  }
 
   function getInputIso(input){ return input ? String(input.getAttribute('data-iso') || '').trim() : ''; }
   function setInputIso(input, iso){
@@ -609,21 +627,33 @@
       }
 
       try{
+        var adults = Math.max(1,Number(adultsInput.value || 1));
+        var children = Math.max(0,Number(childrenInput.value || 0));
         var url = new URL(isHotelSearch ? HOTEL_ENDPOINT : SEARCH_ENDPOINT);
         url.searchParams.set('aid',AID);
         if (isHotelSearch){
-          url.searchParams.set('hotelname',hotelNameValue);
-          if (hotelLocationValue) url.searchParams.set('address',hotelLocationValue);
-          if (selectedHotel && Number.isFinite(Number(selectedHotel.lat))) url.searchParams.set('lat',String(selectedHotel.lat));
-          if (selectedHotel && Number.isFinite(Number(selectedHotel.lng))) url.searchParams.set('lng',String(selectedHotel.lng));
+          // Do not let Stay22 fuzzy-match the Google-selected property again.
+          // Instead, send a precise Booking.com search URL (name + full address,
+          // dates and occupancy) through Stay22's tracked `link` parameter.
+          // This preserves aid/campaign attribution while avoiding nearest-hotel
+          // substitutions caused by fuzzy name/coordinate resolution.
+          var directOtaLink = buildBookingHotelLink(
+            hotelNameValue,
+            hotelLocationValue,
+            checkinIso,
+            checkoutIso,
+            adults,
+            children,
+            localeCfg
+          );
+          url.searchParams.set('link',directOtaLink);
         }else{
           url.searchParams.set('address',destinationValue);
+          url.searchParams.set('checkin',checkinIso);
+          url.searchParams.set('checkout',checkoutIso);
+          url.searchParams.set('adults',String(adults));
+          if (children > 0) url.searchParams.set('children',String(children));
         }
-        url.searchParams.set('checkin',checkinIso);
-        url.searchParams.set('checkout',checkoutIso);
-        url.searchParams.set('adults',String(Math.max(1,Number(adultsInput.value || 1))));
-        var children = Math.max(0,Number(childrenInput.value || 0));
-        if (children > 0) url.searchParams.set('children',String(children));
         url.searchParams.set('lang',localeCfg.lang);
         url.searchParams.set('currency',localeCfg.currency);
 
@@ -649,6 +679,8 @@
               hotelName:isHotelSearch ? hotelNameValue : '',
               hotelAddress:isHotelSearch ? hotelLocationValue : '',
               searchMode:searchMode,
+              hotelResolution:isHotelSearch ? 'stay22_booking_link_exact_query' : '',
+              otaProvider:isHotelSearch ? 'booking' : '',
               dedupeKey:'sitewidget_stay22_home_' + searchMode + '_' + (isHotelSearch ? (hotelNameValue + '_' + hotelLocationValue) : destinationValue) + '_' + checkinIso + '_' + checkoutIso,
               dedupeMs:1500
             });
