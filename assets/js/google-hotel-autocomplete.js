@@ -248,6 +248,7 @@
 
     async function selectSuggestion(item){
       if (!item || !normalizeText(item.placeId)) return;
+      var typedQuery = normalizeText(input.value);
       var selectedName = normalizeText(item.name || item.label || item.text);
       var fallbackAddress = normalizeText(item.location || item.address || '');
       showStatus(messages.selecting,'loading');
@@ -262,6 +263,7 @@
         selected = {
           placeId:normalizeText(details.placeId || item.placeId),
           name:selectedName,
+          searchQuery:typedQuery,
           address:normalizeText(details.address || fallbackAddress || item.text),
           lat:Number(details.lat),
           lng:Number(details.lng),
@@ -276,6 +278,7 @@
         selected = {
           placeId:normalizeText(item.placeId),
           name:selectedName,
+          searchQuery:typedQuery,
           address:fallbackAddress || normalizeText(item.text),
           lat:null,
           lng:null,
