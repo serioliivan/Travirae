@@ -61,6 +61,8 @@
     var debounceTimer = null;
     var abortController = null;
     var requestSerial = 0;
+    var selectionSerial = 0;
+    var detailsController = null;
     var renderedButtons = [];
     var activeIndex = -1;
     var destroyed = false;
@@ -73,11 +75,37 @@
       attribution: 'Powered by Google'
     };
 
+    function validCoordinate(value, bound){
+      return value !== null && value !== undefined && value !== '' &&
+        Number.isFinite(Number(value)) && Math.abs(Number(value)) <= bound;
+    }
+
+    function cancelSuggestions(){
+      window.clearTimeout(debounceTimer);
+      debounceTimer = null;
+      requestSerial += 1;
+      if (abortController) abortController.abort();
+      abortController = null;
+    }
+
+    function cancelSelection(){
+      selectionSerial += 1;
+      if (detailsController) detailsController.abort();
+      detailsController = null;
+      input.disabled = !active;
+    }
+
+    function hide(){
+      // Invalidating here also prevents a slow request from reopening a closed popup.
+      cancelSuggestions();
+      clearPanel();
+    }
+
     function syncHiddenValues(hotel){
       if (hiddenPlaceId) hiddenPlaceId.value = hotel ? normalizeText(hotel.placeId) : '';
       if (hiddenAddress) hiddenAddress.value = hotel ? normalizeText(hotel.address) : '';
-      if (hiddenLat) hiddenLat.value = hotel && Number.isFinite(Number(hotel.lat)) ? String(hotel.lat) : '';
-      if (hiddenLng) hiddenLng.value = hotel && Number.isFinite(Number(hotel.lng)) ? String(hotel.lng) : '';
+      if (hiddenLat) hiddenLat.value = hotel && validCoordinate(hotel.lat,90) ? String(hotel.lat) : '';
+      if (hiddenLng) hiddenLng.value = hotel && validCoordinate(hotel.lng,180) ? String(hotel.lng) : '';
     }
 
     function showSelection(hotel){
@@ -204,25 +232,42 @@
         var value = parameters[key];
         if (value !== null && value !== undefined && String(value) !== '') url.searchParams.set(key,String(value));
       });
-      var response = await fetch(url.toString(),{
-        method:'GET',
-        headers:getHeaders(),
-        signal:signal,
-        credentials:'omit',
-        cache:'no-store'
-      });
-      var payload = null;
-      try{ payload = await response.json(); }catch(_e){ payload = null; }
-      if (!response.ok){
-        var message = payload && (payload.error || payload.message || payload.code);
-        throw new Error(normalizeText(message) || ('HTTP_' + response.status));
+      var controller = typeof AbortController !== 'undefined' ? new AbortController() : null;
+      var timedOut = false;
+      var timer = null;
+      function abort(){ if (controller) controller.abort(); }
+      if (signal){
+        if (signal.aborted) throw new DOMException('Aborted','AbortError');
+        signal.addEventListener('abort',abort,{once:true});
       }
-      return payload || {};
+      if (controller) timer = window.setTimeout(function(){ timedOut = true; controller.abort(); },12000);
+      try{
+        var response = await fetch(url.toString(),{
+          method:'GET',
+          headers:getHeaders(),
+          signal:controller ? controller.signal : signal,
+          credentials:'omit',
+          cache:'no-store'
+        });
+        var payload = null;
+        try{ payload = await response.json(); }catch(_e){ payload = null; }
+        if (!response.ok || !payload || payload.status !== 'ok'){
+          var message = payload && (payload.error || payload.message || payload.code);
+          throw new Error(normalizeText(message) || ('HTTP_' + response.status));
+        }
+        return payload;
+      }catch(error){
+        if (timedOut) throw new Error('hotel_lookup_timeout');
+        throw error;
+      }finally{
+        window.clearTimeout(timer);
+        if (signal) signal.removeEventListener('abort',abort);
+      }
     }
 
     async function search(query){
       var cleanQuery = normalizeText(query);
-      if (!active || cleanQuery.length < 3){
+      if (destroyed || !active || cleanQuery.length < 3){
         clearPanel();
         return;
       }
@@ -236,72 +281,86 @@
           lang:locale,
           session_token:sessionToken
         },abortController ? abortController.signal : undefined);
-        if (destroyed || serial !== requestSerial || !active) return;
+        if (destroyed || serial !== requestSerial || !active || cleanQuery !== normalizeText(input.value)) return;
         renderSuggestions(Array.isArray(payload.items) ? payload.items : []);
       }catch(error){
         if (error && error.name === 'AbortError') return;
-        if (destroyed || serial !== requestSerial || !active) return;
+        if (destroyed || serial !== requestSerial || !active || cleanQuery !== normalizeText(input.value)) return;
         showStatus(messages.unavailable,'error');
         onError(messages.unavailable,error);
       }
     }
 
     async function selectSuggestion(item){
-      if (!item || !normalizeText(item.placeId)) return;
+      if (destroyed || !active || !item || !normalizeText(item.placeId)) return;
       var typedQuery = normalizeText(input.value);
       var selectedName = normalizeText(item.name || item.label || item.text);
-      var fallbackAddress = normalizeText(item.location || item.address || '');
+      if (!selectedName) return;
+      cancelSuggestions();
+      cancelSelection();
+      var serial = selectionSerial;
+      var token = sessionToken;
+      detailsController = typeof AbortController !== 'undefined' ? new AbortController() : null;
+      var controller = detailsController;
+      selected = null;
+      syncHiddenValues(null);
+      showSelection(null);
+      input.removeAttribute('data-selected-place-id');
+      onSelectionChange(null);
       showStatus(messages.selecting,'loading');
       input.disabled = true;
       try{
         var payload = await request('details',{
           place_id:item.placeId,
           lang:locale,
-          session_token:sessionToken
-        });
+          session_token:token
+        },controller ? controller.signal : undefined);
+        if (destroyed || !active || serial !== selectionSerial) return;
         var details = payload && payload.place ? payload.place : {};
+        // Never accept another property, missing details, or an estimated fallback.
+        if (normalizeText(details.placeId) !== normalizeText(item.placeId) ||
+            !normalizeText(details.address) || !validCoordinate(details.lat,90) ||
+            !validCoordinate(details.lng,180)) throw new Error('invalid_hotel_details');
         selected = {
-          placeId:normalizeText(details.placeId || item.placeId),
+          placeId:normalizeText(details.placeId),
           name:selectedName,
           searchQuery:typedQuery,
-          address:normalizeText(details.address || fallbackAddress || item.text),
+          address:normalizeText(details.address),
           lat:Number(details.lat),
           lng:Number(details.lng),
           types:Array.isArray(details.types) ? details.types.slice() : (Array.isArray(item.types) ? item.types.slice() : []),
           primaryType:normalizeText(details.primaryType || item.primaryType)
         };
-        if (!Number.isFinite(selected.lat)) selected.lat = null;
-        if (!Number.isFinite(selected.lng)) selected.lng = null;
+        input.value = selected.name;
+        input.setAttribute('data-selected-place-id',selected.placeId);
+        syncHiddenValues(selected);
+        showSelection(selected);
+        clearPanel();
+        onClearError();
+        onSelectionChange(selected);
+        sessionToken = createSessionToken();
       }catch(error){
-        // The prediction itself still identifies the intended property. Use its
-        // visible name/location if Place Details is temporarily unavailable.
-        selected = {
-          placeId:normalizeText(item.placeId),
-          name:selectedName,
-          searchQuery:typedQuery,
-          address:fallbackAddress || normalizeText(item.text),
-          lat:null,
-          lng:null,
-          types:Array.isArray(item.types) ? item.types.slice() : [],
-          primaryType:normalizeText(item.primaryType)
-        };
+        if (destroyed || !active || serial !== selectionSerial || (error && error.name === 'AbortError')) return;
+        selected = null;
+        syncHiddenValues(null);
+        input.removeAttribute('data-selected-place-id');
+        showSelection(null);
+        showStatus(messages.unavailable,'error');
+        onError(messages.unavailable,error);
+        onSelectionChange(null);
+        sessionToken = createSessionToken();
       }finally{
-        input.disabled = false;
+        if (serial === selectionSerial){
+          input.disabled = !active;
+          detailsController = null;
+        }
       }
-
-      input.value = selected.name;
-      input.setAttribute('data-selected-place-id',selected.placeId);
-      syncHiddenValues(selected);
-      showSelection(selected);
-      clearPanel();
-      onClearError();
-      onSelectionChange(selected);
-      sessionToken = createSessionToken();
-      window.setTimeout(function(){ input.focus(); },0);
     }
 
     function clearSelected(options){
       options = options || {};
+      cancelSuggestions();
+      cancelSelection();
       selected = null;
       input.removeAttribute('data-selected-place-id');
       syncHiddenValues(null);
@@ -316,7 +375,9 @@
     function handleInput(){
       onClearError();
       if (selected) clearSelected({preserveInput:true});
-      window.clearTimeout(debounceTimer);
+      // Invalidate immediately, not 350 ms later when the next request starts.
+      cancelSuggestions();
+      clearPanel();
       var value = normalizeText(input.value);
       if (!active || value.length < 3){
         clearPanel();
@@ -332,7 +393,7 @@
     });
     input.addEventListener('keydown',function(event){
       if (panel.hidden || !renderedButtons.length){
-        if (event.key === 'Escape') clearPanel();
+        if (event.key === 'Escape') hide();
         return;
       }
       if (event.key === 'ArrowDown'){
@@ -346,7 +407,7 @@
         renderedButtons[activeIndex].click();
       }else if (event.key === 'Escape'){
         event.preventDefault();
-        clearPanel();
+        hide();
       }
     });
 
@@ -358,7 +419,7 @@
     }
 
     function documentClickHandler(event){
-      if (!field.contains(event.target)) clearPanel();
+      if (!field.contains(event.target)) hide();
     }
     document.addEventListener('click',documentClickHandler);
 
@@ -366,19 +427,24 @@
       setActive:function(value){
         active = Boolean(value);
         if (!active){
+          cancelSuggestions();
+          cancelSelection();
           clearPanel();
-          if (abortController) abortController.abort();
         }
+        input.disabled = !active;
       },
-      getSelected:function(){ return selected ? Object.assign({},selected) : null; },
+      getSelected:function(){
+        if (!active || !selected || normalizeText(input.value) !== normalizeText(selected.name)) return null;
+        return Object.assign({},selected);
+      },
       clear:function(focus){ clearSelected({focus:Boolean(focus)}); },
-      hide:clearPanel,
+      hide:hide,
       focus:function(){ input.focus(); },
       destroy:function(){
         destroyed = true;
         active = false;
-        window.clearTimeout(debounceTimer);
-        if (abortController) abortController.abort();
+        cancelSuggestions();
+        cancelSelection();
         document.removeEventListener('click',documentClickHandler);
         clearPanel();
       }

@@ -69,7 +69,8 @@
     var match = String(iso || '').match(/^(\d{4})-(\d{2})-(\d{2})$/);
     if (!match) return null;
     var date = new Date(Number(match[1]), Number(match[2]) - 1, Number(match[3]));
-    if (Number.isNaN(date.getTime())) return null;
+    if (Number.isNaN(date.getTime()) || date.getFullYear() !== Number(match[1]) ||
+        date.getMonth() !== Number(match[2])-1 || date.getDate() !== Number(match[3])) return null;
     return date;
   }
 
@@ -114,8 +115,10 @@
   }
 
   function findBookingPropertyOverride(hotelName, hotelAddress, typedQuery){
-    var nameContext = [hotelName,typedQuery].filter(Boolean).join(' ');
-    var locationContext = String(hotelAddress || '').trim() || String(typedQuery || '').trim();
+    // Only the selected and validated property can match an exact mapping.
+    // A previous query must never redirect a different selected hotel to Nizza.
+    var nameContext = String(hotelName || '').trim();
+    var locationContext = String(hotelAddress || '').trim();
     for (var i=0;i<BOOKING_PROPERTY_OVERRIDES.length;i+=1){
       var entry = BOOKING_PROPERTY_OVERRIDES[i];
       if (containsAllTokens(nameContext,entry.nameTokens) && containsAllTokens(locationContext,entry.locationTokens)) return entry;
@@ -371,6 +374,16 @@
     if (langInput) langInput.value = localeCfg.lang;
     if (currencyInput) currencyInput.value = localeCfg.currency;
 
+    var navigationTimer = null;
+    function resetNavigation(){
+      if (navigationTimer) window.clearTimeout(navigationTimer);
+      navigationTimer = null;
+      navigating = false;
+      if (submitButton) submitButton.disabled = false;
+      if (submitLabel) submitLabel.textContent = currentSubmitText();
+    }
+    window.addEventListener('pageshow',resetNavigation);
+
     function getAffiliateId(){
       try{
         if (window.traviraeAffiliate && typeof window.traviraeAffiliate.getId === 'function') {
@@ -625,8 +638,10 @@
     function openDatepickerFor(input){
       hideSuggestions();
       setGuestPanel(false);
-      clearError();
+      today = dateToIso(new Date());
+      tomorrow = addDaysIso(today,1);
       var minIso = input === checkin ? today : (getInputIso(checkin) ? addDaysIso(getInputIso(checkin),1) : tomorrow);
+      if (minIso < today) minIso = today;
       datepicker.openFor(input, minIso);
     }
 
@@ -691,10 +706,17 @@
       }else if (!destinationValue){
         setError(copy.destinationRequired,fieldDestination); destination.focus(); return;
       }
-      if (!checkinIso || !checkoutIso){
+      if (!parseIso(checkinIso) || !parseIso(checkoutIso)){
+        if (!parseIso(checkinIso)) checkinIso = '';
+        if (!parseIso(checkoutIso)) checkoutIso = '';
         var missingField = !checkinIso ? fieldCheckin : fieldCheckout;
         setError(copy.datesRequired,missingField);
         (!checkinIso ? checkin : checkout).focus();
+        return;
+      }
+      if (checkinIso < dateToIso(new Date())){
+        setError(copy.datesRequired,fieldCheckin);
+        checkin.focus();
         return;
       }
       if (!isAfter(checkoutIso,checkinIso)){
@@ -704,8 +726,8 @@
       }
 
       try{
-        var adults = Math.max(1,Number(adultsInput.value || 1));
-        var children = Math.max(0,Number(childrenInput.value || 0));
+        var adults = Math.min(10,Math.max(1,Math.floor(Number(adultsInput.value) || 1)));
+        var children = Math.min(10,Math.max(0,Math.floor(Number(childrenInput.value) || 0)));
         var url = new URL(isHotelSearch ? HOTEL_ENDPOINT : SEARCH_ENDPOINT);
         var hotelBookingTarget = null;
         url.searchParams.set('aid',AID);
@@ -726,6 +748,13 @@
             localeCfg
           );
           url.searchParams.set('link',hotelBookingTarget.url);
+          url.searchParams.set('roam','false');
+          // Also pass the official Stay22 date/guest fields: the nested OTA
+          // URL and the affiliate redirect must describe the same stay.
+          url.searchParams.set('checkin',checkinIso);
+          url.searchParams.set('checkout',checkoutIso);
+          url.searchParams.set('adults',String(adults));
+          if (children > 0) url.searchParams.set('children',String(children));
         }else{
           url.searchParams.set('address',destinationValue);
           url.searchParams.set('checkin',checkinIso);
@@ -771,7 +800,11 @@
         navigating = true;
         submitButton.disabled = true;
         if (submitLabel) submitLabel.textContent = isHotelSearch ? copy.searchingSpecific : copy.searching;
-        window.setTimeout(function(){ window.location.assign(url.toString()); },90);
+        navigationTimer = window.setTimeout(function(){
+          navigationTimer = null;
+          try{ window.location.assign(url.toString()); }
+          catch(_navigationError){ resetNavigation(); setError(copy.genericError,null); }
+        },90);
       }catch(_urlError){
         navigating = false;
         submitButton.disabled = false;

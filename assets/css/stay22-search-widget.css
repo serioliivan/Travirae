@@ -911,3 +911,28 @@ html[dir="rtl"] .travirae-stay-search__guest-button{padding:0 16px 0 14px}
   max-width:100%;
   vertical-align:middle;
 }
+
+/* v6 audit: keep the right-hand calendar inside the viewport, also in RTL. */
+.travirae-stay-search [data-field="checkout"] .travirae-stay-search__calendar{
+  inset-inline-start:auto;
+  inset-inline-end:0;
+}
+/* The selected date alone uses the accent colour. */
+.travirae-stay-search .travirae-stay-search__calendar-action--primary{
+  background:#fff!important;
+  color:#111827!important;
+  border-color:#e5e7eb!important;
+}
+.travirae-stay-search .travirae-stay-search__calendar-day.is-selected{
+  color:#fff!important;
+}
+@media (max-width:820px){
+  /* Physical centring is intentional: translateX(-50%) is not logical in RTL. */
+  .travirae-stay-search__powered{
+    inset-inline:auto;
+    left:50%;
+    right:auto;
+    transform:translateX(-50%);
+    direction:ltr;
+  }
+}
