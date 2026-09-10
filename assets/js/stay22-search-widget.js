@@ -11,18 +11,6 @@
     'Lisbon, Portugal','Bangkok, Thailand','Bali, Indonesia','Iseo, Italy'
   ];
 
-  // Exact Booking.com property links for known name collisions or listings
-  // that Booking finds correctly but Stay22/OTA search may resolve ambiguously.
-  // The final click still passes through Stay22 Allez with aid=travirae and
-  // the existing creator/affiliate campaign, so attribution is preserved.
-  var BOOKING_PROPERTY_OVERRIDES = [
-    {
-      nameTokens:['nizza'],
-      locationTokens:['riccione'],
-      url:'https://www.booking.com/hotel/it/nizza-riccione.html'
-    }
-  ];
-
   var COPY = {
     it:{newTabHint:"I risultati si aprono in una nuova scheda.",popupBlocked:"Il browser ha bloccato la nuova scheda. Consenti i popup per Travirae e premi di nuovo il pulsante di ricerca.",guestsOne:'ospite',guestsMany:'ospiti',searching:'Apro gli hotel…',searchingSpecific:'Cerco l’hotel…',specificSubmit:'Trova questo hotel',destinationRequired:'Inserisci una destinazione.',hotelNameRequired:'Inserisci il nome dell’hotel.',hotelLocationRequired:'Inserisci la città o il Paese dell’hotel.',hotelSelectionRequired:'Scrivi il nome e seleziona una struttura dall’elenco.',hotelAutocompleteLoading:'Ricerca hotel…',hotelAutocompleteNoResults:'Nessuna struttura trovata. Prova ad aggiungere la città o il Paese.',hotelAutocompleteUnavailable:'Ricerca hotel temporaneamente non disponibile. Usa la ricerca per destinazione.',hotelAutocompleteSelecting:'Recupero i dettagli della struttura…',datesRequired:'Seleziona le date di check-in e check-out.',dateOrder:'Il check-out deve essere successivo al check-in.',genericError:'Controlla i dati inseriti e riprova.',datePlaceholder:'gg/mm/aaaa',today:'Oggi',close:'Chiudi'},
     en:{newTabHint:"Results open in a new tab.",popupBlocked:"Your browser blocked the new tab. Allow pop-ups for Travirae and press the search button again.",guestsOne:'guest',guestsMany:'guests',searching:'Opening hotels…',searchingSpecific:'Finding the hotel…',specificSubmit:'Find this hotel',destinationRequired:'Enter a destination.',hotelNameRequired:'Enter the hotel name.',hotelLocationRequired:'Enter the hotel city or country.',hotelSelectionRequired:'Type the name and select a property from the list.',hotelAutocompleteLoading:'Searching hotels…',hotelAutocompleteNoResults:'No property found. Try adding the city or country.',hotelAutocompleteUnavailable:'Hotel search is temporarily unavailable. Use destination search.',hotelAutocompleteSelecting:'Loading property details…',datesRequired:'Select check-in and check-out dates.',dateOrder:'Check-out must be after check-in.',genericError:'Check the information and try again.',datePlaceholder:'dd/mm/yyyy',today:'Today',close:'Close'},
@@ -101,57 +89,87 @@
   function isAfter(a,b){ return !!(a && b && String(a) > String(b)); }
 
 
+  // Keep the selected Google prediction as the only source of the hotel name.
+  // Never route from the partial text that was typed before selecting it.
+  function normalizeSelectedText(value){
+    return String(value || '').replace(/\s+/g,' ').trim();
+  }
+
   function normalizeForMatch(value){
-    var text = normalize(value).replace(/[^a-z0-9\u0400-\u04ff\u0600-\u06ff\u4e00-\u9fff]+/g,' ');
-    return text.replace(/\s+/g,' ').trim();
+    // Used only for duplicate-word comparisons, NEVER for the submitted name.
+    var text = normalize(value);
+    return text.replace(/[^\p{L}\p{N}]+/gu,' ').replace(/\s+/g,' ').trim();
   }
 
-  function containsAllTokens(text, tokens){
-    var haystack = ' ' + normalizeForMatch(text) + ' ';
-    return (tokens || []).every(function(token){
-      var needle = normalizeForMatch(token);
-      return needle && haystack.indexOf(' ' + needle + ' ') !== -1;
-    });
+  function addressCityCandidate(value){
+    var part = normalizeSelectedText(value);
+    if (!part) return '';
+    // Standalone province/state and postal-code fragments are not cities.
+    if (/^[A-Z]{2,3}$/.test(part) || /^\d[\d\s-]*$/.test(part) ||
+        /^[A-Z]{1,3}[ -]?\d[\d\s-]*$/.test(part) ||
+        /^[A-Z]{1,2}\d[A-Z\d]?\s*\d[A-Z]{2}$/i.test(part) ||
+        /^[A-Z]\d[A-Z]\s*\d[A-Z]\d$/i.test(part)) return '';
+    // Postal prefixes (84011 Amalfi SA) and common postal suffixes.
+    part = part.replace(/^(?:[A-Z]{1,2}-)?\d{3,7}(?:-\d{3,4})?\s+/,'')
+      .replace(/\s+[A-Z]{1,2}\d[A-Z\d]?\s*\d[A-Z]{2}$/i,'')
+      .replace(/\s+[A-Z]\d[A-Z]\s*\d[A-Z]\d$/i,'')
+      .replace(/\s+\d{3,7}(?:-\d{3,4})?$/,'')
+      .replace(/\s+[A-Z]{2,3}$/,'').trim();
+    if (!part || /^[\d\s-]+$/.test(part) || /^[A-Z]{2,3}$/.test(part)) return '';
+    if (/^(via|viale|piazza|piazzale|largo|corso|strada|vicolo|lungomare|riva|calle|carrer|rue|avenue|boulevard|road|street|ulica|prospekt)\b/i.test(part)) return '';
+    if (/^\d+(?:[-/]\d+)*[A-Za-z]?\b/.test(part)) return '';
+    if (/\b(street|road|avenue|boulevard|drive|lane|way|highway|rd|ave|blvd)\.?$/i.test(part)) return '';
+    if (/^(provincia di|province of|città metropolitana di|metropolitan city of|county of|region of)\b/i.test(part)) return '';
+    return part;
   }
 
-  function findBookingPropertyOverride(hotelName, hotelAddress, typedQuery){
-    // Only the selected and validated property can match an exact mapping.
-    // A previous query must never redirect a different selected hotel to Nizza.
-    var nameContext = String(hotelName || '').trim();
-    var locationContext = String(hotelAddress || '').trim();
-    for (var i=0;i<BOOKING_PROPERTY_OVERRIDES.length;i+=1){
-      var entry = BOOKING_PROPERTY_OVERRIDES[i];
-      if (containsAllTokens(nameContext,entry.nameTokens) && containsAllTokens(locationContext,entry.locationTokens)) return entry;
-    }
-    return null;
-  }
-
-  function extractLikelyCity(hotelAddress){
-    var parts = String(hotelAddress || '').split(',').map(function(part){ return part.trim(); }).filter(Boolean);
-    if (parts.length < 2) return '';
-    // Work backwards, skip the country and street/number-only fragments.
-    for (var i=parts.length-2;i>=0;i-=1){
-      var candidate = parts[i]
-        .replace(/^\d{3,7}\s+/,'')
-        .replace(/\s+\d{3,7}$/,'')
-        .replace(/\s+[A-Z]{2,3}$/,'')
-        .replace(/^[A-Z]{2,3}\s+\d{3,7}$/,'')
-        .trim();
-      if (!candidate || /^\d+[A-Za-z]?$/.test(candidate)) continue;
-      if (/^(via|viale|piazza|corso|strada|street|st|road|rd|avenue|ave|boulevard|blvd|rue|calle|carrer|ulica|prospekt)\b/i.test(candidate)) continue;
-      if (/^[A-Z]{2,3}$/.test(candidate)) continue;
-      return candidate;
+  function extractSelectedLocality(location){
+    var parts = String(location || '').split(',').map(normalizeSelectedText).filter(Boolean);
+    if (!parts.length) return '';
+    // Usually the final comma-separated fragment is the country. A final
+    // fragment with a postal code can instead be the city (Singapore 018956).
+    var last = parts[parts.length-1];
+    var hasPostalCity = /(?:\d{3,7}|[A-Z]{1,2}\d[A-Z\d]?\s*\d[A-Z]{2}|[A-Z]\d[A-Z]\s*\d[A-Z]\d)/i.test(last);
+    var start = parts.length === 1 || hasPostalCity ? parts.length-1 : parts.length-2;
+    for (var i=start;i>=0;i-=1){
+      var candidate = addressCityCandidate(parts[i]);
+      if (candidate) return candidate;
     }
     return '';
   }
 
-  function cleanHotelNameForBooking(hotelName){
-    var name = String(hotelName || '').trim();
-    // Google business names often append a long marketing description after a
-    // dash. Booking tends to resolve the core property name more reliably.
-    var pieces = name.split(/\s+[–—-]\s+/);
-    if (pieces.length > 1 && pieces[0].trim().length >= 5) name = pieces[0].trim();
-    return name;
+  function getSelectedHotelCity(hotel){
+    // Structured locality is optional: the existing Supabase function keeps
+    // working unchanged. Preserve the suggestion's secondary text instead of
+    // discarding it and trying to derive everything from the street address.
+    var explicit = normalizeSelectedText(hotel.locality || hotel.city);
+    if (explicit) return explicit;
+    var components = hotel.addressComponents;
+    if (Array.isArray(components)){
+      var types = ['locality','postal_town'];
+      for (var i=0;i<types.length;i+=1){
+        var component = components.find(function(entry){
+          return entry && Array.isArray(entry.types) && entry.types.indexOf(types[i]) !== -1;
+        });
+        var value = component && normalizeSelectedText(component.longText || component.long_name);
+        if (value) return value;
+      }
+    }
+    return extractSelectedLocality(hotel.location) || extractSelectedLocality(hotel.address);
+  }
+
+  function buildSelectedHotelQuery(hotel){
+    if (!hotel || !normalizeSelectedText(hotel.placeId)) throw new Error('missing_selected_hotel');
+    var name = normalizeSelectedText(hotel.name);
+    if (!name) throw new Error('missing_selected_hotel_name');
+    var city = getSelectedHotelCity(hotel);
+    var nameWords = ' ' + normalizeForMatch(name) + ' ';
+    var cityWords = normalizeForMatch(city);
+    // Retain spelling, suffixes, punctuation, accents and full words exactly
+    // as in the selected suggestion. Only append its locality, when available.
+    // In particular, "Hotel Lidomar" typed -> "Hotel Lidomare" selected must
+    // submit "Hotel Lidomare Amalfi", not the old input or an abbreviated name.
+    return name + (cityWords && nameWords.indexOf(' ' + cityWords + ' ') === -1 ? ' ' + city : '');
   }
 
   function addBookingStayParameters(target, checkinIso, checkoutIso, adults, children, localeCfg){
@@ -166,23 +184,16 @@
     return target;
   }
 
-  function buildBookingHotelLink(hotelName, hotelAddress, typedQuery, checkinIso, checkoutIso, adults, children, localeCfg){
-    var override = findBookingPropertyOverride(hotelName,hotelAddress,typedQuery);
-    if (override && override.url){
-      var exactTarget = addBookingStayParameters(new URL(override.url),checkinIso,checkoutIso,adults,children,localeCfg);
-      return {url:exactTarget.toString(),strategy:'booking_exact_property_override',searchQuery:''};
-    }
-
+  function buildBookingHotelLink(selectedHotel, checkinIso, checkoutIso, adults, children, localeCfg){
+    var exactQuery = buildSelectedHotelQuery(selectedHotel);
     var target = new URL('https://www.booking.com/searchresults.html');
-    var exactQuery = cleanHotelNameForBooking(hotelName);
-    var cityHint = extractLikelyCity(hotelAddress);
-    var normalizedName = normalizeForMatch(exactQuery);
-    var normalizedCity = normalizeForMatch(cityHint);
-    if (cityHint && normalizedCity && normalizedName.indexOf(normalizedCity) === -1) exactQuery += ' ' + cityHint;
-    if (!exactQuery) exactQuery = String(typedQuery || hotelName || '').trim();
+    // Booking's visible search query and original query contain the SAME full
+    // selected hotel name + locality. Do not reuse dest_id, hotel IDs, location
+    // coordinates, old text or token-based overrides for similarly named hotels.
     target.searchParams.set('ss',exactQuery);
+    target.searchParams.set('ss_raw',exactQuery);
     addBookingStayParameters(target,checkinIso,checkoutIso,adults,children,localeCfg);
-    return {url:target.toString(),strategy:'booking_search_name_city',searchQuery:exactQuery};
+    return {url:target.toString(),strategy:'booking_selected_name_locality',searchQuery:exactQuery};
   }
 
   function getInputIso(input){ return input ? String(input.getAttribute('data-iso') || '').trim() : ''; }
@@ -759,14 +770,11 @@
         url.searchParams.set('aid',AID);
         if (isHotelSearch){
           // Do not let Stay22 fuzzy-match the Google-selected property again.
-          // Send a direct Booking.com property URL when an exact mapping is
-          // available; otherwise use a focused name + city Booking search.
-          // Both routes pass through Stay22's tracked `link` parameter, keeping
-          // aid/campaign attribution without re-running Stay22 fuzzy matching.
+          // Build Booking's search from the full selected suggestion, not the
+          // partially typed query. The exact encoded destination continues to
+          // pass through Stay22 Allez; no direct unaffiliated fallback is used.
           hotelBookingTarget = buildBookingHotelLink(
-            hotelNameValue,
-            hotelLocationValue,
-            selectedHotel ? String(selectedHotel.searchQuery || '') : '',
+            selectedHotel,
             checkinIso,
             checkoutIso,
             adults,

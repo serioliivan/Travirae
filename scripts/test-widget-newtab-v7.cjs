@@ -70,7 +70,7 @@ test('All nine homepage forms target a new tab with noopener', () => {
     assert(form, file);
     assert(form[0].includes('target="_blank"'), file);
     assert(form[0].includes('rel="noopener"'), file);
-    assert(html.includes('20260906-layout-newtab-v7'), file);
+    assert(html.includes('20260910-selected-hotel-v8'), file);
   }
 });
 

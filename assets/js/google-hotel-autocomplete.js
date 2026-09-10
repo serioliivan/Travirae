@@ -293,9 +293,15 @@
 
     async function selectSuggestion(item){
       if (destroyed || !active || !item || !normalizeText(item.placeId)) return;
-      var typedQuery = normalizeText(input.value);
-      var selectedName = normalizeText(item.name || item.label || item.text);
-      if (!selectedName) return;
+      // Snapshot the clicked/keyboard-selected prediction before awaiting its
+      // details. The search input is never the source of the outbound name.
+      var prediction = {
+        placeId:normalizeText(item.placeId),
+        name:normalizeText(item.name || item.label || item.text),
+        location:normalizeText(item.location || item.address),
+        text:normalizeText(item.text)
+      };
+      if (!prediction.name) return;
       cancelSuggestions();
       cancelSelection();
       var serial = selectionSerial;
@@ -311,20 +317,23 @@
       input.disabled = true;
       try{
         var payload = await request('details',{
-          place_id:item.placeId,
+          place_id:prediction.placeId,
           lang:locale,
           session_token:token
         },controller ? controller.signal : undefined);
         if (destroyed || !active || serial !== selectionSerial) return;
         var details = payload && payload.place ? payload.place : {};
         // Never accept another property, missing details, or an estimated fallback.
-        if (normalizeText(details.placeId) !== normalizeText(item.placeId) ||
+        if (normalizeText(details.placeId) !== prediction.placeId ||
             !normalizeText(details.address) || !validCoordinate(details.lat,90) ||
             !validCoordinate(details.lng,180)) throw new Error('invalid_hotel_details');
         selected = {
           placeId:normalizeText(details.placeId),
-          name:selectedName,
-          searchQuery:typedQuery,
+          name:prediction.name,
+          location:prediction.location,
+          suggestionText:prediction.text,
+          locality:normalizeText(details.locality || details.city),
+          addressComponents:Array.isArray(details.addressComponents) ? details.addressComponents.slice() : [],
           address:normalizeText(details.address),
           lat:Number(details.lat),
           lng:Number(details.lng),

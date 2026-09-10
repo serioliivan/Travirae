@@ -1,0 +1,151 @@
+{
+  "version": "v8-selected-hotel",
+  "date": "2026-09-10",
+  "base_zip": "Travirae_widget_layout_unificato_nuova_scheda_v7.zip",
+  "browser_engine": "144.0.7559.96",
+  "browser_assertions": 590,
+  "browser_cases": [
+    {
+      "locale": "it",
+      "width": 1440,
+      "status": "PASS",
+      "outgoing_query": "Hotel Lidomare Amalfi"
+    },
+    {
+      "locale": "it",
+      "width": 390,
+      "status": "PASS",
+      "outgoing_query": "Hotel Lidomare Amalfi"
+    },
+    {
+      "locale": "en",
+      "width": 1440,
+      "status": "PASS",
+      "outgoing_query": "Hotel Lidomare Amalfi"
+    },
+    {
+      "locale": "en",
+      "width": 390,
+      "status": "PASS",
+      "outgoing_query": "Hotel Lidomare Amalfi"
+    },
+    {
+      "locale": "de",
+      "width": 1440,
+      "status": "PASS",
+      "outgoing_query": "Hotel Lidomare Amalfi"
+    },
+    {
+      "locale": "de",
+      "width": 390,
+      "status": "PASS",
+      "outgoing_query": "Hotel Lidomare Amalfi"
+    },
+    {
+      "locale": "fr",
+      "width": 1440,
+      "status": "PASS",
+      "outgoing_query": "Hotel Lidomare Amalfi"
+    },
+    {
+      "locale": "fr",
+      "width": 390,
+      "status": "PASS",
+      "outgoing_query": "Hotel Lidomare Amalfi"
+    },
+    {
+      "locale": "es",
+      "width": 1440,
+      "status": "PASS",
+      "outgoing_query": "Hotel Lidomare Amalfi"
+    },
+    {
+      "locale": "es",
+      "width": 390,
+      "status": "PASS",
+      "outgoing_query": "Hotel Lidomare Amalfi"
+    },
+    {
+      "locale": "nl",
+      "width": 1440,
+      "status": "PASS",
+      "outgoing_query": "Hotel Lidomare Amalfi"
+    },
+    {
+      "locale": "nl",
+      "width": 390,
+      "status": "PASS",
+      "outgoing_query": "Hotel Lidomare Amalfi"
+    },
+    {
+      "locale": "ru",
+      "width": 1440,
+      "status": "PASS",
+      "outgoing_query": "Hotel Lidomare Amalfi"
+    },
+    {
+      "locale": "ru",
+      "width": 390,
+      "status": "PASS",
+      "outgoing_query": "Hotel Lidomare Amalfi"
+    },
+    {
+      "locale": "ar",
+      "width": 1440,
+      "status": "PASS",
+      "outgoing_query": "Hotel Lidomare Amalfi"
+    },
+    {
+      "locale": "ar",
+      "width": 390,
+      "status": "PASS",
+      "outgoing_query": "Hotel Lidomare Amalfi"
+    },
+    {
+      "locale": "zh",
+      "width": 1440,
+      "status": "PASS",
+      "outgoing_query": "Hotel Lidomare Amalfi"
+    },
+    {
+      "locale": "zh",
+      "width": 390,
+      "status": "PASS",
+      "outgoing_query": "Hotel Lidomare Amalfi"
+    },
+    {
+      "test": "advanced-races-errors-keyboard-popup",
+      "status": "PASS"
+    }
+  ],
+  "unit_routing_checks": 39,
+  "unit_popup_layout_checks": 7,
+  "syntax_checked_js_files": 29,
+  "method": "HTML/CSS/JS locali caricati in memoria in Chromium. Servizi Google/Supabase e navigazione esterna simulati; nuovi contesti about:blank reali per i test delle schede. Routing lingua online e accrediti reali non verificati.",
+  "examples": [
+    {
+      "typed": "Hotel Lidomar",
+      "selected": "Hotel Lidomare",
+      "location": "Amalfi",
+      "booking_ss": "Hotel Lidomare Amalfi"
+    },
+    {
+      "typed": "Hotel Xy",
+      "selected": "Hotel XYZ - Xyu Resort",
+      "location": "Amalfi",
+      "booking_ss": "Hotel XYZ - Xyu Resort Amalfi"
+    },
+    {
+      "selection": "Secondo suggerimento, tastiera",
+      "selected": "Hotel Lidomare",
+      "location": "Ravenna",
+      "booking_ss": "Hotel Lidomare Ravenna"
+    }
+  ],
+  "limits": [
+    "Navigazione live Stay22/Booking non verificabile in questo ambiente.",
+    "Nessuna prenotazione o verifica di attribuzione economica eseguita.",
+    "ss è una ricerca testuale, non una selezione Booking per ID hotel.",
+    "La località viene letta dal suggerimento e, se necessario, dall’indirizzo; non si tratta di un catalogo Booking con ID univoci."
+  ]
+}
